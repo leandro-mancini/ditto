@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ditto/react": ["packages/react/src/index.ts"]
+      "packages/*": ["packages/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
