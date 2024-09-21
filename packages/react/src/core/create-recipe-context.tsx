@@ -1,6 +1,6 @@
 import { cx, JsxFactoryOptions, mergeProps } from "@ditto/styled-system"
 import React, { forwardRef } from "react"
-import { chakra } from "./factory"
+import { ditto } from "./factory"
 import { createContext } from "../create-context"
 import { RecipeKey, useRecipe, UseRecipeOptions } from "./use-recipe"
 
@@ -27,7 +27,7 @@ export function createRecipeContext<K extends RecipeKey>(
     ): React.ForwardRefExoticComponent<
       React.PropsWithoutRef<P> & React.RefAttributes<T>
     > => {
-      const SuperComponent = chakra(Component, {}, options as any)
+      const SuperComponent = ditto(Component, {}, options as any)
       const StyledComponent = forwardRef<any, any>((inProps, ref) => {
         const props = mergeProps(usePropsContext(), inProps)
   

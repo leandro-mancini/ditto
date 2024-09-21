@@ -1,6 +1,6 @@
 "use client"
 
-import { HTMLChakraProps, RecipeProps } from "@ditto/styled-system"
+import { HTMLDittoProps, RecipeProps } from "@ditto/styled-system"
 import { createRecipeContext } from "../../core/create-recipe-context"
 
 const { withContext, PropsProvider } = createRecipeContext({
@@ -11,7 +11,7 @@ export interface ContainerBaseProps
   extends RecipeProps<"container"> {}
 
 export interface ContainerProps
-  extends HTMLChakraProps<"div", ContainerBaseProps> {}
+  extends HTMLDittoProps<"div", ContainerBaseProps> {}
 
 export const Container = withContext<HTMLDivElement, ContainerProps>("div")
 

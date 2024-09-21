@@ -1,16 +1,10 @@
 "use client"
 
-import { type HTMLChakraProps } from "@ditto/styled-system"
-import { chakra } from "../../core"
+import { type HTMLDittoProps } from "@ditto/styled-system"
+import { ditto } from "../../core"
 
-export interface BoxProps extends HTMLChakraProps<"div"> {}
+export interface BoxProps extends HTMLDittoProps<"div"> {}
 
-/**
- * Box is the most abstract component on top of which other chakra
- * components are built. It renders a `div` element by default.
- *
- * @see Docs https://chakra-ui.com/box
- */
-export const Box = chakra("div")
+export const Box = ditto("div")
 
 Box.displayName = "Box"

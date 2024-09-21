@@ -30,7 +30,7 @@ type JsxHtmlProps<T extends Dict, P extends Dict = {}> = Assign<
   P
 >
 
-export type HTMLChakraProps<
+export type HTMLDittoProps<
   T extends ElementType,
   P extends Dict = {},
 > = JsxHtmlProps<
@@ -53,10 +53,10 @@ export interface JsxStyleProps
     | Omit<(SystemStyleObject | undefined)[], keyof any[]>
 }
 
-export type ChakraComponent<
+export type DittoComponent<
   T extends ElementType,
   P extends Dict = {},
-> = FunctionComponent<HTMLChakraProps<T, P> & { ref?: any }>
+> = FunctionComponent<HTMLDittoProps<T, P> & { ref?: any }>
 
 export type DataAttr = Record<
   `data-${string}`,
@@ -71,16 +71,16 @@ export interface JsxFactoryOptions<TProps> {
 }
 
 type JsxElements = {
-  [K in keyof JSX.IntrinsicElements]: ChakraComponent<K, {}>
+  [K in keyof JSX.IntrinsicElements]: DittoComponent<K, {}>
 }
 
 export type JsxElement<T extends ElementType, P extends Dict> =
-  T extends ChakraComponent<infer A, infer B>
-    ? ChakraComponent<A, Pretty<DistributiveUnion<P, B>>>
-    : ChakraComponent<T, P>
+  T extends DittoComponent<infer A, infer B>
+    ? DittoComponent<A, Pretty<DistributiveUnion<P, B>>>
+    : DittoComponent<T, P>
 
 export interface JsxFactory {
-  <T extends ElementType>(component: T): ChakraComponent<T, {}>
+  <T extends ElementType>(component: T): DittoComponent<T, {}>
   <T extends ElementType, P extends RecipeVariantRecord>(
     component: T,
     recipe: RecipeDefinition<P>,
@@ -91,4 +91,4 @@ export interface JsxFactory {
 export type StyledFactoryFn = JsxFactory & JsxElements
 
 export type InferRecipeProps<T> =
-  T extends ChakraComponent<any, infer P> ? P : {}
+  T extends DittoComponent<any, infer P> ? P : {}

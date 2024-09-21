@@ -20,7 +20,7 @@ export function createSystem(...configs: SystemConfig[]): SystemContext {
       utilities = {},
       globalCss = {},
       cssVarsRoot = ":where(:root, :host)",
-      cssVarsPrefix = "chakra",
+      cssVarsPrefix = "ditto",
       preflight,
     } = config
   
@@ -179,7 +179,7 @@ export function createSystem(...configs: SystemConfig[]): SystemContext {
     }
   
     return {
-      $$chakra: true,
+      $$ditto: true,
       _config: config,
       breakpoints,
       tokens,
@@ -217,6 +217,6 @@ function getTokenMap(tokens: TokenDictionary) {
 }
   
 export const isValidSystem = (mod: unknown): mod is SystemContext => {
-    return isObject(mod) && !!Reflect.get(mod, "$$chakra")
+    return isObject(mod) && !!Reflect.get(mod, "$$ditto")
 }
   

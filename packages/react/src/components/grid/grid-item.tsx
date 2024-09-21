@@ -3,7 +3,7 @@
 import { forwardRef } from "react"
 import type { BoxProps } from "../box/box"
 import { compact, ConditionalValue, mapObject, SystemStyleObject } from "@ditto/styled-system"
-import { chakra } from "../../core"
+import { ditto } from "../../core"
 
 export interface GridItemProps extends BoxProps {
   area?: SystemStyleObject["gridArea"]
@@ -44,6 +44,6 @@ export const GridItem = forwardRef<HTMLDivElement, GridItemProps>(
       gridRowEnd: rowEnd,
     })
 
-    return <chakra.div ref={ref} css={styles} {...rest} />
+    return <ditto.div ref={ref} css={styles} {...rest} />
   },
 )

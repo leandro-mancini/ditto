@@ -1,13 +1,13 @@
 "use client"
 
-import { HTMLChakraProps } from "@ditto/styled-system"
-import { chakra } from "../../core"
+import { HTMLDittoProps } from "@ditto/styled-system"
+import { ditto } from "../../core"
 
-export interface AbsoluteCenterProps extends HTMLChakraProps<"div"> {
+export interface AbsoluteCenterProps extends HTMLDittoProps<"div"> {
   axis?: "horizontal" | "vertical" | "both"
 }
 
-export const AbsoluteCenter = chakra("div", {
+export const AbsoluteCenter = ditto("div", {
   base: {
     position: "absolute",
     display: "flex",

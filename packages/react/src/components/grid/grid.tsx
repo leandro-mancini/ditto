@@ -1,8 +1,8 @@
 "use client"
 
-import { HTMLChakraProps, SystemStyleObject } from "@ditto/styled-system"
+import { HTMLDittoProps, SystemStyleObject } from "@ditto/styled-system"
 import { forwardRef } from "react"
-import { chakra } from "../../core"
+import { ditto } from "../../core"
 
 export interface GridOptions {
   templateColumns?: SystemStyleObject["gridTemplateColumns"]
@@ -17,7 +17,7 @@ export interface GridOptions {
 }
 
 export interface GridProps
-  extends Omit<HTMLChakraProps<"div">, keyof GridOptions>,
+  extends Omit<HTMLDittoProps<"div">, keyof GridOptions>,
     GridOptions {}
 
 export const Grid = forwardRef<HTMLDivElement, GridProps>(
@@ -36,7 +36,7 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
     } = props
 
     return (
-      <chakra.div
+      <ditto.div
         {...rest}
         ref={ref}
         css={[

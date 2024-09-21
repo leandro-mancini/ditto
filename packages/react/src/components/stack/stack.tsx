@@ -10,8 +10,8 @@ import {
 } from "react"
 import type { StackDirection } from "./get-separator-style"
 import { getSeparatorStyles } from "./get-separator-style"
-import { cx, HTMLChakraProps, SystemStyleObject } from "@ditto/styled-system"
-import { chakra } from "../../core"
+import { cx, HTMLDittoProps, SystemStyleObject } from "@ditto/styled-system"
+import { ditto } from "../../core"
 
 function getValidChildren(children: React.ReactNode) {
   return Children.toArray(children).filter((child) =>
@@ -47,19 +47,8 @@ interface StackOptions {
   separator?: React.ReactElement
 }
 
-export interface StackProps extends HTMLChakraProps<"div", StackOptions> {}
+export interface StackProps extends HTMLDittoProps<"div", StackOptions> {}
 
-/**
- * Stacks help you easily create flexible and automatically distributed layouts
- *
- * You can stack elements in the horizontal or vertical direction,
- * and apply a space or/and separator between each element.
- *
- * It uses `display: flex` internally and renders a `div`.
- *
- * @see Docs https://chakra-ui.com/stack
- *
- */
 export const Stack = forwardRef<HTMLDivElement, StackProps>(
   function Stack(props, ref) {
     const {
@@ -96,7 +85,7 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
     }, [children, separator, separatorStyle])
 
     return (
-      <chakra.div
+      <ditto.div
         ref={ref}
         display="flex"
         alignItems={align}
@@ -104,11 +93,11 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
         flexDirection={direction}
         flexWrap={wrap}
         gap={separator ? undefined : gap}
-        className={cx("chakra-stack", className)}
+        className={cx("ditto-stack", className)}
         {...rest}
       >
         {clones}
-      </chakra.div>
+      </ditto.div>
     )
   },
 )

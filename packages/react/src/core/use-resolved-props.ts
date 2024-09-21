@@ -1,13 +1,13 @@
 import { useMemo } from "react"
 import { splitProps } from "@ditto/styled-system"
-import { useChakraContext } from "./provider"
+import { useDittoContext } from "./provider"
 
 export function useResolvedProps(
   inProps: any,
   cvaRecipe: any,
   shouldForwardProps: any,
 ) {
-  const { css, isValidProperty } = useChakraContext()
+  const { css, isValidProperty } = useDittoContext()
 
   const { children, ...props } = inProps
 

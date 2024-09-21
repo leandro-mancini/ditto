@@ -1,11 +1,11 @@
 "use client"
 
-import { HTMLChakraProps } from "@ditto/styled-system"
-import { chakra } from "../../core"
+import { HTMLDittoProps } from "@ditto/styled-system"
+import { ditto } from "../../core"
 
-export interface StackSeparatorProps extends HTMLChakraProps<"div"> {}
+export interface StackSeparatorProps extends HTMLDittoProps<"div"> {}
 
-export const StackSeparator = chakra("div", {
+export const StackSeparator = ditto("div", {
   base: {
     borderWidth: 0,
     alignSelf: "stretch",

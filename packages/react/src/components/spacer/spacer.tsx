@@ -1,17 +1,11 @@
 "use client"
 
-import { HTMLChakraProps } from "@ditto/styled-system"
-import { chakra } from "../../core"
+import { HTMLDittoProps } from "@ditto/styled-system"
+import { ditto } from "../../core"
 
-export interface SpacerProps extends HTMLChakraProps<"div"> {}
+export interface SpacerProps extends HTMLDittoProps<"div"> {}
 
-/**
- * A flexible flex spacer that expands along the major axis of its containing flex layout.
- * It renders a `div` by default, and takes up any available space.
- *
- * @see Docs https://chakra-ui.com/flex#using-the-spacer
- */
-export const Spacer = chakra("div", {
+export const Spacer = ditto("div", {
   base: {
     flex: 1,
     justifySelf: "stretch",

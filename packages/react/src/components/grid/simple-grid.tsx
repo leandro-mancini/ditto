@@ -3,7 +3,7 @@
 import { forwardRef } from "react"
 import { Grid, type GridProps } from "./grid"
 import { ConditionalValue, mapObject, SystemContext } from "@ditto/styled-system"
-import { useChakraContext } from "../../core"
+import { useDittoContext } from "../../core"
 
 interface SimpleGridOptions {
   /**
@@ -20,21 +20,11 @@ export interface SimpleGridProps
   extends Omit<GridProps, "columns">,
     SimpleGridOptions {}
 
-/**
- * SimpleGrid
- *
- * React component that uses the `Grid` component and provides
- * a simpler interface to create responsive grid layouts.
- *
- * Provides props that easily define columns and spacing.
- *
- * @see Docs https://chakra-ui.com/simplegrid
- */
 export const SimpleGrid = forwardRef<HTMLDivElement, SimpleGridProps>(
   function SimpleGrid(props, ref) {
     const { columns, minChildWidth, ...rest } = props
 
-    const sys = useChakraContext()
+    const sys = useDittoContext()
     const templateColumns = minChildWidth
       ? widthToColumns(minChildWidth, sys)
       : countToColumns(columns)

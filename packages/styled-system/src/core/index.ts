@@ -9,8 +9,8 @@ export type {
 } from "./css.types"
 
 export type {
-    ChakraComponent,
-    HTMLChakraProps,
+    DittoComponent,
+    HTMLDittoProps,
     InferRecipeProps,
     JsxFactory,
     StyledFactoryFn,

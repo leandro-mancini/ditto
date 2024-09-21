@@ -57,7 +57,7 @@ export type CssFn = (
 ) => SystemStyleObject
 
 export interface SystemContext {
-    $$chakra: true
+    $$ditto: true
     _config: SystemConfig
     utility: Utility
     conditions: Condition

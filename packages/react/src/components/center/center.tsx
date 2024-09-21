@@ -1,11 +1,11 @@
 "use client"
 
-import { HTMLChakraProps } from "@ditto/styled-system"
-import { chakra } from "../../core"
+import { HTMLDittoProps } from "@ditto/styled-system"
+import { ditto } from "../../core"
 
-export interface CenterProps extends HTMLChakraProps<"div"> {}
+export interface CenterProps extends HTMLDittoProps<"div"> {}
 
-export const Center = chakra("div", {
+export const Center = ditto("div", {
   base: {
     display: "flex",
     alignItems: "center",

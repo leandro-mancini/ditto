@@ -12,7 +12,7 @@ import {
   registerStyles,
 } from "@emotion/utils"
 import { compact, cx, mergeProps, mergeRefs, JsxFactory, StyledFactoryFn } from '@ditto/styled-system'
-import { useChakraContext } from "./provider"
+import { useDittoContext } from "./provider"
 import { useResolvedProps } from "./use-resolved-props"
 
 const testOmitPropsOnStringTag = isPropValid
@@ -89,7 +89,7 @@ const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
   let styles: any[] = []
 
   const Styled: any = withEmotionCache((inProps: any, cache, ref) => {
-    const { cva, isValidProperty } = useChakraContext()
+    const { cva, isValidProperty } = useDittoContext()
 
     const cvaFn = configOrCva.__cva__ ? configOrCva : cva(configOrCva)
     const cvaRecipe = mergeCva(tag.__emotion_cva, cvaFn)
@@ -112,8 +112,8 @@ const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
         typeof tag === "string" && tag.charCodeAt(0) > 96
           ? testOmitPropsOnStringTag
           : testOmitPropsOnComponent
-      const chakraSfp = !variantKeys?.includes(prop) && !isValidProperty(prop)
-      return emotionSfp(prop) && chakraSfp
+      const dittoSfp = !variantKeys?.includes(prop) && !isValidProperty(prop)
+      return emotionSfp(prop) && dittoSfp
     }
 
     const defaultShouldForwardProp = shouldForwardProp || initShouldForwardProp
@@ -237,7 +237,7 @@ const styledFn = createStyled.bind() as unknown as JsxFactory
 
 const cache = new Map()
 
-const chakraImpl = new Proxy(styledFn, {
+const dittoImpl = new Proxy(styledFn, {
   apply(_, __, args) {
     // @ts-ignore
     return styledFn(...args)
@@ -250,7 +250,7 @@ const chakraImpl = new Proxy(styledFn, {
   },
 })
 
-export const chakra = chakraImpl as unknown as StyledFactoryFn
+export const ditto = dittoImpl as unknown as StyledFactoryFn
 
 const mergeCva = (cvaA: any, cvaB: any) => {
   if (cvaA && !cvaB) return cvaA

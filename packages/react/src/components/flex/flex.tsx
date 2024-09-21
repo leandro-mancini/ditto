@@ -1,8 +1,8 @@
 "use client"
 
-import { HTMLChakraProps, SystemStyleObject } from "@ditto/styled-system"
+import { HTMLDittoProps, SystemStyleObject } from "@ditto/styled-system"
 import { forwardRef } from "react"
-import { chakra } from "../../core"
+import { ditto } from "../../core"
 
 export interface FlexOptions {
   align?: SystemStyleObject["alignItems"]
@@ -15,7 +15,7 @@ export interface FlexOptions {
   inline?: boolean
 }
 
-export interface FlexProps extends HTMLChakraProps<"div", FlexOptions> {}
+export interface FlexProps extends HTMLDittoProps<"div", FlexOptions> {}
 
 export const Flex = forwardRef<HTMLDivElement, FlexProps>(
   function Flex(props, ref) {
@@ -32,7 +32,7 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>(
     } = props
 
     return (
-      <chakra.div
+      <ditto.div
         ref={ref}
         {...rest}
         css={{

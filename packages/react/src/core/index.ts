@@ -1,3 +1,3 @@
-export { chakra } from "./factory"
+export { ditto } from "./factory"
 
 export * from "./provider"

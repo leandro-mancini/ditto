@@ -1,11 +1,11 @@
 "use client"
 
-import { type HTMLChakraProps } from "@ditto/styled-system"
-import { chakra } from "../../core"
+import { type HTMLDittoProps } from "@ditto/styled-system"
+import { ditto } from "../../core"
 
-export interface StickyProps extends HTMLChakraProps<"div"> {}
+export interface StickyProps extends HTMLDittoProps<"div"> {}
 
-export const Sticky = chakra("div", {
+export const Sticky = ditto("div", {
   base: {
     position: "sticky",
     top: 0,

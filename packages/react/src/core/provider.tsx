@@ -4,28 +4,28 @@ import { Global } from "@emotion/react"
 import { SystemContext } from '@ditto/styled-system'
 import { createContext } from "../create-context"
 
-const [ChakraContextProvider, useChakraContext] = createContext<SystemContext>({
-    name: "ChakraContext",
+const [DittoContextProvider, useDittoContext] = createContext<SystemContext>({
+    name: "DittoContext",
     strict: true,
-    providerName: "<ChakraProvider />",
+    providerName: "<DittoProvider />",
 })
 
-export interface ChakraProviderProps {
+export interface DittoProviderProps {
     value: SystemContext
     children: React.ReactNode
 }
 
-function ChakraProvider(props: ChakraProviderProps) {
+function DittoProvider(props: DittoProviderProps) {
     const { value: sys, children } = props
   
     return (
-        <ChakraContextProvider value={sys}>
+        <DittoContextProvider value={sys}>
             <Global
                 styles={[sys.getPreflightCss(), sys.getGlobalCss(), sys.getTokenCss()]}
             />
             {children}
-        </ChakraContextProvider>
+        </DittoContextProvider>
     )
 }
   
-export { ChakraProvider, useChakraContext }
+export { DittoProvider, useDittoContext }
