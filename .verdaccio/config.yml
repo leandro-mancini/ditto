@@ -1,6 +1,11 @@
 # path to a directory with all packages
 storage: ../tmp/local-registry/storage
 
+auth:
+  htpasswd:
+    file: ./htpasswd
+    max_users: 1
+
 # a list of other known repositories we can talk to
 uplinks:
   npmjs:
@@ -12,8 +17,8 @@ packages:
     # give all users (including non-authenticated users) full access
     # because it is a local registry
     access: $all
-    publish: $all
-    unpublish: $all
+    publish: $authenticated
+    unpublish: $authenticated
 
     # if package is not available locally, proxy requests to npm registry
     proxy: npmjs
