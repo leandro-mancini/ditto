@@ -1,0 +1,15 @@
+"use client"
+
+import { type HTMLDittoProps } from "@ditto/styled-system"
+import { ditto } from "../../core"
+
+export interface StickyProps extends HTMLDittoProps<"div"> {}
+
+export const Sticky = ditto("div", {
+  base: {
+    position: "sticky",
+    top: 0,
+  },
+})
+
+Sticky.displayName = "Sticky"
