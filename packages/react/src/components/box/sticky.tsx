@@ -1,6 +1,7 @@
 "use client"
 
-import { type HTMLChakraProps, chakra } from "../../styled-system"
+import { type HTMLChakraProps } from "@ditto/styled-system"
+import { chakra } from "../../core"
 
 export interface StickyProps extends HTMLChakraProps<"div"> {}
 

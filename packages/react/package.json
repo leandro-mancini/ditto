@@ -10,7 +10,7 @@
     }
   },
   "dependencies": {
-    "@ditto/styled-system": "0.0.2",
+    "@ditto/styled-system": "0.0.3",
     "@emotion/is-prop-valid": "^1.3.0",
     "@emotion/react": "^11.13.3",
     "@emotion/serialize": "^1.3.1",
