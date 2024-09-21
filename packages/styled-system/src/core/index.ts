@@ -1,4 +1,5 @@
 export * from "./config"
+export * from "./color-mix"
 
 export type {
     ConditionalValue,

@@ -1,5 +1,4 @@
-import { createColorMixTransform } from "./styled-system/color-mix"
-import { defineConditions, defineConfig } from "./styled-system/config"
+import { defineConfig, defineConditions, createColorMixTransform } from "@ditto/styled-system"
 
 const isCssVar = (v: string) => /^var\(--.+\)$/.test(v)
 

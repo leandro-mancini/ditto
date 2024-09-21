@@ -1,5 +1,8 @@
 import { defaultBaseConfig } from "./preset-base"
-import { createSystem, mergeConfigs } from "./styled-system"
-// import { defaultThemeConfig } from "./theme"
+import { createSystem, mergeConfigs } from '@ditto/styled-system'
 
-// export const defaultConfig = mergeConfigs(defaultBaseConfig, defaultThemeConfig)
+// import { defaultBaseConfig } from "./preset-base"
+// import { createSystem, mergeConfigs } from "./styled-system"
+// // import { defaultThemeConfig } from "./theme"
+
+// // export const defaultConfig = mergeConfigs(defaultBaseConfig, defaultThemeConfig)
