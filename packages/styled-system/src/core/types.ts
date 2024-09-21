@@ -1,8 +1,7 @@
 import { PropertiesFallback } from "csstype"
 import { Dict, DistributiveOmit } from "../utils"
 import { SystemStyleObject } from "./factory.types"
-import { Condition, ConditionalValue, CssKeyframes, Nested } from "./css.types"
-import { Token } from "./generated/token.gen"
+import { ConditionalValue, CssKeyframes, Nested } from "./css.types"
 import { RecipeCreatorFn, RecipeDefinition, SlotRecipeConfig, SlotRecipeCreatorFn } from "./recipe.types"
 
 export type TokenCategory =
@@ -235,4 +234,62 @@ export interface SystemConfig extends PreflightConfig {
     utilities?: UtilityConfig
     conditions?: Dict
     strictTokens?: boolean
+}
+
+interface ColorPaletteExtension {
+    value: string
+    roots: string[][]
+    keys: string[][]
+}
+
+export interface TokenExtensions {
+    originalPath: string[]
+    category: string
+    prop: string
+    default?: boolean
+    condition?: string
+    virtual?: boolean
+    negative?: boolean
+    conditions?: Dict
+    cssVar?: TokenCssVar
+    colorPalette?: ColorPaletteExtension
+    references?: Dict<Token>
+    pixelValue?: string
+}
+  
+
+export interface Token<T = any> {
+    value: T
+    description?: string
+    originalValue: any
+    name: string
+    path: string[]
+    extensions: TokenExtensions
+}
+
+export interface TokenTransformer {
+    name: string
+    enforce: TokenEnforcePhase
+    type: "value" | "name" | "extensions"
+    match?(token: Token): boolean
+    transform(token: Token, dictionary: TokenDictionary): any
+}
+
+export interface TokenMiddleware {
+    enforce: TokenEnforcePhase
+    transform(dict: TokenDictionary): void
+}
+
+export interface ConditionConfig {
+    breakpoints: Breakpoint
+    conditions: Dict
+}
+
+export interface Condition {
+    keys(): string[]
+    sort(paths: string[]): string[]
+    has(key: string): boolean
+    resolve(key: string): string
+    breakpoints: string[]
+    expandAtRule(key: string): string
 }

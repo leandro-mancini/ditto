@@ -150,3 +150,36 @@ export interface RecipeDefinition<
    */
   compoundVariants?: Pretty<RecipeCompoundVariant<RecipeCompoundSelection<T>>>[]
 }
+
+export type RecipeIdentityFn = <T extends RecipeVariantRecord>(
+  config: RecipeDefinition<T>,
+) => RecipeDefinition<T>
+
+export type SlotRecipeIdentityFn = <
+  S extends string,
+  T extends SlotRecipeVariantRecord<S>,
+>(
+  config: SlotRecipeDefinition<S, T>,
+) => SlotRecipeDefinition<S, T>
+
+export interface SystemRecipeFn<VP, VM> {
+  __type: Partial<VP>
+  (props?: Partial<VP>): SystemStyleObject
+  className: string
+  variantMap: VM
+  variantKeys: Array<keyof VP>
+  splitVariantProps<P extends VP>(
+    props: P,
+  ): [VP, Pretty<DistributiveOmit<P, keyof VP>>]
+}
+
+export interface SystemSlotRecipeFn<S extends string, VP, VM> {
+  __type: Partial<VP>
+  (props?: Partial<VP>): Record<S, SystemStyleObject>
+  classNameMap: Record<S, string>
+  variantMap: VM
+  variantKeys: Array<keyof VP>
+  splitVariantProps<P extends VP & { recipe?: any }>(
+    props: P,
+  ): [VP, Pretty<DistributiveOmit<P, keyof VP | "recipe">>]
+}

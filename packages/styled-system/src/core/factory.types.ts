@@ -1,9 +1,10 @@
 import { ComponentProps, ComponentPropsWithoutRef, ElementType, FunctionComponent } from "react";
 import { Dict, DistributiveOmit, DistributiveUnion, Pretty } from "../utils";
-import { Assign } from "@ark-ui/react";
 import { CssVarProperties, SystemProperties } from "./generated/system.gen";
 import { MinimalNested, Nested } from "./css.types";
 import { RecipeDefinition, RecipeSelection, RecipeVariantRecord } from "./recipe.types";
+
+export type Assign<T, U> = Omit<T, keyof U> & U
 
 export interface HtmlProps {
   htmlSize?: number

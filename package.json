@@ -36,6 +36,7 @@
     "nx": "19.7.3",
     "prettier": "^2.6.2",
     "typescript": "~5.5.2",
+    "verdaccio": "^5.0.4",
     "vite": "^5.0.0",
     "vite-plugin-dts": "~3.8.1",
     "vitest": "^1.3.1"
@@ -44,5 +45,8 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "tslib": "^2.7.0"
+  },
+  "nx": {
+    "includedScripts": []
   }
 }
