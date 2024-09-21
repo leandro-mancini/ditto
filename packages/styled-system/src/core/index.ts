@@ -11,12 +11,16 @@ export type {
     ChakraComponent,
     HTMLChakraProps,
     InferRecipeProps,
+    JsxFactory,
+    StyledFactoryFn,
+    JsxFactoryOptions
 } from "./factory.types"
 
 export type {
     RecipeProps,
     SlotRecipeProps,
     SlotRecipeRecord,
+    ConfigRecipes,
 } from "./generated/recipes.gen"
 
 export type { ColorPalette, Token, Tokens } from "./generated/token.gen"

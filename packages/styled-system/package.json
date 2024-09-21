@@ -1,5 +1,5 @@
 {
-  "name": "@ditto/styled-system",
+  "name": "@undefined/styled-system",
   "version": "0.0.1",
   "dependencies": {
     "@pandacss/is-valid-prop": "^0.46.0",

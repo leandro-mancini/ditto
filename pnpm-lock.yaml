@@ -127,8 +127,8 @@ importers:
   packages/react:
     dependencies:
       '@ditto/styled-system':
-        specifier: 0.0.3
-        version: 0.0.3
+        specifier: 0.0.6
+        version: 0.0.6
       '@emotion/is-prop-valid':
         specifier: ^1.3.0
         version: 1.3.0
@@ -1604,8 +1604,8 @@ packages:
       uuid: 8.3.2
     dev: true
 
-  /@ditto/styled-system@0.0.3:
-    resolution: {integrity: sha512-vHOIszzNmv2QQXrOvxktxuequgaaJNyEg0M6loFtb2ohiMIznRJyaSUSGmCVEz/6gHGEJedGhF2wviBebVq7ug==}
+  /@ditto/styled-system@0.0.6:
+    resolution: {integrity: sha512-H9EdFWenCGDQIuf84NQZ4SY1cxcSmHRf/GjDC8CDz0Oy2jEny+MTZaNckMdWS4SNPUyI3i6z8XILe4S+GwKfhA==}
     dependencies:
       '@pandacss/is-valid-prop': 0.46.0
       csstype: 3.1.3

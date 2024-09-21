@@ -1,5 +1,5 @@
 import { useMemo } from "react"
-import { splitProps } from "@ditto/styled-system/utils"
+import { splitProps } from "@ditto/styled-system"
 import { useChakraContext } from "./provider"
 
 export function useResolvedProps(

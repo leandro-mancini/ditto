@@ -11,8 +11,7 @@ import {
   insertStyles,
   registerStyles,
 } from "@emotion/utils"
-import { compact, cx, mergeProps, mergeRefs } from '@ditto/styled-system/utils'
-import { JsxFactory, StyledFactoryFn } from '@ditto/styled-system/core/factory.types'
+import { compact, cx, mergeProps, mergeRefs, JsxFactory, StyledFactoryFn } from '@ditto/styled-system'
 import { useChakraContext } from "./provider"
 import { useResolvedProps } from "./use-resolved-props"
 

@@ -1,7 +1,7 @@
 "use client"
 
 import { Global } from "@emotion/react"
-import { SystemContext } from '@ditto/styled-system/core/types'
+import { SystemContext } from '@ditto/styled-system'
 import { createContext } from "../create-context"
 
 const [ChakraContextProvider, useChakraContext] = createContext<SystemContext>({
