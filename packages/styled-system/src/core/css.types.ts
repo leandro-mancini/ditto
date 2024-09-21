@@ -59,3 +59,15 @@ export interface CssProperties
     CssVarProperties {
   initialLetterAlign?: String
 }
+
+/* -----------------------------------------------------------------------------
+ * Jsx style props
+ * -----------------------------------------------------------------------------*/
+
+interface WithCss {
+    css?: SystemStyleObject
+}
+  
+type StyleProps = SystemProperties & MinimalNested<SystemStyleObject>
+
+export type JsxStyleProps = StyleProps & WithCss

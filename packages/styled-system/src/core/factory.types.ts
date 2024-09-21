@@ -89,3 +89,6 @@ export interface JsxFactory {
 }
 
 export type StyledFactoryFn = JsxFactory & JsxElements
+
+export type InferRecipeProps<T> =
+  T extends ChakraComponent<any, infer P> ? P : {}
