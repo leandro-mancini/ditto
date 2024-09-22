@@ -1,1 +1,1 @@
-export * from './lib/preact';
+export * from './button';
