@@ -1,9 +1,16 @@
 {
   "name": "preact",
   "version": "0.0.1",
-  "dependencies": {},
   "main": "./index.js",
   "module": "./index.mjs",
   "typings": "./index.d.ts",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "preact": "^10.24.0",
+    "preact-custom-element": "^4.3.0"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.9.1",
+    "@types/preact-custom-element": "^4.0.4"
+  }
 }
