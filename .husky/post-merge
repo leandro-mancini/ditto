@@ -1,1 +1,1 @@
-npm install --prefer-offline
+pnpm install --prefer-offline
