@@ -124,17 +124,11 @@ importers:
         specifier: ^1.3.1
         version: 1.6.0(@types/node@18.16.9)(@vitest/ui@1.6.0)(jsdom@22.1.0)
 
-  apps/react:
-    dependencies:
-      '@ditto/react':
-        specifier: 0.0.1
-        version: link:../../packages/react
-
   packages/react:
     dependencies:
       '@ditto/styled-system':
         specifier: 0.0.1
-        version: link:../styled-system
+        version: 0.0.1
       '@emotion/is-prop-valid':
         specifier: ^1.3.0
         version: 1.3.0
@@ -1609,6 +1603,13 @@ packages:
       tunnel-agent: 0.6.0
       uuid: 8.3.2
     dev: true
+
+  /@ditto/styled-system@0.0.1:
+    resolution: {integrity: sha512-KiGYwLsfnGRieeZd8g/ZVTLuaTq7kPVrV69fGVwJl8rHExL4xdh1ZqLLTaU3fdDe/msv9CRrREOUOZDwMPxIiA==}
+    dependencies:
+      '@pandacss/is-valid-prop': 0.46.0
+      csstype: 3.1.3
+    dev: false
 
   /@emnapi/core@1.2.0:
     resolution: {integrity: sha512-E7Vgw78I93we4ZWdYCb4DGAwRROGkMIXk7/y87UmANR+J6qsWusmC3gLt0H+O0KOt5e6O38U8oJamgbudrES/w==}

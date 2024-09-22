@@ -1,11 +1,34 @@
-import { compact, Dict, isFunction, isObject, isString, mapObject, memo, walkObject } from "../utils"
+import {
+  type Dict,
+  compact,
+  isFunction,
+  isObject,
+  isString,
+  mapObject,
+  memo,
+  walkObject,
+} from "../utils"
 import { cssVar } from "./css-var"
 import { esc } from "./esc"
+import { expandTokenReferences as _expandReferences } from "./expand-reference"
 import { mapToJson } from "./map-to-json"
-import { expandReferences, getReferences, hasReference, TOKEN_PATH_REGEX } from "./references"
+import {
+  TOKEN_PATH_REGEX,
+  expandReferences,
+  getReferences,
+  hasReference,
+} from "./references"
 import { tokenMiddlewares } from "./token-middleware"
 import { tokenTransforms } from "./token-transforms"
-import { SemanticTokenDefinition, Token, TokenDefinition, TokenDictionary, TokenEnforcePhase, TokenMiddleware, TokenTransformer } from "./types"
+import type {
+  SemanticTokenDefinition,
+  Token,
+  TokenDefinition,
+  TokenDictionary,
+  TokenEnforcePhase,
+  TokenMiddleware,
+  TokenTransformer,
+} from "./types"
 
 interface Options {
     prefix?: string
@@ -496,8 +519,4 @@ export function createTokenDictionary(options: Options): TokenDictionary {
     build()
   
     return dictionary
-}
-
-function _expandReferences(value: string, arg1: (path: any) => any): any {
-    throw new Error("Function not implemented.")
 }
