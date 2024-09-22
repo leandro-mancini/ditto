@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@ditto/styled-system": ["packages/styled-system/src/index.ts"],
-      "packages/*": ["packages/*"]
+      "packages/*": ["packages/*"],
+      "preact": ["packages/preact/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
