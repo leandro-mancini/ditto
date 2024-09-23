@@ -1,3 +1,12 @@
+import { Dict, DistributiveOmit, DistributiveUnion, Pretty } from '../utils';
+import { CssVarProperties, SystemProperties } from './generated/system.gen';
+import { MinimalNested, Nested } from './css.types';
+import {
+  RecipeDefinition,
+  RecipeSelection,
+  RecipeVariantRecord,
+} from './recipe.types';
+
 export type Assign<T, U> = Omit<T, keyof U> & U;
 
 export interface HtmlProps {
@@ -17,39 +26,40 @@ export type HtmlProp =
   | 'height'
   | 'content';
 
-type PatchHtmlProps<T> = Omit<T, HtmlProp> & HtmlProps;
+type PatchHtmlProps<T> = DistributiveOmit<T, HtmlProp> & HtmlProps;
 
-type JsxHtmlProps<
-  T extends Record<string, any>,
-  P extends Record<string, any> = {}
-> = Assign<PatchHtmlProps<T>, P>;
+type JsxHtmlProps<T extends Dict, P extends Dict = {}> = Assign<
+  PatchHtmlProps<T>,
+  P
+>;
+
+export type HTMLDittoProps<
+  T extends string,
+  P extends Dict = {}
+> = JsxHtmlProps<
+  Record<string, any>,
+  Assign<JsxStyleProps, P> & PolymorphicProps
+>;
 
 export interface PolymorphicProps {
   as?: string;
   asChild?: boolean;
 }
 
-export interface SystemStyleObject {
-  [key: string]: any;
+export type SystemStyleObject = Nested<SystemProperties & CssVarProperties>;
+
+export interface JsxStyleProps
+  extends SystemProperties,
+    MinimalNested<SystemStyleObject> {
+  css?:
+    | SystemStyleObject
+    | undefined
+    | Omit<(SystemStyleObject | undefined)[], keyof any[]>;
 }
 
-export type HTMLDittoProps<
-  T extends string,
-  P extends Record<string, any> = {}
-> = JsxHtmlProps<
-  Record<string, any>,
-  Assign<JsxStyleProps, P> & PolymorphicProps
->;
-
-export interface JsxStyleProps {
-  css?: SystemStyleObject | undefined;
-  [key: string]: any;
-}
-
-export type DittoComponent<
-  T extends string,
-  P extends Record<string, any> = {}
-> = (props: HTMLDittoProps<T, P> & { ref?: any }) => string;
+export type DittoComponent<T extends string, P extends Dict = {}> = (
+  props: HTMLDittoProps<T, P> & { ref?: any }
+) => string;
 
 export type DataAttr = Record<
   `data-${string}`,
@@ -63,13 +73,20 @@ export interface JsxFactoryOptions<TProps> {
   shouldForwardProp?(prop: string, variantKeys: string[]): boolean;
 }
 
+export type JsxElement<
+  T extends string,
+  P extends Dict
+> = T extends DittoComponent<infer A, infer B>
+  ? DittoComponent<A, Pretty<DistributiveUnion<P, B>>>
+  : DittoComponent<T, P>;
+
 export interface JsxFactory {
   <T extends string>(component: T): DittoComponent<T, {}>;
-  <T extends string, P extends Record<string, any>>(
+  <T extends string, P extends RecipeVariantRecord>(
     component: T,
     recipe?: RecipeDefinition<P>,
     options?: JsxFactoryOptions<Assign<Record<string, any>, RecipeSelection<P>>>
-  ): DittoComponent<T, P>;
+  ): JsxElement<T, RecipeSelection<P>>;
 }
 
 export type StyledFactoryFn = JsxFactory;
@@ -77,7 +94,3 @@ export type StyledFactoryFn = JsxFactory;
 export type InferRecipeProps<T> = T extends DittoComponent<any, infer P>
   ? P
   : {};
-
-export interface RecipeDefinition<P> {}
-
-export type RecipeSelection<P> = P extends Record<string, any> ? P : {};

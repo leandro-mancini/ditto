@@ -24,7 +24,7 @@ export function App() {
           borderWidth="1px"
           borderColor="#27272a"
           borderStyle="solid"
-          color="#333"
+          color="tomato"
         >
           Somewhat disabled box
         </Box>
