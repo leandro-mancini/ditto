@@ -1,23 +1,21 @@
-"use client"
+'use client';
 
-import { HTMLDittoProps } from "@ditto/styled-system"
-import { ditto } from "../../core"
+import { HTMLDittoProps } from '@ditto/styled-system';
+import { ditto } from '../../core';
 
-export interface CenterProps extends HTMLDittoProps<"div"> {}
+export interface CenterProps extends HTMLDittoProps<'div'> {}
 
-export const Center = ditto("div", {
+export const Center = ditto('div', {
   base: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   variants: {
     inline: {
       true: {
-        display: "inline-flex",
+        display: 'inline-flex',
       },
     },
   },
-})
-
-Center.displayName = "Center"
+});

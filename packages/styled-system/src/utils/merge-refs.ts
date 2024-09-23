@@ -1,27 +1,31 @@
-export type ReactRef<T> = React.RefCallback<T> | React.MutableRefObject<T>
+export type GenericRef<T> =
+  | ((instance: T | null) => void)
+  | { current: T | null };
 
 export function assignRef<T = any>(
-  ref: ReactRef<T> | null | undefined,
-  value: T,
+  ref: GenericRef<T> | null | undefined,
+  value: T | null
 ) {
-  if (ref == null) return
+  if (ref == null) return;
 
-  if (typeof ref === "function") {
-    ref(value)
-    return
+  if (typeof ref === 'function') {
+    ref(value);
+    return;
   }
 
   try {
-    ref.current = value
+    ref.current = value;
   } catch (error) {
-    throw new Error(`Cannot assign value '${value}' to ref '${ref}'`)
+    throw new Error(
+      `Não é possível atribuir o valor '${value}' à referência '${ref}'`
+    );
   }
 }
 
-export function mergeRefs<T>(...refs: (ReactRef<T> | null | undefined)[]) {
+export function mergeRefs<T>(...refs: (GenericRef<T> | null | undefined)[]) {
   return (node: T | null) => {
     refs.forEach((ref) => {
-      assignRef(ref, node)
-    })
-  }
+      assignRef(ref, node);
+    });
+  };
 }

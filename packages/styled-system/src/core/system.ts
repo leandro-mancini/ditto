@@ -1,222 +1,229 @@
-import { isCssProperty } from "@pandacss/is-valid-prop"
-import { compact, Dict, flatten, isObject, memo, mergeWith, splitProps } from "../utils"
-import { createBreakpoints } from "./breakpoints"
-import { createConditions } from "./conditions"
-import { mergeConfigs } from "./config"
-import { createTokenDictionary } from "./token-dictionary"
-import { SystemConfig, SystemContext, TokenDictionary, TokenFn } from "./types"
-import { createUtility } from "./utility"
-import { createNormalizeFn } from "./normalize"
-import { createSerializeFn } from "./serialize"
-import { createCssFn } from "./css"
-import { createRecipeFn } from "./cva"
-import { createSlotRecipeFn } from "./sva"
-import { createPreflight } from "./preflight"
+import {
+  compact,
+  Dict,
+  flatten,
+  isObject,
+  memo,
+  mergeWith,
+  splitProps,
+} from '../utils';
+import { createBreakpoints } from './breakpoints';
+import { createConditions } from './conditions';
+import { mergeConfigs } from './config';
+import { createTokenDictionary } from './token-dictionary';
+import { SystemConfig, SystemContext, TokenDictionary, TokenFn } from './types';
+import { createUtility } from './utility';
+import { createNormalizeFn } from './normalize';
+import { createSerializeFn } from './serialize';
+import { createCssFn } from './css';
+import { createRecipeFn } from './cva';
+import { createSlotRecipeFn } from './sva';
+import { createPreflight } from './preflight';
+import { isCssProperty } from './is-valid-prop';
 
 export function createSystem(...configs: SystemConfig[]): SystemContext {
-    const config = mergeConfigs(...configs)
-    const {
-      theme = {},
-      utilities = {},
-      globalCss = {},
-      cssVarsRoot = ":where(:root, :host)",
-      cssVarsPrefix = "ditto",
-      preflight,
-    } = config
-  
-    const tokens = createTokenDictionary({
-      breakpoints: theme.breakpoints,
-      tokens: theme.tokens,
-      semanticTokens: theme.semanticTokens,
-      prefix: cssVarsPrefix,
-    })
-  
-    const breakpoints = createBreakpoints(theme.breakpoints ?? {})
-  
-    const conditions = createConditions({
-      conditions: config.conditions ?? {},
-      breakpoints,
-    })
-  
-    const utility = createUtility({
-      config: utilities,
-      tokens,
-    })
-  
-    function assignComposition() {
-      const { textStyles, layerStyles, animationStyles } = theme
-  
-      const compositions = compact({
-        textStyle: textStyles,
-        layerStyle: layerStyles,
-        animationStyle: animationStyles,
-      })
-  
-      for (const [key, values] of Object.entries(compositions)) {
-        const flatValues = flatten(
-          values ?? {},
-          (v) => isObject(v) && "value" in v,
-        )
-  
-        utility.register(key, {
-          values: Object.keys(flatValues),
-          transform(value) {
-            return css(flatValues[value])
-          },
-        })
+  const config = mergeConfigs(...configs);
+  const {
+    theme = {},
+    utilities = {},
+    globalCss = {},
+    cssVarsRoot = ':where(:root, :host)',
+    cssVarsPrefix = 'ditto',
+    preflight,
+  } = config;
+
+  const tokens = createTokenDictionary({
+    breakpoints: theme.breakpoints,
+    tokens: theme.tokens,
+    semanticTokens: theme.semanticTokens,
+    prefix: cssVarsPrefix,
+  });
+
+  const breakpoints = createBreakpoints(theme.breakpoints ?? {});
+
+  const conditions = createConditions({
+    conditions: config.conditions ?? {},
+    breakpoints,
+  });
+
+  const utility = createUtility({
+    config: utilities,
+    tokens,
+  });
+
+  function assignComposition() {
+    const { textStyles, layerStyles, animationStyles } = theme;
+
+    const compositions = compact({
+      textStyle: textStyles,
+      layerStyle: layerStyles,
+      animationStyle: animationStyles,
+    });
+
+    for (const [key, values] of Object.entries(compositions)) {
+      const flatValues = flatten(
+        values ?? {},
+        (v) => isObject(v) && 'value' in v
+      );
+
+      utility.register(key, {
+        values: Object.keys(flatValues),
+        transform(value) {
+          return css(flatValues[value]);
+        },
+      });
+    }
+  }
+
+  assignComposition();
+  utility.addPropertyType('animationName', Object.keys(theme.keyframes ?? {}));
+
+  const properties = new Set(['css', ...utility.keys(), ...conditions.keys()]);
+
+  const isValidProperty = memo(
+    (prop: string) => properties.has(prop) || isCssProperty(prop)
+  );
+
+  const normalizeValue = (value: any): any => {
+    if (Array.isArray(value)) {
+      return value.reduce((acc, current, index) => {
+        const key = conditions.breakpoints[index];
+        if (current != null) acc[key] = current;
+        return acc;
+      }, {});
+    }
+    return value;
+  };
+
+  const normalizeFn = createNormalizeFn({
+    utility,
+    normalize: normalizeValue,
+  });
+
+  const serialize = createSerializeFn({
+    conditions,
+    isValidProperty,
+  });
+
+  const css = createCssFn({
+    transform: utility.transform,
+    conditions,
+    normalize: normalizeFn,
+  });
+
+  const cva = createRecipeFn({
+    css: css as any,
+    conditions,
+    normalize: normalizeFn,
+  });
+
+  const sva = createSlotRecipeFn({ cva });
+
+  function getTokenCss() {
+    const result: Dict = {};
+
+    for (const [key, values] of tokens.cssVarMap.entries()) {
+      const varsObj = Object.fromEntries(values) as any;
+      if (Object.keys(varsObj).length === 0) continue;
+
+      if (key === 'base') {
+        const cssObj = css(serialize({ [cssVarsRoot]: varsObj }));
+        mergeWith(result, cssObj);
+      } else {
+        const cssObject = css(serialize({ [key]: varsObj }));
+        mergeWith(result, cssObject);
       }
     }
-  
-    assignComposition()
-    utility.addPropertyType("animationName", Object.keys(theme.keyframes ?? {}))
-  
-    const properties = new Set(["css", ...utility.keys(), ...conditions.keys()])
-  
-    const isValidProperty = memo(
-      (prop: string) => properties.has(prop) || isCssProperty(prop),
-    )
-  
-    const normalizeValue = (value: any): any => {
-      if (Array.isArray(value)) {
-        return value.reduce((acc, current, index) => {
-          const key = conditions.breakpoints[index]
-          if (current != null) acc[key] = current
-          return acc
-        }, {})
-      }
-      return value
-    }
-  
-    const normalizeFn = createNormalizeFn({
-      utility,
-      normalize: normalizeValue,
-    })
-  
-    const serialize = createSerializeFn({
-      conditions,
-      isValidProperty,
-    })
-  
-    const css = createCssFn({
-      transform: utility.transform,
-      conditions,
-      normalize: normalizeFn,
-    })
-  
-    const cva = createRecipeFn({
-      css: css as any,
-      conditions,
-      normalize: normalizeFn,
-    })
-  
-    const sva = createSlotRecipeFn({ cva })
-  
-    function getTokenCss() {
-      const result: Dict = {}
-  
-      for (const [key, values] of tokens.cssVarMap.entries()) {
-        const varsObj = Object.fromEntries(values) as any
-        if (Object.keys(varsObj).length === 0) continue
-  
-        if (key === "base") {
-          const cssObj = css(serialize({ [cssVarsRoot]: varsObj }))
-          mergeWith(result, cssObj)
-        } else {
-          const cssObject = css(serialize({ [key]: varsObj }))
-          mergeWith(result, cssObject)
-        }
-      }
-  
-      return result
-    }
-  
-    function getGlobalCss() {
-      const keyframes = Object.fromEntries(
-        Object.entries(theme.keyframes ?? {}).map(([key, value]) => [
-          `@keyframes ${key}`,
-          value,
-        ]),
-      )
-      return Object.assign({}, keyframes, css(serialize(globalCss)))
-    }
-  
-    function splitCssProps(props: any) {
-      return splitProps(props, isValidProperty as any)
-    }
-  
-    function getPreflightCss() {
-      return createPreflight({ preflight })
-    }
-  
-    const tokenMap = getTokenMap(tokens)
-  
-    const tokenFn: TokenFn = (path: string, fallback?: any) => {
-      return tokenMap.get(path)?.value || fallback
-    }
-  
-    tokenFn.var = (path: string, fallback?: any) => {
-      return tokenMap.get(path)?.variable || fallback
-    }
-  
-    function getRecipe(key: string, fallback?: any) {
-      return theme.recipes?.[key] ?? fallback
-    }
-  
-    function getSlotRecipe(key: string, fallback?: any) {
-      return theme.slotRecipes?.[key] ?? fallback
-    }
-  
-    function isRecipe(key: string) {
-      return Object.hasOwnProperty.call(theme.recipes ?? {}, key)
-    }
-  
-    function isSlotRecipe(key: string) {
-      return Object.hasOwnProperty.call(theme.slotRecipes ?? {}, key)
-    }
-  
-    function hasRecipe(key: string) {
-      return isRecipe(key) || isSlotRecipe(key)
-    }
-  
-    return {
-      $$ditto: true,
-      _config: config,
-      breakpoints,
-      tokens,
-      conditions,
-      utility,
-      token: tokenFn,
-      properties,
-      isValidProperty,
-      splitCssProps: splitCssProps as any,
-      normalizeValue,
-      getTokenCss,
-      getGlobalCss,
-      getPreflightCss,
-      css: css as any,
-      cva,
-      sva,
-      getRecipe,
-      getSlotRecipe,
-      hasRecipe,
-      isRecipe,
-      isSlotRecipe,
-    }
+
+    return result;
+  }
+
+  function getGlobalCss() {
+    const keyframes = Object.fromEntries(
+      Object.entries(theme.keyframes ?? {}).map(([key, value]) => [
+        `@keyframes ${key}`,
+        value,
+      ])
+    );
+    return Object.assign({}, keyframes, css(serialize(globalCss)));
+  }
+
+  function splitCssProps(props: any) {
+    return splitProps(props, isValidProperty as any);
+  }
+
+  function getPreflightCss() {
+    return createPreflight({ preflight });
+  }
+
+  const tokenMap = getTokenMap(tokens);
+
+  const tokenFn: TokenFn = (path: string, fallback?: any) => {
+    return tokenMap.get(path)?.value || fallback;
+  };
+
+  tokenFn.var = (path: string, fallback?: any) => {
+    return tokenMap.get(path)?.variable || fallback;
+  };
+
+  function getRecipe(key: string, fallback?: any) {
+    return theme.recipes?.[key] ?? fallback;
+  }
+
+  function getSlotRecipe(key: string, fallback?: any) {
+    return theme.slotRecipes?.[key] ?? fallback;
+  }
+
+  function isRecipe(key: string) {
+    return Object.hasOwnProperty.call(theme.recipes ?? {}, key);
+  }
+
+  function isSlotRecipe(key: string) {
+    return Object.hasOwnProperty.call(theme.slotRecipes ?? {}, key);
+  }
+
+  function hasRecipe(key: string) {
+    return isRecipe(key) || isSlotRecipe(key);
+  }
+
+  return {
+    $$ditto: true,
+    _config: config,
+    breakpoints,
+    tokens,
+    conditions,
+    utility,
+    token: tokenFn,
+    properties,
+    isValidProperty,
+    splitCssProps: splitCssProps as any,
+    normalizeValue,
+    getTokenCss,
+    getGlobalCss,
+    getPreflightCss,
+    css: css as any,
+    cva,
+    sva,
+    getRecipe,
+    getSlotRecipe,
+    hasRecipe,
+    isRecipe,
+    isSlotRecipe,
+  };
 }
-  
+
 function getTokenMap(tokens: TokenDictionary) {
-    const map = new Map<string, { value: string; variable: string }>()
-  
-    tokens.allTokens.forEach((token) => {
-      const { cssVar, virtual, conditions } = token.extensions
-      const value = !!conditions || virtual ? cssVar!.ref : token.value
-      map.set(token.name, { value, variable: cssVar!.ref })
-    })
-  
-    return map
+  const map = new Map<string, { value: string; variable: string }>();
+
+  tokens.allTokens.forEach((token) => {
+    const { cssVar, virtual, conditions } = token.extensions;
+    const value = !!conditions || virtual ? cssVar!.ref : token.value;
+    map.set(token.name, { value, variable: cssVar!.ref });
+  });
+
+  return map;
 }
-  
+
 export const isValidSystem = (mod: unknown): mod is SystemContext => {
-    return isObject(mod) && !!Reflect.get(mod, "$$ditto")
-}
-  
+  return isObject(mod) && !!Reflect.get(mod, '$$ditto');
+};

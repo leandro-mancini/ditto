@@ -161,9 +161,6 @@ importers:
 
   packages/styled-system:
     dependencies:
-      '@pandacss/is-valid-prop':
-        specifier: ^0.46.0
-        version: 0.46.0
       csstype:
         specifier: ^3.1.3
         version: 3.1.3
@@ -3726,13 +3723,6 @@ packages:
       - '@swc/core'
       - debug
     dev: true
-
-  /@pandacss/is-valid-prop@0.46.0:
-    resolution:
-      {
-        integrity: sha512-XkR+8GwkDxSG9B0DJe2hOv4d9SHvLkjxQQTd/6NpAJhUDSCNTXSUlBN1ef0/Tst1BExGm8BZkizOgjAN3QEDlg==,
-      }
-    dev: false
 
   /@phenomnomnominal/tsquery@5.0.1(typescript@5.5.4):
     resolution:
