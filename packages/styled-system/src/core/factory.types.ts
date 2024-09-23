@@ -1,94 +1,83 @@
-import { ComponentProps, ComponentPropsWithoutRef, ElementType, FunctionComponent } from "react";
-import { Dict, DistributiveOmit, DistributiveUnion, Pretty } from "../utils";
-import { CssVarProperties, SystemProperties } from "./generated/system.gen";
-import { MinimalNested, Nested } from "./css.types";
-import { RecipeDefinition, RecipeSelection, RecipeVariantRecord } from "./recipe.types";
-
-export type Assign<T, U> = Omit<T, keyof U> & U
+export type Assign<T, U> = Omit<T, keyof U> & U;
 
 export interface HtmlProps {
-  htmlSize?: number
-  htmlWidth?: string | number
-  htmlHeight?: string | number
-  htmlTranslate?: "yes" | "no" | undefined
-  htmlContent?: string
+  htmlSize?: number;
+  htmlWidth?: string | number;
+  htmlHeight?: string | number;
+  htmlTranslate?: 'yes' | 'no' | undefined;
+  htmlContent?: string;
 }
-  
+
 export type HtmlProp =
-  | "color"
-  | "size"
-  | "translate"
-  | "transition"
-  | "width"
-  | "height"
-  | "content"
+  | 'color'
+  | 'size'
+  | 'translate'
+  | 'transition'
+  | 'width'
+  | 'height'
+  | 'content';
 
-type PatchHtmlProps<T> = DistributiveOmit<T, HtmlProp> & HtmlProps
+type PatchHtmlProps<T> = Omit<T, HtmlProp> & HtmlProps;
 
-type JsxHtmlProps<T extends Dict, P extends Dict = {}> = Assign<
-  PatchHtmlProps<T>,
-  P
->
-
-export type HTMLDittoProps<
-  T extends ElementType,
-  P extends Dict = {},
-> = JsxHtmlProps<
-  ComponentPropsWithoutRef<T>,
-  Assign<JsxStyleProps, P> & PolymorphicProps
->
+type JsxHtmlProps<
+  T extends Record<string, any>,
+  P extends Record<string, any> = {}
+> = Assign<PatchHtmlProps<T>, P>;
 
 export interface PolymorphicProps {
-  as?: ElementType
-  asChild?: boolean
+  as?: string;
+  asChild?: boolean;
 }
 
-export type SystemStyleObject = Nested<SystemProperties & CssVarProperties>
+export interface SystemStyleObject {
+  [key: string]: any;
+}
 
-export interface JsxStyleProps
-  extends SystemProperties, MinimalNested<SystemStyleObject> {
-  css?:
-    | SystemStyleObject
-    | undefined
-    | Omit<(SystemStyleObject | undefined)[], keyof any[]>
+export type HTMLDittoProps<
+  T extends string,
+  P extends Record<string, any> = {}
+> = JsxHtmlProps<
+  Record<string, any>,
+  Assign<JsxStyleProps, P> & PolymorphicProps
+>;
+
+export interface JsxStyleProps {
+  css?: SystemStyleObject | undefined;
+  [key: string]: any;
 }
 
 export type DittoComponent<
-  T extends ElementType,
-  P extends Dict = {},
-> = FunctionComponent<HTMLDittoProps<T, P> & { ref?: any }>
+  T extends string,
+  P extends Record<string, any> = {}
+> = (props: HTMLDittoProps<T, P> & { ref?: any }) => string;
 
 export type DataAttr = Record<
   `data-${string}`,
   string | number | undefined | null | boolean
->
+>;
 
 export interface JsxFactoryOptions<TProps> {
-  forwardProps?: string[]
-  defaultProps?: TProps & DataAttr
-  forwardAsChild?: boolean
-  shouldForwardProp?(prop: string, variantKeys: string[]): boolean
+  forwardProps?: string[];
+  defaultProps?: TProps & DataAttr;
+  forwardAsChild?: boolean;
+  shouldForwardProp?(prop: string, variantKeys: string[]): boolean;
 }
-
-type JsxElements = {
-  [K in keyof JSX.IntrinsicElements]: DittoComponent<K, {}>
-}
-
-export type JsxElement<T extends ElementType, P extends Dict> =
-  T extends DittoComponent<infer A, infer B>
-    ? DittoComponent<A, Pretty<DistributiveUnion<P, B>>>
-    : DittoComponent<T, P>
 
 export interface JsxFactory {
-  <T extends ElementType>(component: T): DittoComponent<T, {}>
-  <T extends ElementType, P extends RecipeVariantRecord>(
+  <T extends string>(component: T): DittoComponent<T, {}>;
+  <T extends string, P extends Record<string, any>>(
     component: T,
-    recipe: RecipeDefinition<P>,
-    options?: JsxFactoryOptions<Assign<ComponentProps<T>, RecipeSelection<P>>>,
-  ): JsxElement<T, RecipeSelection<P>>
+    recipe?: RecipeDefinition<P>,
+    options?: JsxFactoryOptions<Assign<Record<string, any>, RecipeSelection<P>>>
+  ): DittoComponent<T, P>;
 }
 
-export type StyledFactoryFn = JsxFactory & JsxElements
+export type StyledFactoryFn = JsxFactory;
 
-export type InferRecipeProps<T> =
-  T extends DittoComponent<any, infer P> ? P : {}
+export type InferRecipeProps<T> = T extends DittoComponent<any, infer P>
+  ? P
+  : {};
+
+export interface RecipeDefinition<P> {}
+
+export type RecipeSelection<P> = P extends Record<string, any> ? P : {};
