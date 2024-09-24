@@ -17,10 +17,41 @@ const allColors = Array.from(colors.values());
 
 console.log('allColors', allColors);
 
+const keys = [
+  'alternate',
+  'aqua',
+  'gray',
+  'green',
+  'neutral',
+  'orange',
+  'overlay',
+  'red',
+];
+
+export const ColorTokenDoc = () => {
+  return (
+    <Stack gap="8" my="8">
+      {keys.map((key) => (
+        <TokenDoc key={key} title={key}>
+          <ColorGrid
+            tokens={allColors.filter(
+              (token) =>
+                token.name.startsWith(`colors.${key}`) &&
+                !token.extensions.conditions
+            )}
+          />
+        </TokenDoc>
+      ))}
+    </Stack>
+  );
+};
+
 export function App() {
   return (
     <DittoProvider value={system}>
       <Stack gap="2rem" m="2rem">
+        <ColorTokenDoc />
+
         <TokenDoc title="Accent">
           <ColorGrid
             tokens={allColors.filter((token) =>

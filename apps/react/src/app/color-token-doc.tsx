@@ -3,6 +3,7 @@ import {
   Center,
   SimpleGrid,
   SimpleGridProps,
+  Stack,
   VStack,
 } from 'packages/react/src/index';
 import { TokenInterface } from 'packages/styled-system/src/index';
@@ -20,36 +21,27 @@ const ColorGridItem = (props: ColorGridItemProps) => {
     <VStack flex="1">
       <Center
         borderWidth="1px"
+        borderColor="theme1.border.c"
         bg={value}
-        // bg={(() => {
-        //   if (variant === "text" && token.name.includes("inverted"))
-        //     return "bg.inverted"
-        //   return variant === "background" ? value : undefined
-        // })()}
         w="100%"
-        h="20px"
-        rounded="lg"
-        // color={variant === "text" ? value : undefined}
-        // borderColor={variant === "border" ? value : undefined}
-      >
-        {/* {variant === "text" && <Text fontSize="lg">Ag</Text>} */}
-      </Center>
+        h="80px"
+        rounded="0.5rem"
+      />
       <Box fontSize={'10px'}>{token.name.replace('colors.', '')}</Box>
-      {/* <Text textStyle="xs">{token.name.replace("colors.", "")}</Text> */}
-      {/* {conditions && (
+      {conditions && (
         <Stack mt="1">
           {Object.entries(conditions).map(([key, value]) => (
-            <Text key={key} fontSize="xs" mt="-1" color="fg.subtle">
-              {key.replace("_", "")}: {value.replace("colors.", "")}
-            </Text>
+            <Box key={key} fontSize="10px" mt="-1">
+              {key.replace('_', '')}: {value.replace('colors.', '')}
+            </Box>
           ))}
         </Stack>
       )}
       {!conditions && (
-        <Text fontSize="xs" mt="-1" color="fg.subtle">
+        <Box fontSize="10px" mt="-1">
           {token.originalValue}
-        </Text>
-      )} */}
+        </Box>
+      )}
     </VStack>
   );
 };
