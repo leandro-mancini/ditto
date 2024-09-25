@@ -224,12 +224,36 @@ importers:
 
   packages/react-native:
     dependencies:
+      '@dittox/styled-system':
+        specifier: 0.0.1-beta.1
+        version: 0.0.1-beta.1
+      '@emotion/is-prop-valid':
+        specifier: ^1.3.0
+        version: 1.3.0
+      '@emotion/native':
+        specifier: ^11.11.0
+        version: 11.11.0(@emotion/react@11.13.3)(react-native@0.74.1)(react@18.2.0)
+      '@emotion/react':
+        specifier: ^11.13.3
+        version: 11.13.3(@types/react@18.3.1)(react@18.2.0)
+      '@emotion/serialize':
+        specifier: ^1.3.1
+        version: 1.3.1
+      '@emotion/use-insertion-effect-with-fallbacks':
+        specifier: ^1.1.0
+        version: 1.1.0(react@18.2.0)
+      '@emotion/utils':
+        specifier: ^1.4.0
+        version: 1.4.0
       react:
         specifier: 18.2.0
         version: 18.2.0
       react-native:
         specifier: 0.74.1
         version: 0.74.1(@babel/core@7.25.2)(@babel/preset-env@7.25.4)(@types/react@18.3.1)(react@18.2.0)
+      react-native-reanimated:
+        specifier: ^3.15.3
+        version: 3.15.3(@babel/core@7.25.2)(react-native@0.74.1)(react@18.2.0)
 
   packages/styled-system:
     dependencies:
@@ -2403,6 +2427,15 @@ packages:
       uuid: 8.3.2
     dev: true
 
+  /@dittox/styled-system@0.0.1-beta.1:
+    resolution:
+      {
+        integrity: sha512-e/1I+k/hUGtpsQwNtCCvTEQzsAQRBVUFpv2mPpvckmEGvpD+XV/MFHWK7w5eLo6r2TbkzbTemZ6Fz2o0aG8yWA==,
+      }
+    dependencies:
+      csstype: 3.1.3
+    dev: false
+
   /@emnapi/core@1.2.0:
     resolution:
       {
@@ -2488,6 +2521,61 @@ packages:
       }
     dev: false
 
+  /@emotion/native@11.11.0(@emotion/react@11.13.3)(react-native@0.74.1)(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-t1b5bLv+o5OUNLqXlnw+LJYU10OpmYkLC/1W873Y1ohG+vObx5TT3o3Eh1okXb2KCuZTTBPgsEnU/Sl7NNkJ9Q==,
+      }
+    peerDependencies:
+      react-native: '>=0.14.0 <1'
+    dependencies:
+      '@emotion/primitives-core': 11.13.2(@emotion/react@11.13.3)(react@18.2.0)
+      react-native: 0.74.1(@babel/core@7.25.2)(@babel/preset-env@7.25.4)(@types/react@18.3.1)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@emotion/react'
+      - react
+    dev: false
+
+  /@emotion/primitives-core@11.13.2(@emotion/react@11.13.3)(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-+MX60ROt1fDi5EYafhE/zs78XD4OuFUn6j0Z274wo5wVMT8sSBRx2CKPMbOUnmCcT0K5GPog+41mtkcppzkMmg==,
+      }
+    peerDependencies:
+      '@emotion/react': ^11.0.0-rc.0
+      react: '>=16.8.0'
+    dependencies:
+      '@emotion/react': 11.13.3(@types/react@18.3.1)(react@18.2.0)
+      css-to-react-native: 3.2.0
+      react: 18.2.0
+    dev: false
+
+  /@emotion/react@11.13.3(@types/react@18.3.1)(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-lIsdU6JNrmYfJ5EbUCf4xW1ovy5wKQ2CkPRM4xogziOxH1nXxBSjpC9YqbFAP7circxMfYp+6x676BqWcEiixg==,
+      }
+    peerDependencies:
+      '@types/react': '*'
+      react: '>=16.8.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.25.6
+      '@emotion/babel-plugin': 11.12.0
+      '@emotion/cache': 11.13.1
+      '@emotion/serialize': 1.3.1
+      '@emotion/use-insertion-effect-with-fallbacks': 1.1.0(react@18.2.0)
+      '@emotion/utils': 1.4.0
+      '@emotion/weak-memoize': 0.4.0
+      '@types/react': 18.3.1
+      hoist-non-react-statics: 3.3.2
+      react: 18.2.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /@emotion/react@11.13.3(@types/react@18.3.1)(react@18.3.1):
     resolution:
       {
@@ -2539,6 +2627,17 @@ packages:
       {
         integrity: sha512-dFoMUuQA20zvtVTuxZww6OHoJYgrzfKM1t52mVySDJnMSEa08ruEvdYQbhvyu6soU+NeLVd3yKfTfT0NeV6qGg==,
       }
+    dev: false
+
+  /@emotion/use-insertion-effect-with-fallbacks@1.1.0(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-+wBOcIV5snwGgI2ya3u99D7/FJquOIniQT1IKyDsBmEgwvpxMNeS65Oib7OnE2d2aY+3BU4OiH+0Wchf8yk3Hw==,
+      }
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /@emotion/use-insertion-effect-with-fallbacks@1.1.0(react@18.3.1):
@@ -4954,9 +5053,7 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - '@babel/preset-env'
-      - bufferutil
       - supports-color
-      - utf-8-validate
     dev: true
 
   /@react-native/normalize-colors@0.74.83:
@@ -8323,6 +8420,13 @@ packages:
       }
     engines: { node: '>=10' }
 
+  /camelize@1.0.1:
+    resolution:
+      {
+        integrity: sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ==,
+      }
+    dev: false
+
   /caniuse-api@3.0.0:
     resolution:
       {
@@ -9114,6 +9218,14 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
 
+  /css-color-keywords@1.0.0:
+    resolution:
+      {
+        integrity: sha512-FyyrDHZKEjXDpNJYvVsV960FiqQyXc/LlYmsxl2BcdMb2WPx0OGRVgTg55rPSyLSNMqP52R9r8geSp7apN3Ofg==,
+      }
+    engines: { node: '>=4' }
+    dev: false
+
   /css-declaration-sorter@6.4.1(postcss@8.4.47):
     resolution:
       {
@@ -9151,6 +9263,17 @@ packages:
       domutils: 3.1.0
       nth-check: 2.1.1
     dev: true
+
+  /css-to-react-native@3.2.0:
+    resolution:
+      {
+        integrity: sha512-e8RKaLXMOFii+02mOlqwjbD00KSEKqblnpO9e++1aXS1fPQOpS1YoqdVHBqPjHNoxeF2mimzVqawm2KCbEdtHQ==,
+      }
+    dependencies:
+      camelize: 1.0.1
+      css-color-keywords: 1.0.0
+      postcss-value-parser: 4.2.0
+    dev: false
 
   /css-tree@1.1.3:
     resolution:
@@ -16689,7 +16812,6 @@ packages:
       {
         integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==,
       }
-    dev: true
 
   /postcss@8.4.47:
     resolution:
@@ -17054,6 +17176,34 @@ packages:
       {
         integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==,
       }
+
+  /react-native-reanimated@3.15.3(@babel/core@7.25.2)(react-native@0.74.1)(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-5QBk/7PZvZ98Adxm4MRyglwzsRzReTQIe4Hd2wbBBAZ68IC4OYKvsc8cPEjgx3/1mG8HgHFYhbcDe5U2RjeFqw==,
+      }
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+      react: '*'
+      react-native: '*'
+    dependencies:
+      '@babel/core': 7.25.2
+      '@babel/plugin-transform-arrow-functions': 7.24.7(@babel/core@7.25.2)
+      '@babel/plugin-transform-class-properties': 7.25.4(@babel/core@7.25.2)
+      '@babel/plugin-transform-classes': 7.25.4(@babel/core@7.25.2)
+      '@babel/plugin-transform-nullish-coalescing-operator': 7.24.7(@babel/core@7.25.2)
+      '@babel/plugin-transform-optional-chaining': 7.24.8(@babel/core@7.25.2)
+      '@babel/plugin-transform-shorthand-properties': 7.24.7(@babel/core@7.25.2)
+      '@babel/plugin-transform-template-literals': 7.24.7(@babel/core@7.25.2)
+      '@babel/plugin-transform-unicode-regex': 7.24.7(@babel/core@7.25.2)
+      '@babel/preset-typescript': 7.24.7(@babel/core@7.25.2)
+      convert-source-map: 2.0.0
+      invariant: 2.2.4
+      react: 18.2.0
+      react-native: 0.74.1(@babel/core@7.25.2)(@babel/preset-env@7.25.4)(@types/react@18.3.1)(react@18.2.0)
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /react-native-svg-transformer@1.3.0(react-native-svg@15.3.0)(react-native@0.74.1)(typescript@5.5.4):
     resolution:

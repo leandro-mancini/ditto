@@ -15,9 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ditto/styled-system": ["packages/styled-system/src/index.ts"],
-      "packages/*": ["packages/*"],
-      "react-native": ["packages/react-native/src/index.ts"]
+      "packages/*": ["packages/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
