@@ -15,6 +15,7 @@
     "@nx/eslint-plugin": "19.7.3",
     "@nx/js": "19.7.3",
     "@nx/react": "19.7.3",
+    "@nx/react-native": "19.7.3",
     "@nx/vite": "19.7.3",
     "@nx/web": "19.7.3",
     "@swc-node/register": "~1.9.1",
@@ -52,6 +53,7 @@
   "dependencies": {
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "react-native": "0.74.1",
     "tslib": "^2.7.0"
   },
   "nx": {
