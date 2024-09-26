@@ -1,6 +1,6 @@
 'use client';
 
-import { HTMLDittoProps } from '@ditto/styled-system';
+import { HTMLDittoProps } from '@dittox/styled-system';
 import { ditto } from '../../core';
 
 export interface StackSeparatorProps extends HTMLDittoProps<'div'> {}

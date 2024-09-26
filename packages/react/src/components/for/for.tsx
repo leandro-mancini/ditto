@@ -1,28 +1,28 @@
-import { Dict } from "@ditto/styled-system"
+import { Dict } from '@dittox/styled-system';
 
 export interface ForProps<T> {
   /**
    * The array to iterate over
    */
-  each: T[] | readonly T[] | undefined
+  each: T[] | readonly T[] | undefined;
   /**
    * The fallback content to render when the array is empty
    */
-  fallback?: React.ReactNode
+  fallback?: React.ReactNode;
   /**
    * The render function to render each item in the array
    */
-  children: (item: Exclude<T, undefined>, index: number) => React.ReactNode
+  children: (item: Exclude<T, undefined>, index: number) => React.ReactNode;
 }
 
 export function For<T extends string | number | Dict | undefined>(
-  props: ForProps<T>,
+  props: ForProps<T>
 ): React.ReactNode {
-  const { each, fallback, children } = props
+  const { each, fallback, children } = props;
 
   if (each?.length === 0) {
-    return fallback || null
+    return fallback || null;
   }
 
-  return each?.map(children as any)
+  return each?.map(children as any);
 }

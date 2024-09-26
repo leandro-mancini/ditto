@@ -18,7 +18,7 @@ import {
   mergeRefs,
   JsxFactory,
   StyledFactoryFn,
-} from '@ditto/styled-system';
+} from '@dittox/styled-system';
 import { useDittoContext } from './provider';
 import { useResolvedProps } from './use-resolved-props';
 
