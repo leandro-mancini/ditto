@@ -16,14 +16,7 @@ export interface DittoProviderProps {
 function DittoProvider(props: DittoProviderProps) {
   const { value: sys, children } = props;
 
-  return (
-    <DittoContextProvider value={sys}>
-      <Global
-        styles={[sys.getPreflightCss(), sys.getGlobalCss(), sys.getTokenCss()]}
-      />
-      {children}
-    </DittoContextProvider>
-  );
+  return <DittoContextProvider value={sys}>{children}</DittoContextProvider>;
 }
 
 export { DittoProvider, useDittoContext };

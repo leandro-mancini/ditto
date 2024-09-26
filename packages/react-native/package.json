@@ -1,9 +1,9 @@
 {
   "name": "@dittox/react-native",
-  "version": "0.0.1",
+  "version": "0.0.1-beta.5",
   "peerDependencies": {
-    "react": "18.2.0",
-    "react-native": "0.74.1"
+    "react": ">=18",
+    "react-native": ">=0.74.1"
   },
   "dependencies": {
     "@dittox/styled-system": "0.0.1-beta.1",
