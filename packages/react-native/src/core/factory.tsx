@@ -1,20 +1,17 @@
 import * as React from 'react';
 import isPropValid from '@emotion/is-prop-valid';
-import { insertStyles, registerStyles } from '@emotion/utils';
-//@ts-ignore
-import { useInsertionEffectAlwaysWithSyncFallback } from '@emotion/use-insertion-effect-with-fallbacks';
-// import { ThemeContext, withEmotionCache } from "@emotion/react"
-// import { serializeStyles } from "@emotion/serialize"
-
-// import {
-//   getRegisteredStyles,
-//   insertStyles,
-//   registerStyles,
-// } from "@emotion/utils"
-import { JsxFactory, StyledFactoryFn } from '@dittox/styled-system';
-import { View } from 'react-native';
-// import { useDittoContext } from "./provider"
-// import { useResolvedProps } from "./use-resolved-props"
+import { ThemeContext, withEmotionCache } from '@emotion/react';
+import {
+  compact,
+  JsxFactory,
+  mergeProps,
+  mergeRefs,
+  StyledFactoryFn,
+} from '@dittox/styled-system';
+import { StyleSheet } from 'react-native';
+import { useDittoContext } from './provider';
+import { useResolvedProps } from './use-resolved-props';
+import { serializeStyles } from '@emotion/serialize';
 
 const testOmitPropsOnStringTag = isPropValid;
 const testOmitPropsOnComponent = (key: string) => key !== 'theme';
@@ -38,59 +35,177 @@ const composeShouldForwardProps = (tag: any, options: any, isReal: boolean) => {
   return shouldForwardProp;
 };
 
-// const Insertion = ({ cache, serialized, isStringTag }: any) => {
-//   registerStyles(cache, serialized, isStringTag);
-
-//   const rules = useInsertionEffectAlwaysWithSyncFallback(() =>
-//     insertStyles(cache, serialized, isStringTag)
-//   );
-
-//   if (!isBrowser && rules !== undefined) {
-//     let serializedNames = serialized.name;
-//     let next = serialized.next;
-//     while (next !== undefined) {
-//       serializedNames = cx(serializedNames, next.name);
-//       next = next.next;
-//     }
-//     return (
-//       <style
-//         {...{
-//           [`data-emotion`]: cx(cache.key, serializedNames),
-//           dangerouslySetInnerHTML: { __html: rules },
-//           nonce: cache.sheet.nonce,
-//         }}
-//       />
-//     );
-//   }
-//   return null;
-// };
-// function cx(key: any, serializedNames: any) {
-//   throw new Error("Function not implemented.");
-// }
-
-import styled, { css } from '@emotion/native';
-
 const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
-  if (process.env.NODE_ENV !== 'production') {
-    if (tag === undefined) {
-      throw new Error(
-        'Você está tentando criar um elemento estilizado com um componente indefinido.\nVocê pode ter esquecido de importá-lo.'
-      );
-    }
+  if (typeof tag === 'string') {
+    throw new Error(
+      'Você está tentando criar um componente com um elemento de string, o que não é suportado no React Native. Use um componente nativo como View, Text, etc.'
+    );
   }
 
-  console.log('tag', tag);
   console.log('configOrCva', configOrCva);
   console.log('options', options);
 
-  return styled(View)({
-    backgroundColor: 'tomato',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 50,
-    padding: 24,
+  const isReal = tag.__emotion_real === tag;
+  const baseTag = (isReal && tag.__emotion_base) || tag;
+
+  let identifierName: string | undefined;
+  let targetClassName: string | undefined;
+
+  if (options !== undefined) {
+    identifierName = options.label;
+    targetClassName = options.target;
+  }
+
+  let styles: any[] = [];
+
+  const Styled: any = withEmotionCache((inProps: any, cache, ref) => {
+    const { cva, isValidProperty } = useDittoContext();
+    const cvaFn = configOrCva.__cva__ ? configOrCva : cva(configOrCva);
+    const cvaRecipe = mergeCva(tag.__emotion_cva, cvaFn);
+
+    const createShouldForwardProps = (props: string[]) => {
+      return (prop: string, variantKeys: string[]) => {
+        if (props.includes(prop)) return true;
+        return !variantKeys?.includes(prop) && !isValidProperty(prop);
+      };
+    };
+
+    if (!options.shouldForwardProp && options.forwardProps) {
+      options.shouldForwardProp = createShouldForwardProps(
+        options.forwardProps
+      );
+    }
+
+    const shouldForwardProp = composeShouldForwardProps(tag, options, isReal);
+
+    const initShouldForwardProp = (prop: string, variantKeys: string[]) => {
+      const emotionSfp =
+        typeof tag === 'string' && tag.charCodeAt(0) > 96
+          ? testOmitPropsOnStringTag
+          : testOmitPropsOnComponent;
+      const dittoSfp = !variantKeys?.includes(prop) && !isValidProperty(prop);
+      return emotionSfp(prop) && dittoSfp;
+    };
+
+    const defaultShouldForwardProp = shouldForwardProp || initShouldForwardProp;
+
+    const propsWithDefault = React.useMemo(
+      () => Object.assign({}, options.defaultProps, compact(inProps)),
+      [inProps]
+    );
+
+    const { props, styles: styleProps } = useResolvedProps(
+      propsWithDefault,
+      cvaRecipe,
+      defaultShouldForwardProp
+    );
+
+    const shouldUseAs = !defaultShouldForwardProp('as');
+
+    // @ts-ignore
+    let FinalTag = (shouldUseAs && props.as) || baseTag;
+
+    const mergedProps: any = props;
+    // @ts-ignore
+    if (props.theme == null) {
+      mergedProps.theme = React.useContext(ThemeContext);
+    }
+
+    // let classInterpolations: any[] = [styleProps];
+    // let mergedProps: any = props;
+    // // @ts-ignore
+    // if (props.theme == null) {
+    //   mergedProps = {};
+    //   for (let key in props) {
+    //     // @ts-ignore
+    //     mergedProps[key] = props[key];
+    //   }
+    //   mergedProps.theme = React.useContext(ThemeContext);
+    // }
+
+    // const serialized = serializeStyles(
+    //   styles.concat(classInterpolations),
+    //   cache.registered,
+    //   mergedProps
+    // );
+    const serialized = serializeStyles([styleProps], undefined, mergedProps);
+
+    const finalShouldForwardProp =
+      shouldUseAs && shouldForwardProp === undefined
+        ? initShouldForwardProp
+        : defaultShouldForwardProp;
+
+    const nativeStyle = StyleSheet.create({
+      style: styleProps,
+    });
+
+    let newProps: any = {};
+
+    for (let key in props) {
+      if (shouldUseAs && key === 'as') continue;
+
+      if (finalShouldForwardProp(key)) {
+        //@ts-ignore
+        newProps[key] = props[key];
+      }
+    }
+
+    newProps.ref = ref;
+    // @ts-ignore
+    newProps.style = [nativeStyle.style, props.style];
+
+    //@ts-ignore
+    if (props.asChild && !options.forwardAsChild) {
+      const child = React.Children.only(props.children);
+      FinalTag = child.type;
+      newProps.children = null;
+      newProps = mergeProps(newProps, child.props);
+      newProps.ref = mergeRefs(ref, child.ref);
+    }
+
+    console.log('inProps', inProps);
+    console.log('propsWithDefault', propsWithDefault);
+    console.log('props', props);
+    console.log('styleProps', styleProps);
+    console.log('shouldUseAs', shouldUseAs);
+    console.log('FinalTag', FinalTag);
+    // console.log('classInterpolations', classInterpolations)
+    console.log('mergedProps', mergedProps);
+    console.log('serialized', serialized);
+    console.log('finalShouldForwardProp', finalShouldForwardProp);
+    console.log('newProps', newProps);
+
+    // return (
+    //   <FinalTag>
+    //     <Text>Box</Text>
+    //   </FinalTag>
+    // )
+
+    // return (
+    //   <View {...newProps} />
+    // )
+    return <FinalTag {...newProps} />;
   });
+
+  Styled.displayName =
+    identifierName !== undefined
+      ? identifierName
+      : `Styled(${baseTag.displayName || baseTag.name || 'Component'})`;
+
+  Styled.__emotion_real = Styled;
+  Styled.__emotion_base = baseTag;
+  Styled.__emotion_forwardProp = options.shouldForwardProp;
+  Styled.__emotion_cva = configOrCva;
+
+  console.log('Styled', Styled);
+
+  return Styled;
+
+  // return styled(Styled)({
+  //   display: 'flex',
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // });
 };
 
 // @ts-ignore
