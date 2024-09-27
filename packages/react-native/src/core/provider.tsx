@@ -1,5 +1,4 @@
 import { SystemContext } from '@dittox/styled-system';
-import { Global } from '@emotion/react';
 import { createContext } from '../create-context';
 
 const [DittoContextProvider, useDittoContext] = createContext<SystemContext>({
