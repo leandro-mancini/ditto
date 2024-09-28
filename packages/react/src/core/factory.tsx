@@ -11,16 +11,10 @@ import {
   insertStyles,
   registerStyles,
 } from '@emotion/utils';
-import {
-  compact,
-  cx,
-  mergeProps,
-  mergeRefs,
-  JsxFactory,
-  StyledFactoryFn,
-} from '@dittox/styled-system';
+import { compact, cx, mergeProps, mergeRefs } from '@dittox/styled-system';
 import { useDittoContext } from './provider';
 import { useResolvedProps } from './use-resolved-props';
+import { StyledFactoryFn, JsxFactory } from './factory.types';
 
 const testOmitPropsOnStringTag = isPropValid;
 const testOmitPropsOnComponent = (key: string) => key !== 'theme';

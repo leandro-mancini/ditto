@@ -1,8 +1,9 @@
-import { cx, JsxFactoryOptions, mergeProps } from '@dittox/styled-system';
+import { cx, mergeProps } from '@dittox/styled-system';
 import React, { forwardRef } from 'react';
 import { ditto } from './factory';
 import { createContext } from '../create-context';
 import { RecipeKey, useRecipe, UseRecipeOptions } from './use-recipe';
+import { JsxFactoryOptions } from './factory.types';
 
 const upperFirst = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 

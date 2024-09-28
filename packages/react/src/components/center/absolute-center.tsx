@@ -1,7 +1,6 @@
 'use client';
 
-import { HTMLDittoProps } from '@dittox/styled-system';
-import { ditto } from '../../core';
+import { ditto, HTMLDittoProps } from '../../core';
 
 export interface AbsoluteCenterProps extends HTMLDittoProps<'div'> {
   axis?: 'horizontal' | 'vertical' | 'both';

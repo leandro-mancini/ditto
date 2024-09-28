@@ -1,8 +1,8 @@
 'use client';
 
-import { HTMLDittoProps, SystemStyleObject } from '@dittox/styled-system';
+import { SystemStyleObject } from '@dittox/styled-system';
 import { forwardRef } from 'react';
-import { ditto } from '../../core';
+import { ditto, HTMLDittoProps } from '../../core';
 
 export interface FlexOptions {
   align?: SystemStyleObject['alignItems'];

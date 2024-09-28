@@ -1,7 +1,6 @@
 'use client';
 
-import { type HTMLDittoProps } from '@dittox/styled-system';
-import { ditto } from '../../core';
+import { ditto, HTMLDittoProps } from '../../core';
 
 export interface StickyProps extends HTMLDittoProps<'div'> {}
 
