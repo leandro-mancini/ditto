@@ -1,7 +1,11 @@
 import { PropertiesFallback } from 'csstype';
 import { Dict, DistributiveOmit } from '../utils';
-import { SystemStyleObject } from './factory.types';
-import { ConditionalValue, CssKeyframes, Nested } from './css.types';
+import {
+  ConditionalValue,
+  CssKeyframes,
+  Nested,
+  SystemStyleObject,
+} from './css.types';
 import {
   RecipeCreatorFn,
   RecipeDefinition,
