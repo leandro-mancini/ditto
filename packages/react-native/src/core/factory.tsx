@@ -11,7 +11,6 @@ import {
 import { StyleSheet } from 'react-native';
 import { useDittoContext } from './provider';
 import { useResolvedProps } from './use-resolved-props';
-import { serializeStyles } from '@emotion/serialize';
 
 const testOmitPropsOnStringTag = isPropValid;
 const testOmitPropsOnComponent = (key: string) => key !== 'theme';
@@ -107,8 +106,6 @@ const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
     if (props.theme == null) {
       mergedProps.theme = React.useContext(ThemeContext);
     }
-
-    const serialized = serializeStyles([styleProps], undefined, mergedProps);
 
     const finalShouldForwardProp =
       shouldUseAs && shouldForwardProp === undefined

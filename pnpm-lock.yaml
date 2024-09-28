@@ -207,8 +207,8 @@ importers:
   packages/react:
     dependencies:
       '@dittox/styled-system':
-        specifier: 0.0.1-beta.3
-        version: 0.0.1-beta.3
+        specifier: 0.0.1-beta.4
+        version: 0.0.1-beta.4
       '@emotion/is-prop-valid':
         specifier: ^1.3.0
         version: 1.3.0
@@ -233,21 +233,9 @@ importers:
       '@emotion/is-prop-valid':
         specifier: ^1.3.0
         version: 1.3.0
-      '@emotion/native':
-        specifier: ^11.11.0
-        version: 11.11.0(@emotion/react@11.13.3)(react-native@0.74.1)(react@18.3.1)
       '@emotion/react':
         specifier: ^11.13.3
         version: 11.13.3(@types/react@18.3.1)(react@18.3.1)
-      '@emotion/serialize':
-        specifier: ^1.3.1
-        version: 1.3.1
-      '@emotion/use-insertion-effect-with-fallbacks':
-        specifier: ^1.1.0
-        version: 1.1.0(react@18.3.1)
-      '@emotion/utils':
-        specifier: ^1.4.0
-        version: 1.4.0
       react:
         specifier: '>=18'
         version: 18.3.1
@@ -2430,15 +2418,6 @@ packages:
       uuid: 8.3.2
     dev: true
 
-  /@dittox/styled-system@0.0.1-beta.3:
-    resolution:
-      {
-        integrity: sha512-ahEC+umtoze1sb2xYQYnCG04LUGkOynFYCPP+kByrTT+6i/zngig/A5v11Jqd6/qhGPAkkTiOhueQqpyboTosw==,
-      }
-    dependencies:
-      csstype: 3.1.3
-    dev: false
-
   /@dittox/styled-system@0.0.1-beta.4:
     resolution:
       {
@@ -2531,35 +2510,6 @@ packages:
       {
         integrity: sha512-30FAj7/EoJ5mwVPOWhAyCX+FPfMDrVecJAM+Iw9NRoSl4BBAQeqj4cApHHUXOVvIPgLVDsCFoz/hGD+5QQD1GQ==,
       }
-    dev: false
-
-  /@emotion/native@11.11.0(@emotion/react@11.13.3)(react-native@0.74.1)(react@18.3.1):
-    resolution:
-      {
-        integrity: sha512-t1b5bLv+o5OUNLqXlnw+LJYU10OpmYkLC/1W873Y1ohG+vObx5TT3o3Eh1okXb2KCuZTTBPgsEnU/Sl7NNkJ9Q==,
-      }
-    peerDependencies:
-      react-native: '>=0.14.0 <1'
-    dependencies:
-      '@emotion/primitives-core': 11.13.2(@emotion/react@11.13.3)(react@18.3.1)
-      react-native: 0.74.1(@babel/core@7.25.2)(@babel/preset-env@7.25.4)(@types/react@18.3.1)(react@18.3.1)
-    transitivePeerDependencies:
-      - '@emotion/react'
-      - react
-    dev: false
-
-  /@emotion/primitives-core@11.13.2(@emotion/react@11.13.3)(react@18.3.1):
-    resolution:
-      {
-        integrity: sha512-+MX60ROt1fDi5EYafhE/zs78XD4OuFUn6j0Z274wo5wVMT8sSBRx2CKPMbOUnmCcT0K5GPog+41mtkcppzkMmg==,
-      }
-    peerDependencies:
-      '@emotion/react': ^11.0.0-rc.0
-      react: '>=16.8.0'
-    dependencies:
-      '@emotion/react': 11.13.3(@types/react@18.3.1)(react@18.3.1)
-      css-to-react-native: 3.2.0
-      react: 18.3.1
     dev: false
 
   /@emotion/react@11.13.3(@types/react@18.3.1)(react@18.3.1):
@@ -8374,13 +8324,6 @@ packages:
       }
     engines: { node: '>=10' }
 
-  /camelize@1.0.1:
-    resolution:
-      {
-        integrity: sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ==,
-      }
-    dev: false
-
   /caniuse-api@3.0.0:
     resolution:
       {
@@ -9172,14 +9115,6 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
 
-  /css-color-keywords@1.0.0:
-    resolution:
-      {
-        integrity: sha512-FyyrDHZKEjXDpNJYvVsV960FiqQyXc/LlYmsxl2BcdMb2WPx0OGRVgTg55rPSyLSNMqP52R9r8geSp7apN3Ofg==,
-      }
-    engines: { node: '>=4' }
-    dev: false
-
   /css-declaration-sorter@6.4.1(postcss@8.4.47):
     resolution:
       {
@@ -9217,17 +9152,6 @@ packages:
       domutils: 3.1.0
       nth-check: 2.1.1
     dev: true
-
-  /css-to-react-native@3.2.0:
-    resolution:
-      {
-        integrity: sha512-e8RKaLXMOFii+02mOlqwjbD00KSEKqblnpO9e++1aXS1fPQOpS1YoqdVHBqPjHNoxeF2mimzVqawm2KCbEdtHQ==,
-      }
-    dependencies:
-      camelize: 1.0.1
-      css-color-keywords: 1.0.0
-      postcss-value-parser: 4.2.0
-    dev: false
 
   /css-tree@1.1.3:
     resolution:
@@ -16766,6 +16690,7 @@ packages:
       {
         integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==,
       }
+    dev: true
 
   /postcss@8.4.47:
     resolution:
