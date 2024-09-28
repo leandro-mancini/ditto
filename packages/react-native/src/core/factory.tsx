@@ -42,9 +42,6 @@ const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
     );
   }
 
-  console.log('configOrCva', configOrCva);
-  console.log('options', options);
-
   const isReal = tag.__emotion_real === tag;
   const baseTag = (isReal && tag.__emotion_base) || tag;
 
@@ -111,23 +108,6 @@ const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
       mergedProps.theme = React.useContext(ThemeContext);
     }
 
-    // let classInterpolations: any[] = [styleProps];
-    // let mergedProps: any = props;
-    // // @ts-ignore
-    // if (props.theme == null) {
-    //   mergedProps = {};
-    //   for (let key in props) {
-    //     // @ts-ignore
-    //     mergedProps[key] = props[key];
-    //   }
-    //   mergedProps.theme = React.useContext(ThemeContext);
-    // }
-
-    // const serialized = serializeStyles(
-    //   styles.concat(classInterpolations),
-    //   cache.registered,
-    //   mergedProps
-    // );
     const serialized = serializeStyles([styleProps], undefined, mergedProps);
 
     const finalShouldForwardProp =
@@ -163,27 +143,6 @@ const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
       newProps.ref = mergeRefs(ref, child.ref);
     }
 
-    console.log('inProps', inProps);
-    console.log('propsWithDefault', propsWithDefault);
-    console.log('props', props);
-    console.log('styleProps', styleProps);
-    console.log('shouldUseAs', shouldUseAs);
-    console.log('FinalTag', FinalTag);
-    // console.log('classInterpolations', classInterpolations)
-    console.log('mergedProps', mergedProps);
-    console.log('serialized', serialized);
-    console.log('finalShouldForwardProp', finalShouldForwardProp);
-    console.log('newProps', newProps);
-
-    // return (
-    //   <FinalTag>
-    //     <Text>Box</Text>
-    //   </FinalTag>
-    // )
-
-    // return (
-    //   <View {...newProps} />
-    // )
     return <FinalTag {...newProps} />;
   });
 
@@ -197,15 +156,7 @@ const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
   Styled.__emotion_forwardProp = options.shouldForwardProp;
   Styled.__emotion_cva = configOrCva;
 
-  console.log('Styled', Styled);
-
   return Styled;
-
-  // return styled(Styled)({
-  //   display: 'flex',
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // });
 };
 
 // @ts-ignore

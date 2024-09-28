@@ -7,7 +7,7 @@ export function useResolvedProps(
   cvaRecipe: any,
   shouldForwardProps: any
 ) {
-  const { css, isValidProperty } = useDittoContext();
+  const { style, isValidProperty } = useDittoContext();
   const { children, ...props } = inProps;
 
   const result = useMemo(() => {
@@ -38,8 +38,8 @@ export function useResolvedProps(
   );
 
   const styles = useMemo((): any => {
-    return css(cvaStyles, ...toArray(cssStyles), propStyles);
-  }, [css, cvaStyles, cssStyles, propStyles]);
+    return style(cvaStyles, ...toArray(cssStyles), propStyles);
+  }, [style, cvaStyles, cssStyles, propStyles]);
 
   return {
     styles,

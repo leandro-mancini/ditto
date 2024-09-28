@@ -207,8 +207,8 @@ importers:
   packages/react:
     dependencies:
       '@dittox/styled-system':
-        specifier: 0.0.1-beta.1
-        version: 0.0.1-beta.1
+        specifier: 0.0.1-beta.3
+        version: 0.0.1-beta.3
       '@emotion/is-prop-valid':
         specifier: ^1.3.0
         version: 1.3.0
@@ -228,8 +228,8 @@ importers:
   packages/react-native:
     dependencies:
       '@dittox/styled-system':
-        specifier: 0.0.1-beta.2
-        version: 0.0.1-beta.2
+        specifier: 0.0.1-beta.4
+        version: 0.0.1-beta.4
       '@emotion/is-prop-valid':
         specifier: ^1.3.0
         version: 1.3.0
@@ -2430,19 +2430,19 @@ packages:
       uuid: 8.3.2
     dev: true
 
-  /@dittox/styled-system@0.0.1-beta.1:
+  /@dittox/styled-system@0.0.1-beta.3:
     resolution:
       {
-        integrity: sha512-e/1I+k/hUGtpsQwNtCCvTEQzsAQRBVUFpv2mPpvckmEGvpD+XV/MFHWK7w5eLo6r2TbkzbTemZ6Fz2o0aG8yWA==,
+        integrity: sha512-ahEC+umtoze1sb2xYQYnCG04LUGkOynFYCPP+kByrTT+6i/zngig/A5v11Jqd6/qhGPAkkTiOhueQqpyboTosw==,
       }
     dependencies:
       csstype: 3.1.3
     dev: false
 
-  /@dittox/styled-system@0.0.1-beta.2:
+  /@dittox/styled-system@0.0.1-beta.4:
     resolution:
       {
-        integrity: sha512-fW564Wq05ooUYZM4mAVl35oAz7uMMzDgx6VZjAKhdQOwbaMZ860R+yvQ94Q6gbTXor6KJbwE3Bb6mcHK4n43Vg==,
+        integrity: sha512-L3TyywuWfrV7nuWtl7IA6ecFxy2zPYT73dbN3U6YS5Fb6pwfGST7SSCNwkBbk2tYoVFg/mSsQKCM1WlNU1ArPw==,
       }
     dependencies:
       csstype: 3.1.3

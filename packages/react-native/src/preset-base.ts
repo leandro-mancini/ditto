@@ -1,7 +1,19 @@
-import { defineConfig } from '@dittox/styled-system';
+import { defineConfig, createColorMixTransform } from '@dittox/styled-system';
 
 export const defaultBaseConfig = defineConfig({
-  utilities: {},
+  utilities: {
+    // background
+    background: {
+      values: 'colors',
+      shorthand: ['bg'],
+      transform: createColorMixTransform('background'),
+    },
+    backgroundColor: {
+      values: 'colors',
+      shorthand: ['bgColor'],
+      transform: createColorMixTransform('backgroundColor'),
+    },
+  },
 });
 
 // import { createColorMixTransform, defineConfig } from '@dittox/styled-system';
