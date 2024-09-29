@@ -1,7 +1,6 @@
-import { type HTMLDittoProps } from '@dittox/styled-system';
 import { View } from 'react-native';
 
-import { ditto } from '../../core';
+import { ditto, HTMLDittoProps } from '../../core';
 
 export interface BoxProps extends HTMLDittoProps<'View'> {}
 
