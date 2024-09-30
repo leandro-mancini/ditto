@@ -39,13 +39,13 @@ export default defineConfig({
       // entry: 'src/index.ts',
       entry: {
         main: 'src/index.ts',
-        'web-components': 'src/register-web-components.ts',
+        // 'web-components': 'src/register-web-components.ts',
       },
       name: 'preact',
       fileName: (format, entryName) => {
-        if (entryName === 'web-components') {
-          return `web-components.${format}.js`; // Nome do arquivo de web components
-        }
+        // if (entryName === 'web-components') {
+        //   return `web-components.${format}.js`; // Nome do arquivo de web components
+        // }
         return `index.${format}.js`; // Nome do arquivo da biblioteca principal
       },
       // fileName: 'index',
