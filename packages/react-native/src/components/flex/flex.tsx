@@ -19,7 +19,7 @@ export interface FlexOptions {
 export interface FlexProps
   extends NativeDittoProps<ComponentType<ViewProps>, FlexOptions> {}
 
-export const FlexComponent = ditto(View, {
+const FlexComponent = ditto(View, {
   base: {
     display: 'flex',
   },
