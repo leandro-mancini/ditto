@@ -21,24 +21,24 @@ export function getSeparatorStyles(options: Options) {
       marginY: gap,
       marginX: 0,
       borderInlineStartWidth: 0,
-      borderTopWidth: '1px',
+      borderTopWidth: 1,
     },
     'column-reverse': {
       marginY: gap,
       marginX: 0,
       borderInlineStartWidth: 0,
-      borderTopWidth: '1px',
+      borderTopWidth: 1,
     },
     row: {
       marginX: gap,
       marginY: 0,
-      borderInlineStartWidth: '1px',
+      borderInlineStartWidth: 1,
       borderTopWidth: 0,
     },
     'row-reverse': {
       marginX: gap,
       marginY: 0,
-      borderInlineStartWidth: '1px',
+      borderInlineStartWidth: 1,
       borderTopWidth: 0,
     },
   };
