@@ -1,10 +1,7 @@
-"use client"
+'use client';
 
-import { type HTMLDittoProps } from "@ditto/styled-system"
-import { ditto } from "../../core"
+import { ditto, HTMLDittoProps } from '../../core';
 
-export interface BoxProps extends HTMLDittoProps<"div"> {}
+export interface BoxProps extends HTMLDittoProps<'div'> {}
 
-export const Box = ditto("div")
-
-Box.displayName = "Box"
+export const Box = ditto('div');

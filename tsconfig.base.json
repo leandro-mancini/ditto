@@ -15,9 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ditto/styled-system": ["packages/styled-system/src/index.ts"],
-      "packages/*": ["packages/*"],
-      "preact": ["packages/preact/src/index.ts"]
+      "packages/*": ["packages/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

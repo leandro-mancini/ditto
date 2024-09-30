@@ -9,8 +9,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@ditto/react": "0.0.1",
-    "@ditto/styled-system": "0.0.1"
-  }
+  "dependencies": {}
 }

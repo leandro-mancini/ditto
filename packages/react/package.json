@@ -1,8 +1,34 @@
 {
-  "name": "@undefined/react",
-  "version": "0.0.1",
+  "name": "@dittox/react",
+  "version": "0.0.1-beta.1",
   "main": "./index.js",
   "types": "./index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Leandro Mancini",
+    "email": "mancinidevworks@gmail.com",
+    "url": "https://blog.mancinidev.me/"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/leandro-mancini/ditto",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leandro-mancini/ditto",
+    "directory": "packages/react"
+  },
+  "keywords": [
+    "react",
+    "ui",
+    "design-system",
+    "react-components",
+    "uikit",
+    "components",
+    "emotion",
+    "library",
+    "design-system"
+  ],
   "exports": {
     ".": {
       "import": "./index.mjs",
@@ -10,10 +36,11 @@
     }
   },
   "dependencies": {
-    "@emotion/is-prop-valid": "^1.3.0",
-    "@emotion/react": "^11.13.3",
-    "@emotion/serialize": "^1.3.1",
-    "@emotion/use-insertion-effect-with-fallbacks": "^1.1.0",
-    "@emotion/utils": "^1.4.0"
+    "@dittox/styled-system": "0.0.1-beta.5",
+    "@emotion/is-prop-valid": "1.3.0",
+    "@emotion/react": "11.13.3",
+    "@emotion/serialize": "1.3.1",
+    "@emotion/use-insertion-effect-with-fallbacks": "1.1.0",
+    "@emotion/utils": "1.4.0"
   }
 }

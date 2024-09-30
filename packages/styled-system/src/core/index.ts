@@ -1,37 +1,34 @@
-export * from "./config"
-export * from "./color-mix"
+export * from './config';
+export * from './color-mix';
 
 export type {
-    ConditionalValue,
-    GlobalStyleObject,
-    JsxStyleProps,
-    SystemStyleObject,
-} from "./css.types"
+  ConditionalValue,
+  GlobalStyleObject,
+  JsxStyleProps,
+  SystemStyleObject,
+  MinimalNested,
+} from './css.types';
 
 export type {
-    DittoComponent,
-    HTMLDittoProps,
-    InferRecipeProps,
-    JsxFactory,
-    StyledFactoryFn,
-    JsxFactoryOptions
-} from "./factory.types"
+  RecipeProps,
+  SlotRecipeProps,
+  SlotRecipeRecord,
+  ConfigRecipes,
+} from './generated/recipes.gen';
 
 export type {
-    RecipeProps,
-    SlotRecipeProps,
-    SlotRecipeRecord,
-    ConfigRecipes,
-} from "./generated/recipes.gen"
+  CssVarProperties,
+  SystemProperties,
+} from './generated/system.gen';
 
-export type { ColorPalette, Token, Tokens } from "./generated/token.gen"
+export type { ColorPalette, Token, Tokens } from './generated/token.gen';
 
-export type * from "./recipe.types"
+export type * from './recipe.types';
 
-export { createSystem, isValidSystem } from "./system"
+export { createSystem, isValidSystem } from './system';
 
 export type {
-    SystemConfig,
-    SystemContext,
-    Token as TokenInterface,
-} from "./types"
+  SystemConfig,
+  SystemContext,
+  Token as TokenInterface,
+} from './types';
