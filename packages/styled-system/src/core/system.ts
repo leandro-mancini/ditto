@@ -111,6 +111,12 @@ export function createSystem(...configs: SystemConfig[]): SystemContext {
     normalize: normalizeFn,
   });
 
+  const style = createCssFn({
+    transform: utility.transformStyle,
+    conditions,
+    normalize: normalizeFn,
+  });
+
   const cva = createRecipeFn({
     css: css as any,
     conditions,
@@ -202,6 +208,7 @@ export function createSystem(...configs: SystemConfig[]): SystemContext {
     getGlobalCss,
     getPreflightCss,
     css: css as any,
+    style: style as any,
     cva,
     sva,
     getRecipe,
