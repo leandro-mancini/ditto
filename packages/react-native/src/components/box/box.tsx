@@ -1,7 +1,8 @@
-import { View } from 'react-native';
+import { View, ViewProps } from 'react-native';
 
-import { ditto, HTMLDittoProps } from '../../core';
+import { ditto, NativeDittoProps } from '../../core';
+import { ComponentType } from 'react';
 
-export interface BoxProps extends HTMLDittoProps<'View'> {}
+export interface BoxProps extends NativeDittoProps<ComponentType<ViewProps>> {}
 
-export const Box = ditto<any>(View);
+export const Box = ditto(View);

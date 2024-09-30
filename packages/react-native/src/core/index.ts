@@ -2,7 +2,7 @@ export { ditto } from './factory';
 
 export type {
   DittoComponent,
-  HTMLDittoProps,
+  NativeDittoProps,
   InferRecipeProps,
 } from './factory.types';
 

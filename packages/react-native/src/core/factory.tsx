@@ -94,9 +94,19 @@ const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
     const shouldUseAs = !defaultShouldForwardProp('as');
 
     // @ts-ignore
-    let FinalTag = (shouldUseAs && props.as) || baseTag;
+    let FinalTag = props.as || baseTag;
 
-    const mergedProps: any = props;
+    let mergedProps: any = props;
+    //@ts-ignore
+    if (props.theme == null) {
+      mergedProps = {};
+      for (let key in props) {
+        //@ts-ignore
+        mergedProps[key] = props[key];
+      }
+      mergedProps.theme = React.useContext(ThemeContext);
+    }
+
     // @ts-ignore
     if (props.theme == null) {
       mergedProps.theme = React.useContext(ThemeContext);
