@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import { Box, BoxProps } from './box';
+import { View } from 'react-native';
 
 export interface SquareProps extends BoxProps {
   /**
@@ -8,7 +9,7 @@ export interface SquareProps extends BoxProps {
   // size?: BoxProps["boxSize"]
 }
 
-export const Square = forwardRef<HTMLDivElement, SquareProps>(function Square(
+export const Square = forwardRef<View, SquareProps>(function Square(
   props,
   ref
 ) {
