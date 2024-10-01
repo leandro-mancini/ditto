@@ -1,7 +1,6 @@
 'use client';
 
-import { h, Fragment } from 'preact';
-import { useContext, useMemo } from 'preact/hooks';
+import { useMemo, useEffect } from 'preact/hooks';
 import isPropValid from '@emotion/is-prop-valid';
 import { css, cx } from '@emotion/css';
 import { serializeStyles } from '@emotion/serialize';
@@ -41,12 +40,21 @@ const composeShouldForwardProps = (tag: any, options: any, isReal: boolean) => {
 
 let isBrowser = typeof document !== 'undefined';
 
-const Insertion = ({ cache, serialized, isStringTag }: any) => {
+const Insertion = ({ cache, serialized, isStringTag, shadowRoot }: any) => {
   registerStyles(cache, serialized, isStringTag);
 
   const rules = useInsertionEffectAlwaysWithSyncFallback(() =>
     insertStyles(cache, serialized, isStringTag)
   );
+
+  useEffect(() => {
+    if (shadowRoot) {
+      const styleElement = document.createElement('style');
+      styleElement.textContent = rules || serialized.styles;
+      styleElement.textContent = `.css-${serialized.name} { ${serialized.styles} }`;
+      shadowRoot.appendChild(styleElement);
+    }
+  }, [rules, serialized.styles, shadowRoot]);
 
   if (!isBrowser && rules !== undefined) {
     let serializedNames = serialized.name;
@@ -181,6 +189,7 @@ const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
           cache={{}}
           serialized={serialized}
           isStringTag={typeof FinalTag === 'string'}
+          shadowRoot={inProps.shadowRoot}
         />
         <FinalTag {...newProps} />
       </>

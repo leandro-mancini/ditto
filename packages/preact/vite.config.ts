@@ -36,19 +36,9 @@ export default defineConfig({
     },
     lib: {
       // Could also be a dictionary or array of multiple entry points.
-      // entry: 'src/index.ts',
-      entry: {
-        main: 'src/index.ts',
-        // 'web-components': 'src/register-web-components.ts',
-      },
+      entry: 'src/index.ts',
       name: 'preact',
-      fileName: (format, entryName) => {
-        // if (entryName === 'web-components') {
-        //   return `web-components.${format}.js`; // Nome do arquivo de web components
-        // }
-        return `index.${format}.js`; // Nome do arquivo da biblioteca principal
-      },
-      // fileName: 'index',
+      fileName: 'index',
       // Change this to the formats you want to support.
       // Don't forget to update your package.json as well.
       formats: ['es', 'cjs'],

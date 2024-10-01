@@ -10,12 +10,7 @@ import {
   SystemProperties,
   SystemStyleObject,
 } from '@dittox/styled-system';
-import {
-  ComponentProps,
-  ComponentPropsWithoutRef,
-  ElementType,
-  FunctionComponent,
-} from 'react';
+import { JSX, FunctionComponent } from 'preact'; // Usar preact no lugar de react
 
 export interface UnstyledProp {
   /**
@@ -25,7 +20,7 @@ export interface UnstyledProp {
 }
 
 export interface PolymorphicProps {
-  as?: ElementType;
+  as?: keyof JSX.IntrinsicElements; // ElementType é substituído por elementos intrínsecos do JSX de Preact
   asChild?: boolean;
 }
 
@@ -56,31 +51,33 @@ type JsxHtmlProps<T extends Dict, P extends Dict = {}> = Assign<
 >;
 
 export type DittoComponent<
-  T extends ElementType,
+  T extends keyof JSX.IntrinsicElements, // Usando preact JSX para ElementType
   P extends Dict = {}
 > = FunctionComponent<HTMLDittoProps<T, P> & { ref?: any }>;
 
 export type HTMLDittoProps<
-  T extends ElementType,
+  T extends keyof JSX.IntrinsicElements, // Usando o JSX do Preact
   P extends Dict = {}
 > = JsxHtmlProps<
-  ComponentPropsWithoutRef<T>,
+  JSX.IntrinsicElements[T], // Usa as props nativas do Preact
   Assign<JsxStyleProps, P> & PolymorphicProps
 >;
 
 export type JsxElement<
-  T extends ElementType,
+  T extends keyof JSX.IntrinsicElements,
   P extends Dict
 > = T extends DittoComponent<infer A, infer B>
   ? DittoComponent<A, Pretty<DistributiveUnion<P, B>>>
   : DittoComponent<T, P>;
 
 export interface JsxFactory {
-  <T extends ElementType>(component: T): DittoComponent<T, {}>;
-  <T extends ElementType, P extends RecipeVariantRecord>(
+  <T extends keyof JSX.IntrinsicElements>(component: T): DittoComponent<T, {}>;
+  <T extends keyof JSX.IntrinsicElements, P extends RecipeVariantRecord>(
     component: T,
     recipe: RecipeDefinition<P>,
-    options?: JsxFactoryOptions<Assign<ComponentProps<T>, RecipeSelection<P>>>
+    options?: JsxFactoryOptions<
+      Assign<JSX.IntrinsicElements[T], RecipeSelection<P>>
+    >
   ): JsxElement<T, RecipeSelection<P>>;
 }
 
