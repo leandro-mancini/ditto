@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useEffect } from 'preact/hooks';
+import { useMemo, useEffect, useRef, useState } from 'preact/hooks';
 import isPropValid from '@emotion/is-prop-valid';
 import { css, cx } from '@emotion/css';
 import { serializeStyles } from '@emotion/serialize';
@@ -11,7 +11,7 @@ import {
   insertStyles,
   registerStyles,
 } from '@emotion/utils';
-import { compact, mergeProps, mergeRefs } from '@dittox/styled-system';
+import { compact, mergeRefs } from '@dittox/styled-system';
 import { useDittoContext } from './provider';
 import { useResolvedProps } from './use-resolved-props';
 import { StyledFactoryFn, JsxFactory } from './factory.types';
@@ -48,6 +48,8 @@ const Insertion = ({ cache, serialized, isStringTag, shadowRoot }: any) => {
   );
 
   useEffect(() => {
+    // console.log('shadowRoot', shadowRoot)
+
     if (shadowRoot) {
       const styleElement = document.createElement('style');
       styleElement.textContent = rules || serialized.styles;
@@ -56,23 +58,6 @@ const Insertion = ({ cache, serialized, isStringTag, shadowRoot }: any) => {
     }
   }, [rules, serialized.styles, shadowRoot]);
 
-  if (!isBrowser && rules !== undefined) {
-    let serializedNames = serialized.name;
-    let next = serialized.next;
-    while (next !== undefined) {
-      serializedNames = cx(serializedNames, next.name);
-      next = next.next;
-    }
-    return (
-      <style
-        {...{
-          [`data-emotion`]: cx(cache.key, serializedNames),
-          dangerouslySetInnerHTML: { __html: rules },
-          nonce: cache.sheet.nonce,
-        }}
-      />
-    );
-  }
   return null;
 };
 
@@ -99,6 +84,8 @@ const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
   let styles: any[] = [];
 
   const Styled: any = (inProps: any, ref: any) => {
+    const elementRef = useRef<HTMLElement | null>(null); // Ref para o elemento
+    const [shadowRoot, setShadowRoot] = useState<ShadowRoot | null>(null); // Estado para o shadowRoot
     const { cva, isValidProperty } = useDittoContext();
 
     const cvaFn = configOrCva.__cva__ ? configOrCva : cva(configOrCva);
@@ -181,7 +168,28 @@ const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
     }
 
     newProps.className = className.trim();
-    newProps.ref = ref;
+    newProps.ref = (node: HTMLElement) => {
+      elementRef.current = node;
+      //@ts-ignore
+      if (ref) mergeRefs(ref, node); // Usar mergeRefs para combinar ref externo com interno
+
+      if (node?.parentNode instanceof ShadowRoot) {
+        setShadowRoot(node.parentNode);
+      }
+    };
+
+    useEffect(() => {
+      if (elementRef.current) {
+        const hostElement = elementRef.current;
+        const currentShadowRoot =
+          hostElement.shadowRoot || hostElement.getRootNode();
+        if (currentShadowRoot instanceof ShadowRoot) {
+          setShadowRoot(currentShadowRoot); // Atualiza o estado do shadowRoot
+        }
+      }
+    }, [elementRef.current]);
+
+    // console.log('inProps', inProps)
 
     return (
       <>
@@ -189,7 +197,7 @@ const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
           cache={{}}
           serialized={serialized}
           isStringTag={typeof FinalTag === 'string'}
-          shadowRoot={inProps.shadowRoot}
+          shadowRoot={shadowRoot}
         />
         <FinalTag {...newProps} />
       </>
