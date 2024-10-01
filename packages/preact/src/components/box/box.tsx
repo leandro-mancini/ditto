@@ -10,4 +10,4 @@ export interface BoxProps extends HTMLDittoProps<'div'> {}
 export const Box = ditto('div') as preact.FunctionComponent<any>;
 
 // Registra o componente com Preact Custom Elements
-register(Box, 'apollo-box', ['class', 'style', 'id']);
+register(Box, 'ditto-box', ['class', 'style', 'id']);

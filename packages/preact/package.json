@@ -1,10 +1,10 @@
 {
-  "name": "preact",
-  "version": "0.0.1",
+  "name": "@dittox/preact",
+  "version": "0.0.1-beta.2",
   "main": "./index.js",
   "module": "./index.mjs",
   "typings": "./index.d.ts",
-  "private": true,
+  "private": false,
   "publishConfig": {
     "access": "public"
   },

@@ -3,9 +3,9 @@
 import { h, Fragment } from 'preact';
 import { Global } from '@emotion/react';
 import { SystemContext } from '@dittox/styled-system';
+import register from 'preact-custom-element';
 import { createContext } from '../create-context';
 
-// Criando o contexto Ditto
 const [DittoContextProvider, useDittoContext] = createContext<SystemContext>({
   name: 'DittoContext',
   strict: true,
@@ -14,7 +14,7 @@ const [DittoContextProvider, useDittoContext] = createContext<SystemContext>({
 
 export interface DittoProviderProps {
   value: SystemContext;
-  children: preact.ComponentChildren; // Altera para Preact.ComponentChildren
+  children: preact.ComponentChildren;
 }
 
 function DittoProvider(props: DittoProviderProps) {
@@ -22,13 +22,16 @@ function DittoProvider(props: DittoProviderProps) {
 
   return (
     <DittoContextProvider value={sys}>
-      {/* <Global
-        styles={[sys.getPreflightCss(), sys.getGlobalCss(), sys.getTokenCss()]}
-      /> */}
+      <style>
+        {sys.getPreflightCss()}
+        {sys.getGlobalCss()}
+        {sys.getTokenCss()}
+      </style>
       {children}
     </DittoContextProvider>
   );
 }
 
-// Exporta o provider e o hook para o contexto
+register(DittoProvider, 'ditto-provider', ['value']);
+
 export { DittoProvider, useDittoContext };
