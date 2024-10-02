@@ -1,20 +1,13 @@
 'use client';
 
-import { useMemo, useEffect, useRef, useState } from 'preact/hooks';
+import { useMemo } from 'preact/hooks';
 import isPropValid from '@emotion/is-prop-valid';
-import { css, cx } from '@emotion/css';
 import { serializeStyles } from '@emotion/serialize';
-//@ts-ignore
-import { useInsertionEffectAlwaysWithSyncFallback } from '@emotion/use-insertion-effect-with-fallbacks';
-import {
-  getRegisteredStyles,
-  insertStyles,
-  registerStyles,
-} from '@emotion/utils';
-import { compact, mergeRefs } from '@dittox/styled-system';
+import { compact, cx } from '@dittox/styled-system';
 import { useDittoContext } from './provider';
 import { useResolvedProps } from './use-resolved-props';
 import { StyledFactoryFn, JsxFactory } from './factory.types';
+import { getRegisteredStyles } from '@emotion/utils';
 
 const testOmitPropsOnStringTag = isPropValid;
 const testOmitPropsOnComponent = (key: string) => key !== 'theme';
@@ -38,27 +31,28 @@ const composeShouldForwardProps = (tag: any, options: any, isReal: boolean) => {
   return shouldForwardProp;
 };
 
-let isBrowser = typeof document !== 'undefined';
+const Insertion = ({ cache, serialized, isStringTag }: any) => {
+  const cacheKey = cache?.key || 'css';
 
-const Insertion = ({ cache, serialized, isStringTag, shadowRoot }: any) => {
-  registerStyles(cache, serialized, isStringTag);
+  let serializedNames = serialized.name;
+  let next = serialized.next;
 
-  const rules = useInsertionEffectAlwaysWithSyncFallback(() =>
-    insertStyles(cache, serialized, isStringTag)
+  while (next !== undefined) {
+    serializedNames = cx(serializedNames, next.name);
+    next = next.next;
+  }
+
+  const className = `${cacheKey}-${serialized.name}`;
+  const stylesheet = `.${className}{${serialized.styles}}`;
+
+  return (
+    <>
+      <style
+        dangerouslySetInnerHTML={{ __html: stylesheet }}
+        data-emotion={className}
+      />
+    </>
   );
-
-  useEffect(() => {
-    // console.log('shadowRoot', shadowRoot)
-
-    if (shadowRoot) {
-      const styleElement = document.createElement('style');
-      styleElement.textContent = rules || serialized.styles;
-      styleElement.textContent = `.css-${serialized.name} { ${serialized.styles} }`;
-      shadowRoot.appendChild(styleElement);
-    }
-  }, [rules, serialized.styles, shadowRoot]);
-
-  return null;
 };
 
 const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
@@ -83,9 +77,7 @@ const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
 
   let styles: any[] = [];
 
-  const Styled: any = (inProps: any, ref: any) => {
-    const elementRef = useRef<HTMLElement | null>(null); // Ref para o elemento
-    const [shadowRoot, setShadowRoot] = useState<ShadowRoot | null>(null); // Estado para o shadowRoot
+  const Styled = (inProps: any, cache: any, ref: any) => {
     const { cva, isValidProperty } = useDittoContext();
 
     const cvaFn = configOrCva.__cva__ ? configOrCva : cva(configOrCva);
@@ -135,19 +127,31 @@ const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
     let className = '';
     let classInterpolations: any[] = [styleProps];
     let mergedProps: any = props;
+    if (props.theme == null) {
+      mergedProps = {};
+      for (let key in props) {
+        mergedProps[key] = props[key];
+      }
+
+      mergedProps.theme = {};
+    }
 
     if (typeof props.className === 'string') {
-      className = getRegisteredStyles({}, classInterpolations, props.className);
+      className = getRegisteredStyles(
+        cache.registered,
+        classInterpolations,
+        props.className
+      );
     } else if (props.className != null) {
       className = cx(className, props.className);
     }
 
     const serialized = serializeStyles(
       styles.concat(classInterpolations),
-      {},
+      cache.registered,
       mergedProps
     );
-    className = cx(className, css(serialized.styles));
+    className = cx(className, `${cache?.key || 'css'}-${serialized.name}`);
 
     if (targetClassName !== undefined) {
       className = cx(className, targetClassName);
@@ -168,36 +172,14 @@ const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
     }
 
     newProps.className = className.trim();
-    newProps.ref = (node: HTMLElement) => {
-      elementRef.current = node;
-      //@ts-ignore
-      if (ref) mergeRefs(ref, node); // Usar mergeRefs para combinar ref externo com interno
-
-      if (node?.parentNode instanceof ShadowRoot) {
-        setShadowRoot(node.parentNode);
-      }
-    };
-
-    useEffect(() => {
-      if (elementRef.current) {
-        const hostElement = elementRef.current;
-        const currentShadowRoot =
-          hostElement.shadowRoot || hostElement.getRootNode();
-        if (currentShadowRoot instanceof ShadowRoot) {
-          setShadowRoot(currentShadowRoot); // Atualiza o estado do shadowRoot
-        }
-      }
-    }, [elementRef.current]);
-
-    // console.log('inProps', inProps)
+    newProps.ref = ref;
 
     return (
       <>
         <Insertion
-          cache={{}}
+          cache={cache}
           serialized={serialized}
           isStringTag={typeof FinalTag === 'string'}
-          shadowRoot={shadowRoot}
         />
         <FinalTag {...newProps} />
       </>
@@ -217,18 +199,6 @@ const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
   Styled.__emotion_base = baseTag;
   Styled.__emotion_forwardProp = options.shouldForwardProp;
   Styled.__emotion_cva = configOrCva;
-
-  Object.defineProperty(Styled, 'toString', {
-    value() {
-      if (
-        targetClassName === undefined &&
-        process.env['NODE_ENV'] !== 'production'
-      ) {
-        return 'NO_COMPONENT_SELECTOR';
-      }
-      return `.${targetClassName}`;
-    },
-  });
 
   return Styled;
 };

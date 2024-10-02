@@ -4,11 +4,11 @@ import { h } from 'preact';
 import register from 'preact-custom-element';
 import { ditto, DittoProvider, HTMLDittoProps } from '../../core';
 import { createSystem } from '@dittox/styled-system';
-import { useEffect, useRef, useState } from 'preact/hooks';
+import { defaultConfig } from '../../preset';
 
 export interface BoxProps extends HTMLDittoProps<'div'> {}
 
-export const system = createSystem({});
+export const system = createSystem(defaultConfig);
 
 export const BoxComponent = ditto('div') as preact.FunctionComponent<any>;
 
@@ -20,9 +20,11 @@ export const Box = (props: BoxProps) => {
   );
 };
 
-register(
-  Box,
-  'ditto-box',
-  ['class', 'style', 'id', 'background-color', 'bg-color'],
-  { shadow: true }
-);
+const systemPropertiesArray = [
+  ...system.conditions.keys(),
+  ...system.utility.keys(),
+];
+
+register(Box, 'ditto-box', [...systemPropertiesArray, 'disabled'], {
+  shadow: true,
+});
