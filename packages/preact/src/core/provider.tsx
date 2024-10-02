@@ -1,10 +1,12 @@
 'use client';
 
+import { h } from 'preact';
 import { SystemContext } from '@dittox/styled-system';
 import register from 'preact-custom-element';
 import { createContext } from '../create-context';
+import React from 'react';
+import { serializeStyles } from '@emotion/serialize';
 
-// Criando o contexto Ditto usando o helper createContext para Preact
 const [DittoContextProvider, useDittoContext] = createContext<SystemContext>({
   name: 'DittoContext',
   strict: true,
@@ -19,7 +21,23 @@ export interface DittoProviderProps {
 function DittoProvider(props: DittoProviderProps) {
   const { value: sys, children } = props;
 
-  return <DittoContextProvider value={sys}>{children}</DittoContextProvider>;
+  let globalStylesString = '';
+
+  if (sys) {
+    const globalStyles = serializeStyles([
+      sys.getGlobalCss(),
+      sys.getPreflightCss(),
+      sys.getTokenCss(),
+    ]);
+    globalStylesString = globalStyles.styles;
+  }
+
+  return (
+    <DittoContextProvider value={sys}>
+      <style>{globalStylesString}</style>
+      {children}
+    </DittoContextProvider>
+  );
 }
 
 register(DittoProvider, 'ditto-provider', ['value']);
