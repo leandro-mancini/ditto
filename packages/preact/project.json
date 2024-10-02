@@ -1,0 +1,19 @@
+{
+  "name": "preact",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/preact/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/preact",
+        "main": "packages/preact/src/index.ts",
+        "tsConfig": "packages/preact/tsconfig.lib.json",
+        "assets": ["packages/preact/*.md"]
+      }
+    }
+  }
+}
