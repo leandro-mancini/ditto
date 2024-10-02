@@ -1,0 +1,17 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@dittox/react": "0.0.1-beta.2",
+    "@dittox/styled-system": "0.0.1-beta.6",
+    "next-themes": "^0.3.0"
+  }
+}

@@ -253,8 +253,8 @@ importers:
   packages/react:
     dependencies:
       '@dittox/styled-system':
-        specifier: 0.0.1-beta.5
-        version: 0.0.1-beta.5
+        specifier: 0.0.1-beta.6
+        version: 0.0.1-beta.6
       '@emotion/is-prop-valid':
         specifier: 1.3.0
         version: 1.3.0
@@ -297,6 +297,18 @@ importers:
       csstype:
         specifier: 3.1.3
         version: 3.1.3
+
+  website:
+    dependencies:
+      '@dittox/react':
+        specifier: 0.0.1-beta.2
+        version: 0.0.1-beta.2(@types/react@18.3.1)(react@18.3.1)
+      '@dittox/styled-system':
+        specifier: 0.0.1-beta.6
+        version: 0.0.1-beta.6
+      next-themes:
+        specifier: ^0.3.0
+        version: 0.3.0(react-dom@18.3.1)(react@18.3.1)
 
 packages:
   /@adobe/css-tools@4.4.0:
@@ -2471,13 +2483,22 @@ packages:
       uuid: 8.3.2
     dev: true
 
-  /@dittox/styled-system@0.0.1-beta.5:
+  /@dittox/react@0.0.1-beta.2(@types/react@18.3.1)(react@18.3.1):
     resolution:
       {
-        integrity: sha512-rf2lWfPGJZPkWG8AubzYqJRxUmQtkzdDKutiEwGiHVupGG4NFGV00BUOqL236WakCfvWCbp7oVGjQjqGzB0ceg==,
+        integrity: sha512-EtZ9zc3CnM9DWcwsO9u2Ki1iAESQ3PM15u/ZnS42HzBqjjCTEyPsSSGIUtyejkGRKh4XI8C64vfpZ+Kbi/ajOQ==,
       }
     dependencies:
-      csstype: 3.1.3
+      '@dittox/styled-system': 0.0.1-beta.6
+      '@emotion/is-prop-valid': 1.3.0
+      '@emotion/react': 11.13.3(@types/react@18.3.1)(react@18.3.1)
+      '@emotion/serialize': 1.3.1
+      '@emotion/use-insertion-effect-with-fallbacks': 1.1.0(react@18.3.1)
+      '@emotion/utils': 1.4.0
+    transitivePeerDependencies:
+      - '@types/react'
+      - react
+      - supports-color
     dev: false
 
   /@dittox/styled-system@0.0.1-beta.6:
@@ -17666,6 +17687,19 @@ packages:
       {
         integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==,
       }
+
+  /next-themes@0.3.0(react-dom@18.3.1)(react@18.3.1):
+    resolution:
+      {
+        integrity: sha512-/QHIrsYpd6Kfk7xakK4svpDI5mmXP0gfvCoJdGpZQ2TOrQZmsW0QxjaiLn8wbIKjtm4BTSqLoix4lxYYOnLJ/w==,
+      }
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18
+      react-dom: ^16.8 || ^17 || ^18
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    dev: false
 
   /next@14.2.3(@babel/core@7.25.2)(react-dom@18.3.1)(react@18.3.1):
     resolution:
