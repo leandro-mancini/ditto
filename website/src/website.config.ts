@@ -1,9 +1,8 @@
 export const websiteConfig: WebsiteConfig = {
-  copyright: 'Copyright © {{date}} Mancini Dev. Todos os direitos reservados.',
-  title: 'Mancini Dev',
-  titleTemplate: '%s | Mancini Dev',
-  description:
-    'Um engenheiro de software interessado em Frontend, Design System, DX, DevOps e infraestrutura como código.',
+  copyright: 'Copyright © {{date}} Ditto. Todos os direitos reservados.',
+  title: 'Ditto',
+  titleTemplate: '%s | Ditto',
+  description: 'Crie aplicativos escaláveis ​​e acessíveis com facilidade.',
   url: 'https://mancinidev.me',
   repoUrl: 'https://github.com/leandro-mancini',
   navigation: [
