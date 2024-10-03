@@ -5,10 +5,7 @@ export const websiteConfig: WebsiteConfig = {
   description: 'Crie aplicativos escaláveis ​​e acessíveis com facilidade.',
   url: 'https://mancinidev.me',
   repoUrl: 'https://github.com/leandro-mancini',
-  navigation: [
-    { title: 'Categorias', url: 'categories' },
-    { title: 'Artigos', url: 'posts' },
-  ],
+  navigation: [{ title: 'Docs', url: 'docs' }],
 };
 
 interface WebsiteConfig {
@@ -27,3 +24,5 @@ export interface NavItem {
   status?: string;
   items?: NavItem[];
 }
+
+export interface FlattenNavItem extends Omit<NavItem, 'items'> {}

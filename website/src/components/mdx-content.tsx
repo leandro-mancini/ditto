@@ -1,5 +1,19 @@
 import * as runtime from 'react/jsx-runtime';
-import { Anchor, Code, H1, H2, H3, H4, Img, Li, Ol, P, Pre, Ul } from './mdx';
+import {
+  Anchor,
+  Code,
+  H1,
+  H2,
+  H3,
+  H4,
+  Img,
+  Li,
+  Ol,
+  P,
+  Pre,
+  Strong,
+  Ul,
+} from './mdx';
 
 // const sharedComponents = {
 //     a: Anchor,
@@ -36,6 +50,7 @@ const sharedComponents = {
   a: Anchor,
   code: Code,
   p: P,
+  strong: Strong,
   pre: Pre,
   // blockquote: Blockquote,
   img: Img,

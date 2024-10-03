@@ -5,5 +5,11 @@ import { ThemeProvider } from 'next-themes';
 import { system } from './theme';
 
 export const Provider = (props: { children: React.ReactNode }) => {
-  return <DittoProvider value={system}>{props.children}</DittoProvider>;
+  return (
+    <DittoProvider value={system}>
+      <ThemeProvider attribute="class" disableTransitionOnChange>
+        {props.children}
+      </ThemeProvider>
+    </DittoProvider>
+  );
 };
