@@ -1,6 +1,6 @@
 {
   "name": "@ditto/react",
-  "version": "0.0.1-beta.2",
+  "version": "0.0.1-beta.7",
   "main": "./index.js",
   "types": "./index.d.ts",
   "publishConfig": {

@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import isPropValid from '@emotion/is-prop-valid';
 import { ThemeContext, withEmotionCache } from '@emotion/react';
 import { serializeStyles } from '@emotion/serialize';
 //@ts-ignore
@@ -15,6 +14,13 @@ import { compact, cx, mergeProps, mergeRefs } from '@dittox/styled-system';
 import { useDittoContext } from './provider';
 import { useResolvedProps } from './use-resolved-props';
 import { StyledFactoryFn, JsxFactory } from './factory.types';
+import emotionIsPropValid from '@emotion/is-prop-valid';
+
+export function interopDefault<T>(mod: T): T {
+  return (mod as any).default || (mod as T);
+}
+
+const isPropValid = interopDefault(emotionIsPropValid);
 
 const testOmitPropsOnStringTag = isPropValid;
 const testOmitPropsOnComponent = (key: string) => key !== 'theme';
@@ -71,7 +77,7 @@ const createStyled = (tag: any, configOrCva: any = {}, options: any = {}) => {
   if (process.env.NODE_ENV !== 'production') {
     if (tag === undefined) {
       throw new Error(
-        'Você está tentando criar um elemento estilizado com um componente indefinido.\nVocê pode ter esquecido de importá-lo.'
+        'You are trying to create a styled element with an undefined component.\nYou may have forgotten to import it.'
       );
     }
   }
