@@ -16,6 +16,7 @@ const { withContext, PropsProvider } = createRecipeContext({
       flexShrink: '0',
       outline: '0',
       lineHeight: '1.2',
+      color: '#a1a1aa',
       isolation: 'isolate',
       fontWeight: 'medium',
       transitionProperty: 'common',

@@ -69,6 +69,7 @@ const config: Config = {
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'Ditto',
+      hideOnScroll: false,
       logo: {
         alt: 'Ditto Logo',
         src: 'img/logo.svg',
@@ -116,7 +117,7 @@ const config: Config = {
       copyright: '© 2024 Ditto - Feito com ☕',
     },
     colorMode: {
-      defaultMode: 'light',
+      defaultMode: 'dark',
       // disableSwitch: true,
       respectPrefersColorScheme: false,
     },

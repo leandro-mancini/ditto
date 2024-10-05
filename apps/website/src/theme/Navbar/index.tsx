@@ -1,23 +1,19 @@
+'use client';
+
 import { Box, Container, ditto, HStack, Spacer } from '@dittox/react';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from '@docusaurus/Link';
 import { BsGithub } from 'react-icons/bs';
 import { LuMoon } from 'react-icons/lu';
 import { SearchButton } from './search-button';
 import { IconButton } from '@site/src/ui/icon-button';
 import { Logo } from './logo';
-// import {  } from '@docusaurus/constants'
-
-function useNavbarItems() {
-  // TODO temporary casting until ThemeConfig type is improved
-  // return useThemeConfig().navbar.items;
-  // return useDocusaurusContext().siteConfig.
-}
+import { useThemeConfig } from '@docusaurus/theme-common';
 
 export const ColorModeButton = () => {
-  // const { theme, setTheme } = useTheme();
+  // const { colorMode, setColorMode } = useColorMode();
   const handleClick = () => {
-    // setTheme(theme === 'light' ? 'dark' : 'light');
+    // setColorMode(colorMode === 'light' ? 'dark' : 'light');
   };
   return (
     <IconButton onClick={handleClick}>
@@ -28,7 +24,7 @@ export const ColorModeButton = () => {
 
 const HeaderRoot = ditto('header', {
   base: {
-    bg: 'bg',
+    bg: 'var(--ifm-navbar-background-color)',
     position: 'sticky',
     top: '0',
     display: 'flex',
@@ -36,8 +32,34 @@ const HeaderRoot = ditto('header', {
     width: '100%',
     minHeight: '64px',
     borderBottom: '1px solid',
-    borderColor: 'border.subtle',
+    borderColor: '#18181b',
     zIndex: '10',
+  },
+});
+
+const TopNavLink = ditto(Link, {
+  base: {
+    fontSize: 'sm',
+    color: 'fg.subtle',
+    _currentPage: {
+      color: 'fg',
+      fontWeight: 'medium',
+    },
+    _hover: {
+      color: 'fg',
+    },
+  },
+  variants: {
+    variant: {
+      tab: {
+        py: '2',
+        borderBottomWidth: '2px',
+        borderColor: 'transparent',
+        transition: 'border-color 0.2s',
+        _hover: { borderColor: 'border' },
+        _currentPage: { borderColor: 'fg!' },
+      },
+    },
   },
 });
 
@@ -52,21 +74,21 @@ const HeaderLogoLink = () => {
 };
 
 const HeaderPrimaryNavbar = () => {
-  // const route = useRoute();
-  // const items = route.getPrimaryNavItems();
+  const { navbar } = useThemeConfig();
+  const items = navbar.items || [];
 
   return (
-    <HStack gap="8" minH="48px" aria-label="primary navigation">
+    <HStack gap="32px" minH="48px" aria-label="primary navigation">
       <HeaderLogoLink />
-      {/* {items.map((item) => (
-          <TopNavLink
-            key={item.title}
-            href={item.url || '#'}
-            aria-current={item.current ? 'page' : undefined}
-          >
-            {item.title}
-          </TopNavLink>
-        ))} */}
+      {items.map((item) => (
+        <TopNavLink
+          key={item.label}
+          to={item.to || '#'}
+          aria-current={item.current ? 'page' : undefined}
+        >
+          {item.label}
+        </TopNavLink>
+      ))}
     </HStack>
   );
 };
@@ -91,7 +113,7 @@ const HeaderDesktopActions = () => {
 
 const HeaderDesktopNavbar = () => {
   return (
-    <Box hideBelow="md">
+    <Box className="navbar" hideBelow="md" display="block" height="auto">
       <HStack paddingInline="2rem" height={64}>
         <HeaderPrimaryNavbar />
         <Spacer />
