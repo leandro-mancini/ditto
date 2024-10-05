@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Ditto',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Crie aplicativos escaláveis ​​e acessíveis com facilidade.',
   url: 'https://chakra-ui.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',

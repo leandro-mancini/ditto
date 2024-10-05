@@ -22,6 +22,7 @@ const { withContext, PropsProvider } = createRecipeContext({
       transitionProperty: 'common',
       transitionDuration: 'moderate',
       focusVisibleRing: 'outside',
+      cursor: 'pointer',
       gap: '8px',
       h: '40px',
       minW: '40px',
