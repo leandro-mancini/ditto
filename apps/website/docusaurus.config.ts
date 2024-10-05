@@ -11,8 +11,8 @@ const config: Config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'pt-BR',
+    locales: ['pt-BR'],
   },
 
   plugins: [
@@ -117,12 +117,18 @@ const config: Config = {
     },
     colorMode: {
       defaultMode: 'light',
-      disableSwitch: true,
+      // disableSwitch: true,
       respectPrefersColorScheme: false,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+    },
+    algolia: {
+      indexName: 'chakra-ui',
+      apiKey: 'df1dcc41f7b8e5d68e73dd56d1e19701',
+      appId: 'BH4D9OD16A',
+      contextualSearch: true,
     },
   } satisfies Preset.ThemeConfig,
 };
