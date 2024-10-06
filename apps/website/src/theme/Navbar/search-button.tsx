@@ -20,15 +20,6 @@ export const SearchButton = forwardRef<HTMLButtonElement, any>(
         >
           Pesquisar...
         </Box>
-        {/* <Kbd
-                    variant="outline"
-                    bg="bg"
-                    fontSize="0.8em"
-                    letterSpacing="widest"
-                    me="-1"
-                >
-                    ⌘K
-                </Kbd> */}
       </Button>
     );
   }

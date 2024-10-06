@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Ditto',
   tagline: 'Crie aplicativos escaláveis ​​e acessíveis com facilidade.',
-  url: 'https://chakra-ui.com',
+  url: 'https://ditto.dev',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -84,7 +84,7 @@ const config: Config = {
         {
           to: '/styling/overview',
           activeBasePath: 'styling',
-          label: 'Estilo',
+          label: 'Estilos',
           position: 'left',
         },
         {
@@ -126,7 +126,7 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
     algolia: {
-      indexName: 'chakra-ui',
+      indexName: 'ditto',
       apiKey: 'df1dcc41f7b8e5d68e73dd56d1e19701',
       appId: 'BH4D9OD16A',
       contextualSearch: true,
