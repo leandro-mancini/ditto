@@ -23,6 +23,8 @@ const config: Config = {
         path: 'styling',
         routeBasePath: 'styling',
         sidebarPath: require.resolve('./sidebars.ts'),
+        sidebarCollapsed: false,
+        sidebarCollapsible: false,
       },
     ],
     [
@@ -51,7 +53,6 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          sidebarCollapsed: true,
           editUrl: 'https://github.com/leandro-mancini/ditto/',
         },
         theme: {
@@ -90,7 +91,7 @@ const config: Config = {
         {
           to: '/theming/overview',
           activeBasePath: 'theming',
-          label: 'Tema',
+          label: 'Temas',
           position: 'left',
         },
         {
