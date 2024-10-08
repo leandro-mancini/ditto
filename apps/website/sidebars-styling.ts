@@ -13,6 +13,47 @@ const sidebarsStyling = {
     },
     {
       type: 'category',
+      label: 'Conceitos',
+      items: [
+        {
+          type: 'doc',
+          id: 'concepts/factory',
+          label: 'Fábrica de Estilos',
+        },
+        {
+          type: 'doc',
+          id: 'concepts/responsive-design',
+          label: 'Design Responsivo',
+        },
+        {
+          type: 'doc',
+          id: 'concepts/css-variables',
+          label: 'Variáveis CSS',
+        },
+        {
+          type: 'doc',
+          id: 'concepts/dark-mode',
+          label: 'Modo Escuro',
+        },
+        {
+          type: 'doc',
+          id: 'concepts/color-opacity-modifier',
+          label: 'Modificador de Opacidade de Cor',
+        },
+        {
+          type: 'doc',
+          id: 'concepts/conditional-styles',
+          label: 'Estilos Condicionais',
+        },
+        {
+          type: 'doc',
+          id: 'concepts/virtual-color',
+          label: 'Cor Virtual',
+        },
+      ],
+    },
+    {
+      type: 'category',
       label: 'Composições',
       items: [
         {
@@ -39,47 +80,6 @@ const sidebarsStyling = {
     },
     {
       type: 'category',
-      label: 'Conceitos Avançados',
-      items: [
-        {
-          type: 'doc',
-          id: 'concepts/cascade-layers',
-          label: 'Camadas em Cascata',
-        },
-        {
-          type: 'doc',
-          id: 'concepts/color-opacity-modifier',
-          label: 'Modificador de Opacidade de Cor',
-        },
-        {
-          type: 'doc',
-          id: 'concepts/conditional-styles',
-          label: 'Estilos Condicionais',
-        },
-        {
-          type: 'doc',
-          id: 'concepts/css-variables',
-          label: 'Variáveis CSS',
-        },
-        {
-          type: 'doc',
-          id: 'concepts/dark-mode',
-          label: 'Modo Escuro',
-        },
-        {
-          type: 'doc',
-          id: 'concepts/responsive-design',
-          label: 'Design Responsivo',
-        },
-        {
-          type: 'doc',
-          id: 'concepts/factory',
-          label: 'Fábrica de Estilos',
-        },
-      ],
-    },
-    {
-      type: 'category',
       label: 'Propriedades de Estilo',
       items: [
         {
@@ -99,8 +99,23 @@ const sidebarsStyling = {
         },
         {
           type: 'doc',
+          id: 'style-props/effects',
+          label: 'Effects',
+        },
+        {
+          type: 'doc',
+          id: 'style-props/filters',
+          label: 'Filters',
+        },
+        {
+          type: 'doc',
           id: 'style-props/flex-and-grid',
           label: 'Flex e Grid',
+        },
+        {
+          type: 'doc',
+          id: 'style-props/interactivity',
+          label: 'Interactivity',
         },
         {
           type: 'doc',
@@ -109,18 +124,43 @@ const sidebarsStyling = {
         },
         {
           type: 'doc',
+          id: 'style-props/list',
+          label: 'List',
+        },
+        {
+          type: 'doc',
           id: 'style-props/sizing',
-          label: 'Dimensionamento',
+          label: 'Sizing',
         },
         {
           type: 'doc',
           id: 'style-props/spacing',
-          label: 'Espaçamento',
+          label: 'Spacing',
+        },
+        {
+          type: 'doc',
+          id: 'style-props/svg',
+          label: 'SVG',
+        },
+        {
+          type: 'doc',
+          id: 'style-props/tables',
+          label: 'Tables',
+        },
+        {
+          type: 'doc',
+          id: 'style-props/transforms',
+          label: 'Transforms',
+        },
+        {
+          type: 'doc',
+          id: 'style-props/transitions',
+          label: 'Transitions',
         },
         {
           type: 'doc',
           id: 'style-props/typography',
-          label: 'Tipografia',
+          label: 'Typography',
         },
       ],
     },

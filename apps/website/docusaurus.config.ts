@@ -86,12 +86,12 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
-        {
-          to: '/docs/overview',
-          activeBasePath: 'getting-started',
-          label: 'Começando',
-          position: 'left',
-        },
+        // {
+        //   to: '/docs/overview',
+        //   activeBasePath: 'getting-started',
+        //   label: 'Começando',
+        //   position: 'left',
+        // },
         {
           to: '/styling/overview',
           activeBasePath: 'styling',
