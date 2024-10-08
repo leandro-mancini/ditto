@@ -52,5 +52,23 @@ export const Ul = (props: BoxProps) => {
 };
 
 export const Li = (props: BoxProps) => {
-  return <Box as="li" css={{ marginY: '0.8em' }} {...props} />;
+  return (
+    <Box
+      as="li"
+      css={{
+        marginY: '0.8em',
+        '& code': {
+          fontSize: '0.8em',
+          letterSpacing: '-0.01em',
+          borderRadius: '0.5rem',
+          borderWidth: '0.5px',
+          bg: 'bg.subtle',
+          color: 'fg',
+          whiteSpace: 'pre',
+          padding: '0.1em 0.4em',
+        },
+      }}
+      {...props}
+    />
+  );
 };

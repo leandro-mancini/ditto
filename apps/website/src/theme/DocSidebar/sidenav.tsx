@@ -1,5 +1,6 @@
 import { Box, ditto, HStack, Stack } from '@dittox/react';
 import Link, { NavLinkProps } from '@docusaurus/Link';
+import { useLocation } from '@docusaurus/router';
 import React from 'react';
 
 interface SideNavItem {
@@ -27,11 +28,20 @@ const SideNavLink = ditto(Link, {
       color: '#e4e4e7',
       textDecor: 'none',
     },
+    _currentPage: {
+      background: '#18181b',
+      color: '#e4e4e7',
+      textDecor: 'none',
+      fontWeight: '600',
+    },
   },
 });
 
 export const SideNav = (props: SideNavProps) => {
-  const { title, items, currentUrl } = props;
+  const { title, items } = props;
+  const location = useLocation();
+
+  console.log('props', props);
 
   return (
     <Stack gap="8px">
@@ -41,31 +51,28 @@ export const SideNav = (props: SideNavProps) => {
         </Box>
       )}
       <Stack gap="1px">
-        {items.map((item, index) => (
-          <HStack
-            key={index}
-            asChild
-            py="6px"
-            ps="16px"
-            pe="12px"
-            rounded="0.25rem"
-            color="#a1a1aa"
-            _hover={{
-              layerStyle: 'fill.subtle',
-              colorPalette: 'gray',
-            }}
-            _currentPage={{
-              fontWeight: 'medium',
-              layerStyle: 'fill.subtle',
-              colorPalette: 'gray',
-            }}
-          >
-            <SideNavLink href={item.href}>
-              {item.label}
-              {/* <Link ref={item.href}>{item.label}</Link> */}
-            </SideNavLink>
-          </HStack>
-        ))}
+        {items.map((item, index) => {
+          const currentUrl = location.pathname === item.href;
+
+          return (
+            <HStack
+              key={index}
+              asChild
+              py="6px"
+              ps="16px"
+              pe="12px"
+              rounded="0.25rem"
+              color="#a1a1aa"
+            >
+              <SideNavLink
+                href={item.href}
+                aria-current={currentUrl ? 'page' : undefined}
+              >
+                {item.label}
+              </SideNavLink>
+            </HStack>
+          );
+        })}
       </Stack>
     </Stack>
   );

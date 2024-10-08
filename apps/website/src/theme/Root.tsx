@@ -21,6 +21,9 @@ export const system = createSystem(defaultConfig, {
       paddingInline: '2rem',
       bgColor: '#09090b',
     },
+    '.markdown': {
+      paddingTop: 'var(--ifm-toc-padding-vertical)',
+    },
   },
 });
 

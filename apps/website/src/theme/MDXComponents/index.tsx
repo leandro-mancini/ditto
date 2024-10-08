@@ -24,7 +24,7 @@ export default {
   h3: H3,
   h4: H4,
   pre: Pre,
-  //   code: Code,
+  // code: Code,
   ol: Ol,
   ul: Ul,
   li: Li,

@@ -1,4 +1,107 @@
 ---
 title: Modo Escuro
-description: Aprenda a usar o modo escuro
+description: Aprenda como usar o modo escuro em aplicações Ditto
 ---
+
+O Ditto utiliza a biblioteca `next-themes` para fornecer suporte ao modo escuro. Durante o processo de instalação, os snippets necessários para começar são adicionados ao seu projeto via CLI.
+
+Os snippets gerados consistem no seguinte:
+
+- `ColorModeProvider`: compõe o componente provider do next-themes
+- `useColorMode`: fornece o modo de cor atual e uma função para alternar o modo de cor
+- `useColorModeValue`: retorna o valor correto com base no modo de cor atual
+- `ColorModeButton`: pode ser usado para alternar o modo de cor
+
+## Uso
+
+Envolva sua aplicação com o ColorModeProvider e use o hook useColorMode para acessar e alternar o modo de cor.
+
+```tsx
+import { ColorModeProvider } from '@/components/ui/color-mode';
+import { DittoProvider, defaultSystem } from '@ditto/react';
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <DittoProvider theme={defaultSystem}>
+      <ColorModeProvider>{children}</ColorModeProvider>
+    </DittoProvider>
+  );
+}
+```
+
+## Adicionando o botão de alternância do modo escuro
+
+Use o componente ColorModeButton para alternar o modo de cor.
+
+```tsx
+import { ColorModeButton } from '@/components/ui/color-mode';
+
+export default function Page({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <ColorModeButton />
+      {children}
+    </>
+  );
+}
+```
+
+## Estilizando o modo escuro
+
+Use a condição \_dark para estilizar componentes para o modo escuro.
+
+```tsx
+<Box bg={{ base: 'white', _dark: 'black' }}>
+  <Text>Olá</Text>
+</Box>
+```
+
+ou
+
+```tsx
+<Box bg="white" _dark={{ bg: 'black' }}>
+  <Text>Olá</Text>
+</Box>
+```
+
+## Usando tokens semânticos
+
+Para reduzir a quantidade de código que você precisa escrever, utilize tokens semânticos para estilizar componentes no modo escuro. Isso garante que os estilos de modo claro e escuro sejam aplicados automaticamente e de forma consistente.
+
+O Ditto fornece um conjunto de tokens semânticos que você pode usar para estilizar componentes no modo escuro. Saiba mais sobre [tokens semânticos](#).
+
+```tsx
+<Box bg="bg.subtle">
+  <Text>Olá</Text>
+</Box>
+```
+
+## Forçando o modo escuro
+
+### Modo escuro específico de elemento
+
+Para forçar o modo escuro, defina a className dark em qualquer elemento pai ou no elemento raiz da sua aplicação.
+
+```tsx
+<Box bg="black" className="dark">
+  <Box bg="bg.subtle">
+    <Text>Olá</Text>
+  </Box>
+</Box>
+```
+
+### Modo escuro específico de página
+
+Use o componente ColorModeProvider para definir o modo escuro para uma página.
+
+```tsx
+<ColorModeProvider forcedTheme="dark">
+  <Box bg="black" className="dark">
+    <Box bg="bg.subtle">
+      <Text>Olá</Text>
+    </Box>
+  </Box>
+</ColorModeProvider>
+```
+
+> Siga este guia do next-themes para saber mais sobre [forçar o modo de cor](#).
