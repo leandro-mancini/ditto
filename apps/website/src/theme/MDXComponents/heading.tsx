@@ -23,8 +23,6 @@ export const H1 = (props: BoxProps) => {
 };
 
 export const H2 = (props: BoxProps) => {
-  console.log('props', props);
-
   return (
     <Box
       as="h2"

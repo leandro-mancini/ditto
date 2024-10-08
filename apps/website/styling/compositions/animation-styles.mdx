@@ -1,54 +1,56 @@
 ---
-title: Estilos de Animação
-description: Aprenda como usar estilos de animação para definir propriedades de movimento reutilizáveis.
+title: Animation Styles
+description: Learn how to use animation styles to define reusable motion properties.
 ---
 
-## Visão Geral
+## Overview
 
-Os estilos de animação permitem definir propriedades de animação reutilizáveis. O objetivo é reduzir a quantidade de código necessário para animar componentes.
+Animation styles allow you to define reusable animation properties. The goal is
+to reduce the amount of code needed to animate components.
 
-Os estilos de animação suportados são:
+The supported animation styles are:
 
-- **Animação**: composição de animação, atraso, direção, duração, modo de preenchimento, contagem de iterações, nome, estado de reprodução, função de temporização
+- **Animation**: animation composition, delay, direction, duration, fill mode,
+  iteration count, name, play state, timing function
 
-- **Intervalo de animação**: intervalo de animação, início, fim, linha do tempo
+- **Animation range**: animation range, start, end, timeline
 
-- **Origem de transformação**: origem da transformação
+- **Transform origin**: transform origin
 
-## Definindo estilos de animação
+## Defining animation styles
 
-Os estilos de animação são definidos usando a função `defineAnimationStyles`.
+Animation styles are defined using the `defineAnimationStyles` function.
 
-Aqui está um exemplo de um estilo de animação:
+Here's an example of an animation style:
 
-````js
-import { defineAnimationStyles } from "@dittox/react"
+```js
+import { defineAnimationStyles } from '@chakra-ui/react';
 
 const animationStyles = defineAnimationStyles({
   bounceFadeIn: {
     value: {
-      animationName: "bounce, fade-in",
-      animationDuration: "1s",
-      animationTimingFunction: "ease-in-out",
-      animationIterationCount: "infinite",
+      animationName: 'bounce, fade-in',
+      animationDuration: '1s',
+      animationTimingFunction: 'ease-in-out',
+      animationIterationCount: 'infinite',
     },
   },
-})
+});
+```
 
-## Estilos de animação embutidos
+## Built-in animation styles
 
-O Ditto fornece um conjunto de estilos de animação embutidos que você pode usar.
+Chakra UI provides a set of built-in animation styles that you can use.
 
-```jsx
 <ExamplePreview name="tokens/animation-style" />
-````
 
-## Atualizando o tema
+## Update the theme
 
-Para usar os estilos de animação, atualize o objeto theme com a propriedade animationStyles.
+To use the animation styles, update the `theme` object with the
+`animationStyles` property.
 
-```js
-import { createSystem, defineConfig } from '@dittox/react';
+```js filename="theme.ts"
+import { createSystem, defineConfig } from '@chakra-ui/react';
 import { animationStyles } from './animation-styles';
 
 const config = defineConfig({
@@ -62,13 +64,14 @@ const config = defineConfig({
 export default createSystem(defaultConfig, config);
 ```
 
-Após atualizar o tema, execute este comando para gerar as animações.
+After updating the theme, run this command to generate the animations.
 
 ```bash
-npx @dittox/cli@next typegen
+npx @chakra-ui/cli@next typegen
 ```
 
-Esses estilos de animação podem ser compostos com outros estilos como \_open e \_closed, que mapeiam para o atributo data-state=open|closed.
+These animation styles can be composed with other styles like `_open` and
+`_closed` which map to the `data-state=open|closed` attribute.
 
 ```jsx
 <Box
@@ -76,8 +79,6 @@ Esses estilos de animação podem ser compostos com outros estilos como \_open e
   animationDuration="slow"
   animationStyle={{ _open: 'slide-fade-in', _closed: 'slide-fade-out' }}
 >
-  > Este conteúdo irá aparecer gradualmente
+  > This content will fade in
 </Box>
 ```
-
-Se precisar de mais alguma tradução ou ajustes, é só avisar!

@@ -41,8 +41,6 @@ export const SideNav = (props: SideNavProps) => {
   const { title, items } = props;
   const location = useLocation();
 
-  console.log('props', props);
-
   return (
     <Stack gap="8px">
       {title && (

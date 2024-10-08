@@ -1,4 +1,76 @@
 ---
 title: Estilos de Texto
-description: Aprenda a usar estilos de texto para definir propriedades relacionadas à tipografia.
+description: Aprenda como usar estilos de texto para definir propriedades relacionadas à tipografia.
 ---
+
+## Visão Geral
+
+Os estilos de texto permitem definir propriedades CSS textuais. As propriedades comuns são:
+
+- **Fonte**: família de fontes, peso, tamanho
+- **Altura da linha**
+- **Espaçamento entre letras**
+- **Decoração do texto**
+- **Transformação do texto**
+
+## Definindo estilos de texto
+
+Os estilos de texto são definidos usando a função `defineTextStyles`.
+
+```js filename="text-styles.ts"
+import { defineTextStyles } from '@ditto/react';
+
+export const textStyles = defineTextStyles({
+  body: {
+    description: 'O estilo de texto do corpo - usado em parágrafos',
+    value: {
+      fontFamily: 'Inter',
+      fontWeight: '500',
+      fontSize: '16px',
+      lineHeight: '24',
+      letterSpacing: '0',
+      textDecoration: 'Nenhuma',
+      textTransform: 'Nenhuma',
+    },
+  },
+});
+```
+
+## Estilos de texto embutidos
+
+O Ditto fornece um conjunto de estilos de texto embutidos.
+
+<ExamplePreview name="tokens/text-styles" />
+
+## Atualizando o tema
+
+Para usar os estilos de texto, atualize o objeto theme com a propriedade textStyles.
+
+```ts
+import { createSystem, defineConfig } from '@ditto/react';
+import { textStyles } from './text-styles';
+
+const config = defineConfig({
+  theme: {
+    extend: {
+      textStyles,
+    },
+  },
+});
+
+export default createSystem(defaultConfig, config);
+```
+
+Após atualizar o tema, execute este comando para gerar as tipagens.
+
+```bash
+npx @ditto/cli@next typegen
+```
+
+## Usando estilos de texto
+
+Agora você pode usar a propriedade textStyle em seus componentes.
+
+```ts
+<Box textStyle="body">Este é o estilo de texto do corpo</Box>
+```
