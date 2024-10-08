@@ -1,88 +1,83 @@
 ---
-title: Chakra Factory
-description: Use the chakra factory to create supercharged components
+title: Fábrica do Ditto
+description: Use a fábrica do Ditto para criar componentes superpotentes
 ---
 
-## Overview
+## Visão Geral
 
-Chakra factory serves as a way to create supercharged JSX component from any
-HTML element to enable them receive JSX style props.
+A fábrica do Ditto serve como uma maneira de criar componentes JSX superpotentes a partir de qualquer elemento HTML, permitindo que eles recebam propriedades de estilo JSX.
 
 ```js
-import { chakra } from '@chakra-ui/react';
+import { ditto } from '@dittox/react';
 ```
 
-The chakra factory can be used in two ways: as a JSX element or as a factory
-function.
+A fábrica do Ditto pode ser usada de duas maneiras: como um elemento JSX ou como uma função de fábrica.
 
-## JSX Element
+## Elemento JSX
 
-Style props are CSS properties that you can pass as props to your components.
-With the JSX factory, you can use `chakra.<element>` syntax to create JSX
-elements that support style props.
+Propriedades de estilo são propriedades CSS que você pode passar como props para seus componentes. Com a fábrica JSX, você pode usar a sintaxe `ditto.<element>` para criar elementos JSX que suportam propriedades de estilo.
 
 ```jsx
-import { chakra } from '@chakra-ui/react';
+import { ditto } from '@dittox/react';
 
 const Button = ({ children }) => (
-  <chakra.button bg="blue.500" color="white" py="2" px="4" rounded="md">
+  <ditto.button bg="blue.500" color="white" py="2" px="4" rounded="md">
     {children}
-  </chakra.button>
+  </ditto.button>
 );
 ```
 
-## Factory function
+## Função de Fábrica
 
-Use the `chakra` function to convert native elements or custom components. The
-key requirement is that the component **must** accept `className` as props.
+Use a função `ditto` para converter elementos nativos ou componentes personalizados. O requisito principal é que o componente deve aceitar `className` como props.
 
 ```jsx
-const Link = chakra('a');
+const Link = ditto('a');
 
 function Example() {
-  return <Link bg="red.200" href="https://chakra-ui.com" />;
+  return <Link bg="red.200" href="https://dittox.com" />;
 }
 ```
 
-Another example with a custom component.
+Outro exemplo com um componente personalizado.
 
 ```jsx
 import * as RadixScrollArea from '@radix-ui/react-scroll-area';
 
-const ScrollArea = chakra(RadixScrollArea.Root);
+const ScrollArea = ditto(RadixScrollArea.Root);
 
 function Example() {
   return (
     <ScrollArea>
       <RadixScrollArea.Viewport>
-        <div>Hello</div>
+        <div>Olá</div>
       </RadixScrollArea.Viewport>
     </ScrollArea>
   );
 }
 ```
 
-### Attaching styles
+## Anexando estilos
 
-Use the `chakra` function to attach styles or recipes to components.
+Use a função `ditto` para anexar estilos ou receitas a componentes.
 
 ```jsx
-const Link = chakra('a', {
+const Link = ditto('a', {
   base: {
     bg: 'papayawhip',
     color: 'red.500',
   },
 });
 
-// usage: <Link href="https://chakra-ui.com" />
+// uso: <Link href="https://dittox.com" />
 ```
 
-### Attaching recipes
+## Anexando receitas
 
-Here's an example of attaching a recipe to the component.
+Aqui está um exemplo de como anexar uma receita ao componente.
 
 ```jsx
-const Card = chakra('div', {
+const Card = ditto('div', {
   base: {
     shadow: 'lg',
     rounded: 'lg',
@@ -102,49 +97,43 @@ const Card = chakra('div', {
   },
 });
 
-// usage: <Card variant="outline" />
+// uso: <Card variant="outline" />
 ```
 
-### Forwarding props
+## Repassando props
 
-By default, the `chakra` factory only filters chakra related style props from
-getting to the DOM. For more fine-grained control of how props are forwarded,
-pass the `shouldForwardProp` option.
-
-Here's an example that forwards all props that doesn't start with `$`
+Por padrão, a fábrica `ditto` apenas filtra as propriedades de estilo relacionadas ao Ditto para não chegarem ao DOM. Para um controle mais refinado de como as props são repassadas, passe a opção `shouldForwardProp`.
 
 ```jsx
-const Component = chakra('div', {
+const Component = ditto('div', {
   shouldForwardProp(prop) {
     return !prop.startsWith('$');
   },
 });
 ```
 
-To create custom forward props logic, combine the
-[@emotion/is-prop-valid](https://github.com/emotion-js/emotion/tree/master/packages/is-prop-valid)
-package and the `isValidProperty` from Chakra UI.
+Para criar uma lógica personalizada de repasse de props, combine o pacote [@emotion/is-prop-valid](https://github.com/emotion-js/emotion/tree/master/packages/is-prop-valid) e a função `isValidProperty` do Ditto.
 
 ```tsx
-import { chakra, defaultSystem } from '@chakra-ui/react';
+import { ditto, defaultSystem } from '@dittox/react';
 import shouldForwardProp from '@emotion/is-prop-valid';
 
 const { isValidProperty } = defaultSystem;
 
-const Component = chakra('div', {
+const Component = ditto('div', {
   shouldForwardProp(prop, variantKeys) {
-    const chakraSfp = !variantKeys?.includes(prop) && !isValidProperty(prop);
-    return shouldForwardProp(prop) && chakraSfp;
+    const dittoSfp = !variantKeys?.includes(prop) && !isValidProperty(prop);
+    return shouldForwardProp(prop) && dittoSfp;
   },
 });
 ```
 
-## Default Props
+## Props Padrão
 
-Use the `defaultProps` option to pass default props to the component.
+Use a opção `defaultProps` para passar props padrão para o componente.
 
-```jsx {9}
-const Button = chakra(
+```jsx
+const Button = ditto(
   'button',
   {
     base: {
@@ -156,24 +145,24 @@ const Button = chakra(
 );
 ```
 
-## Polymorphism
+## Polimorfismo
 
-Every component created with the chakra factory can accept the `as` and
-`asChild` props to change the underlying DOM element.
+Todo componente criado com a fábrica do Ditto pode aceitar as props `as` e `asChild` para alterar o elemento DOM subjacente.
 
-```tsx
-<Button as="a" href="https://chakra-ui.com">
-  Chakra UI
+```jsx
+<Button as="a" href="https://dittox.com">
+  Ditto
 </Button>
 ```
 
-or
+ou
 
-```tsx
+```jsx
 <Button asChild>
-  <a href="https://chakra-ui.com">Chakra UI</a>
+  <a href="https://dittox.com">Ditto</a>
 </Button>
 ```
 
-> Learn more about composition in Chakra UI
-> [here](/docs/components/overview/composition)
+Saiba mais sobre composição no Ditto [aqui](/docs/components/overview/composition)
+
+Se precisar de mais alguma ajuda ou ajustes, estou à disposição!

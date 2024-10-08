@@ -1,4 +1,83 @@
 ---
-title: Animation Styles
-description: Aprenda a usar estilos de animação para definir propriedades de movimento reutilizáveis.
+title: Estilos de Animação
+description: Aprenda como usar estilos de animação para definir propriedades de movimento reutilizáveis.
 ---
+
+## Visão Geral
+
+Os estilos de animação permitem definir propriedades de animação reutilizáveis. O objetivo é reduzir a quantidade de código necessário para animar componentes.
+
+Os estilos de animação suportados são:
+
+- **Animação**: composição de animação, atraso, direção, duração, modo de preenchimento, contagem de iterações, nome, estado de reprodução, função de temporização
+
+- **Intervalo de animação**: intervalo de animação, início, fim, linha do tempo
+
+- **Origem de transformação**: origem da transformação
+
+## Definindo estilos de animação
+
+Os estilos de animação são definidos usando a função `defineAnimationStyles`.
+
+Aqui está um exemplo de um estilo de animação:
+
+````js
+import { defineAnimationStyles } from "@chakra-ui/react"
+
+const animationStyles = defineAnimationStyles({
+  bounceFadeIn: {
+    value: {
+      animationName: "bounce, fade-in",
+      animationDuration: "1s",
+      animationTimingFunction: "ease-in-out",
+      animationIterationCount: "infinite",
+    },
+  },
+})
+
+## Estilos de animação embutidos
+
+O Chakra UI fornece um conjunto de estilos de animação embutidos que você pode usar.
+
+```jsx
+<ExamplePreview name="tokens/animation-style" />
+````
+
+## Atualizando o tema
+
+Para usar os estilos de animação, atualize o objeto theme com a propriedade animationStyles.
+
+```js
+import { createSystem, defineConfig } from '@chakra-ui/react';
+import { animationStyles } from './animation-styles';
+
+const config = defineConfig({
+  theme: {
+    extend: {
+      animationStyles,
+    },
+  },
+});
+
+export default createSystem(defaultConfig, config);
+```
+
+Após atualizar o tema, execute este comando para gerar as animações.
+
+```bash
+npx @chakra-ui/cli@next typegen
+```
+
+Esses estilos de animação podem ser compostos com outros estilos como \_open e \_closed, que mapeiam para o atributo data-state=open|closed.
+
+```jsx
+<Box
+  data-state="open"
+  animationDuration="slow"
+  animationStyle={{ _open: 'slide-fade-in', _closed: 'slide-fade-out' }}
+>
+  > Este conteúdo irá aparecer gradualmente
+</Box>
+```
+
+Se precisar de mais alguma tradução ou ajustes, é só avisar!

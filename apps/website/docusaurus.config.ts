@@ -15,6 +15,16 @@ const config: Config = {
     locales: ['pt-BR'],
   },
 
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+      },
+    },
+  ],
+
   plugins: [
     [
       '@docusaurus/plugin-content-docs',
@@ -22,7 +32,7 @@ const config: Config = {
         id: 'styling',
         path: 'styling',
         routeBasePath: 'styling',
-        sidebarPath: require.resolve('./sidebars.ts'),
+        sidebarPath: require.resolve('./sidebars-styling.ts'),
         sidebarCollapsed: false,
         sidebarCollapsible: false,
       },

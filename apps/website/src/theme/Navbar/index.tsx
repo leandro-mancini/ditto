@@ -65,7 +65,7 @@ const TopNavLink = ditto(Link, {
 
 const HeaderLogoLink = () => {
   return (
-    <HStack asChild focusRing="outside">
+    <HStack asChild focusRing="outside" textDecoration="!none">
       <Link href="/" aria-label="Ditto, Voltar para a página inicial">
         <Logo />
       </Link>
@@ -113,7 +113,13 @@ const HeaderDesktopActions = () => {
 
 const HeaderDesktopNavbar = () => {
   return (
-    <Box className="navbar" hideBelow="md" display="block" height="auto">
+    <Box
+      className="navbar"
+      hideBelow="md"
+      display="block"
+      height="auto"
+      padding="0"
+    >
       <HStack paddingInline="2rem" height={64}>
         <HeaderPrimaryNavbar />
         <Spacer />

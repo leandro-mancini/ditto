@@ -1,12 +1,10 @@
-import { Box, BoxProps, Stack } from '@dittox/react';
+import { Box, BoxProps, ditto, Stack } from '@dittox/react';
 import React from 'react';
 import { SideNav } from './sidenav';
 import Link from '@docusaurus/Link';
 
 export default function DocSidebar(props) {
   const { sidebar } = props;
-
-  console.log('sidebar', sidebar);
 
   return (
     <Box
