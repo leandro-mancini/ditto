@@ -27,6 +27,8 @@ export const system = createSystem(defaultConfig, {
   },
 });
 
+console.log('system', system);
+
 export default function Root({ children }) {
   return <DittoProvider value={system}>{children}</DittoProvider>;
 }
