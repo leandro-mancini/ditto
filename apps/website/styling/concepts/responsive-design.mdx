@@ -50,23 +50,23 @@ O Ditto também aceita arrays como valores para estilos responsivos. Passe o val
 <Text fontWeight={['medium', undefined, undefined, 'bold']}>Texto</Text>
 ```
 
-Observe o uso de undefined para os breakpoints, a fim de pular os breakpoints md e lg.
+Observe o uso de `undefined` para os breakpoints, a fim de pular os breakpoints `md` e `lg`.
 
 ## Alvo de Breakpoint
 
 ### Intervalo de Breakpoints
 
-O Ditto fornece uma maneira de direcionar um intervalo de breakpoints usando a notação To. Para aplicar estilos entre os breakpoints md e xl, use a propriedade mdToXl:
+O Ditto fornece uma maneira de direcionar um intervalo de breakpoints usando a notação `To`. Para aplicar estilos entre os breakpoints `md` e `xl`, use a propriedade `mdToXl`:
 
 ```jsx
 <Text fontWeight={{ mdToXl: 'bold' }}>Texto</Text>
 ```
 
-> Este texto ficará em negrito apenas entre os breakpoints md e xl.
+> Este texto ficará em negrito apenas entre os breakpoints `md` e `xl`.
 
 ### Apenas Breakpoint
 
-Para direcionar um único breakpoint, use a notação Only. Aqui está um exemplo de como aplicar estilos apenas no breakpoint lg, usando a propriedade lgOnly:
+Para direcionar um único breakpoint, use a notação `Only`. Aqui está um exemplo de como aplicar estilos apenas no breakpoint `lg`, usando a propriedade `lgOnly`:
 
 ```jsx
 <Text fontWeight={{ lgOnly: 'bold' }}>Texto</Text>
@@ -74,9 +74,9 @@ Para direcionar um único breakpoint, use a notação Only. Aqui está um exempl
 
 ## Esconder Elementos no Breakpoint
 
-O Ditto fornece as utilidades hideFrom e hideBelow para esconder elementos em breakpoints específicos.
+O Ditto fornece as utilidades `hideFrom` e `hideBelow` para esconder elementos em breakpoints específicos.
 
-Para esconder um elemento a partir do breakpoint md, use a utilidade hideFrom:
+Para esconder um elemento a partir do breakpoint `md`, use a utilidade `hideFrom`:
 
 ```jsx
 <Stack hideFrom="md">
@@ -84,7 +84,7 @@ Para esconder um elemento a partir do breakpoint md, use a utilidade hideFrom:
 </Stack>
 ```
 
-Para esconder um elemento abaixo do breakpoint md, use a utilidade hideBelow:
+Para esconder um elemento abaixo do breakpoint `md`, use a utilidade `hideBelow`:
 
 ```jsx
 <Stack hideBelow="md">

@@ -14,7 +14,7 @@ Os snippets gerados consistem no seguinte:
 
 ## Uso
 
-Envolva sua aplicação com o ColorModeProvider e use o hook useColorMode para acessar e alternar o modo de cor.
+Envolva sua aplicação com o `ColorModeProvider` e use o hook `useColorMode` para acessar e alternar o modo de cor.
 
 ```tsx
 import { ColorModeProvider } from '@/components/ui/color-mode';
@@ -31,7 +31,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
 ## Adicionando o botão de alternância do modo escuro
 
-Use o componente ColorModeButton para alternar o modo de cor.
+Use o componente `ColorModeButton` para alternar o modo de cor.
 
 ```tsx
 import { ColorModeButton } from '@/components/ui/color-mode';
@@ -48,7 +48,7 @@ export default function Page({ children }: { children: React.ReactNode }) {
 
 ## Estilizando o modo escuro
 
-Use a condição \_dark para estilizar componentes para o modo escuro.
+Use a condição `_dark` para estilizar componentes para o modo escuro.
 
 ```tsx
 <Box bg={{ base: 'white', _dark: 'black' }}>
@@ -80,7 +80,7 @@ O Ditto fornece um conjunto de tokens semânticos que você pode usar para estil
 
 ### Modo escuro específico de elemento
 
-Para forçar o modo escuro, defina a className dark em qualquer elemento pai ou no elemento raiz da sua aplicação.
+Para forçar o modo escuro, defina a className `dark` em qualquer elemento pai ou no elemento raiz da sua aplicação.
 
 ```tsx
 <Box bg="black" className="dark">
@@ -92,7 +92,7 @@ Para forçar o modo escuro, defina a className dark em qualquer elemento pai ou 
 
 ### Modo escuro específico de página
 
-Use o componente ColorModeProvider para definir o modo escuro para uma página.
+Use o componente `ColorModeProvider` para definir o modo escuro para uma página.
 
 ```tsx
 <ColorModeProvider forcedTheme="dark">
@@ -104,4 +104,4 @@ Use o componente ColorModeProvider para definir o modo escuro para uma página.
 </ColorModeProvider>
 ```
 
-> Siga este guia do next-themes para saber mais sobre [forçar o modo de cor](#).
+> Siga este guia do `next-themes` para saber mais sobre [forçar o modo de cor](#).

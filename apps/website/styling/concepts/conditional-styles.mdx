@@ -7,6 +7,12 @@ description: Aprenda como usar estilos condicionais e responsivos no Ditto.
 
 O Ditto permite que você escreva estilos para pseudo estados, media queries e atributos de dados personalizados com as propriedades de estilo condicionais.
 
+:::note
+
+Veja a lista de [condições integradas](#referência) abaixo.
+
+:::
+
 ## Uso
 
 Por exemplo, veja como alterar a cor de fundo de um botão quando ele for "hovered":
@@ -31,7 +37,7 @@ Veja como alterar a cor de fundo de um elemento quando estiver em foco ao passar
 
 ## At Rules
 
-Isso também funciona com as at-rules suportadas (@media, @layer, @container, @supports e @page):
+Isso também funciona com as at-rules suportadas (`@media`, `@layer`, `@container`, `@supports` e `@page`):
 
 ```jsx
 <Box
@@ -81,7 +87,7 @@ Aqui está um exemplo de como estilizar os primeiros, últimos, elementos ímpar
 </Box>
 ```
 
-Você também pode estilizar os elementos pares e ímpares usando os modificadores \_even e \_odd:
+Você também pode estilizar os elementos pares e ímpares usando os modificadores `_even` e `_odd`:
 
 ```jsx
 <table>
@@ -99,7 +105,7 @@ Você também pode estilizar os elementos pares e ímpares usando os modificador
 
 ### Before e After
 
-Para estilizar os pseudo-elementos ::before e ::after de um elemento, use os modificadores \_before e \_after:
+Para estilizar os pseudo-elementos `::before` e `::after` de um elemento, use os modificadores `_before` e `_after`:
 
 ```jsx
 <Box _before={{ content: '"👋"' }} after={{ content: '"🥂"' }}>
@@ -109,7 +115,7 @@ Para estilizar os pseudo-elementos ::before e ::after de um elemento, use os mod
 
 ### Placeholder
 
-Para estilizar o texto do placeholder de qualquer input ou textarea, use o modificador \_placeholder:
+Para estilizar o texto do placeholder de qualquer input ou textarea, use o modificador `_placeholder`:
 
 ```jsx
 <ditto.input
@@ -120,7 +126,7 @@ Para estilizar o texto do placeholder de qualquer input ou textarea, use o modif
 
 ### Inputs de Arquivo
 
-Para estilizar o botão de input de arquivo, use o modificador \_file:
+Para estilizar o botão de input de arquivo, use o modificador `_file`:
 
 ```jsx
 <ditto.input
@@ -133,7 +139,7 @@ Para estilizar o botão de input de arquivo, use o modificador \_file:
 
 ### Movimento Reduzido
 
-Use os modificadores \_motionReduce e \_motionSafe para estilizar um elemento com base na preferência de movimento do usuário:
+Use os modificadores `_motionReduce` e `_motionSafe` para estilizar um elemento com base na preferência de movimento do usuário:
 
 ```jsx
 <Box _motionSafe={{ transition: 'all 0.3s' }}>Olá</Box>
@@ -141,9 +147,9 @@ Use os modificadores \_motionReduce e \_motionSafe para estilizar um elemento co
 
 ### Esquema de Cor
 
-A funcionalidade prefers-color-scheme é usada para detectar se o usuário solicitou que o sistema use um tema de cor claro ou escuro.
+A funcionalidade `prefers-color-scheme` é usada para detectar se o usuário solicitou que o sistema use um tema de cor claro ou escuro.
 
-Use os modificadores \_osLight e \_osDark para estilizar um elemento com base na preferência de esquema de cores do usuário:
+Use os modificadores `_osLight` e `_osDark` para estilizar um elemento com base na preferência de esquema de cores do usuário:
 
 ```jsx
 <ditto.div bg={{ base: 'white', _osDark: 'black' }}>Olá</ditto.div>
@@ -151,9 +157,9 @@ Use os modificadores \_osLight e \_osDark para estilizar um elemento com base na
 
 ### Contraste de Cor
 
-A funcionalidade prefers-contrast é usada para detectar se o usuário solicitou que o sistema use um tema de alto ou baixo contraste.
+A funcionalidade `prefers-contrast` é usada para detectar se o usuário solicitou que o sistema use um tema de alto ou baixo contraste.
 
-Use os modificadores \_highContrast e \_lessContrast para estilizar um elemento com base na preferência de contraste de cor do usuário:
+Use os modificadores `_highContrast` e `_lessContrast` para estilizar um elemento com base na preferência de contraste de cor do usuário:
 
 ```jsx
 <Box bg={{ base: 'white', _highContrast: 'black' }}>Olá</Box>
@@ -161,9 +167,9 @@ Use os modificadores \_highContrast e \_lessContrast para estilizar um elemento 
 
 ### Orientação
 
-A funcionalidade orientation é usada para detectar se o usuário está com o dispositivo em modo retrato ou paisagem.
+A funcionalidade `orientation` é usada para detectar se o usuário está com o dispositivo em modo retrato ou paisagem.
 
-Use os modificadores \_portrait e \_landscape para estilizar um elemento com base na orientação do dispositivo do usuário:
+Use os modificadores `_portrait` e `_landscape` para estilizar um elemento com base na orientação do dispositivo do usuário:
 
 ```jsx
 <Box pb="4" _portrait={{ pb: '8' }}>
@@ -175,7 +181,7 @@ Use os modificadores \_portrait e \_landscape para estilizar um elemento com bas
 
 ### Selectores Arbitrários
 
-Para valores arbitrários, use a prop css para escrever estilos para seletores únicos:
+Para valores arbitrários, use a prop `css` para escrever estilos para seletores únicos:
 
 ```jsx
 <Box css={{ '&[data-state=closed]': { color: 'red.300' } }} />
@@ -193,7 +199,7 @@ Aqui está outro exemplo que aponta para os elementos filhos de um elemento pai:
 
 ### Selectores de Grupo
 
-Para estilizar um elemento com base no estado ou atributo do elemento pai, adicione a classe group ao elemento pai e use qualquer um dos modificadores \_group\* no elemento filho.
+Para estilizar um elemento com base no estado ou atributo do elemento pai, adicione a classe `group` ao elemento pai e use qualquer um dos modificadores `_group*` no elemento filho.
 
 ```jsx
 <div className="group">
@@ -201,11 +207,11 @@ Para estilizar um elemento com base no estado ou atributo do elemento pai, adici
 </div>
 ```
 
-Este modificador funciona para todos os modificadores de pseudo-classes, como \_groupHover, \_groupActive, \_groupFocus e \_groupDisabled, entre outros.
+Este modificador funciona para todos os modificadores de pseudo-classes, como `_groupHover`, `_groupActive`, `_groupFocus` e `_groupDisabled`, entre outros.
 
 ### Selectores de Irmão
 
-Para estilizar um elemento com base no estado ou atributo do elemento irmão, adicione a classe peer ao elemento irmão e use qualquer um dos modificadores \_peer\* no elemento alvo.
+Para estilizar um elemento com base no estado ou atributo do elemento irmão, adicione a classe `peer` ao elemento irmão e use qualquer um dos modificadores `_peer*` no elemento alvo.
 
 ```jsx
 <div>
@@ -214,13 +220,13 @@ Para estilizar um elemento com base no estado ou atributo do elemento irmão, ad
 </div>
 ```
 
-> Nota: Isso só funciona quando o elemento marcado com peer é um irmão anterior, ou seja, vem antes do elemento que você deseja iniciar.
+> Nota: Isso só funciona quando o elemento marcado com `peer` é um irmão anterior, ou seja, vem antes do elemento que você deseja iniciar.
 
 ## Atributo de Dados
 
 ### Estado
 
-Para estilizar um elemento com base em seu atributo data-STATE, use o modificador correspondente \_STATE:
+Para estilizar um elemento com base em seu atributo `data-STATE`, use o modificador correspondente `_STATE`:
 
 ```jsx
 <Box data-loading _loading={{ bg: 'gray.500' }}>
@@ -228,7 +234,7 @@ Para estilizar um elemento com base em seu atributo data-STATE, use o modificado
 </Box>
 ```
 
-Isso funciona para estados comuns como data-active, data-disabled, data-focus, data-hover, data-invalid, data-required e data-valid.
+Isso funciona para estados comuns como `data-active`, `data-disabled`, `data-focus`, `data-hover`, `data-invalid`, `data-required` e `data-valid`.
 
 ```jsx
 <Box data-active _active={{ bg: 'gray.500' }}>
@@ -238,7 +244,7 @@ Isso funciona para estados comuns como data-active, data-disabled, data-focus, d
 
 ### Orientação
 
-Para estilizar um elemento com base em seu atributo data-orientation, use os modificadores \_horizontal e \_vertical:
+Para estilizar um elemento com base em seu atributo `data-orientation`, use os modificadores `_horizontal` e `_vertical`:
 
 ```jsx
 <Box
@@ -252,7 +258,7 @@ Para estilizar um elemento com base em seu atributo data-orientation, use os mod
 
 ## Atributo ARIA
 
-Para estilizar um elemento com base em seu atributo aria-STATE=true, use a prop correspondente \_STATE:
+Para estilizar um elemento com base em seu atributo `aria-STATE=true`, use a prop correspondente `_STATE`:
 
 ```jsx
 <Box aria-expanded="true" _expanded={{ bg: 'gray.500' }}>
