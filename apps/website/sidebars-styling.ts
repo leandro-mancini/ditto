@@ -64,7 +64,7 @@ const sidebarsStyling = {
         {
           type: 'doc',
           id: 'compositions/focus-ring',
-          label: 'Anel de Foco',
+          label: 'Estilos de Foco',
         },
         {
           type: 'doc',

@@ -1,30 +1,28 @@
 ---
-title: Animation Styles
-description: Learn how to use animation styles to define reusable motion properties.
+title: Estilos de Animação
+description: Aprenda como usar estilos de animação para definir propriedades de movimento reutilizáveis.
 ---
 
-## Overview
+## Visão Geral
 
-Animation styles allow you to define reusable animation properties. The goal is
-to reduce the amount of code needed to animate components.
+Os estilos de animação permitem definir propriedades de animação reutilizáveis. O objetivo é reduzir a quantidade de código necessária para animar componentes.
 
-The supported animation styles are:
+Os estilos de animação suportados são:
 
-- **Animation**: animation composition, delay, direction, duration, fill mode,
-  iteration count, name, play state, timing function
+- **Animação**: composição de animação, atraso, direção, duração, modo de preenchimento, contagem de iteração, nome, estado de reprodução, função de temporização
 
-- **Animation range**: animation range, start, end, timeline
+- **Intervalo de animação**: intervalo de animação, início, fim, linha do tempo
 
-- **Transform origin**: transform origin
+- **Origem da transformação**: origem da transformação
 
-## Defining animation styles
+## Definindo estilos de animação
 
-Animation styles are defined using the `defineAnimationStyles` function.
+Os estilos de animação são definidos usando a função `defineAnimationStyles`.
 
-Here's an example of an animation style:
+Aqui está um exemplo de um estilo de animação:
 
 ```js
-import { defineAnimationStyles } from '@chakra-ui/react';
+import { defineAnimationStyles } from '@ditto/react';
 
 const animationStyles = defineAnimationStyles({
   bounceFadeIn: {
@@ -38,19 +36,18 @@ const animationStyles = defineAnimationStyles({
 });
 ```
 
-## Built-in animation styles
+## Estilos de animação embutidos
 
-Chakra UI provides a set of built-in animation styles that you can use.
+O Ditto fornece um conjunto de estilos de animação embutidos que você pode usar.
 
 <ExamplePreview name="tokens/animation-style" />
 
-## Update the theme
+## Atualizando o tema
 
-To use the animation styles, update the `theme` object with the
-`animationStyles` property.
+Para usar os estilos de animação, atualize o objeto theme com a propriedade animationStyles.
 
-```js filename="theme.ts"
-import { createSystem, defineConfig } from '@chakra-ui/react';
+```jsx
+import { createSystem, defineConfig } from '@ditto/react';
 import { animationStyles } from './animation-styles';
 
 const config = defineConfig({
@@ -64,14 +61,13 @@ const config = defineConfig({
 export default createSystem(defaultConfig, config);
 ```
 
-After updating the theme, run this command to generate the animations.
+Após atualizar o tema, execute este comando para gerar as animações.
 
 ```bash
-npx @chakra-ui/cli@next typegen
+npx @ditto/cli@next typegen
 ```
 
-These animation styles can be composed with other styles like `_open` and
-`_closed` which map to the `data-state=open|closed` attribute.
+Esses estilos de animação podem ser compostos com outros estilos como \_open e \_closed, que são mapeados para o atributo data-state=open|closed.
 
 ```jsx
 <Box
@@ -79,6 +75,6 @@ These animation styles can be composed with other styles like `_open` and
   animationDuration="slow"
   animationStyle={{ _open: 'slide-fade-in', _closed: 'slide-fade-out' }}
 >
-  > This content will fade in
+  > Este conteúdo aparecerá com fade-in
 </Box>
 ```

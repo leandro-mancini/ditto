@@ -1,4 +1,78 @@
 ---
 title: Anel de Foco
-description: Como estilizar estados de foco no ditto
+description: Como estilizar estados de foco no Ditto
 ---
+
+O anel de foco é utilizado para identificar o elemento atualmente focado em sua página. Embora seja importante para acessibilidade, estilizar cada componente para ter um anel de foco pode ser trabalhoso.
+
+O Ditto fornece as propriedades de estilo `focusRing` e `focusVisibleRing` para estilizar o anel de foco com facilidade. O valor da prop `focusRing` pode ser "outside", "inside" ou "mixed".
+
+## Anel de Foco
+
+Este anel de foco mapeia para o seletor CSS `&:is(:focus, [data-focus])`.
+
+Veja como estilizar um botão do zero com um anel de foco:
+
+```tsx
+<ditto.button px="4" py="2" focusRing="outside">
+  Clique em mim
+</ditto.button>
+```
+
+## Anel de Foco Visível
+
+Este anel de foco mapeia para o seletor CSS &:is(:focus-visible, [data-focus-visible]).
+
+```jsx
+<ditto.button px="4" py="2" focusVisibleRing="outside">
+  Clique em mim
+</ditto.button>
+```
+
+### Diferença entre Anel de Foco e Anel de Foco Visível
+
+O Anel de Foco Visível funciona de forma semelhante ao Anel de Foco, mas com uma diferença chave: ele aplica estilos de indicador de foco somente quando um elemento recebe foco por teclado.
+
+Isso garante que o anel de foco seja visível apenas ao navegar pelo teclado, melhorando a acessibilidade sem afetar as interações com o mouse.
+
+## Anel de Foco Embutido
+
+Aqui está uma prévia do anel de foco suportado.
+
+<ExamplePreview name="tokens/focus-ring" />
+
+## Personalização
+
+### Cor do Anel
+
+Para alterar a cor do anel de foco para um componente específico, você pode usar a prop focusRingColor.
+
+```jsx
+<Button focusRingColor="red.500">Clique em mim</Button>
+```
+
+Para alterar a cor do anel de foco globalmente, você pode configurar o token semântico focusRing.
+
+```jsx
+const colors = defineSemanticTokens.colors({
+  focusRing: {
+    value: { base: '{colors.red.500}', _dark: '{colors.red.500}' },
+  },
+});
+```
+
+### Largura do Anel
+
+Para alterar a largura do anel de foco para um componente específico, você pode usar a prop focusRingWidth.
+
+```jsx
+<Button focusRingWidth="2px">Clique em mim</Button>
+```
+
+### Estilo do Anel
+
+Para alterar o estilo do anel de foco para um componente específico, você pode usar a prop focusRingStyle.
+
+```jsx
+<Button focusRingStyle="dashed">Clique em mim</Button>
+```

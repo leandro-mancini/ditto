@@ -1,28 +1,28 @@
 ---
-title: Layer Styles
-description: Learn how to use layer styles to define visual properties.
+title: Estilos de Camada
+description: Aprenda como usar estilos de camada para definir propriedades visuais.
 ---
 
-## Overview
+## Visão Geral
 
-Layer styles allows you to define visual properties. The common properties are:
+Os estilos de camada permitem definir propriedades visuais. As propriedades comuns são:
 
-- Color or text color
-- Background color
-- Border width and border color
-- Box shadow
-- Opacity
+- Cor ou cor do texto
+- Cor de fundo
+- Largura e cor da borda
+- Sombra da caixa (box shadow)
+- Opacidade
 
-## Defining layer styles
+## Definindo estilos de camada
 
-Layer styles are defined using the `defineLayerStyles` function.
+Os estilos de camada são definidos usando a função `defineLayerStyles`.
 
 ```js title="layer-styles.ts"
-import { defineLayerStyles } from '@chakra-ui/react';
+import { defineLayerStyles } from '@ditto/react';
 
 const layerStyles = defineLayerStyles({
   container: {
-    description: 'container styles',
+    description: 'estilos de container',
     value: {
       bg: 'gray.50',
       border: '2px solid',
@@ -32,19 +32,18 @@ const layerStyles = defineLayerStyles({
 });
 ```
 
-## Built-in layer styles
+## Estilos de camada embutidos
 
-Chakra UI provides a set of built-in layer styles.
+O Ditto fornece um conjunto de estilos de camada embutidos.
 
 <ExamplePreview name="tokens/layer-style" />
 
-## Updating the theme
+## Atualizando o tema
 
-To use the layer styles, update the `theme` object with the `layerStyles`
-property.
+Para usar os estilos de camada, atualize o objeto theme com a propriedade layerStyles.
 
-```js title="theme.ts"
-import { createSystem, defineConfig } from '@chakra-ui/react';
+```jsx
+import { createSystem, defineConfig } from '@ditto/react';
 import { layerStyles } from './layer-styles';
 
 const config = defineConfig({
@@ -56,16 +55,16 @@ const config = defineConfig({
 export default createSystem(defaultConfig, config);
 ```
 
-After updating the theme, run this command to generate the typings.
-
-```bash
-npx @chakra-ui/cli@next typegen
-```
-
-## Using layer styles
-
-Now you can use `layerStyle` property in your components.
+Após atualizar o tema, execute este comando para gerar as tipagens.
 
 ```jsx
-<Box layerStyle="container">This is inside a container style</Box>
+npx @ditto/cli@next typegen
+```
+
+## Usando estilos de camada
+
+Agora você pode usar a propriedade layerStyle em seus componentes.
+
+```jsx
+<Box layerStyle="container">Isso está dentro de um estilo de container</Box>
 ```
