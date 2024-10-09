@@ -2,6 +2,7 @@ import { defineConfig } from '../core';
 import { breakpoints } from './breakpoints';
 import { globalCss } from './global-css';
 import { keyframes } from './keyframes';
+import { animationStyles } from './motion-styles';
 import { semanticColors } from './semantic-tokens/colors';
 import { colors } from './tokens/colors';
 
@@ -19,5 +20,6 @@ export const defaultThemeConfig = defineConfig({
     semanticTokens: {
       colors: semanticColors,
     },
+    animationStyles: animationStyles,
   },
 });
