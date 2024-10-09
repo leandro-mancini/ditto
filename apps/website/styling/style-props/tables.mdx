@@ -2,3 +2,80 @@
 title: Tables
 description: Propriedades de estilo JSX para estilizar elementos de tabela.
 ---
+
+## Border Spacing
+
+Controle a propriedade `border-spacing` de uma tabela.
+
+```jsx
+<ditto.table borderSpacing="2">
+  <tbody>
+    <tr>
+      <td>Cell 1</td>
+      <td>Cell 2</td>
+    </tr>
+  </tbody>
+</ditto.table>
+```
+
+| Prop            | CSS Property     | Token Category |
+| --------------- | ---------------- | -------------- |
+| `borderSpacing` | `border-spacing` | `spacing`      |
+
+## Border Spacing X
+
+Use a propriedade borderSpacingX para definir o espaçamento horizontal da borda de uma tabela.
+
+```jsx
+<ditto.table borderSpacingX="2">
+  <tbody>
+    <tr>
+      <td>Cell 1</td>
+      <td>Cell 2</td>
+    </tr>
+  </tbody>
+</ditto.table>
+```
+
+| Prop             | CSS Property     | Token Category |
+| ---------------- | ---------------- | -------------- |
+| `borderSpacingX` | `border-spacing` | `spacing`      |
+
+## Border Spacing Y
+
+Use a propriedade borderSpacingY para definir o espaçamento vertical da borda de uma tabela.
+
+```jsx
+<ditto.table borderSpacingY="2">
+  <tbody>
+    <tr>
+      <td>Cell 1</td>
+      <td>Cell 2</td>
+    </tr>
+  </tbody>
+</ditto.table>
+```
+
+| Prop             | CSS Property     | Token Category |
+| ---------------- | ---------------- | -------------- |
+| `borderSpacingY` | `border-spacing` | `spacing`      |
+
+## Caption Side
+
+Use a propriedade captionSide para definir o lado da legenda de uma tabela.
+
+```jsx
+<table>
+  <ditto.caption captionSide="bottom">This is a caption</ditto.caption>
+  <tbody>
+    <tr>
+      <td>Cell 1</td>
+      <td>Cell 2</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+| Prop          | CSS Property   | Token Category |
+| ------------- | -------------- | -------------- |
+| `captionSide` | `caption-side` | -              |

@@ -2,3 +2,146 @@
 title: Transitions
 description: Propriedades de estilo JSX para controlar a transição e animação de um elemento.
 ---
+
+## Transition
+
+Use a propriedade `transition` para controlar a transição de um elemento.
+
+```jsx
+// hardcoded value
+<Box bg="red.400" _hover={{ bg: "red.500" }} transition="background 0.2s ease-in-out">
+  Passe o mouse aqui
+</Box>
+
+// shortcut value
+<Box bg="red.400" _hover={{ bg: "red.500" }} transition="backgrounds">
+  Passe o mouse aqui
+</Box>
+```
+
+| Prop         | CSS Property | Token Category |
+| ------------ | ------------ | -------------- |
+| `transition` | `transition` | -              |
+
+## Transition Timing Function
+
+Use a propriedade transitionTimingFunction para controlar a função de tempo de uma transição.
+
+```jsx
+<Box
+  bg="red.400"
+  _hover={{ bg: 'red.500' }}
+  transition="backgrounds"
+  transitionTimingFunction="ease-in-out"
+>
+  Hover me
+</Box>
+```
+
+| Prop                       | CSS Property                 | Token Category |
+| -------------------------- | ---------------------------- | -------------- |
+| `transitionTimingFunction` | `transition-timing-function` | `easings`      |
+
+## Transition Duration
+
+Use a propriedade transitionDuration para controlar a duração de uma transição.
+
+```jsx
+<Box
+  bg="red.400"
+  _hover={{ bg: 'red.500' }}
+  transition="backgrounds"
+  transitionDuration="fast"
+>
+  Hover me
+</Box>
+```
+
+| Prop                 | CSS Property          | Token Category |
+| -------------------- | --------------------- | -------------- |
+| `transitionDuration` | `transition-duration` | `durations`    |
+
+## Transition Delay
+
+Use a propriedade transitionDelay para controlar o atraso de uma transição.
+
+```jsx
+<Box
+  bg="red.400"
+  _hover={{ bg: 'red.500' }}
+  transition="backgrounds"
+  transitionDelay="fast"
+>
+  Hover me
+</Box>
+```
+
+| Prop              | CSS Property       | Token Category |
+| ----------------- | ------------------ | -------------- |
+| `transitionDelay` | `transition-delay` | `durations`    |
+
+## Animation
+
+Use a propriedade animation para controlar a animação de um elemento.
+
+```jsx
+<Box animation="bounce" />
+```
+
+| Prop        | CSS Property     | Token Category |
+| ----------- | ---------------- | -------------- |
+| `animation` | `animation-name	` | `animations`   |
+
+## Animation Name
+
+Use a propriedade animationName para controlar o nome de uma animação. Combine múltiplos nomes de animação para criar animações complexas.
+
+:::info
+
+O valor da propriedade animation aponta para uma animação de keyframe global. Use o objeto theme.keyframes para definir a animação.
+
+:::
+
+```jsx
+<Box animationName="bounce, fade-in" animationDuration="fast" />
+```
+
+| Prop            | CSS Property     | Token Category |
+| --------------- | ---------------- | -------------- |
+| `animationName` | `animation-name` | `animations`   |
+
+## Animation Timing Function
+
+Use a propriedade animationTimingFunction para controlar a função de tempo de uma animação.
+
+```jsx
+<Box animation="bounce" animationTimingFunction="ease-in-out" />
+```
+
+| Prop                      | CSS Property                | Token Category |
+| ------------------------- | --------------------------- | -------------- |
+| `animationTimingFunction` | `animation-timing-function` | `easings`      |
+
+## Animation Duration
+
+Use a propriedade animationDuration para controlar a duração de uma animação.
+
+```jsx
+<Box animation="bounce" animationDuration="fast" />
+```
+
+| Prop                | CSS Property         | Token Category |
+| ------------------- | -------------------- | -------------- |
+| `animationDuration` | `animation-duration` | `durations`    |
+
+## Animation Delay
+
+Use a propriedade animationDelay para controlar o atraso de uma animação.
+
+```jsx
+<Box animation="bounce" animationDelay="fast" />
+```
+
+| Prop             | CSS Property      | Token Category |
+| ---------------- | ----------------- | -------------- |
+| `animationDelay` | `animation-delay` | `durations`    |

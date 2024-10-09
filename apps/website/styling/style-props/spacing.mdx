@@ -1,4 +1,171 @@
 ---
 title: Spacing
-description: Propriedades de estilo JSX para controlar o preenchimento e a margem de um elemento.
+description: Propriedades de estilo JSX para controlar o padding e margin de um elemento.
 ---
+
+## Padding
+
+### Todos os lados
+
+Use a propriedade `padding` para aplicar preenchimento em todos os lados de um elemento.
+
+```jsx
+// raw value
+<Box padding="40px" />
+<Box p="40px" /> // shorthand
+
+// token value
+<Box padding="4" />
+<Box p="4" /> // shorthand
+```
+
+| Prop          | CSS Property | Token Category |
+| ------------- | ------------ | -------------- |
+| `p`,`padding` | `padding`    | `spacing`      |
+
+### Lado específico
+
+Use `paddingLeft`, `paddingRight`, `paddingTop`, ou `paddingBottom` para aplicar preenchimento em um lado específico de um elemento.
+
+```jsx
+<Box paddingLeft="3" />
+<Box pl="3" /> // shorthand
+
+<Box paddingTop="3" />
+<Box pt="3" /> // shorthand
+```
+
+Use as propriedades `paddingStart` e `paddingEnd` para aplicar preenchimento no eixo lógico de um elemento com base na direção do texto.
+
+```jsx
+<div className={css({ paddingStart: '8' })} />
+<div className={css({ ps: '8' })} /> // shorthand
+
+<div className={css({ paddingEnd: '8' })} />
+<div className={css({ pe: '8' })} /> // shorthand
+```
+
+| Prop                  | CSS Property           | Token Category |
+| --------------------- | ---------------------- | -------------- |
+| `pl`, `paddingLeft`   | `padding-left`         | `spacing`      |
+| `pr`, `paddingRight`  | `padding-right`        | `spacing`      |
+| `pt`, `paddingTop`    | `padding-top`          | `spacing`      |
+| `pb`, `paddingBottom` | `padding-bottom`       | `spacing`      |
+| `ps`, `paddingStart`  | `padding-inline-start` | `spacing`      |
+| `pe`, `paddingEnd`    | `padding-inline-end`   | `spacing`      |
+
+### Padding Horizontal e Vertical
+
+Use as propriedades `paddingX` e `paddingY` para aplicar preenchimento nos eixos horizontal e vertical de um elemento.
+
+```jsx
+<Box paddingX="8" />
+<Box px="8" /> // shorthand
+
+<Box paddingY="8" />
+<Box py="8" /> // shorthand
+```
+
+| Prop                  | CSS Property           | Token Category |
+| --------------------- | ---------------------- | -------------- |
+| `p`,`padding`         | `padding`              | `spacing`      |
+| `pl`, `paddingLeft`   | `padding-left`         | `spacing`      |
+| `pr`, `paddingRight`  | `padding-right`        | `spacing`      |
+| `pt`, `paddingTop`    | `padding-top`          | `spacing`      |
+| `pb`, `paddingBottom` | `padding-bottom`       | `spacing`      |
+| `px`, `paddingX`      | `padding-inline`       | `spacing`      |
+| `py`, `paddingY`      | `padding-block`        | `spacing`      |
+| `ps`, `paddingStart`  | `padding-inline-start` | `spacing`      |
+| `pe`, `paddingEnd`    | `padding-inline-end`   | `spacing`      |
+
+## Margin
+
+### Todos os lados
+
+Use a propriedade margin para aplicar margem em todos os lados de um elemento.
+
+```jsx
+<Box margin="5" />
+<Box m="5" /> // shorthand
+```
+
+| Prop         | CSS Property | Token Category |
+| ------------ | ------------ | -------------- |
+| `m`,`margin` | `margin`     | `spacing`      |
+
+### Lado específico
+
+Use `marginLeft`, `marginRight`, `marginTop`, ou `marginBottom` para aplicar margem em um lado específico de um elemento.
+
+```jsx
+<Box marginLeft="3" />
+<Box ml="3" /> // shorthand
+
+<Box marginTop="3" />
+<Box mt="3" /> // shorthand
+```
+
+Use as propriedades `marginStart` e `marginEnd` para aplicar margem no eixo lógico de um elemento com base na direção do texto.
+
+```jsx
+<Box marginStart="8" />
+<Box ms="8" /> // shorthand
+
+<Box marginEnd="8" />
+<Box me="8" /> // shorthand
+```
+
+| Prop                 | CSS Property          | Token Category |
+| -------------------- | --------------------- | -------------- |
+| `ml`, `marginLeft`   | `margin-left`         | `spacing`      |
+| `mr`, `marginRight`  | `margin-right`        | `spacing`      |
+| `mt`, `marginTop`    | `margin-top`          | `spacing`      |
+| `mb`, `marginBottom` | `margin-bottom`       | `spacing`      |
+| `ms`, `marginStart`  | `margin-inline-start` | `spacing`      |
+| `me`, `marginEnd`    | `margin-inline-end`   | `spacing`      |
+
+### Margem Horizontal e Vertical
+
+Use as propriedades `marginX` e `marginY` para aplicar margem nos eixos horizontal e vertical de um elemento.
+
+```jsx
+<Box marginX="8" />
+<Box mx="8" /> // shorthand
+
+<Box marginY="8" />
+<Box my="8" /> // shorthand
+```
+
+| Prop            | CSS Property  | Token Category |
+| --------------- | ------------- | -------------- |
+| `mx`, `marginX` | `margin-left` | `spacing`      |
+| `my`, `marginY` | `margin-top`  | `spacing`      |
+
+## Spacing Between
+
+Use as propriedades `spaceX` e `spaceY` para aplicar espaçamento entre elementos. Esta abordagem usa o seletor "owl" `> * + *` para aplicar o espaçamento entre os elementos usando as propriedades de `margin`.
+
+:::info
+
+É recomendado usar a propriedade space em vez de gap para espaçamento quando você precisar de espaçamento negativo.
+
+:::
+
+```jsx
+<Box display="flex" spaceX="8">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+
+<Box display="flex" spaceY="8">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+```
+
+| Prop     | CSS Property          | Token Category |
+| -------- | --------------------- | -------------- |
+| `spaceX` | `margin-inline-start` | `spacing`      |
+| `spaceY` | `margin-block-start`  | `spacing`      |

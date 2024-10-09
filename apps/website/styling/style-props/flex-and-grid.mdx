@@ -1,4 +1,414 @@
 ---
-title: Flex and Grid
-description: Propriedades de estilo JSX para controlar layouts flexíveis e de grade
+title: Flex e Grid
+description: Propriedades de estilo JSX para controlar layouts de flex e grid
 ---
+
+## Flex Basis
+
+Use a propriedade `flexBasis` para definir o tamanho inicial principal de um item flexível.
+
+```jsx
+<Flex>
+  <Box flexBasis="25%" />
+  <Box flexBasis="25%" />
+  <Box flexBasis="50%" />
+</Flex>
+```
+
+| Prop        | CSS Property | Token Category |
+| ----------- | ------------ | -------------- |
+| `flexBasis` | `flex-basis` | -              |
+
+## Flex Direction
+
+Use as propriedades flexDir ou flexDirection para definir a direção do eixo principal em um contêiner flexível.
+
+```jsx
+<Box display="flex" flexDirection="column">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+```
+
+Ao usar o componente Flex, a propriedade direction é um alias de flexDirection.
+
+```jsx
+<Flex direction="column">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Flex>
+```
+
+| Prop                       | CSS Property     | Token Category |
+| -------------------------- | ---------------- | -------------- |
+| `flexDir`, `flexDirection` | `flex-direction` | -              |
+
+## Flex Wrap
+
+Use a propriedade flexWrap para definir se os itens flexíveis são forçados a ficar em uma linha ou podem se quebrar em várias linhas.
+
+```jsx
+<Box display="flex" flexWrap="wrap">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+```
+
+Ao usar o componente Flex, a propriedade wrap é um alias de flexWrap.
+
+```jsx
+<Flex wrap="wrap">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Flex>
+```
+
+| Prop       | CSS Property | Token Category |
+| ---------- | ------------ | -------------- |
+| `flexWrap` | `flex-wrap`  | -              |
+
+## Flex
+
+Use a propriedade flex para definir a flexibilidade de um contêiner ou item flexível.
+
+```jsx
+<Flex>
+  <Box flex="1" />
+  <Box />
+</Flex>
+```
+
+| Prop   | CSS Property | Token Category |
+| ------ | ------------ | -------------- |
+| `flex` | `flex`       | -              |
+
+## Flex Grow
+
+Use a propriedade flexGrow para definir o fator de crescimento de um item flexível.
+
+```jsx
+<Flex>
+  <Box flexGrow="0" />
+  <Box flexGrow="1" />
+</Flex>
+```
+
+| Prop       | CSS Property | Token Category |
+| ---------- | ------------ | -------------- |
+| `flexGrow` | `flex-grow`  | -              |
+
+## Flex Shrink
+
+Use a propriedade flexShrink para definir o fator de encolhimento de um item flexível.
+
+```jsx
+<Flex>
+  <Box flexShrink="0" />
+  <Box flexShrink="1" />
+</Flex>
+```
+
+| Prop         | CSS Property  | Token Category |
+| ------------ | ------------- | -------------- |
+| `flexShrink` | `flex-shrink` | -              |
+
+## Order
+
+Use a propriedade order para definir a ordem de um item flexível.
+
+```jsx
+<Flex>
+  <Box order="0" />
+  <Box order="1" />
+</Flex>
+```
+
+| Prop    | CSS Property | Token Category |
+| ------- | ------------ | -------------- |
+| `order` | `order`      | -              |
+
+## Gap
+
+Use a propriedade gap para definir o espaçamento entre itens em um contêiner flexível ou de grade.
+
+```jsx
+<Flex gap="4">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Flex>
+```
+
+| Prop  | CSS Property | Token Category |
+| ----- | ------------ | -------------- |
+| `gap` | `gap`        | `spacing`      |
+
+## Grid Template Columns
+
+Use a propriedade gridTemplateColumns para definir as colunas de um contêiner de grade.
+
+```jsx
+<Box display="grid" gridTemplateColumns="repeat(3, minmax(0, 1fr))">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+```
+
+Ao usar o componente Grid, a propriedade templateColumns é um alias de gridTemplateColumns.
+
+```jsx
+<Grid templateColumns="repeat(3, minmax(0, 1fr))">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Grid>
+```
+
+## Grid Template Start/End
+
+Use as propriedades gridTemplateStart e gridTemplateEnd para definir o início e o fim de um contêiner de grade.
+
+```jsx
+<Box display="grid" gridTemplateColumns="repeat(3, minmax(0, 1fr))">
+  <Box>Item 1</Box>
+  <Box gridColumn="span 2 / span 2">Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+```
+
+| Prop                | CSS Property          | Token Category |
+| ------------------- | --------------------- | -------------- |
+| `gridTemplateStart` | `grid-template-start` | -              |
+| `gridTemplateEnd`   | `grid-template-end`   | -              |
+
+## Grid Template Rows
+
+Use a propriedade gridTemplateRows para definir as linhas de um contêiner de grade.
+
+```jsx
+<Box display="grid" gap="4" gridTemplateRows="repeat(3, minmax(0, 1fr))">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+```
+
+| Prop               | CSS Property         | Token Category |
+| ------------------ | -------------------- | -------------- |
+| `gridTemplateRows` | `grid-template-rows` | -              |
+
+## Grid Row Start/End
+
+Use as propriedades gridRowStart e gridRowEnd para definir o início e o fim de um item da grade.
+
+```jsx
+<Box display="grid" gap="4" gridTemplateRows="repeat(3, minmax(0, 1fr))">
+  <Box gridRowStart="1" gridRowEnd="3">
+    Item 1
+  </Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+```
+
+| Prop           | CSS Property     | Token Category |
+| -------------- | ---------------- | -------------- |
+| `gridRowStart` | `grid-row-start` | -              |
+| `gridRowEnd`   | `grid-row-end`   | -              |
+
+## Grid Autoflow
+
+Use a propriedade gridAutoFlow para definir como os itens posicionados automaticamente são distribuídos na grade.
+
+```jsx
+<Box display="grid" gridAutoFlow="row">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+```
+
+| Prop           | CSS Property     | Token Category |
+| -------------- | ---------------- | -------------- |
+| `gridAutoFlow` | `grid-auto-flow` | -              |
+
+## Grid Auto Columns
+
+Use a propriedade gridAutoColumns para especificar o tamanho das colunas da grade criadas sem um tamanho explícito.
+
+```jsx
+<Box display="grid" gridAutoColumns="120px">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+```
+
+| Prop              | CSS Property        | Token Category |
+| ----------------- | ------------------- | -------------- |
+| `gridAutoColumns` | `grid-auto-columns` | -              |
+
+## Grid Auto Rows
+
+Use a propriedade gridAutoRows para especificar o tamanho das linhas da grade criadas sem um tamanho explícito.
+
+```jsx
+<Box display="grid" gridTemplateRows="200px" gridAutoRows="120px">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+```
+
+| Prop           | CSS Property     | Token Category |
+| -------------- | ---------------- | -------------- |
+| `gridAutoRows` | `grid-auto-rows` | -              |
+
+## Justify Content
+
+Use a propriedade justifyContent para alinhar itens ao longo do eixo principal de um contêiner flexível.
+
+```jsx
+<Box display="flex" justifyContent="center">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+```
+
+Ao usar o componente Flex, a propriedade justify é um alias de justifyContent.
+
+```jsx
+<Flex justify="center">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Flex>
+```
+
+| Prop             | CSS Property      | Token Category |
+| ---------------- | ----------------- | -------------- |
+| `justifyContent` | `justify-content` | -              |
+
+## Justify Items
+
+Use a propriedade justifyItems para controlar o alinhamento dos itens da grade dentro do seu escopo.
+
+```jsx
+<Box display="grid" justifyItems="center">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+```
+
+| Prop           | CSS Property    | Token Category |
+| -------------- | --------------- | -------------- |
+| `justifyItems` | `justify-items` | -              |
+
+## Align Content
+
+Use a propriedade alignContent para alinhar linhas de conteúdo ao longo do eixo transversal de um contêiner flexível quando houver espaço extra.
+
+```jsx
+<Box display="flex" alignContent="center">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+```
+
+Ao usar o componente Flex, a propriedade align é um alias de alignContent.
+
+```jsx
+<Flex align="center">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Flex>
+```
+
+| Prop           | CSS Property    | Token Category |
+| -------------- | --------------- | -------------- |
+| `alignContent` | `align-content` | -              |
+
+## Align Items
+
+Use a propriedade alignItems para controlar o alinhamento dos itens da grade dentro do seu escopo.
+
+```jsx
+<Box display="grid" alignItems="center">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+```
+
+## Align Self
+
+Use a propriedade alignSelf para controlar o alinhamento de um item da grade dentro do seu escopo.
+
+```jsx
+<Box display="grid">
+  <Box alignSelf="center">Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+```
+
+| Prop        | CSS Property | Token Category |
+| ----------- | ------------ | -------------- |
+| `alignSelf` | `align-self` | -              |
+
+## Place Content
+
+Use a propriedade placeContent para alinhar o conteúdo ao longo das direções de bloco e linha ao mesmo tempo. Funciona como justifyContent e alignContent combinados, e pode ser usado em contêineres flexíveis e de grade.
+
+```jsx
+<Flex placeContent="center">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Flex>
+```
+
+| Prop           | CSS Property    | Token Category |
+| -------------- | --------------- | -------------- |
+| `placeContent` | `place-content` | -              |
+
+## Place Items
+
+Use a propriedade placeItems para alinhar itens ao longo das direções de bloco e linha ao mesmo tempo. Funciona como justifyItems e alignItems combinados, e pode ser usado em contêineres flexíveis e de grade.
+
+```jsx
+<Box display="grid" placeItems="center">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+```
+
+| Prop         | CSS Property  | Token Category |
+| ------------ | ------------- | -------------- |
+| `placeItems` | `place-items` | -              |
+
+## Place Self
+
+Use a propriedade placeSelf para alinhar um item da grade ao longo das direções de bloco e linha ao mesmo tempo.
+
+```jsx
+<Box display="grid">
+  <Box placeSelf="center">Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Box>
+```
+
+| Prop        | CSS Property | Token Category |
+| ----------- | ------------ | -------------- |
+| `placeSelf` | `place-self` | -              |

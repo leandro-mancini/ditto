@@ -52,14 +52,14 @@ Isso também funciona com as at-rules suportadas (@media, @layer, @container, @s
 Aqui está um exemplo de como estilizar os estados hover, active, focus e disabled de um elemento:
 
 ```jsx
-<chakra.button
+<ditto.button
   _hover={{ bg: 'red.700' }}
   _active={{ bg: 'red.900' }}
   _focus={{ bg: 'red.800' }}
   _disabled={{ opacity: '0.5' }}
 >
   Passe o mouse
-</chakra.button>
+</ditto.button>
 ```
 
 ### First, Last, Odd, Even
@@ -87,9 +87,9 @@ Você também pode estilizar os elementos pares e ímpares usando os modificador
 <table>
   <tbody>
     {items.map((item) => (
-      <chakra.tr key={item} _even={{ bg: 'gray.100' }} _odd={{ bg: 'white' }}>
+      <ditto.tr key={item} _even={{ bg: 'gray.100' }} _odd={{ bg: 'white' }}>
         <td>{item}</td>
-      </chakra.tr>
+      </ditto.tr>
     ))}
   </tbody>
 </table>
@@ -112,7 +112,7 @@ Para estilizar os pseudo-elementos ::before e ::after de um elemento, use os mod
 Para estilizar o texto do placeholder de qualquer input ou textarea, use o modificador \_placeholder:
 
 ```jsx
-<chakra.input
+<ditto.input
   placeholder="Digite seu nome"
   _placeholder={{ color: 'gray.500' }}
 />
@@ -123,7 +123,7 @@ Para estilizar o texto do placeholder de qualquer input ou textarea, use o modif
 Para estilizar o botão de input de arquivo, use o modificador \_file:
 
 ```jsx
-<chakra.input
+<ditto.input
   type="file"
   _file={{ bg: 'gray.500', px: '4', py: '2', marginEnd: '3' }}
 />
@@ -146,7 +146,7 @@ A funcionalidade prefers-color-scheme é usada para detectar se o usuário solic
 Use os modificadores \_osLight e \_osDark para estilizar um elemento com base na preferência de esquema de cores do usuário:
 
 ```jsx
-<chakra.div bg={{ base: 'white', _osDark: 'black' }}>Olá</chakra.div>
+<ditto.div bg={{ base: 'white', _osDark: 'black' }}>Olá</ditto.div>
 ```
 
 ### Contraste de Cor

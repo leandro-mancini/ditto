@@ -2,3 +2,69 @@
 title: List
 description: Propriedades de estilo JSX para personalizar estilos de lista.
 ---
+
+## List Style Type
+
+Use a propriedade `listStyleType` para definir o tipo do marcador da lista.
+
+```jsx
+<Box as="ul" listStyleType="circle">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</Box>
+```
+
+| Prop            | CSS Property      | Token Category |
+| --------------- | ----------------- | -------------- |
+| `listStyleType` | `list-style-type` | -              |
+
+## List Style Position
+
+Use a propriedade listStylePosition para definir a posição do marcador da lista.
+
+```jsx
+<Box as="ul" listStylePosition="inside">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</Box>
+```
+
+| Prop                | CSS Property          | Token Category |
+| ------------------- | --------------------- | -------------- |
+| `listStylePosition` | `list-style-position` | -              |
+
+## List Style Image
+
+Use a propriedade listStyleImage para definir a imagem do marcador da lista.
+
+```jsx
+<Box as="ul" listStyleImage="url(...)">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</Box>
+```
+
+| Prop             | CSS Property       | Token Category |
+| ---------------- | ------------------ | -------------- |
+| `listStyleImage` | `list-style-image` | `assets`       |
+
+## Markers
+
+Use a propriedade \_marker para definir o marcador de um item da lista.
+
+```jsx /_marker/
+<ul>
+  <Box as="li" _marker={{ color: 'red' }}>
+    Item 1
+  </Box>
+  <Box as="li" _marker={{ color: 'blue' }}>
+    Item 2
+  </Box>
+  <Box as="li" _marker={{ color: 'green' }}>
+    Item 3
+  </Box>
+</ul>
+```

@@ -1,4 +1,205 @@
 ---
 title: Border
-description: Propriedades de estilo JSX para estilizar bordas e raios de bordas.
+description: Propriedades de estilo JSX para estilizar bordas e raio de borda.
 ---
+
+## Border Radius
+
+### Todos os lados
+
+Use as propriedades `rounded` ou `borderRadius` para aplicar raio de borda em todos os lados de um elemento.
+
+```jsx
+<Box borderRadius="md" />
+<Box rounded="md" />
+```
+
+| Prop                      | CSS Property    | Token Category |
+| ------------------------- | --------------- | -------------- |
+| `rounded`, `borderRadius` | `border-radius` | `radii`        |
+
+### Lados específicos
+
+Use as propriedades `roundedLeft`, `roundedRight`, `roundedTop`, `roundedBottom` ou `borderLeftRadius`, `borderRightRadius`, `borderTopRadius`, `borderBottomRadius` para aplicar raio de borda em um lado específico de um elemento.
+
+```jsx
+<Box borderTopRadius="md" />
+<Box roundedTop="md" />
+
+<Box borderLeftRadius="md" />
+<Box roundedLeft="md" />
+```
+
+Use os equivalentes lógicos para adaptar o raio de borda com base na direção do texto.
+
+```jsx
+<Box roundedStart="md" />
+<Box roundedEnd="md" />
+```
+
+| Prop                                  | CSS Property                                           | Token Category |
+| ------------------------------------- | ------------------------------------------------------ | -------------- |
+| `roundedLeft`, `borderLeftRadius`     | `border-left-radius`                                   | `radii`        |
+| `roundedRight`, `borderRightRadius`   | `border-right-radius`                                  | `radii`        |
+| `roundedTop`, `borderTopRadius`       | `border-top-radius`                                    | `radii`        |
+| `roundedBottom`, `borderBottomRadius` | `border-bottom-radius`                                 | `radii`        |
+| `roundedStart`, `borderStartRadius`   | `border-start-start-radius`, `border-end-start-radius` | `radii`        |
+| `roundedEnd`, `borderEndRadius`       | `border-start-end-radius`, `border-end-end-radius`     | `radii`        |
+
+### Cantos específicos
+
+Use as propriedades `borderTopLeftRadius`, `borderTopRightRadius`, `borderBottomLeftRadius`, `borderBottomRightRadius`, ou as abreviações equivalentes para arredondar um canto específico.
+
+```jsx
+<Box borderTopLeftRadius="md" />
+<Box roundedTopLeft="md" />
+```
+
+Use as propriedades lógicas para adaptar com base na direção do texto.
+
+```jsx
+<Box borderStartStartRadius="md" />
+<Box roundedStartStart="md" />
+```
+
+| Prop                                     | CSS Property                 | Token Category |
+| ---------------------------------------- | ---------------------------- | -------------- |
+| `roundedTopLeft`,`borderTopLeftRadius`   | `border-top-left-radius`     | `radii`        |
+| `roundedTopRight`,`borderTopRight`       | `border-top-right-radius`    | `radii`        |
+| `roundedBottomRight`,`borderBottomRight` | `border-bottom-right-radius` | `radii`        |
+| `roundedBottomLeft`,`borderBottomLeft`   | `border-bottom-left-radius`  | `radii`        |
+
+## Border Width
+
+### Todos os lados
+
+Use a propriedade borderWidth para aplicar a largura da borda em todos os lados de um elemento.
+
+> O Ditto aplica borderStyle: solid e uma cor de borda global por padrão.
+> Especificar a largura da borda é suficiente para aplicá-la.
+
+```jsx
+<Box borderWidth="1px" />
+```
+
+| Prop          | CSS Property   | Token Category |
+| ------------- | -------------- | -------------- |
+| `borderWidth` | `border-width` | `borderWidths` |
+
+### Lados específicos
+
+Use a propriedade `borderLeftWidth`, `borderRightWidth`, `borderTopWidth`, ou `borderBottomWidth` para aplicar a largura da borda em um lado específico de um elemento.
+
+```jsx
+<Box borderTopWidth="1px" />
+<Box borderLeftWidth="1px" />
+```
+
+Use os equivalentes lógicos para adaptar a largura da borda com base na direção do texto.
+
+```jsx
+<Box borderInlineStartWidth="1px" />
+<Box borderInlineWidth="1px" />
+```
+
+| Prop                                          | CSS Property                | Token Category |
+| --------------------------------------------- | --------------------------- | -------------- |
+| `borderTopWidth`                              | `border-top-width`          | `borderWidths` |
+| `borderLeftWidth`                             | `border-left-width`         | `borderWidths` |
+| `borderRightWidth`                            | `border-right-width`        | `borderWidths` |
+| `borderBottomWidth`                           | `border-bottom-width`       | `borderWidths` |
+| `borderStartWidth` , `borderInlineStartWidth` | `border-{start+end}-width`  |
+| `borderEndWidth` , `borderInlineEndWidth`     | `border-{start+end}-width`  |
+| `borderXWidth` , `borderInlineWidth`          | `border-{left,right}-width` | `borderWidths` |
+| `borderYWidth` , `borderBlockWidth`           | `border-{top,bottom}-width` | `borderWidths` |
+
+## Border Color
+
+### Todos os lados
+
+Use a propriedade borderColor para aplicar a cor da borda em todos os lados de um elemento.
+
+```jsx
+<Box borderColor="red.400" />
+
+// com modificador de opacidade
+<Box borderColor="red.400/20" />
+```
+
+### Lados específicos
+
+Use a propriedade `borderLeftColor`, `borderRightColor`, `borderTopColor`, ou `borderBottomColor` para aplicar a cor da borda em um lado específico de um elemento.
+
+```jsx
+<Box borderTopColor="red.400" />
+<Box borderLeftColor="red.400" />
+```
+
+Use as propriedades lógicas para adaptar com base na direção do texto.
+
+```jsx
+<Box borderStartColor="red.400" />
+<Box borderEndColor="red.400" />
+```
+
+| Prop                                          | CSS Property               | Token Category |
+| --------------------------------------------- | -------------------------- | -------------- |
+| `borderColor`                                 | `border-color`             | `colors`       |
+| `borderTopColor`                              | `border-top-color`         | `colors`       |
+| `borderLeftColor`                             | `border-left-color`        | `colors`       |
+| `borderRightColor`                            | `border-right-color`       | `colors`       |
+| `borderBottomColor`                           | `border-bottom-color`      | `colors`       |
+| `borderStartColor` , `borderInlineStartColor` | `border-{start,end}-color` | `colors`       |
+| `borderEndColor` , `borderInlineEndColor`     | `border-{start,end}-color` | `colors`       |
+| `borderXColor`, `borderInlineColor`           | `border-inline-color`      | `colors`       |
+| `borderYColor`, `borderBlockColor`            | `border-block-color`       | `colors`       |
+
+## Largura do Divisor
+
+Use a propriedade `divideXWidth` ou `divideYWidth` para aplicar a largura da borda entre elementos. Ela usa o seletor CSS `> * + *` para aplicar as propriedades de `border`.
+
+```jsx
+<Box divideXWidth="1px">
+  <Box>1</Box>
+  <Box>2</Box>
+</Box>
+
+<Box divideYWidth="1px">
+  <Box>1</Box>
+  <Box>2</Box>
+</Box>
+```
+
+| Prop          | CSS Property                        | Token Category |
+| ------------- | ----------------------------------- | -------------- |
+| `divideWidth` | `border-{inline,block}-start-width` | `borderWidths` |
+
+## Cor do Divisor
+
+Use a propriedade divideColor para aplicar a cor da borda entre elementos.
+
+```jsx
+<Box divideColor="red.400">
+  <Box>1</Box>
+  <Box>2</Box>
+</Box>
+```
+
+| Prop          | CSS Property     | Token Category |
+| ------------- | ---------------- | -------------- |
+| `divideColor` | `--divide-color` | `colors`       |
+
+## Divide Style
+
+Use a propriedade divideStyle para aplicar o estilo da borda entre elementos.
+
+```jsx
+<Box divideX="2px" divideStyle="dashed">
+  <Box>1</Box>
+  <Box>2</Box>
+</Box>
+```
+
+| Prop          | CSS Property     | Token Category |
+| ------------- | ---------------- | -------------- |
+| `divideStyle` | `--divide-style` | `borderStyle`  |

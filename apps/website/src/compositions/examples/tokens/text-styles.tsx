@@ -24,7 +24,7 @@ export const TokensTextStyles = () => {
             <Box textStyle="sm" fontWeight="medium" color="fg.subtle">
               textStyle: {textStyle}
             </Box>
-            <Box textStyle={textStyle}>Chakra UI</Box>
+            <Box textStyle={textStyle}>Ditto</Box>
           </Stack>
         )}
       </For>
