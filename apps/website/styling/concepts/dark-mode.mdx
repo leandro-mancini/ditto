@@ -52,7 +52,7 @@ Use a condição `_dark` para estilizar componentes para o modo escuro.
 
 ```tsx
 <Box bg={{ base: 'white', _dark: 'black' }}>
-  <Text>Olá</Text>
+  <Box>Olá</Box>
 </Box>
 ```
 
@@ -60,7 +60,7 @@ ou
 
 ```tsx
 <Box bg="white" _dark={{ bg: 'black' }}>
-  <Text>Olá</Text>
+  <Box>Olá</Box>
 </Box>
 ```
 
@@ -72,7 +72,7 @@ O Ditto fornece um conjunto de tokens semânticos que você pode usar para estil
 
 ```tsx
 <Box bg="bg.subtle">
-  <Text>Olá</Text>
+  <Box>Olá</Box>
 </Box>
 ```
 
@@ -85,7 +85,7 @@ Para forçar o modo escuro, defina a className `dark` em qualquer elemento pai o
 ```tsx
 <Box bg="black" className="dark">
   <Box bg="bg.subtle">
-    <Text>Olá</Text>
+    <Box>Olá</Box>
   </Box>
 </Box>
 ```
@@ -98,7 +98,7 @@ Use o componente `ColorModeProvider` para definir o modo escuro para uma página
 <ColorModeProvider forcedTheme="dark">
   <Box bg="black" className="dark">
     <Box bg="bg.subtle">
-      <Text>Olá</Text>
+      <Box>Olá</Box>
     </Box>
   </Box>
 </ColorModeProvider>
