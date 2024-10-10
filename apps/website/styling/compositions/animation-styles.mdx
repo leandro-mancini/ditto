@@ -7,14 +7,6 @@ description: Aprenda como usar estilos de animação para definir propriedades d
 
 Os estilos de animação permitem definir propriedades de animação reutilizáveis. O objetivo é reduzir a quantidade de código necessária para animar componentes.
 
-Os estilos de animação suportados são:
-
-- **Animação**: composição de animação, atraso, direção, duração, modo de preenchimento, contagem de iteração, nome, estado de reprodução, função de temporização
-
-- **Intervalo de animação**: intervalo de animação, início, fim, linha do tempo
-
-- **Origem da transformação**: origem da transformação
-
 ## Definindo estilos de animação
 
 Os estilos de animação são definidos usando a função `defineAnimationStyles`.
@@ -52,9 +44,7 @@ import { animationStyles } from './animation-styles';
 
 const config = defineConfig({
   theme: {
-    extend: {
-      animationStyles,
-    },
+    animationStyles,
   },
 });
 

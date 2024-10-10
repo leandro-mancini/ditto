@@ -19,6 +19,9 @@ export const TokensAnimationStyle = () => {
           {(animation) => (
             <Box
               as="button"
+              borderWidth="1px"
+              padding="16px"
+              cursor="pointer"
               key={animation}
               onClick={() => setAnimation(animation)}
             >
@@ -28,19 +31,21 @@ export const TokensAnimationStyle = () => {
         </For>
       </HStack>
 
-      <Center
-        width="240px"
-        height="240px"
-        animationDuration="0.5s"
-        animationStyle={animation}
-        onAnimationEnd={() => setAnimation(undefined)}
-        bg="bg"
-        data-placement="bottom"
-        borderWidth="1px"
-        p="16px"
-      >
-        Animation
-      </Center>
+      <Box my="16px">
+        <Center
+          width="240px"
+          height="240px"
+          animationDuration="0.5s"
+          animationStyle={animation}
+          onAnimationEnd={() => setAnimation(undefined)}
+          bg="bg"
+          data-placement="bottom"
+          borderWidth="1px"
+          p="16px"
+        >
+          Animation
+        </Center>
+      </Box>
     </Stack>
   );
 };
