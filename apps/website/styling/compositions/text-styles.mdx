@@ -36,15 +36,9 @@ export const textStyles = defineTextStyles({
 });
 ```
 
-## Estilos de texto embutidos
-
-O Ditto fornece um conjunto de estilos de texto embutidos.
-
-<ExamplePreview name="tokens/text-styles" />
-
 ## Atualizando o tema
 
-Para usar os estilos de texto, atualize o objeto theme com a propriedade textStyles.
+Para usar os estilos de texto, atualize o objeto `theme` com a propriedade `textStyles`.
 
 ```ts
 import { createSystem, defineConfig } from '@ditto/react';
@@ -52,9 +46,7 @@ import { textStyles } from './text-styles';
 
 const config = defineConfig({
   theme: {
-    extend: {
-      textStyles,
-    },
+    textStyles,
   },
 });
 
@@ -69,7 +61,7 @@ npx @ditto/cli@next typegen
 
 ## Usando estilos de texto
 
-Agora você pode usar a propriedade textStyle em seus componentes.
+Agora você pode usar a propriedade `textStyle` em seus componentes.
 
 ```ts
 <Box textStyle="body">Este é o estilo de texto do corpo</Box>
