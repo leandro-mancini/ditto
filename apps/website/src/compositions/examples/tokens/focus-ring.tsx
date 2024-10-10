@@ -1,22 +1,23 @@
-import { Center, For, Stack } from '@dittox/react';
+import { Box, Center, For, HStack, Stack } from '@dittox/react';
 import React from 'react';
 
 export const TokensFocusRing = () => {
   return (
-    <Stack gap="4">
+    <HStack wrap="wrap" gap="16px">
       <For each={['inside', 'outside', 'mixed']}>
         {(focusRing) => (
-          <Center
-            h="20"
-            bg="bg"
+          <Box
             borderWidth="1px"
+            padding="16px"
             focusRing={focusRing}
+            focusRingColor={'tomato'}
+            key={focusRing}
             data-focus
           >
             {focusRing}
-          </Center>
+          </Box>
         )}
       </For>
-    </Stack>
+    </HStack>
   );
 };
