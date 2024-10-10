@@ -25,7 +25,7 @@ Use a propriedade `accentColor` para definir a cor de acento para controles de i
 
 ## Appearance
 
-Use a propriedade appearance para definir a aparência de um elemento.
+Use a propriedade `appearance` para definir a aparência de um elemento.
 
 ```jsx
 <ditto.select appearance="none">
@@ -41,7 +41,7 @@ Use a propriedade appearance para definir a aparência de um elemento.
 
 ## Caret Color
 
-Use a propriedade caretColor para definir a cor do cursor de texto (caret) em um input ou textarea.
+Use a propriedade `caretColor` para definir a cor do cursor de texto (caret) em um input ou textarea.
 
 ```jsx
 // hardcoded
@@ -57,7 +57,7 @@ Use a propriedade caretColor para definir a cor do cursor de texto (caret) em um
 
 ## Cursor
 
-Use a propriedade cursor para definir a imagem do cursor do mouse a ser exibida quando o ponteiro estiver sobre um elemento.
+Use a propriedade `cursor` para definir a imagem do cursor do mouse a ser exibida quando o ponteiro estiver sobre um elemento.
 
 ```jsx
 <Box cursor="pointer" />
@@ -69,7 +69,7 @@ Use a propriedade cursor para definir a imagem do cursor do mouse a ser exibida 
 
 ## Pointer Events
 
-Use a propriedade pointerEvents para controlar como os eventos de ponteiro são tratados em um elemento.
+Use a propriedade `pointerEvents` para controlar como os eventos de ponteiro são tratados em um elemento.
 
 ```jsx
 <Box pointerEvents="none">Can't click me</Box>
@@ -81,7 +81,7 @@ Use a propriedade pointerEvents para controlar como os eventos de ponteiro são 
 
 ## Resize
 
-Use a propriedade resize para controlar se um elemento pode ser redimensionado e, em caso afirmativo, em quais direções.
+Use a propriedade `resize` para controlar se um elemento pode ser redimensionado e, em caso afirmativo, em quais direções.
 
 ```jsx
 <ditto.textarea resize="both" />
@@ -95,7 +95,7 @@ Use a propriedade resize para controlar se um elemento pode ser redimensionado e
 
 ## Scrollbar
 
-Use a propriedade scrollbar para personalizar a aparência das barras de rolagem.
+Use a propriedade `scrollbar` para personalizar a aparência das barras de rolagem.
 
 ```jsx
 <Box scrollbar="hidden" maxH="100px" overflowY="auto">
@@ -105,7 +105,7 @@ Use a propriedade scrollbar para personalizar a aparência das barras de rolagem
 
 ## Scroll Behavior
 
-Use a propriedade scrollBehavior para definir o comportamento de rolagem em uma caixa quando a rolagem é acionada pela navegação ou por código JavaScript.
+Use a propriedade `scrollBehavior` para definir o comportamento de rolagem em uma caixa quando a rolagem é acionada pela navegação ou por código JavaScript.
 
 ```jsx
 <Box maxH="100px" overflowY="auto" scrollBehavior="smooth">
@@ -119,7 +119,7 @@ Use a propriedade scrollBehavior para definir o comportamento de rolagem em uma 
 
 ## Scroll Margin
 
-Use a propriedade scrollMargin\* para definir margens ao redor de contêineres de rolagem.
+Use a propriedade `scrollMargin*` para definir margens ao redor de contêineres de rolagem.
 
 ```jsx
 <Box maxH="100px" overflowY="auto" scrollMarginY="2">
@@ -142,7 +142,7 @@ Use a propriedade scrollMargin\* para definir margens ao redor de contêineres d
 
 ## Scroll Padding
 
-Use a propriedade scrollPadding\* para definir o preenchimento dentro de contêineres de rolagem.
+Use a propriedade `scrollPadding*` para definir o preenchimento dentro de contêineres de rolagem.
 
 ```jsx
 <Box maxH="100px" overflowY="auto" scrollPaddingY="2">
@@ -165,7 +165,7 @@ Use a propriedade scrollPadding\* para definir o preenchimento dentro de contêi
 
 ## Scroll Snap Margin
 
-Use a propriedade scrollSnapMargin\* para definir margens ao redor de contêineres de rolagem.
+Use a propriedade `scrollSnapMargin*` para definir margens ao redor de contêineres de rolagem.
 
 ```jsx
 <Box maxH="100px" overflowY="auto" scrollSnapMarginY="2">
@@ -183,7 +183,7 @@ Use a propriedade scrollSnapMargin\* para definir margens ao redor de contêiner
 
 ## Scroll Snap Type
 
-Use a propriedade scrollSnapType para controlar como os pontos de encaixe são aplicados em um contêiner de rolagem.
+Use a propriedade `scrollSnapType` para controlar como os pontos de encaixe são aplicados em um contêiner de rolagem.
 
 ```jsx
 <Box maxH="100px" overflowY="auto" scrollSnapType="x">
@@ -200,9 +200,9 @@ Use a propriedade scrollSnapType para controlar como os pontos de encaixe são a
 
 ## Scroll Snap Strictness
 
-Use a propriedade scrollSnapStrictness para definir o rigor do encaixe de rolagem de um elemento. Isso requer que scrollSnapType esteja definido como x, y ou both.
+Use a propriedade `scrollSnapStrictness` para definir o rigor do encaixe de rolagem de um elemento. Isso requer que `scrollSnapType` esteja definido como `x`, `y` ou `both`.
 
-Os valores podem ser mandatory ou proximity e mapeiam para var(--scroll-snap-strictness).
+Os valores podem ser `mandatory` ou `proximity` e mapeiam para `var(--scroll-snap-strictness)`.
 
 ```jsx
 <Box maxH="100px" overflowY="auto" scrollSnapStrictness="proximity">
@@ -217,7 +217,7 @@ Os valores podem ser mandatory ou proximity e mapeiam para var(--scroll-snap-str
 
 ## Touch Action
 
-Use a propriedade touchAction para controlar como a região de um elemento pode ser manipulada por um usuário de touchscreen.
+Use a propriedade `touchAction` para controlar como a região de um elemento pode ser manipulada por um usuário de touchscreen.
 
 ```jsx
 <Box touchAction="none" />
@@ -229,7 +229,7 @@ Use a propriedade touchAction para controlar como a região de um elemento pode 
 
 ## User Select
 
-Use a propriedade userSelect para controlar se o usuário pode selecionar texto dentro de um elemento.
+Use a propriedade `userSelect` para controlar se o usuário pode selecionar texto dentro de um elemento.
 
 ```jsx
 <Box userSelect="none">
@@ -243,7 +243,7 @@ Use a propriedade userSelect para controlar se o usuário pode selecionar texto 
 
 ## Will Change
 
-Use a propriedade willChange para sugerir aos navegadores como a propriedade de um elemento deve mudar.
+Use a propriedade `willChange` para sugerir aos navegadores como a propriedade de um elemento deve mudar.
 
 ```jsx
 <Box willChange="transform" />

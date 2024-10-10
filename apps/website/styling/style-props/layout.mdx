@@ -23,7 +23,7 @@ Use a propriedade `aspectRatio` para definir a proporção desejada de um elemen
 
 ### Break After
 
-Use a propriedade breakAfter para definir como as quebras de página, coluna ou região devem se comportar após um elemento.
+Use a propriedade `breakAfter` para definir como as quebras de página, coluna ou região devem se comportar após um elemento.
 
 ```jsx
 <Box columns="2">
@@ -38,7 +38,7 @@ Use a propriedade breakAfter para definir como as quebras de página, coluna ou 
 
 ### Break Before
 
-Use a propriedade breakBefore para definir como as quebras de página, coluna ou região devem se comportar antes de um elemento.
+Use a propriedade `breakBefore` para definir como as quebras de página, coluna ou região devem se comportar antes de um elemento.
 
 ```jsx
 <Box columns="2">
@@ -53,7 +53,7 @@ Use a propriedade breakBefore para definir como as quebras de página, coluna ou
 
 ### Break Inside
 
-Use a propriedade breakInside para definir como as quebras de página, coluna ou região devem se comportar dentro de um elemento.
+Use a propriedade `breakInside` para definir como as quebras de página, coluna ou região devem se comportar dentro de um elemento.
 
 ```jsx
 <Box columns="2">
@@ -68,7 +68,7 @@ Use a propriedade breakInside para definir como as quebras de página, coluna ou
 
 ## Box Decoration Break
 
-Use a propriedade boxDecorationBreak para definir como as decorações de caixa devem se comportar quando a caixa se quebra em várias linhas, colunas ou páginas.
+Use a propriedade `boxDecorationBreak` para definir como as decorações de caixa devem se comportar quando a caixa se quebra em várias linhas, colunas ou páginas.
 
 ```jsx /boxDecorationBreak/
 <Box bgImage="linear-gradient(red, blue)" boxDecorationBreak="clone">
@@ -82,7 +82,7 @@ Use a propriedade boxDecorationBreak para definir como as decorações de caixa 
 
 ## Box Sizing
 
-Use a propriedade boxSizing para definir o dimensionamento da caixa de um elemento.
+Use a propriedade `boxSizing` para definir o dimensionamento da caixa de um elemento.
 
 ```jsx /boxSizing/
 <Box boxSizing="border-box" padding="4" width="8" height="8" />
@@ -94,7 +94,7 @@ Use a propriedade boxSizing para definir o dimensionamento da caixa de um elemen
 
 ## Columns
 
-Use a propriedade columns para definir o número de colunas para um elemento.
+Use a propriedade `columns` para definir o número de colunas para um elemento.
 
 ```jsx
 <Box columns={2} />
@@ -106,7 +106,7 @@ Use a propriedade columns para definir o número de colunas para um elemento.
 
 ## Float
 
-Use a propriedade float para definir a flutuação de um elemento.
+Use a propriedade `float` para definir a flutuação de um elemento.
 
 ```jsx /float/
 <Box>
@@ -121,7 +121,7 @@ Use a propriedade float para definir a flutuação de um elemento.
 
 ## Clear
 
-Use a propriedade clear para definir se um elemento deve ser movido abaixo (limpo) de elementos flutuantes que o precedem.
+Use a propriedade `clear` para definir se um elemento deve ser movido abaixo (limpo) de elementos flutuantes que o precedem.
 
 ```jsx
 <Box>
@@ -141,7 +141,7 @@ Use a propriedade clear para definir se um elemento deve ser movido abaixo (limp
 
 ## Isolation
 
-Use a propriedade isolation para definir se um elemento deve criar explicitamente um novo contexto de empilhamento.
+Use a propriedade `isolation` para definir se um elemento deve criar explicitamente um novo contexto de empilhamento.
 
 ```jsx
 <Box isolation="isolate">
@@ -155,7 +155,7 @@ Use a propriedade isolation para definir se um elemento deve criar explicitament
 
 ## Object Fit
 
-Use a propriedade objectFit para definir como uma imagem ou vídeo deve ser redimensionado para se ajustar ao contêiner.
+Use a propriedade `objectFit` para definir como uma imagem ou vídeo deve ser redimensionado para se ajustar ao contêiner.
 
 ```jsx
 <Image src="..." objectFit="cover" width="10" height="10" />
@@ -167,7 +167,7 @@ Use a propriedade objectFit para definir como uma imagem ou vídeo deve ser redi
 
 ## Object Position
 
-Use a propriedade objectPosition para definir como um elemento deve ser posicionado dentro de seu contêiner.
+Use a propriedade `objectPosition` para definir como um elemento deve ser posicionado dentro de seu contêiner.
 
 ```jsx
 <Image src="..." objectPosition="center" width="10" height="10" />
@@ -179,7 +179,7 @@ Use a propriedade objectPosition para definir como um elemento deve ser posicion
 
 ## Overflow
 
-Use a propriedade overflow para controlar como o conteúdo que excede as dimensões de um elemento é tratado. Essa propriedade determina se o conteúdo deve ser recortado, adicionar barras de rolagem ou exibir o conteúdo transbordado.
+Use a propriedade `overflow` para controlar como o conteúdo que excede as dimensões de um elemento é tratado. Essa propriedade determina se o conteúdo deve ser recortado, adicionar barras de rolagem ou exibir o conteúdo transbordado.
 
 ```jsx
 <Box overflow="hidden" maxHeight="120px" />
@@ -192,7 +192,7 @@ Use a propriedade overflow para controlar como o conteúdo que excede as dimens�
 
 ## Overscroll Behavior
 
-Use a propriedade overscrollBehavior para controlar o que o navegador faz ao atingir o limite de uma área de rolagem.
+Use a propriedade `overscrollBehavior` para controlar o que o navegador faz ao atingir o limite de uma área de rolagem.
 
 ```jsx
 <Box maxHeight="120px" overscrollBehavior="contain" />
@@ -204,7 +204,7 @@ Use a propriedade overscrollBehavior para controlar o que o navegador faz ao ati
 
 ## Position
 
-Use as utilidades position para definir a posição de um elemento.
+Use as utilidades `position` para definir a posição de um elemento.
 
 ```jsx
 <Box position="absolute" />
@@ -217,7 +217,7 @@ Use as utilidades position para definir a posição de um elemento.
 
 ## Top / Right / Bottom / Left
 
-Use as utilidades top, right, bottom e left para definir a posição de um elemento.
+Use as utilidades `top`, `right`, `bottom` e `left` para definir a posição de um elemento.
 
 ```jsx
 <Box position="absolute" top="0" left="0" />
@@ -248,7 +248,7 @@ Use as equivalências lógicas das utilidades `insetStart` e `insetEnd` para def
 
 ## Visibility
 
-Use a propriedade visibility para controlar a visibilidade de um elemento.
+Use a propriedade `visibility` para controlar a visibilidade de um elemento.
 
 ```jsx
 <Box visibility="hidden" />
@@ -260,7 +260,7 @@ Use a propriedade visibility para controlar a visibilidade de um elemento.
 
 ## Z-Index
 
-Use a propriedade zIndex para definir o índice Z de um elemento.
+Use a propriedade `zIndex` para definir o índice Z de um elemento.
 
 ```jsx
 // using hardcoded values
