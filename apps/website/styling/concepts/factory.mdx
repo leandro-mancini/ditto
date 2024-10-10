@@ -5,17 +5,17 @@ description: Use a fábrica do Ditto para criar componentes superpotentes
 
 ## Visão Geral
 
-A fábrica do Ditto serve como uma maneira de criar componentes JSX superpotentes a partir de qualquer elemento HTML, permitindo que eles recebam propriedades de estilo JSX.
+A fábrica de estilos do Ditto serve como uma maneira de criar componentes JSX superpotentes a partir de qualquer elemento HTML, permitindo que eles recebam propriedades de estilo JSX.
 
 ```js
 import { ditto } from '@dittox/react';
 ```
 
-A fábrica do Ditto pode ser usada de duas maneiras: como um elemento JSX ou como uma função de fábrica.
+O Ditto pode ser usado de duas maneiras: como um [elemento JSX](#elemento-jsx) ou como uma [função](#função).
 
 ## Elemento JSX
 
-Propriedades de estilo são propriedades CSS que você pode passar como props para seus componentes. Com a fábrica JSX, você pode usar a sintaxe `ditto.<element>` para criar elementos JSX que suportam propriedades de estilo.
+Propriedades de estilo são propriedades CSS que você pode passar como props para seus componentes. Com o JSX, você pode usar a sintaxe `ditto.<element>` para criar elementos JSX que suportam propriedades de estilo.
 
 ```jsx
 import { ditto } from '@dittox/react';
@@ -27,9 +27,9 @@ const Button = ({ children }) => (
 );
 ```
 
-## Função de Fábrica
+## Função
 
-Use a função `ditto` para converter elementos nativos ou componentes personalizados. O requisito principal é que o componente deve aceitar `className` como props.
+Use a função `ditto` para converter elementos nativos ou componentes personalizados.
 
 ```jsx
 const Link = ditto('a');
@@ -59,7 +59,7 @@ function Example() {
 
 ## Anexando estilos
 
-Use a função `ditto` para anexar estilos ou receitas a componentes.
+Use a função `ditto` para anexar estilos ou receitas de componentes.
 
 ```jsx
 const Link = ditto('a', {
@@ -102,7 +102,7 @@ const Card = ditto('div', {
 
 ## Repassando props
 
-Por padrão, a fábrica `ditto` apenas filtra as propriedades de estilo relacionadas ao Ditto para não chegarem ao DOM. Para um controle mais refinado de como as props são repassadas, passe a opção `shouldForwardProp`.
+Por padrão, o `ditto` apenas filtra as propriedades de estilo relacionadas ao Ditto para não chegarem ao DOM. Para um controle mais refinado de como as props são repassadas, passe a opção `shouldForwardProp`.
 
 ```jsx
 const Component = ditto('div', {
@@ -147,7 +147,7 @@ const Button = ditto(
 
 ## Polimorfismo
 
-Todo componente criado com a fábrica do Ditto pode aceitar as props `as` e `asChild` para alterar o elemento DOM subjacente.
+Todo componente criado com o `ditto` pode aceitar as props `as` e `asChild` para alterar o elemento DOM subjacente.
 
 ```jsx
 <Button as="a" href="https://dittox.com">
@@ -163,4 +163,4 @@ ou
 </Button>
 ```
 
-Saiba mais sobre composição no Ditto [aqui](/docs/components/overview/composition)
+Saiba mais sobre composição [aqui](/docs/components/overview/composition)
