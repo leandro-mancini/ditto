@@ -31,15 +31,15 @@ const breakpoints = {
 Aqui está um exemplo de como alterar o peso da fonte de um texto em telas grandes:
 
 ```jsx
-<Text fontWeight="medium" lg={{ fontWeight: 'bold' }}>
+<Box fontWeight="600" lg={{ fontWeight: '700' }}>
   Texto
-</Text>
+</Box>
 ```
 
 ou use o modificador baseado em props:
 
 ```jsx
-<Text fontWeight={{ base: 'medium', lg: 'bold' }}>Texto</Text>
+<Box fontWeight={{ base: '600', lg: '700' }}>Texto</Box>
 ```
 
 ## Sintaxe de Array
@@ -47,7 +47,7 @@ ou use o modificador baseado em props:
 O Ditto também aceita arrays como valores para estilos responsivos. Passe o valor correspondente para cada breakpoint no array. Usando o nosso código anterior como exemplo:
 
 ```jsx
-<Text fontWeight={['medium', undefined, undefined, 'bold']}>Texto</Text>
+<Box fontWeight={['600', undefined, undefined, '700']}>Texto</Box>
 ```
 
 Observe o uso de `undefined` para os breakpoints, a fim de pular os breakpoints `md` e `lg`.
@@ -59,7 +59,7 @@ Observe o uso de `undefined` para os breakpoints, a fim de pular os breakpoints 
 O Ditto fornece uma maneira de direcionar um intervalo de breakpoints usando a notação `To`. Para aplicar estilos entre os breakpoints `md` e `xl`, use a propriedade `mdToXl`:
 
 ```jsx
-<Text fontWeight={{ mdToXl: 'bold' }}>Texto</Text>
+<Box fontWeight={{ mdToXl: 'bold' }}>Texto</Box>
 ```
 
 > Este texto ficará em negrito apenas entre os breakpoints `md` e `xl`.
@@ -69,7 +69,7 @@ O Ditto fornece uma maneira de direcionar um intervalo de breakpoints usando a n
 Para direcionar um único breakpoint, use a notação `Only`. Aqui está um exemplo de como aplicar estilos apenas no breakpoint `lg`, usando a propriedade `lgOnly`:
 
 ```jsx
-<Text fontWeight={{ lgOnly: 'bold' }}>Texto</Text>
+<Box fontWeight={{ lgOnly: 'bold' }}>Texto</Box>
 ```
 
 ## Esconder Elementos no Breakpoint
@@ -80,7 +80,7 @@ Para esconder um elemento a partir do breakpoint `md`, use a utilidade `hideFrom
 
 ```jsx
 <Stack hideFrom="md">
-  <Text>Este texto será escondido a partir do breakpoint `md`</Text>
+  <Box>Este texto será escondido a partir do breakpoint `md`</Box>
 </Stack>
 ```
 
@@ -88,10 +88,10 @@ Para esconder um elemento abaixo do breakpoint `md`, use a utilidade `hideBelow`
 
 ```jsx
 <Stack hideBelow="md">
-  <Text>Este texto será escondido abaixo do breakpoint `md`</Text>
+  <Box>Este texto será escondido abaixo do breakpoint `md`</Box>
 </Stack>
 ```
 
 ## Personalizando Breakpoints
 
-Para aprender como personalizar breakpoints, consulte a seção de [personalização de breakpoints](#).
+Para aprender como personalizar breakpoints, consulte a seção de [personalização de breakpoints](/theming/customization/breakpoints).
