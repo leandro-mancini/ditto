@@ -1,0 +1,166 @@
+---
+title: Fábrica de Estilos
+description: Use a fábrica do Ditto para criar componentes superpotentes
+---
+
+## Visão Geral
+
+A fábrica de estilos do Ditto serve como uma maneira de criar componentes JSX superpotentes a partir de qualquer elemento HTML, permitindo que eles recebam propriedades de estilo JSX.
+
+```js
+import { ditto } from '@dittox/react';
+```
+
+O Ditto pode ser usado de duas maneiras: como um [elemento JSX](#elemento-jsx) ou como uma [função](#função).
+
+## Elemento JSX
+
+Propriedades de estilo são propriedades CSS que você pode passar como props para seus componentes. Com o JSX, você pode usar a sintaxe `ditto.<element>` para criar elementos JSX que suportam propriedades de estilo.
+
+```jsx
+import { ditto } from '@dittox/react';
+
+const Button = ({ children }) => (
+  <ditto.button bg="blue.500" color="white" py="2" px="4" rounded="md">
+    {children}
+  </ditto.button>
+);
+```
+
+## Função
+
+Use a função `ditto` para converter elementos nativos ou componentes personalizados.
+
+```jsx
+const Link = ditto('a');
+
+function Example() {
+  return <Link bg="red.200" href="https://dittox.com" />;
+}
+```
+
+Outro exemplo com um componente personalizado.
+
+```jsx
+import * as RadixScrollArea from '@radix-ui/react-scroll-area';
+
+const ScrollArea = ditto(RadixScrollArea.Root);
+
+function Example() {
+  return (
+    <ScrollArea>
+      <RadixScrollArea.Viewport>
+        <div>Olá</div>
+      </RadixScrollArea.Viewport>
+    </ScrollArea>
+  );
+}
+```
+
+## Anexando estilos
+
+Use a função `ditto` para anexar estilos ou receitas de componentes.
+
+```jsx
+const Link = ditto('a', {
+  base: {
+    bg: 'papayawhip',
+    color: 'red.500',
+  },
+});
+
+// uso: <Link href="https://dittox.com" />
+```
+
+## Anexando receitas
+
+Aqui está um exemplo de como anexar uma receita ao componente.
+
+```jsx
+const Card = ditto('div', {
+  base: {
+    shadow: 'lg',
+    rounded: 'lg',
+    bg: 'white',
+  },
+  variants: {
+    variant: {
+      outline: {
+        border: '1px solid',
+        borderColor: 'red.500',
+      },
+      solid: {
+        bg: 'red.500',
+        color: 'white',
+      },
+    },
+  },
+});
+
+// uso: <Card variant="outline" />
+```
+
+## Repassando props
+
+Por padrão, o `ditto` apenas filtra as propriedades de estilo relacionadas ao Ditto para não chegarem ao DOM. Para um controle mais refinado de como as props são repassadas, passe a opção `shouldForwardProp`.
+
+```jsx
+const Component = ditto('div', {
+  shouldForwardProp(prop) {
+    return !prop.startsWith('$');
+  },
+});
+```
+
+Para criar uma lógica personalizada de repasse de props, combine o pacote [@emotion/is-prop-valid](https://github.com/emotion-js/emotion/tree/master/packages/is-prop-valid) e a função `isValidProperty` do Ditto.
+
+```tsx
+import { ditto, defaultSystem } from '@dittox/react';
+import shouldForwardProp from '@emotion/is-prop-valid';
+
+const { isValidProperty } = defaultSystem;
+
+const Component = ditto('div', {
+  shouldForwardProp(prop, variantKeys) {
+    const dittoSfp = !variantKeys?.includes(prop) && !isValidProperty(prop);
+    return shouldForwardProp(prop) && dittoSfp;
+  },
+});
+```
+
+## Props Padrão
+
+Use a opção `defaultProps` para passar props padrão para o componente.
+
+```jsx
+const Button = ditto(
+  'button',
+  {
+    base: {
+      bg: 'blue.500',
+      color: 'white',
+    },
+  },
+  { defaultProps: { type: 'button' } }
+);
+```
+
+## Polimorfismo
+
+Todo componente criado com o `ditto` pode aceitar as props `as` e `asChild` para alterar o elemento DOM subjacente.
+
+```jsx
+<Button as="a" href="https://dittox.com">
+  Ditto
+</Button>
+```
+
+ou
+
+```jsx
+<Button asChild>
+  <a href="https://dittox.com">Ditto</a>
+</Button>
+```
+
+Saiba mais sobre composição [aqui](/docs/components/overview/composition)

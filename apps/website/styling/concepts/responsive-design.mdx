@@ -1,0 +1,97 @@
+---
+title: Design Responsivo
+description: Aprenda a criar designs responsivos usando as propriedades de estilo responsivo embutidas do Ditto
+---
+
+## Visão Geral
+
+O design responsivo é um aspecto fundamental do desenvolvimento web moderno, permitindo que sites e aplicações se adaptem de maneira fluida a diferentes tamanhos de tela e dispositivos.
+
+:::info
+
+O Ditto usa um sistema de breakpoints mobile-first e utiliza media queries de largura mínima `@media(min-width)` quando você escreve estilos responsivos.
+
+:::
+
+O Ditto fornece cinco breakpoints por padrão:
+
+```ts
+const breakpoints = {
+  base: '0em', // 0px
+  sm: '30em', // ~480px
+  md: '48em', // ~768px
+  lg: '62em', // ~992px
+  xl: '80em', // ~1280px
+  '2xl': '96em', // ~1536px
+};
+```
+
+## Sintaxe de Objeto
+
+Aqui está um exemplo de como alterar o peso da fonte de um texto em telas grandes:
+
+```jsx
+<Box fontWeight="600" lg={{ fontWeight: '700' }}>
+  Texto
+</Box>
+```
+
+ou use o modificador baseado em props:
+
+```jsx
+<Box fontWeight={{ base: '600', lg: '700' }}>Texto</Box>
+```
+
+## Sintaxe de Array
+
+O Ditto também aceita arrays como valores para estilos responsivos. Passe o valor correspondente para cada breakpoint no array. Usando o nosso código anterior como exemplo:
+
+```jsx
+<Box fontWeight={['600', undefined, undefined, '700']}>Texto</Box>
+```
+
+Observe o uso de `undefined` para os breakpoints, a fim de pular os breakpoints `md` e `lg`.
+
+## Alvo de Breakpoint
+
+### Intervalo de Breakpoints
+
+O Ditto fornece uma maneira de direcionar um intervalo de breakpoints usando a notação `To`. Para aplicar estilos entre os breakpoints `md` e `xl`, use a propriedade `mdToXl`:
+
+```jsx
+<Box fontWeight={{ mdToXl: 'bold' }}>Texto</Box>
+```
+
+> Este texto ficará em negrito apenas entre os breakpoints `md` e `xl`.
+
+### Apenas Breakpoint
+
+Para direcionar um único breakpoint, use a notação `Only`. Aqui está um exemplo de como aplicar estilos apenas no breakpoint `lg`, usando a propriedade `lgOnly`:
+
+```jsx
+<Box fontWeight={{ lgOnly: 'bold' }}>Texto</Box>
+```
+
+## Esconder Elementos no Breakpoint
+
+O Ditto fornece as utilidades `hideFrom` e `hideBelow` para esconder elementos em breakpoints específicos.
+
+Para esconder um elemento a partir do breakpoint `md`, use a utilidade `hideFrom`:
+
+```jsx
+<Stack hideFrom="md">
+  <Box>Este texto será escondido a partir do breakpoint `md`</Box>
+</Stack>
+```
+
+Para esconder um elemento abaixo do breakpoint `md`, use a utilidade `hideBelow`:
+
+```jsx
+<Stack hideBelow="md">
+  <Box>Este texto será escondido abaixo do breakpoint `md`</Box>
+</Stack>
+```
+
+## Personalizando Breakpoints
+
+Para aprender como personalizar breakpoints, consulte a seção de [personalização de breakpoints](/theming/customization/breakpoints).

@@ -1,0 +1,43 @@
+---
+title: Modificador de opacidade de cor
+description: Como definir dinamicamente a opacidade de uma cor bruta ou token de cor
+---
+
+Toda propriedade de estilo relacionada à cor pode usar o atalho
+[`color-mix`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix)
+para aplicar opacidade a uma cor.
+
+## Sintaxe
+
+A sintaxe geral é `{cor}/{opacidade}`. Por exemplo: `bg="red.300/40"`.
+
+## Uso
+
+```tsx
+<Text bg="red.300/40" color="white">
+  Olá Mundo
+</Text>
+```
+
+Isso gerará algo assim:
+
+```css {2,3}
+.css-sxdf {
+  --mix-background: color-mix(in srgb, var(--colors-red-300) 40%, transparent);
+  background: var(--mix-background, var(--colors-red-300));
+  color: var(--colors-white);
+}
+```
+
+## Variáveis CSS
+
+Esse recurso também pode ser utilizado em variáveis CSS. Isso é útil para criar tokens de cor únicos em um componente.
+
+A sintaxe de referência de token `{}` é necessária para que isso funcione.
+
+```tsx
+<Box css={{ '--bg': '{colors.red.400/40}' }}>
+  <Text>Olá Mundo</Text>
+  <Box bg="var(--bg)" />
+</Box>
+```
