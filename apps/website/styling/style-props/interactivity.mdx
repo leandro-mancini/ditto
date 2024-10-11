@@ -13,7 +13,7 @@ Use a propriedade `accentColor` para definir a cor de acento para controles de i
   <ditto.input type="checkbox" accentColor="#3b82f6" />
 </label>
 
-// valor de token
+// com referência de token
 <label>
   <ditto.input type="checkbox" accentColor="blue.500" />
 </label>
@@ -44,10 +44,10 @@ Use a propriedade `appearance` para definir a aparência de um elemento.
 Use a propriedade `caretColor` para definir a cor do cursor de texto (caret) em um input ou textarea.
 
 ```jsx
-// hardcoded
+// valor fixo
 <ditto.input caretColor="#3b82f6" />
 
-// token value
+// com referência de token
 <ditto.input caretColor="blue.500" />
 ```
 
@@ -72,7 +72,7 @@ Use a propriedade `cursor` para definir a imagem do cursor do mouse a ser exibid
 Use a propriedade `pointerEvents` para controlar como os eventos de ponteiro são tratados em um elemento.
 
 ```jsx
-<Box pointerEvents="none">Can't click me</Box>
+<Box pointerEvents="none">Não consigo clicar</Box>
 ```
 
 | Prop            | CSS Property     | Token Category |
@@ -99,7 +99,7 @@ Use a propriedade `scrollbar` para personalizar a aparência das barras de rolag
 
 ```jsx
 <Box scrollbar="hidden" maxH="100px" overflowY="auto">
-  Scrollbar hidden
+  Barra de rolagem oculta
 </Box>
 ```
 
@@ -109,7 +109,7 @@ Use a propriedade `scrollBehavior` para definir o comportamento de rolagem em um
 
 ```jsx
 <Box maxH="100px" overflowY="auto" scrollBehavior="smooth">
-  <div>Scroll me</div>
+  <div>Recipiente de barra de rolagem com preenchimento de bloco</div>
 </Box>
 ```
 
@@ -123,7 +123,7 @@ Use a propriedade `scrollMargin*` para definir margens ao redor de contêineres 
 
 ```jsx
 <Box maxH="100px" overflowY="auto" scrollMarginY="2">
-  Scrollbar Container with block padding
+  Recipiente de barra de rolagem com preenchimento de bloco
 </Box>
 ```
 
@@ -187,7 +187,7 @@ Use a propriedade `scrollSnapType` para controlar como os pontos de encaixe são
 
 ```jsx
 <Box maxH="100px" overflowY="auto" scrollSnapType="x">
-  Scroll container with x snap type
+  Recipiente de rolagem com tipo de encaixe x
 </Box>
 ```
 
@@ -233,7 +233,7 @@ Use a propriedade `userSelect` para controlar se o usuário pode selecionar text
 
 ```jsx
 <Box userSelect="none">
-  <p>Can't Select me</p>
+  <p>Não é possível selecionar-me</p>
 </Box>
 ```
 

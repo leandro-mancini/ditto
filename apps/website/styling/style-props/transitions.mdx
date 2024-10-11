@@ -8,12 +8,12 @@ description: Propriedades de estilo JSX para controlar a transição e animaçã
 Use a propriedade `transition` para controlar a transição de um elemento.
 
 ```jsx
-// hardcoded value
+// valores fixos
 <Box bg="red.400" _hover={{ bg: "red.500" }} transition="background 0.2s ease-in-out">
   Passe o mouse aqui
 </Box>
 
-// shortcut value
+// valores de token
 <Box bg="red.400" _hover={{ bg: "red.500" }} transition="backgrounds">
   Passe o mouse aqui
 </Box>
@@ -34,7 +34,7 @@ Use a propriedade `transitionTimingFunction` para controlar a função de tempo 
   transition="backgrounds"
   transitionTimingFunction="ease-in-out"
 >
-  Hover me
+  Passe o mouse sobre mim
 </Box>
 ```
 
@@ -53,7 +53,7 @@ Use a propriedade `transitionDuration` para controlar a duração de uma transi�
   transition="backgrounds"
   transitionDuration="fast"
 >
-  Hover me
+  Passe o mouse sobre mim
 </Box>
 ```
 
@@ -72,7 +72,7 @@ Use a propriedade `transitionDelay` para controlar o atraso de uma transição.
   transition="backgrounds"
   transitionDelay="fast"
 >
-  Hover me
+  Passe o mouse sobre mim
 </Box>
 ```
 

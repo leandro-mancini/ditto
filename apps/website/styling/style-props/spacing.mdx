@@ -10,13 +10,13 @@ description: Propriedades de estilo JSX para controlar o padding e margin de um 
 Use a propriedade `padding` para aplicar preenchimento em todos os lados de um elemento.
 
 ```jsx
-// raw value
+// valor fixo
 <Box padding="40px" />
-<Box p="40px" /> // shorthand
+<Box p="40px" />
 
-// token value
+// valor de token
 <Box padding="4" />
-<Box p="4" /> // shorthand
+<Box p="4" />
 ```
 
 | Prop          | CSS Property | Token Category |
@@ -29,20 +29,20 @@ Use `paddingLeft`, `paddingRight`, `paddingTop`, ou `paddingBottom` para aplicar
 
 ```jsx
 <Box paddingLeft="3" />
-<Box pl="3" /> // shorthand
+<Box pl="3" />
 
 <Box paddingTop="3" />
-<Box pt="3" /> // shorthand
+<Box pt="3" />
 ```
 
 Use as propriedades `paddingStart` e `paddingEnd` para aplicar preenchimento no eixo lógico de um elemento com base na direção do texto.
 
 ```jsx
-<div className={css({ paddingStart: '8' })} />
-<div className={css({ ps: '8' })} /> // shorthand
+<Box paddingStart="8" />
+<Box ps="8" />
 
-<div className={css({ paddingEnd: '8' })} />
-<div className={css({ pe: '8' })} /> // shorthand
+<Box paddingEnd="8" />
+<Box pe="8" />
 ```
 
 | Prop                  | CSS Property           | Token Category |
@@ -60,10 +60,10 @@ Use as propriedades `paddingX` e `paddingY` para aplicar preenchimento nos eixos
 
 ```jsx
 <Box paddingX="8" />
-<Box px="8" /> // shorthand
+<Box px="8" />
 
 <Box paddingY="8" />
-<Box py="8" /> // shorthand
+<Box py="8" />
 ```
 
 | Prop                  | CSS Property           | Token Category |
@@ -86,7 +86,7 @@ Use a propriedade `margin` para aplicar margem em todos os lados de um elemento.
 
 ```jsx
 <Box margin="5" />
-<Box m="5" /> // shorthand
+<Box m="5" />
 ```
 
 | Prop         | CSS Property | Token Category |
@@ -99,20 +99,20 @@ Use `marginLeft`, `marginRight`, `marginTop`, ou `marginBottom` para aplicar mar
 
 ```jsx
 <Box marginLeft="3" />
-<Box ml="3" /> // shorthand
+<Box ml="3" />
 
 <Box marginTop="3" />
-<Box mt="3" /> // shorthand
+<Box mt="3" />
 ```
 
 Use as propriedades `marginStart` e `marginEnd` para aplicar margem no eixo lógico de um elemento com base na direção do texto.
 
 ```jsx
 <Box marginStart="8" />
-<Box ms="8" /> // shorthand
+<Box ms="8" />
 
 <Box marginEnd="8" />
-<Box me="8" /> // shorthand
+<Box me="8" />
 ```
 
 | Prop                 | CSS Property          | Token Category |
@@ -130,10 +130,10 @@ Use as propriedades `marginX` e `marginY` para aplicar margem nos eixos horizont
 
 ```jsx
 <Box marginX="8" />
-<Box mx="8" /> // shorthand
+<Box mx="8" />
 
 <Box marginY="8" />
-<Box my="8" /> // shorthand
+<Box my="8" />
 ```
 
 | Prop            | CSS Property  | Token Category |
