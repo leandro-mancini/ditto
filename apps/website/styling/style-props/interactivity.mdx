@@ -1,0 +1,254 @@
+---
+title: Interactivity
+description: Propriedades de estilo JSX para melhorar a interatividade em um elemento
+---
+
+## Accent Color
+
+Use a propriedade `accentColor` para definir a cor de acento para controles de interface do usuário gerados pelo navegador.
+
+```jsx
+// valor fixo
+<label>
+  <ditto.input type="checkbox" accentColor="#3b82f6" />
+</label>
+
+// com referência de token
+<label>
+  <ditto.input type="checkbox" accentColor="blue.500" />
+</label>
+```
+
+| Prop          | CSS Property   | Token Category |
+| ------------- | -------------- | -------------- |
+| `accentColor` | `accent-color` | `colors`       |
+
+## Appearance
+
+Use a propriedade `appearance` para definir a aparência de um elemento.
+
+```jsx
+<ditto.select appearance="none">
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+</ditto.select>
+```
+
+| Prop         | CSS Property | Token Category |
+| ------------ | ------------ | -------------- |
+| `appearance` | `appearance` | -              |
+
+## Caret Color
+
+Use a propriedade `caretColor` para definir a cor do cursor de texto (caret) em um input ou textarea.
+
+```jsx
+// valor fixo
+<ditto.input caretColor="#3b82f6" />
+
+// com referência de token
+<ditto.input caretColor="blue.500" />
+```
+
+| Prop         | CSS Property  | Token Category |
+| ------------ | ------------- | -------------- |
+| `caretColor` | `caret-color` | `colors`       |
+
+## Cursor
+
+Use a propriedade `cursor` para definir a imagem do cursor do mouse a ser exibida quando o ponteiro estiver sobre um elemento.
+
+```jsx
+<Box cursor="pointer" />
+```
+
+| Prop     | CSS Property | Token Category |
+| -------- | ------------ | -------------- |
+| `cursor` | `cursor`     | -              |
+
+## Pointer Events
+
+Use a propriedade `pointerEvents` para controlar como os eventos de ponteiro são tratados em um elemento.
+
+```jsx
+<Box pointerEvents="none">Não consigo clicar</Box>
+```
+
+| Prop            | CSS Property     | Token Category |
+| --------------- | ---------------- | -------------- |
+| `pointerEvents` | `pointer-events` | -              |
+
+## Resize
+
+Use a propriedade `resize` para controlar se um elemento pode ser redimensionado e, em caso afirmativo, em quais direções.
+
+```jsx
+<ditto.textarea resize="both" />
+<ditto.textarea resize="horizontal" />
+<ditto.textarea resize="vertical" />
+```
+
+| Prop     | CSS Property | Token Category |
+| -------- | ------------ | -------------- |
+| `resize` | `resize`     | -              |
+
+## Scrollbar
+
+Use a propriedade `scrollbar` para personalizar a aparência das barras de rolagem.
+
+```jsx
+<Box scrollbar="hidden" maxH="100px" overflowY="auto">
+  Barra de rolagem oculta
+</Box>
+```
+
+## Scroll Behavior
+
+Use a propriedade `scrollBehavior` para definir o comportamento de rolagem em uma caixa quando a rolagem é acionada pela navegação ou por código JavaScript.
+
+```jsx
+<Box maxH="100px" overflowY="auto" scrollBehavior="smooth">
+  <div>Recipiente de barra de rolagem com preenchimento de bloco</div>
+</Box>
+```
+
+| Prop             | CSS Property      | Token Category |
+| ---------------- | ----------------- | -------------- |
+| `scrollBehavior` | `scroll-behavior` | -              |
+
+## Scroll Margin
+
+Use a propriedade `scrollMargin*` para definir margens ao redor de contêineres de rolagem.
+
+```jsx
+<Box maxH="100px" overflowY="auto" scrollMarginY="2">
+  Recipiente de barra de rolagem com preenchimento de bloco
+</Box>
+```
+
+| Prop                                  | CSS Property                 | Token Category |
+| ------------------------------------- | ---------------------------- | -------------- |
+| `scrollMarginX` ,`scrollMarginInline` | `scroll-margin-inline`       | `spacing`      |
+| `scrollMarginInlineStart`             | `scroll-margin-inline-start` | `spacing`      |
+| `scrollMarginInlineEnd`               | `scroll-margin-inline-end`   | `spacing`      |
+| `scrollMarginY` , `scrollMarginBlock` | `scroll-margin-block`        | `spacing`      |
+| `scrollMarginBlockStart`              | `scroll-margin-block-start`  | `spacing`      |
+| `scrollMarginBlockEnd`                | `scroll-margin-block-end`    | `spacing`      |
+| `scrollMarginLeft`                    | `scroll-margin-left`         | `spacing`      |
+| `scrollMarginRight`                   | `scroll-margin-right`        | `spacing`      |
+| `scrollMarginTop`                     | `scroll-margin-top`          | `spacing`      |
+| `scrollMarginBottom`                  | `scroll-margin-bottom`       | `spacing`      |
+
+## Scroll Padding
+
+Use a propriedade `scrollPadding*` para definir o preenchimento dentro de contêineres de rolagem.
+
+```jsx
+<Box maxH="100px" overflowY="auto" scrollPaddingY="2">
+  Contêiner com padding de rolagem
+</Box>
+```
+
+| Prop                                     | CSS Property                  | Token Category |
+| ---------------------------------------- | ----------------------------- | -------------- |
+| `scrollPaddingX` , `scrollPaddingInline` | `scroll-padding-inline`       | `spacing`      |
+| `scrollPaddingInlineStart`               | `scroll-padding-inline-start` | `spacing`      |
+| `scrollPaddingInlineEnd`                 | `scroll-padding-inline-end`   | `spacing`      |
+| `scrollPaddingY` , `scrollPaddingBlock`  | `scroll-padding-block`        | `spacing`      |
+| `scrollPaddingBlockStart`                | `scroll-padding-block-start`  | `spacing`      |
+| `scrollPaddingBlockEnd`                  | `scroll-padding-block-end`    | `spacing`      |
+| `scrollPaddingLeft`                      | `scroll-padding-left`         | `spacing`      |
+| `scrollPaddingRight`                     | `scroll-padding-right`        | `spacing`      |
+| `scrollPaddingTop`                       | `scroll-padding-top`          | `spacing`      |
+| `scrollPaddingBottom`                    | `scroll-padding-bottom`       | `spacing`      |
+
+## Scroll Snap Margin
+
+Use a propriedade `scrollSnapMargin*` para definir margens ao redor de contêineres de rolagem.
+
+```jsx
+<Box maxH="100px" overflowY="auto" scrollSnapMarginY="2">
+  Contêiner com margem de encaixe de rolagem
+</Box>
+```
+
+| Prop                     | CSS Property           | Token Category |
+| ------------------------ | ---------------------- | -------------- |
+| `scrollSnapMargin`       | `scroll-margin`        | `spacing`      |
+| `scrollSnapMarginTop`    | `scroll-margin-top`    | `spacing`      |
+| `scrollSnapMarginBottom` | `scroll-margin-bottom` | `spacing`      |
+| `scrollSnapMarginLeft`   | `scroll-margin-left`   | `spacing`      |
+| `scrollSnapMarginRight`  | `scroll-margin-right`  | `spacing`      |
+
+## Scroll Snap Type
+
+Use a propriedade `scrollSnapType` para controlar como os pontos de encaixe são aplicados em um contêiner de rolagem.
+
+```jsx
+<Box maxH="100px" overflowY="auto" scrollSnapType="x">
+  Recipiente de rolagem com tipo de encaixe x
+</Box>
+```
+
+| Value  |                                      |
+| ------ | ------------------------------------ |
+| `none` | `none`                               |
+| `x`    | `x var(--scroll-snap-strictness)`    |
+| `y`    | `y var(--scroll-snap-strictness)`    |
+| `both` | `both var(--scroll-snap-strictness)` |
+
+## Scroll Snap Strictness
+
+Use a propriedade `scrollSnapStrictness` para definir o rigor do encaixe de rolagem de um elemento. Isso requer que `scrollSnapType` esteja definido como `x`, `y` ou `both`.
+
+Os valores podem ser `mandatory` ou `proximity` e mapeiam para `var(--scroll-snap-strictness)`.
+
+```jsx
+<Box maxH="100px" overflowY="auto" scrollSnapStrictness="proximity">
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+</Box>
+```
+
+| Prop                   | CSS Property               | Token Category |
+| ---------------------- | -------------------------- | -------------- |
+| `scrollSnapStrictness` | `--scroll-snap-strictness` | -              |
+
+## Touch Action
+
+Use a propriedade `touchAction` para controlar como a região de um elemento pode ser manipulada por um usuário de touchscreen.
+
+```jsx
+<Box touchAction="none" />
+```
+
+| Prop          | CSS Property   | Token Category |
+| ------------- | -------------- | -------------- |
+| `touchAction` | `touch-action` | -              |
+
+## User Select
+
+Use a propriedade `userSelect` para controlar se o usuário pode selecionar texto dentro de um elemento.
+
+```jsx
+<Box userSelect="none">
+  <p>Não é possível selecionar-me</p>
+</Box>
+```
+
+| Prop         | CSS Property  | Token Category |
+| ------------ | ------------- | -------------- |
+| `userSelect` | `user-select` | -              |
+
+## Will Change
+
+Use a propriedade `willChange` para sugerir aos navegadores como a propriedade de um elemento deve mudar.
+
+```jsx
+<Box willChange="transform" />
+```
+
+| Prop         | CSS Property  | Token Category |
+| ------------ | ------------- | -------------- |
+| `willChange` | `will-change` | -              |

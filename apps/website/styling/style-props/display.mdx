@@ -1,0 +1,43 @@
+---
+title: Display
+description: Propriedades de estilo para estilizar o display de um elemento.
+---
+
+## Propriedade Display
+
+```jsx
+<Box display="flex" />
+
+// responsivo
+<Box display={{ base: "none", md: "block" }} />
+```
+
+| Prop      | CSS Property | Token Category |
+| --------- | ------------ | -------------- |
+| `display` | `display`    | -              |
+
+## Ocultando Elementos
+
+### hideFrom
+
+Use a propriedade `hideFrom` para esconder um elemento a partir de um breakpoint específico.
+
+```jsx
+<Box display="flex" hideFrom="md" />
+```
+
+| Prop       | CSS Property | Token Category |
+| ---------- | ------------ | -------------- |
+| `hideFrom` | `display`    | `breakpoints`  |
+
+### hideBelow
+
+Use a propriedade `hideBelow` para esconder um elemento abaixo de um breakpoint específico.
+
+```jsx
+<Box display="flex" hideBelow="md" />
+```
+
+| Prop        | CSS Property | Token Category |
+| ----------- | ------------ | -------------- |
+| `hideBelow` | `display`    | `breakpoints`  |

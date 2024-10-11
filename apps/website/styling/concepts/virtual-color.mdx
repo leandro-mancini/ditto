@@ -1,0 +1,95 @@
+---
+title: Cor Virtual
+description: Crie cores placeholders para melhor personalização e criação de temas.
+---
+
+## Visão Geral
+
+O Ditto permite que você crie uma cor virtual ou um placeholder de cor em seu projeto. A propriedade `colorPalette` é como você cria cores virtuais.
+
+```js
+<Box
+  colorPalette="blue"
+  bg={{ base: 'colorPalette.100', _hover: 'colorPalette.200' }}
+>
+  Olá Mundo
+</Box>
+```
+
+Isso será traduzido para a cor de fundo `blue.100` e cor de fundo `blue.200` ao passar o mouse.
+
+## Uso
+
+O requisito fundamental para cores virtuais é que suas cores devem ter uma convenção de nomenclatura consistente. Por padrão, o Ditto usa valores de cor `50-950` para cada cor que fornecemos.
+
+Isso facilita a criação e o uso de cores virtuais. Vamos dizer que precisamos criar um botão com borda personalizável.
+
+```jsx
+<ditto.button
+  borderWidth="1px"
+  colorPalette="red"
+  borderColor="colorPalette.500"
+  _hover={{
+    borderColor: 'colorPalette.600',
+  }}
+>
+  Clique em mim
+</ditto.button>
+```
+
+## Receitas
+
+As cores virtuais são mais úteis quando usadas com receitas.
+
+```jsx
+const buttonRecipe = defineRecipe({
+  base: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // define a paleta de cores
+    colorPalette: 'blue',
+  },
+  variants: {
+    variant: {
+      primary: {
+        bg: 'colorPalette.500',
+        color: 'white',
+      },
+      outline: {
+        borderWidth: '1px',
+        borderColor: 'colorPalette.500',
+        _hover: {
+          borderColor: 'colorPalette.600',
+        },
+      },
+    },
+  },
+});
+```
+
+## Componentes
+
+Usando componentes com suporte a cores virtuais.
+
+```jsx
+<Button colorPalette="blue">Clique em mim</Button>
+<Button colorPalette="red" variant="outline">
+  Clique em mim
+</Button>
+```
+
+## Modo escuro
+
+Outra funcionalidade incrível das cores virtuais é usá-las no modo escuro.
+
+```jsx
+<Box
+  colorPalette="blue"
+  bg={{ base: 'colorPalette.600', _dark: 'colorPalette.400' }}
+>
+  Olá Mundo
+</Box>
+```
+
+> Este elemento terá a cor de fundo `blue.600` no modo claro e a cor de fundo `blue.400` no modo escuro.
