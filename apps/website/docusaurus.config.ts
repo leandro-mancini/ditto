@@ -43,7 +43,7 @@ const config: Config = {
         id: 'theming',
         path: 'theming',
         routeBasePath: 'theming',
-        sidebarPath: require.resolve('./sidebars.ts'),
+        sidebarPath: require.resolve('./sidebars-theming.ts'),
       },
     ],
     [

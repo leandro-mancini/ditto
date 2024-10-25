@@ -1,0 +1,257 @@
+---
+title: Receitas
+description: Escrevendo estilos com múltiplas variantes usando receitas no Ditto.
+---
+
+## Visão Geral
+
+O Ditto fornece uma maneira de escrever CSS-in-JS com melhor performance, experiência do desenvolvedor e componibilidade. Uma das suas principais características é a capacidade de criar estilos com múltiplas variantes com uma API de runtime segura por tipo.
+
+Uma receita consiste nas seguintes propriedades:
+
+- `className`: A classe a ser atribuído ao componente
+- `base`: Os estilos base para o componente
+- `variants`: Os diferentes estilos visuais para o componente
+- `compoundVariants`: As diferentes combinações de variantes para o componente
+- `defaultVariants`: Os valores de variantes padrão para o componente
+
+## Definindo a receita
+
+Use a função `defineRecipe` para criar uma receita.
+
+```tsx title="button.recipe.ts"
+import { defineRecipe } from '@ditto/react';
+
+export const buttonRecipe = defineRecipe({
+  base: {
+    display: 'flex',
+  },
+  variants: {
+    visual: {
+      solid: { bg: 'red.200', color: 'white' },
+      outline: { borderWidth: '1px', borderColor: 'red.200' },
+    },
+    size: {
+      sm: { padding: '4', fontSize: '12px' },
+      lg: { padding: '8', fontSize: '24px' },
+    },
+  },
+});
+```
+
+## Usando a receita
+
+Existem duas maneiras de usar a receita em um componente:
+
+- Diretamente no componente com `useRecipe`
+- Criando um componente **(recomendado)** com a [fábrica de estilo](/styling/concepts/factory)
+
+:::info
+
+Dica: É necessário adicionar a diretiva `"use client"`, pois ela depende de hooks do React, como `useContext` e `useInsertionEffect`.
+
+:::
+
+### Diretamente no componente
+
+Use o hook `useRecipe` para obter a receita para um componente. Em seguida, chame a receita com suas props de variante para obter os estilos.
+
+```tsx
+'use client';
+
+import { ditto, useRecipe } from '@ditto/react';
+import { buttonRecipe } from './button.recipe';
+
+export const Button = (props) => {
+  const { visual, size, ...restProps } = props;
+
+  const recipe = useRecipe({ recipe: buttonRecipe });
+  const styles = recipe({ visual, size });
+
+  return <ditto.button css={styles} {...restProps} />;
+};
+```
+
+#### `splitVariantProps`
+
+Note como as props `visual` e `size` foram desestruturadas das props para serem passadas para a receita. Uma abordagem mais inteligente seria dividir automaticamente as props da receita das props do componente.
+
+Para fazer isso, use a função `recipe.splitVariantProps` para separar as props da receita das props do componente.
+
+```tsx
+'use client';
+
+import { ditto, useRecipe } from '@ditto/react';
+import { buttonRecipe } from './button.recipe';
+
+export const Button = (props) => {
+  const recipe = useRecipe({ recipe: buttonRecipe });
+  const [recipeProps, restProps] = recipe.splitVariantProps(props);
+  const styles = recipe(recipeProps);
+
+  return <ditto.button css={styles} {...restProps} />;
+};
+```
+
+Para inferir os tipos das props de variantes da receita, use o helper `RecipeVariantProps`.
+
+```tsx
+import type { RecipeVariantProps } from '@ditto/react';
+import { buttonRecipe } from './button.recipe';
+
+type ButtonVariantProps = RecipeVariantProps<typeof buttonRecipe>;
+
+export interface ButtonProps
+  extends React.PropsWithChildren<ButtonVariantProps> {}
+```
+
+### Criando um componente
+
+Use a função `ditto` para criar um componente a partir de uma receita.
+
+> Nota: A receita também pode ser embutida na função `ditto`.
+
+```tsx
+'use client';
+
+import { ditto } from '@ditto/react';
+import { buttonRecipe } from './button.recipe';
+
+export const Button = ditto('button', buttonRecipe);
+```
+
+Em seguida, use o componente e passe as propriedades da receita para ele.
+
+```tsx
+import { Button } from './button';
+
+const App = () => {
+  return (
+    <Button visual="solid" size="lg">
+      Click Me
+    </Button>
+  );
+};
+```
+
+## Variantes Padrão
+
+A propriedade `defaultVariants` é usada para definir os valores padrão das variantes para a receita. Isso é útil quando você deseja aplicar uma variante por padrão.
+
+```tsx
+'use client';
+
+import { ditto } from '@ditto/react';
+
+const Button = ditto('button', {
+  base: {
+    display: 'flex',
+  },
+  variants: {
+    visual: {
+      solid: { bg: 'red.200', color: 'white' },
+      outline: { borderWidth: '1px', borderColor: 'red.200' },
+    },
+    size: {
+      sm: { padding: '4', fontSize: '12px' },
+      lg: { padding: '8', fontSize: '24px' },
+    },
+  },
+  defaultVariants: {
+    visual: 'solid',
+    size: 'lg',
+  },
+});
+```
+
+## Variantes Compostas
+
+Use a propriedade `compoundVariants` para definir um conjunto de variantes que são aplicadas com base em uma combinação de outras variantes.
+
+```tsx
+'use client';
+
+import { ditto } from '@ditto/react';
+
+const Button = ditto('button', {
+  base: {
+    display: 'flex',
+  },
+  variants: {
+    visual: {
+      solid: { bg: 'red.200', color: 'white' },
+      outline: { borderWidth: '1px', borderColor: 'red.200' },
+    },
+    size: {
+      sm: { padding: '4', fontSize: '12px' },
+      lg: { padding: '8', fontSize: '24px' },
+    },
+  },
+  compoundVariants: [
+    {
+      size: 'small',
+      visual: 'outline',
+      css: {
+        borderWidth: '2px',
+      },
+    },
+  ],
+});
+```
+
+Quando você usa as variantes `size="small"` e `visual="outline"` juntas, as `compoundVariants` aplicarão a propriedade css ao componente.
+
+```tsx
+<Button size="small" visual="outline">
+  Click Me
+</Button>
+```
+
+## Uso no Tema
+
+Para usar a receita de maneira reutilizável, mova-a para o tema do sistema e adicione-a à propriedade `theme.recipes`.
+
+> Não é necessário adicionar a diretiva `"use client"` ao usar a receita no tema.
+
+```tsx
+import { createSystem, defineConfig } from '@ditto/react';
+import { buttonRecipe } from './button.recipe';
+
+const config = defineConfig({
+  theme: {
+    recipes: {
+      button: buttonRecipe,
+    },
+  },
+});
+
+export default createSystem(config);
+```
+
+Use a CLI para gerar os tipos para a receita.
+
+```bash
+npx @ditto/cli@next typegen ./theme.ts
+```
+
+Em seguida, importe os tipos gerados no seu componente.
+
+```tsx
+import type { RecipeVariantProps } from '@ditto/react';
+import { buttonRecipe } from './button.recipe';
+
+type ButtonVariantProps = RecipeVariantProps<typeof buttonRecipe>;
+
+export interface ButtonProps
+  extends React.PropsWithChildren<ButtonVariantProps> {}
+```
+
+Se você usar a receita diretamente no seu componente, atualize `useRecipe` para usar a propriedade `key` para obter a receita do tema.
+
+```diff title="button.tsx"
+const Button = () => {
+-  const recipe = useRecipe({ recipe: buttonRecipe })
++  const recipe = useRecipe({ key: "button" })
+  // ...
+}
+```

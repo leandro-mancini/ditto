@@ -1,0 +1,124 @@
+---
+title: Tokens Semânticos
+description: Aproveitando tokens semânticos para decisões de design no seu app.
+---
+
+## Visão Geral
+
+Tokens semânticos são tokens projetados para serem usados em um contexto específico. Um token semântico consiste nas seguintes propriedades:
+
+- `value`: O valor do token ou uma referência a um token existente.
+- `description`: Uma descrição opcional do que o token pode ser usado.
+
+## Definindo Tokens Semânticos
+
+Na maioria dos casos, o valor de um token semântico faz referência a um token existente.
+
+> Para referenciar um valor em um token semântico, use a sintaxe de referência de token `{}`.
+
+```js title="theme.ts"
+import { createSystem, defineConfig } from '@ditto/react';
+
+const config = defineConfig({
+  theme: {
+    tokens: {
+      colors: {
+        red: { value: '#EE0F0F' },
+      },
+    },
+    semanticTokens: {
+      colors: {
+        danger: { value: '{colors.red}' },
+      },
+    },
+  },
+});
+
+export default createSystem(config);
+```
+
+## Usando Tokens Semânticos
+
+Depois de definir tokens semânticos, recomendamos usar a CLI do Ditto para gerar os tipos do tema para seus tokens.
+
+```bash
+npx @chakra-ui/cli@next typegen ./src/theme.ts
+```
+
+Isso fornecerá um autocomplete para seus tokens no seu editor.
+
+```tsx
+<Box color="danger">Hello World</Box>
+```
+
+## Token Condicional
+
+Tokens semânticos também podem ser alterados com base em condições, como modos claro e escuro.
+
+Por exemplo, se você quiser que uma cor mude automaticamente com base no modo claro ou escuro.
+
+```tsx
+import { createSystem, defineConfig } from '@ditto/react';
+
+const config = defineConfig({
+  theme: {
+    semanticTokens: {
+      colors: {
+        danger: {
+          value: { base: '{colors.red}', _dark: '{colors.darkred}' },
+        },
+        success: {
+          value: { base: '{colors.green}', _dark: '{colors.darkgreen}' },
+        },
+      },
+    },
+  },
+});
+
+export default createSystem(config);
+```
+
+:::info
+
+As condições usadas em tokens semânticos devem ser uma regra ou uma condição do seletor pai [condition](/styling/concepts/conditional-styles#reference).
+
+:::
+
+## Aninhamento de Tokens Semânticos
+
+Tokens semânticos podem ser aninhados para criar uma hierarquia de tokens. Isso é útil quando você quer agrupar tokens.
+
+:::info
+
+Use a chave `DEFAULT` para definir o valor padrão de um token aninhado.
+
+:::
+
+```tsx
+import { createSystem, defineConfig } from '@ditto/react';
+
+const config = defineConfig({
+  theme: {
+    semanticTokens: {
+      colors: {
+        bg: {
+          DEFAULT: { value: '{colors.gray.100}' },
+          primary: { value: '{colors.teal.100}' },
+          secondary: { value: '{colors.gray.100}' },
+        },
+      },
+    },
+  },
+});
+
+export default createSystem(config);
+```
+
+Isso permite o uso do token bg das seguintes maneiras:
+
+```tsx
+<Box bg="bg">
+  <Box bg="bg.primary">Hello World</Box>
+  <Box bg="bg.secondary">Hello World</Box>
+</Box>
+```
