@@ -2,7 +2,6 @@ import React from 'react';
 // Import the original mapper
 import MDXComponents from '@theme-original/MDXComponents';
 import Highlight from '../../components/Highlight';
-import { Box } from '@dittox/react';
 import { Anchor } from './anchor';
 import { P, Strong } from './text';
 import { H1, H2, H3, H4 } from './heading';
@@ -10,6 +9,12 @@ import { Code, Pre } from './code';
 import { Li, Ol, Ul } from './list';
 import { CodeBlock } from './code-block';
 import { ExamplePreview } from './example';
+import {
+  DurationTokenDoc,
+  KeyframeDoc,
+} from '../../compositions/examples/theme/keyframe-doc';
+import { AspectRatioTokenDoc } from '../../compositions/examples/theme/aspect-ratio-token-doc';
+import { BreakpointDoc } from '../../compositions/examples/theme/breakpoint-doc';
 
 export default {
   // Re-use the default mapping
@@ -34,4 +39,8 @@ export default {
   //   Example: Example,
   //   ExampleTabs: ExampleTabs,
   'code-block': CodeBlock,
+  KeyframeDoc,
+  DurationTokenDoc,
+  AspectRatioTokenDoc,
+  BreakpointDoc,
 };
