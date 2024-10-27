@@ -12,6 +12,7 @@ import { durations } from './tokens/durations';
 import { easings } from './tokens/easings';
 import { radii } from './tokens/radius';
 import { shadows } from './tokens/shadows';
+import { sizes } from './tokens/sizes';
 import { zIndices } from './tokens/z-indices';
 
 export const defaultThemeConfig = defineConfig({
@@ -30,6 +31,7 @@ export const defaultThemeConfig = defineConfig({
       easings,
       radii,
       shadows,
+      sizes,
       zIndex: zIndices,
     },
     semanticTokens: {
