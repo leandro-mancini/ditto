@@ -15,6 +15,11 @@ import {
 } from '../../compositions/examples/theme/keyframe-doc';
 import { AspectRatioTokenDoc } from '../../compositions/examples/theme/aspect-ratio-token-doc';
 import { BreakpointDoc } from '../../compositions/examples/theme/breakpoint-doc';
+import {
+  ColorSemanticTokenDoc,
+  ColorTokenDoc,
+} from '@site/src/compositions/examples/theme/color-token-doc';
+import { BorderRadiusTokenDoc } from '@site/src/compositions/examples/theme/border-radius-token-doc';
 
 export default {
   // Re-use the default mapping
@@ -43,4 +48,7 @@ export default {
   DurationTokenDoc,
   AspectRatioTokenDoc,
   BreakpointDoc,
+  ColorTokenDoc,
+  ColorSemanticTokenDoc,
+  BorderRadiusTokenDoc,
 };

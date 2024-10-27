@@ -1,4 +1,4 @@
-import { defaultConfig, DittoProvider } from '@dittox/react';
+import { Box, defaultConfig, DittoProvider } from '@dittox/react';
 import { createSystem } from '@dittox/styled-system';
 import React from 'react';
 
@@ -30,5 +30,9 @@ export const system = createSystem(defaultConfig, {
 console.log('system', system);
 
 export default function Root({ children }) {
-  return <DittoProvider value={system}>{children}</DittoProvider>;
+  return (
+    <DittoProvider value={system}>
+      <Box className="dark">{children}</Box>
+    </DittoProvider>
+  );
 }
