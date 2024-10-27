@@ -4,6 +4,7 @@ import { globalCss } from './global-css';
 import { keyframes } from './keyframes';
 import { animationStyles } from './motion-styles';
 import { semanticColors } from './semantic-tokens/colors';
+import { semanticRadii } from './semantic-tokens/radii';
 import { animations } from './tokens/animations';
 import { aspectRatios } from './tokens/aspect-ratios';
 import { colors } from './tokens/colors';
@@ -31,6 +32,7 @@ export const defaultThemeConfig = defineConfig({
     },
     semanticTokens: {
       colors: semanticColors,
+      radii: semanticRadii,
     },
     animationStyles: animationStyles,
   },

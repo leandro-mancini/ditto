@@ -245,11 +245,11 @@ importers:
   apps/website:
     dependencies:
       '@dittox/react':
-        specifier: 0.0.1-beta.11
-        version: 0.0.1-beta.11(@types/react@18.3.1)(react@18.3.1)
+        specifier: 0.0.1-beta.12
+        version: 0.0.1-beta.12(@types/react@18.3.1)(react@18.3.1)
       '@dittox/styled-system':
-        specifier: 0.0.1-beta.10
-        version: 0.0.1-beta.10
+        specifier: 0.0.1-beta.12
+        version: 0.0.1-beta.12
       '@docusaurus/theme-common':
         specifier: ^3.5.2
         version: 3.5.2(@docusaurus/plugin-content-docs@3.4.0)(@docusaurus/types@3.4.0)(@swc/core@1.5.29)(react-dom@18.3.1)(react@18.3.1)(typescript@5.5.4)
@@ -300,8 +300,8 @@ importers:
   packages/react:
     dependencies:
       '@dittox/styled-system':
-        specifier: 0.0.1-beta.10
-        version: 0.0.1-beta.10
+        specifier: 0.0.1-beta.12
+        version: 0.0.1-beta.12
       '@emotion/is-prop-valid':
         specifier: 1.3.0
         version: 1.3.0
@@ -2808,13 +2808,13 @@ packages:
     engines: { node: '>=10.0.0' }
     dev: false
 
-  /@dittox/react@0.0.1-beta.11(@types/react@18.3.1)(react@18.3.1):
+  /@dittox/react@0.0.1-beta.12(@types/react@18.3.1)(react@18.3.1):
     resolution:
       {
-        integrity: sha512-ndCSc8hMRJ6+SMKC+D8UsiUm0jeobYlC9DqKDEOQk+hrEj57DdpxXfr2VYZaMfvxw1KGt7Tv6D14HkLWhFOgyw==,
+        integrity: sha512-Msk59J4+ie+K2iOfy+/ZQHRJ4IImxW0UhIlSWC1ggE3vvwgmZSLAQypm2uASqZywr5+hPF34ulqT9Gw/dlPiJA==,
       }
     dependencies:
-      '@dittox/styled-system': 0.0.1-beta.10
+      '@dittox/styled-system': 0.0.1-beta.12
       '@emotion/is-prop-valid': 1.3.0
       '@emotion/react': 11.13.3(@types/react@18.3.1)(react@18.3.1)
       '@emotion/serialize': 1.3.1
@@ -2826,10 +2826,10 @@ packages:
       - supports-color
     dev: false
 
-  /@dittox/styled-system@0.0.1-beta.10:
+  /@dittox/styled-system@0.0.1-beta.12:
     resolution:
       {
-        integrity: sha512-hOyElsPXz2zqbX5pQm4bh03PtrgO/FJW8G79j3rbp04clQaFLgucpwDCX+QDuMd1VGdvK43wkKZHTrfpauc27g==,
+        integrity: sha512-ruOZjctSGzS3cznBf9x8m+Mpkikp8sI2bgN7KV7olIMIPjf5bAtHgjyZMROpAGU4LqnjGFfcHMjm5h3Z+WYpGw==,
       }
     dependencies:
       csstype: 3.1.3
