@@ -19,7 +19,10 @@ import {
   ColorSemanticTokenDoc,
   ColorTokenDoc,
 } from '@site/src/compositions/examples/theme/color-token-doc';
-import { BorderRadiusTokenDoc } from '@site/src/compositions/examples/theme/border-radius-token-doc';
+import {
+  BorderRadiusSemanticTokenDoc,
+  BorderRadiusTokenDoc,
+} from '@site/src/compositions/examples/theme/border-radius-token-doc';
 
 export default {
   // Re-use the default mapping
@@ -51,4 +54,5 @@ export default {
   ColorTokenDoc,
   ColorSemanticTokenDoc,
   BorderRadiusTokenDoc,
+  BorderRadiusSemanticTokenDoc,
 };
