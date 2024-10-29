@@ -1,4 +1,5 @@
 import { defineTokens } from '../../core';
+import { spacing } from './spacing';
 
 const namedSizes = defineTokens.sizes({
   max: { value: 'max-content' },
@@ -45,7 +46,7 @@ const fractionalSizes = defineTokens.sizes({
 });
 
 export const sizes = defineTokens.sizes({
-  // ...spacing,
+  ...spacing,
   ...fractionalSizes,
   ...namedSizes,
 });
