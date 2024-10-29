@@ -30,6 +30,11 @@ import {
   SpacingTokenDoc,
 } from '@site/src/compositions/examples/theme/spacing-token-doc';
 import { ZIndexTokenDoc } from '@site/src/compositions/examples/theme/z-index-token-doc';
+import {
+  FontSizeTokenDoc,
+  FontTokenDoc,
+  FontWeightTokenDoc,
+} from '@site/src/compositions/examples/theme/typography-token-doc';
 
 export default {
   // Re-use the default mapping
@@ -66,5 +71,8 @@ export default {
   SizesTokenDoc,
   SpacingTokenDoc,
   SpacingSemanticTokenDoc,
+  FontTokenDoc,
+  FontSizeTokenDoc,
+  FontWeightTokenDoc,
   ZIndexTokenDoc,
 };
