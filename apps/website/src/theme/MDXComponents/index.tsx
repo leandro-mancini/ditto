@@ -23,6 +23,13 @@ import {
   BorderRadiusSemanticTokenDoc,
   BorderRadiusTokenDoc,
 } from '@site/src/compositions/examples/theme/border-radius-token-doc';
+import { ShadowTokenDoc } from '@site/src/compositions/examples/theme/shadow-token-doc';
+import { SizesTokenDoc } from '@site/src/compositions/examples/theme/sizes-token-doc';
+import {
+  SpacingSemanticTokenDoc,
+  SpacingTokenDoc,
+} from '@site/src/compositions/examples/theme/spacing-token-doc';
+import { ZIndexTokenDoc } from '@site/src/compositions/examples/theme/z-index-token-doc';
 
 export default {
   // Re-use the default mapping
@@ -55,4 +62,9 @@ export default {
   ColorSemanticTokenDoc,
   BorderRadiusTokenDoc,
   BorderRadiusSemanticTokenDoc,
+  ShadowTokenDoc,
+  SizesTokenDoc,
+  SpacingTokenDoc,
+  SpacingSemanticTokenDoc,
+  ZIndexTokenDoc,
 };

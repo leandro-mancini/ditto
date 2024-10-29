@@ -21,8 +21,6 @@ const FooterRoot = ditto('footer', {
 function Footer() {
   const { footer } = useThemeConfig();
 
-  console.log('footer', footer);
-
   return (
     <FooterRoot>
       <Container maxW={'90rem'} width={'100%'}>
