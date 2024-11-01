@@ -1,23 +1,21 @@
 ---
-title: Colors
-description: Learn how to customize colors in Chakra UI
+title: Cores
+description: Aprenda como personalizar cores no Ditto
 ---
 
 :::info
 
-Please read the [overview](/docs/theming/customization/overview) first to learn
-how to properly customize the styling engine, and get type safety.
+Leia primeiro a [visão geral](/theming/customization/overview) para aprender
+como personalizar o mecanismo de estilo corretamente e obter segurança de tipos.
 
 :::
 
 ## Tokens
 
-### Example
-
-Here's an example of how to customize colors in Chakra UI.
+Aqui está um exemplo de como personalizar cores no Ditto.
 
 ```tsx title="theme.ts"
-import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react';
+import { createSystem, defaultConfig, defineConfig } from '@ditto/react';
 
 const customConfig = defineConfig({
   theme: {
@@ -36,23 +34,20 @@ const customConfig = defineConfig({
 export const system = createSystem(defaultConfig, customConfig);
 ```
 
-### Usage
+## Uso
 
-Set the value of any color related properties, like `bg`, `borderColor`,
-`color`, etc. to the `brand` token.
+Defina o valor de qualquer propriedade relacionada a cor, como `bg`, `borderColor`, `color`, etc., para o token `brand`.
 
 ```tsx
-<Box bg="brand.100" />
+<Box bgColor="brand.100" />
 ```
 
-## Semantic Tokens
+## Tokens Semânticos
 
-### Example
+Aqui está um exemplo de como personalizar tokens semânticos no Ditto.
 
-Here's an example of how to customize semantic tokens in Chakra UI.
-
-```tsx title="theme.ts"
-import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react';
+```tsx
+import { createSystem, defaultConfig, defineConfig } from '@ditto/react';
 
 const customConfig = defineConfig({
   theme: {
@@ -69,9 +64,9 @@ const customConfig = defineConfig({
 export const system = createSystem(defaultConfig, customConfig);
 ```
 
-### Usage
+### Uso
 
-Use the `checkbox-control` token to apply the checkbox control color.
+Use o token `checkbox-control` para aplicar a cor do controle de checkbox.
 
 ```tsx
 <Square size="4" borderColor="checkbox-control">
