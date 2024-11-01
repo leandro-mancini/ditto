@@ -1,22 +1,22 @@
 ---
-title: Recipes
-description: Learn how to customize recipes and slot recipes in Chakra UI
+title: Receitas
+description: Aprenda como personalizar receitas e receitas de slots no Ditto
 ---
 
 :::info
 
-Please read the [overview](/docs/theming/customization/overview) first to learn
-how to properly customize the styling engine, and get type safety.
+Leia primeiro a [visão geral](/theming/customization/overview) para aprender
+como personalizar o mecanismo de estilo corretamente e obter segurança de tipos.
 
 :::
 
-## Recipes
+## Receitas
 
-### Extending variants
+### Estendendo variantes
 
-Use the `defineRecipe` function to define a recipe override.
+Use a função `defineRecipe` para definir uma sobrecarga de receita.
 
-Here's an example of extending the `Button` to add a new `xl` size
+Aqui está um exemplo de como estender o `Button` para adicionar um novo tamanho `xl`.
 
 ```tsx title="theme.ts"
 const buttonRecipe = defineRecipe({
@@ -42,19 +42,19 @@ const customConfig = defineConfig({
 export const system = createSystem(defaultConfig, customConfig);
 ```
 
-Then you can use the new size variant in your components.
+Agora você pode usar a nova variante de tamanho em seus componentes.
 
 ```tsx
 <Button size="xl">Click me</Button>
 ```
 
-### Adding new variant
+## Adicionando nova variante
 
-Use the `defineRecipe` function to define a new recipe variant.
+Use a função `defineRecipe` para definir uma nova variante de receita.
 
-Here's an example of defining a boolean variant called `raised`.
+Aqui está um exemplo de como definir uma variante booleana chamada `raised`.
 
-```tsx title="theme.ts"
+```tsx
 const buttonRecipe = defineRecipe({
   variants: {
     raised: {
@@ -76,19 +76,19 @@ const customConfig = defineConfig({
 export const system = createSystem(defaultConfig, customConfig);
 ```
 
-Then you can use the new variant in your components.
+Agora você pode usar a nova variante em seus componentes.
 
 ```tsx
 <Button raised>Click me</Button>
 ```
 
-### Custom recipe
+### Receita personalizada
 
-Use the `defineRecipe` function to define a custom recipe all together.
+Use a função `defineRecipe` para definir uma receita personalizada.
 
-Here's an example of defining a custom recipe called `Title`
+Aqui está um exemplo de como definir uma receita personalizada chamada `Title`.
 
-```tsx title="theme.ts"
+```tsx
 const titleRecipe = defineRecipe({
   baseStyle: {
     fontWeight: 'bold',
@@ -113,7 +113,7 @@ const customConfig = defineConfig({
 export const system = createSystem(defaultConfig, customConfig);
 ```
 
-Then, use the new recipe to create a components
+Em seguida, use a nova receita para criar um componente.
 
 ```tsx
 const Title = (props) => {
@@ -123,18 +123,16 @@ const Title = (props) => {
 };
 ```
 
-## Slot Recipes
+## Receitas de Slot
 
-To effectively override an existing slot recipe, we recommend connecting to its
-anatomy. Slot recipes are added to the `theme.slotRecipes` object.
+Para substituir uma receita de slot existente de maneira eficaz, recomendamos conectar-se à sua anatomia. As receitas de slot são adicionadas ao objeto `theme.slotRecipes`.
 
-### Extending variants
+### Estendendo variantes
 
-Here's an example of how to extend the `Alert` slot recipe to create an `xl`
-size.
+Aqui está um exemplo de como estender a receita de slot `Alert` para criar um tamanho `xl`.
 
-```tsx title="theme.ts"
-import { alertAnatomy } from '@chakra-ui/react/anatomy';
+```tsx
+import { alertAnatomy } from '@ditto/react/anatomy';
 
 const alertSlotRecipe = defineRecipe({
   slots: alertAnatomy.keys(),
@@ -162,19 +160,18 @@ const customConfig = defineConfig({
 export const system = createSystem(defaultConfig, customConfig);
 ```
 
-Then you can use the new size variant in your components.
+Agora você pode usar a nova variante de tamanho em seus componentes.
 
-```tsx /size="xl"/
+```tsx
 <Alert size="xl" title="..." />
 ```
 
-### Adding new variant
+### Adicionando nova variante
 
-Here's an example of how to extend the `Alert` slot recipe to add a new variant
-called `shape`.
+Aqui está um exemplo de como estender a receita de slot `Alert` para adicionar uma nova variante chamada `shape`.
 
-```tsx title="theme.ts"
-import { alertAnatomy } from '@chakra-ui/react/anatomy';
+```tsx
+import { alertAnatomy } from '@ditto/react/anatomy';
 
 const alertSlotRecipe = defineRecipe({
   slots: alertAnatomy.keys(),
@@ -198,17 +195,17 @@ const customConfig = defineConfig({
 export const system = createSystem(defaultConfig, customConfig);
 ```
 
-Then you can use the new variant in your components.
+Agora você pode usar a nova variante em seus componentes.
 
-```tsx /shape="rounded"/
+```tsx
 <Alert shape="rounded" title="..." />
 ```
 
-### Custom recipe
+### Receita personalizada
 
-Here's an example of how to define a custom slot recipe called `Navbar`.
+Aqui está um exemplo de como definir uma receita de slot personalizada chamada `Navbar`.
 
-```tsx title="theme.ts"
+```tsx
 const navbarSlotRecipe = defineRecipe({
   slots: ['root', 'badge', 'icon'],
   base: {
@@ -237,7 +234,7 @@ const customConfig = defineConfig({
 export const system = createSystem(defaultConfig, customConfig);
 ```
 
-Then you can use the new recipe to create a components
+Agora você pode usar a nova receita para criar um componente.
 
 ```tsx
 const Navbar = (props) => {
