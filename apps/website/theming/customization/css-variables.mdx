@@ -1,60 +1,60 @@
 ---
-title: CSS Variables
-description: Learn how to customize CSS variables in Chakra UI
+title: Variáveis CSS
+description: Aprenda como personalizar variáveis CSS no Ditto
 ---
 
 :::info
 
-Please read the [overview](/docs/theming/customization/overview) first to learn
-how to properly customize the styling engine, and get type safety.
+Leia primeiro a [visão geral](/theming/customization/overview) para aprender
+como personalizar o mecanismo de estilo corretamente e obter segurança de tipos.
 
 :::
 
-## Variable Root
+## Raiz das Variáveis
 
-Here's an example of how to customize the selector that token CSS variables are
-applied to.
+Aqui está um exemplo de como personalizar o seletor ao qual as variáveis CSS de tokens
+são aplicadas.
 
 ```tsx title="theme.ts"
-import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react';
+import { createSystem, defaultConfig, defineConfig } from '@ditto/react';
 
 const customConfig = defineConfig({
-  cssVarsRoot: ':where(html)',
+  cssVarsRoot: ':where(:root, :host)',
 });
 
 export const system = createSystem(defaultConfig, customConfig);
 ```
 
-The emitted CSS variables will now be applied to the `html` element.
+As variáveis CSS emitidas agora serão aplicadas ao elemento `root` e `host`.
 
 ```css
-:where(html) {
-  --chakra-colors-gray-100: #e6f2ff;
-  --chakra-colors-gray-200: #bfdeff;
-  --chakra-colors-gray-300: #99caff;
+:where(:root, :host) {
+  --ditto-colors-gray-100: #e6f2ff;
+  --ditto-colors-gray-200: #bfdeff;
+  --ditto-colors-gray-300: #99caff;
 }
 ```
 
-## Variable Prefix
+## Prefixo das Variáveis
 
-Here's an example of how to customize the prefix of the emitted CSS variables.
+Aqui está um exemplo de como personalizar o prefixo das variáveis CSS emitidas.
 
-```tsx title="theme.ts"
-import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react';
+```tsx
+import { createSystem, defaultConfig, defineConfig } from '@ditto/react';
 
 const customConfig = defineConfig({
-  cssVarsPrefix: 'sui',
+  cssVarsPrefix: 'mancini',
 });
 
 export const system = createSystem(defaultConfig, customConfig);
 ```
 
-The emitted CSS variables will now use the `sui` prefix.
+As variáveis CSS emitidas agora usarão o prefixo `mancini`.
 
 ```css
-:where(html) {
-  --sui-colors-gray-100: #e6f2ff;
-  --sui-colors-gray-200: #bfdeff;
-  --sui-colors-gray-300: #99caff;
+:where(:root, :host) {
+  --mancini-colors-gray-100: #e6f2ff;
+  --mancini-colors-gray-200: #bfdeff;
+  --mancini-colors-gray-300: #99caff;
 }
 ```
