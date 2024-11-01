@@ -1,21 +1,21 @@
 ---
-title: Breakpoints
-description: Learn how to customize breakpoints in Chakra UI
+title: Pontos de Interrupção
+description: Aprenda como personalizar os pontos de interrupção no Ditto
 ---
 
 :::info
 
-Please read the [overview](/docs/theming/customization/overview) first to learn
-how to properly customize the styling engine, and get type safety.
+Leia primeiro a [visão geral](/theming/customization/overview) para aprender
+como personalizar o mecanismo de estilo corretamente e obter segurança de tipos.
 
 :::
 
-## Example
+## Exemplo
 
-Here's an example of how to customize breakpoints in Chakra UI.
+Aqui está um exemplo de como personalizar os pontos de interrupção no Ditto.
 
 ```tsx title="theme.ts"
-import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react';
+import { createSystem, defaultConfig, defineConfig } from '@ditto/react';
 
 const config = defineConfig({
   theme: {
@@ -30,10 +30,10 @@ const config = defineConfig({
 export default createSystem(defaultConfig, config);
 ```
 
-## Usage
+## Uso
 
-When using responsive properties, reference the new breakpoints.
+Ao usar propriedades responsivas, faça referência aos novos pontos de interrupção.
 
-```tsx title="App.tsx"
-<Box fontSize={{ base: '16px', tablet: '18px', desktop: '20px' }}>Hello</Box>
+```tsx
+<Box fontSize={{ base: '16px', tablet: '18px', desktop: '20px' }}>Olá</Box>
 ```
