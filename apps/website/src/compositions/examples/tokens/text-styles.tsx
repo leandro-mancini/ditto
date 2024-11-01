@@ -1,30 +1,21 @@
-import { Box, For, Stack } from '@dittox/react';
+import { Box, defaultSystem, For, Stack } from '@dittox/react';
 import React from 'react';
+
+const { tokens, _config } = defaultSystem;
+
+const textStyles = Object.keys(_config.theme?.textStyles ?? {});
 
 export const TokensTextStyles = () => {
   return (
-    <Stack gap="8">
-      <For
-        each={[
-          'xs',
-          'sm',
-          'md',
-          'lg',
-          'xl',
-          '2xl',
-          '3xl',
-          '4xl',
-          '5xl',
-          '6xl',
-          '7xl',
-        ]}
-      >
+    <Stack gap="32px">
+      <For each={textStyles}>
         {(textStyle) => (
           <Stack>
-            <Box textStyle="sm" fontWeight="medium" color="fg.subtle">
-              textStyle: {textStyle}
+            <Box textStyle="smallValue">textStyle: {textStyle}</Box>
+            <Box textStyle={textStyle}>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry.
             </Box>
-            <Box textStyle={textStyle}>Ditto</Box>
           </Stack>
         )}
       </For>

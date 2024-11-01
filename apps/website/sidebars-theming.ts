@@ -102,11 +102,11 @@ const sidebarsTheming = {
           id: 'compositions/text-styles',
           label: 'Estilos de Texto',
         },
-        {
-          type: 'doc',
-          id: 'compositions/layer-styles',
-          label: 'Estilos de Camada',
-        },
+        // {
+        //   type: 'doc',
+        //   id: 'compositions/layer-styles',
+        //   label: 'Estilos de Camada',
+        // },
       ],
     },
     {

@@ -1,35 +1,30 @@
 ---
-title: Customization
-description: Learn how to customize the Chakra UI theme
+title: Customização
+description: Aprenda como personalizar o tema do Ditto
 ---
 
-## Overview
+## Visão Geral
 
-Chakra UI uses a system of configs to define the default styling system.
+O Ditto usa um sistema de configurações para definir o sistema de estilos padrão.
 
-- `defaultBaseConfig`: contains the conditions and style properties.
-- `defaultConfig`: everything from `defaultBaseConfig` plus the built-in tokens
-  and recipes.
+- `defaultBaseConfig`: contém as condições e propriedades de estilo.
+- `defaultConfig`: tudo de `defaultBaseConfig` mais os tokens e receitas integrados.
 
-The `defaultSystem` exported from Chakra UI uses the `defaultConfig` by default.
+O `defaultSystem` exportado do Ditto usa `defaultConfig` por padrão.
 
-When customizing the theme, it's important to decide if you want to merge your
-config with `defaultConfig` or start from scratch with `defaultBaseConfig`.
+Ao personalizar o tema, é importante decidir se você quer mesclar sua
+configuração com `defaultConfig` ou começar do zero com `defaultBaseConfig`.
 
-## Customization
+## Customização
 
-These are the key functions needed to customize the Chakra UI theme.
+Estas são as principais funções necessárias para personalizar o tema do Ditto.
 
-- `defineConfig`: used to define the system config
-- `mergeConfigs`: used to merge multiple system configs
-- `createSystem`: used to create a styling engine from the config
+- `defineConfig`: usada para definir a configuração do sistema
+- `mergeConfigs`: usada para mesclar múltiplas configurações de sistema
+- `createSystem`: usada para criar um mecanismo de estilo a partir da configuração
 
 ```tsx title="theme.ts"
-import {
-  createSystem,
-  defaultBaseConfig,
-  defineConfig,
-} from '@chakra-ui/react';
+import { createSystem, defaultBaseConfig, defineConfig } from '@ditto/react';
 
 const customConfig = defineConfig({
   theme: {
@@ -44,42 +39,38 @@ const customConfig = defineConfig({
 export const system = createSystem(defaultBaseConfig, customConfig);
 ```
 
-Next, update the `ChakraProvider` to use the custom system.
+Em seguida, atualize o `DittoProvider` para usar o sistema personalizado.
 
-```tsx title="provider.tsx"
-import { ChakraProvider } from '@chakra-ui/react';
+```tsx
+import { DittoProvider } from '@ditto/react';
 import { ThemeProvider } from 'next-themes';
 import { system } from './theme';
 
 export function Provider(props: { children: React.ReactNode }) {
   return (
-    <ChakraProvider value={system}>
+    <DittoProvider value={system}>
       <ThemeProvider attribute="class" disableTransitionOnChange>
         {props.children}
       </ThemeProvider>
-    </ChakraProvider>
+    </DittoProvider>
   );
 }
 ```
 
-## Complete Customization
+## Customização Completa
 
-In most cases, we recommend starting with the default configuration and only
-specify the things you want to customize.
+Na maioria dos casos, recomendamos começar com a configuração padrão e especificar apenas o que você deseja personalizar.
 
-However, if you prefer to start from scratch, scaffold the default tokens and
-recipes using the CLI.
+No entanto, se preferir começar do zero, crie tokens e receitas padrão usando o CLI.
 
 ```bash
-npx @chakra-ui/cli@next eject --outdir ./theme
+npx @ditto/cli@next eject --outdir ./theme
 ```
 
-This will generate a file that includes all the tokens and recipes in Chakra.
+Isso gerará um arquivo que inclui todos os tokens e receitas do Ditto.
 
-## TypeScript
-
-After customizing the default config, you may need to update the types.
+Após personalizar a configuração padrão, talvez seja necessário atualizar os tipos.
 
 ```bash
-npx @chakra-ui/cli@next typegen ./theme.ts
+npx @ditto/cli@next typegen ./theme.ts
 ```
