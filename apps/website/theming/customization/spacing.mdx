@@ -1,21 +1,21 @@
 ---
-title: Spacing
-description: Learn how to customize spacing in Chakra UI
+title: Espaçamento
+description: Aprenda como personalizar o espaçamento no Ditto
 ---
 
 :::info
 
-Please read the [overview](/docs/theming/customization/overview) first to learn
-how to properly customize the styling engine, and get type safety.
+Leia primeiro a [visão geral](/theming/customization/overview) para aprender
+como personalizar o mecanismo de estilo corretamente e obter segurança de tipos.
 
 :::
 
-## Example
+## Exemplo
 
-Here's an example of how to customize spacing in Chakra UI.
+Aqui está um exemplo de como personalizar o espaçamento no Ditto.
 
 ```tsx title="theme.ts"
-import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react';
+import { createSystem, defaultConfig, defineConfig } from '@ditto/react';
 
 const customConfig = defineConfig({
   theme: {
@@ -31,9 +31,9 @@ const customConfig = defineConfig({
 export const system = createSystem(defaultConfig, customConfig);
 ```
 
-## Usage
+## Uso
 
-Here's how to use the custom spacing in Chakra UI.
+Aqui está como usar o espaçamento personalizado no Ditto.
 
 ```tsx
 <Box margin="128" />
