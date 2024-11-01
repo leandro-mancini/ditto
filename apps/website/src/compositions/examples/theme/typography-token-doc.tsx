@@ -1,4 +1,4 @@
-import { Box, defaultSystem, For, Stack } from '@dittox/react';
+import { Box, defaultSystem, For, HStack, Stack } from '@dittox/react';
 import { TokenDoc } from './token-doc';
 import React from 'react';
 
@@ -7,6 +7,8 @@ const { tokens, _config } = defaultSystem;
 const fonts = Object.keys(_config.theme?.tokens?.fonts ?? {});
 const fontSizes = Object.keys(_config.theme?.tokens?.fontSizes ?? {});
 const fontWeights = Object.keys(_config.theme?.tokens?.fontWeights ?? {});
+const lineHeights = Object.keys(_config.theme?.tokens?.lineHeights ?? {});
+const letterSpacings = Object.keys(_config.theme?.tokens?.letterSpacings ?? {});
 
 export const FontTokenDoc = () => {
   return (
@@ -73,6 +75,33 @@ export const FontWeightTokenDoc = () => {
               </Box>
               <Box fontWeight={token.value} fontSize="2xl">
                 Ag
+              </Box>
+            </Stack>
+          );
+        })}
+      </Stack>
+    </TokenDoc>
+  );
+};
+
+export const LineHeightTokenDoc = () => {
+  return (
+    <TokenDoc title="theme.tokens.lineHeights" mt="8">
+      <Stack gap="8">
+        {lineHeights.map((lineHeight) => {
+          const token = tokens.getByName(`lineHeights.${lineHeight}`)!;
+          return (
+            <Stack key={lineHeight}>
+              <HStack color="fg.muted">
+                <Box>
+                  {token.extensions.prop} / {token.value}
+                </Box>
+              </HStack>
+              <Box fontSize="2xl" lineHeight={token.value}>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book.
               </Box>
             </Stack>
           );

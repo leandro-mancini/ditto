@@ -34,6 +34,7 @@ import {
   FontSizeTokenDoc,
   FontTokenDoc,
   FontWeightTokenDoc,
+  LineHeightTokenDoc,
 } from '@site/src/compositions/examples/theme/typography-token-doc';
 
 export default {
@@ -74,5 +75,6 @@ export default {
   FontTokenDoc,
   FontSizeTokenDoc,
   FontWeightTokenDoc,
+  LineHeightTokenDoc,
   ZIndexTokenDoc,
 };

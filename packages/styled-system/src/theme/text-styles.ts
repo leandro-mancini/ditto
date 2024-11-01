@@ -8,6 +8,7 @@ export const textStyles = defineTextStyles({
       fontSize: 'xs',
       lineHeight: 'xs',
       letterSpacing: 'tight',
+      textTransform: 'uppercase',
     },
   },
   contentRegular: {
