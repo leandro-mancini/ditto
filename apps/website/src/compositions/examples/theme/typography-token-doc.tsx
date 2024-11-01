@@ -110,3 +110,25 @@ export const LineHeightTokenDoc = () => {
     </TokenDoc>
   );
 };
+
+export const LetterSpacingTokenDoc = () => {
+  return (
+    <TokenDoc title="theme.tokens.letterSpacings" mt="8">
+      <Stack gap="4">
+        {letterSpacings.map((letterSpacing) => {
+          const token = tokens.getByName(`letterSpacings.${letterSpacing}`)!;
+          return (
+            <Stack key={letterSpacing}>
+              <Box color="fg.muted">
+                {token.extensions.prop} / {token.value}
+              </Box>
+              <Box fontSize="2xl" letterSpacing={token.value}>
+                Ditto Design System
+              </Box>
+            </Stack>
+          );
+        })}
+      </Stack>
+    </TokenDoc>
+  );
+};
