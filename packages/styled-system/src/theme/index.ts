@@ -6,6 +6,7 @@ import { animationStyles } from './motion-styles';
 import { semanticColors } from './semantic-tokens/colors';
 import { semanticRadii } from './semantic-tokens/radii';
 import { semanticSpacing } from './semantic-tokens/spacing';
+import { textStyles } from './text-styles';
 import { animations } from './tokens/animations';
 import { aspectRatios } from './tokens/aspect-ratios';
 import { colors } from './tokens/colors';
@@ -14,6 +15,8 @@ import { easings } from './tokens/easings';
 import { fontSizes } from './tokens/font-sizes';
 import { fontWeights } from './tokens/font-weights';
 import { fonts } from './tokens/fonts';
+import { letterSpacings } from './tokens/letter-spacing';
+import { lineHeights } from './tokens/line-heights';
 import { radii } from './tokens/radius';
 import { shadows } from './tokens/shadows';
 import { sizes } from './tokens/sizes';
@@ -37,6 +40,8 @@ export const defaultThemeConfig = defineConfig({
       fonts,
       fontSizes,
       fontWeights,
+      letterSpacings,
+      lineHeights,
       radii,
       shadows,
       sizes,
@@ -49,5 +54,6 @@ export const defaultThemeConfig = defineConfig({
       spacing: semanticSpacing,
     },
     animationStyles: animationStyles,
+    textStyles: textStyles,
   },
 });
