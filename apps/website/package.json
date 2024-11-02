@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dittox/react": "0.0.1-beta.18",
-    "@dittox/styled-system": "0.0.1-beta.18",
+    "@dittox/react": "0.0.1-beta.19",
+    "@dittox/styled-system": "0.0.1-beta.19",
     "@docusaurus/theme-common": "^3.5.2",
     "react-icons": "^5.3.0",
     "shiki": "^1.22.0"
