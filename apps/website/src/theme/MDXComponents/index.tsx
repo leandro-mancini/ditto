@@ -37,6 +37,14 @@ import {
   LetterSpacingTokenDoc,
   LineHeightTokenDoc,
 } from '@site/src/compositions/examples/theme/typography-token-doc';
+import {
+  BorderWidthsSemanticTokenDoc,
+  BorderWidthsTokenDoc,
+} from '@site/src/compositions/examples/theme/border-widths-token-doc';
+import {
+  OpacitySemanticTokenDoc,
+  OpacityTokenDoc,
+} from '@site/src/compositions/examples/theme/opacity-token-doc';
 
 export default {
   // Re-use the default mapping
@@ -69,6 +77,10 @@ export default {
   ColorSemanticTokenDoc,
   BorderRadiusTokenDoc,
   BorderRadiusSemanticTokenDoc,
+  BorderWidthsTokenDoc,
+  BorderWidthsSemanticTokenDoc,
+  OpacityTokenDoc,
+  OpacitySemanticTokenDoc,
   ShadowTokenDoc,
   SizesTokenDoc,
   SpacingTokenDoc,

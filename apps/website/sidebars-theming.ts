@@ -53,6 +53,11 @@ const sidebarsTheming = {
         },
         {
           type: 'doc',
+          id: 'design-tokens/border-widths',
+          label: 'Largura das bordas',
+        },
+        {
+          type: 'doc',
           id: 'design-tokens/breakpoints',
           label: 'Pontos de Interrupção',
         },
@@ -60,6 +65,11 @@ const sidebarsTheming = {
           type: 'doc',
           id: 'design-tokens/colors',
           label: 'Cores',
+        },
+        {
+          type: 'doc',
+          id: 'design-tokens/opacity',
+          label: 'Opacidades',
         },
         {
           type: 'doc',
