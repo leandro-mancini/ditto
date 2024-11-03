@@ -1,19 +1,19 @@
 ---
-title: Animation
-description: Using CSS animations to animate Chakra UI components
+title: Animação
+description: Usando animações CSS para animar componentes do Ditto
 ---
 
-We recommend using CSS animations to animate your Chakra UI components. This
-approach is performant, straightforward and provides a lot of flexibility.
+Recomendamos o uso de animações CSS para animar seus componentes do Ditto. Essa
+abordagem é performática, direta e oferece muita flexibilidade.
 
-You can animate both the mounting and unmounting phases of your components with
-better control.
+Você pode animar as fases de montagem e desmontagem de seus componentes com
+maior controle.
 
-## Enter animation
+## Animação de entrada
 
-When a disclosure component (popover, dialog) is open, the `data-state`
-attribute is set to `open`. This maps to `data-state=open` and can be styled
-with `_open` pseudo prop.
+Quando um componente de divulgação (popover, dialog) é aberto, o atributo `data-state`
+é definido como `open`. Isso mapeia para `data-state=open` e pode ser estilizado
+com a pseudo-propriedade `_open`.
 
 ```tsx
 <Box
@@ -22,11 +22,11 @@ with `_open` pseudo prop.
     animation: 'fade-in 300ms ease-out',
   }}
 >
-  This is open
+  Isto está aberto
 </Box>
 ```
 
-Here's an example that uses keyframes to create a fade-in animation:
+Aqui está um exemplo que usa `keyframes` para criar uma animação de `fade-in`:
 
 ```css
 @keyframes fade-in {
@@ -39,11 +39,9 @@ Here's an example that uses keyframes to create a fade-in animation:
 }
 ```
 
-## Exit animation
+## Animação de saída
 
-When a disclosure component (popover, dialog) is closed, the `data-state`
-attribute is set to `closed`. This maps to `data-state=closed` and can be styled
-with `_closed` pseudo prop.
+Quando um componente de divulgação (popover, dialog) é fechado, o atributo `data-state` é definido como `closed`. Isso mapeia para `data-state=closed` e pode ser estilizado com a pseudo-propriedade `_closed`.
 
 ```tsx
 <Box
@@ -52,11 +50,11 @@ with `_closed` pseudo prop.
     animation: 'fadeOut 300ms ease-in',
   }}
 >
-  This is closed
+  Isto está fechado
 </Box>
 ```
 
-Here's an example that uses keyframes to create a fade-out animation:
+Aqui está um exemplo que usa keyframes para criar uma animação de `fade-out`:
 
 ```css
 @keyframes fadeOut {
@@ -69,10 +67,9 @@ Here's an example that uses keyframes to create a fade-out animation:
 }
 ```
 
-## Composing animations
+## Compondo animações
 
-Use the `animationName` prop to compose multiple animations together. This makes
-it easy to create complex animations with multiple keyframes.
+Use a propriedade `animationName` para compor várias animações juntas. Isso facilita a criação de animações complexas com múltiplos keyframes.
 
 ```tsx
 <Box
@@ -86,6 +83,6 @@ it easy to create complex animations with multiple keyframes.
     animationDuration: '120ms',
   }}
 >
-  This is a composed animation
+  Esta é uma animação composta
 </Box>
 ```

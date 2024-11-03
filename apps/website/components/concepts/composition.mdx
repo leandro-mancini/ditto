@@ -1,64 +1,51 @@
 ---
-title: Composition
-description: Learn how to compose components in Chakra UI.
+title: Composição
+description: Aprenda como compor componentes no Ditto.
 ---
 
-## The `as` Prop
+## A Propriedade `as`
 
-Used to change the underlying HTML element that a React component renders. It
-provides a straightforward way to change the underlying element while retaining
-the component's functionality.
+Usada para alterar o elemento HTML subjacente que um componente React renderiza.
+Ela fornece uma maneira direta de mudar o elemento subjacente, mantendo a
+funcionalidade do componente.
 
 ```jsx
-<Heading as="h3">Hello, world!</Heading>
+<Heading as="h3">Olá, mundo!</Heading>
 ```
 
-:::warning
+A ressalva com a propriedade `as` é que os tipos do componente passado para `as` devem ser compatíveis com as props do componente original. Não inferimos as props do componente subjacente a partir da propriedade `as`.
 
-**TypeScript:** The caveat with the `as` prop is that the types of the component
-passed to the `as` prop must be compatible with the component's props. We do not
-infer the underlying component's props from the `as` prop.
+## A Propriedade `asChild`
 
-:::
+Usada para compor a funcionalidade de um componente no elemento filho. Essa abordagem, inspirada pelo [Radix UI](https://www.radix-ui.com/primitives/docs/utilities/slot), oferece flexibilidade máxima.
 
-## The `asChild` Prop
-
-Used to compose a component's functionality onto its child element. This
-approach, inspired by
-[Radix UI](https://www.radix-ui.com/primitives/docs/utilities/slot), offers
-maximum flexibility.
-
-```jsx
+```tsx
 <Popover.Root>
   <Popover.Trigger asChild>
-    <Button>Open</Button>
+    <Button>Abrir</Button>
   </Popover.Trigger>
 </Popover.Root>
 ```
 
-In this example, the `asChild` prop allows the `Button` to be used as the
-trigger for the popover.
+Neste exemplo, a propriedade `asChild` permite que o `Button` seja usado como o gatilho para o popover.
 
-## Best Practices
+## Melhores Práticas
 
-To avoid common pitfalls when using the `as` and `asChild` props, there are a
-few best practices to consider:
+Para evitar armadilhas comuns ao usar as propriedades `as` e `asChild`, há algumas melhores práticas a serem consideradas:
 
-- **Forward Refs:** Ensure that the underlying component forwards the ref passed
-  to it properly.
-- **Spread Props:** Ensure that the underlying component spreads the props
-  passed to it.
+- **Encaminhamento de Refs**: Certifique-se de que o componente subjacente encaminhe corretamente a ref passada para ele.
+- **Props com Spread**: Certifique-se de que o componente subjacente faça o spread das props passadas para ele.
 
-```jsx
+```tsx
 const MyComponent = React.forwardRef((props, ref) => {
   return <Box ref={ref} {...props} />
 })
 
-// with `as` prop
+// com a propriedade `as`
 <MyComponent as="button" />
 
-// with `asChild` prop
+// com a propriedade `asChild`
 <Button asChild>
-  <MyComponent> Click me </MyComponent>
+  <MyComponent> Clique em mim </MyComponent>
 </Button>
 ```
