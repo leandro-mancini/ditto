@@ -52,9 +52,18 @@ const config: Config = {
         id: 'components',
         path: 'components',
         routeBasePath: 'components',
-        sidebarPath: require.resolve('./sidebars.ts'),
+        sidebarPath: require.resolve('./sidebars-components.ts'),
       },
     ],
+    // [
+    //   '@docusaurus/plugin-content-docs',
+    //   {
+    //     id: 'components',
+    //     path: 'components',
+    //     routeBasePath: 'components',
+    //     sidebarPath: require.resolve('./sidebars.ts'),
+    //   },
+    // ],
   ],
 
   presets: [
