@@ -45,6 +45,7 @@ import {
   OpacitySemanticTokenDoc,
   OpacityTokenDoc,
 } from '@site/src/compositions/examples/theme/opacity-token-doc';
+import { ComponentGrid } from './component-grid';
 
 export default {
   // Re-use the default mapping
@@ -91,4 +92,5 @@ export default {
   LineHeightTokenDoc,
   LetterSpacingTokenDoc,
   ZIndexTokenDoc,
+  ComponentGrid,
 };
