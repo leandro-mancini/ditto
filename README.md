@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h1 align="center">Crie aplicativos escaláveis ​​e acessíveis com facilidade</h1>
+<h1 align="center">Componentes de UI acessíveis, modernos e fáceis de estilizar</h1>
 
 Ditto fornece um conjunto de componentes combináveis que funcionam com uma variedade de frameworks JavaScript, permitindo a criação de aplicativos e sites de forma rápida e eficiente.
 
