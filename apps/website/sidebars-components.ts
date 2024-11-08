@@ -59,6 +59,11 @@ const componentsSidebar = [
       },
       {
         type: 'doc',
+        id: 'layout/simple-grid',
+        label: 'SimpleGrid',
+      },
+      {
+        type: 'doc',
         id: 'layout/stack',
         label: 'Stack',
       },
