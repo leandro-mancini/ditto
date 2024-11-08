@@ -1,21 +1,21 @@
 ---
-title: Animations
-description: Learn how to customize animations in Chakra UI
+title: Animações
+description: Aprenda como personalizar animações no Ditto
 ---
 
 :::info
 
-Please read the [overview](/docs/theming/customization/overview) first to learn
-how to properly customize the styling engine, and get type safety.
+Leia primeiro a [visão geral](/theming/customization/overview) para aprender
+como personalizar o mecanismo de estilo corretamente e obter segurança de tipos.
 
 :::
 
-## Example
+## Exemplo
 
-Here's an example of how to customize keyframes in Chakra UI.
+Aqui está um exemplo de como personalizar keyframes no Ditto.
 
 ```tsx title="theme.ts"
-import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react';
+import { createSystem, defaultConfig, defineConfig } from '@ditto/react';
 
 const config = defineConfig({
   theme: {
@@ -36,12 +36,11 @@ const config = defineConfig({
 export const system = createSystem(defaultConfig, config);
 ```
 
-## Usage
+## Uso
 
-Set the value value of `animationName` or `animation` style prop to apply the
-keyframes and animation respectively.
+Defina o valor da propriedade de estilo `animationName` ou `animation` para aplicar os keyframes e animação, respectivamente.
 
-```tsx title="app.tsx"
+```tsx
 <Box animation="wiggle" />
 <Box animationName="wiggle" animationDuration="fast" animationIterationCount="infinite" />
 ```

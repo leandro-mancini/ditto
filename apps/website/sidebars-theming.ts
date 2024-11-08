@@ -130,6 +130,11 @@ const sidebarsTheming = {
         },
         {
           type: 'doc',
+          id: 'customization/animations',
+          label: 'Animações',
+        },
+        {
+          type: 'doc',
           id: 'customization/breakpoints',
           label: 'Pontos de Interrupção',
         },
