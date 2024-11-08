@@ -20,8 +20,8 @@ export const ContainerAnatomy = createComponent((props) => {
         height="80"
         fill={palette[5]}
         stroke={palette[15]}
-        stroke-width="2"
-        stroke-dasharray="4"
+        strokeWidth="2"
+        strokeDasharray="4"
         rx="8"
         ry="8"
       />

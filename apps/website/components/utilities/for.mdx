@@ -1,0 +1,103 @@
+---
+title: For
+description: Usado para iterar sobre um array e renderizar um componente para cada item.
+links:
+  source: components/for
+  storybook: components-for--basic
+---
+
+```
+<ExampleTabs name="for-basic" />
+```
+
+```tsx
+export const ForBasic = () => {
+  return (
+    <For each={['One', 'Two', 'Three']}>
+      {(item, index) => <div key={index}>{item}</div>}
+    </For>
+  );
+};
+```
+
+## Uso
+
+O componente `For` é usado para renderizar uma lista de itens de maneira fortemente
+tipada. É similar ao `.map()`.
+
+```jsx
+import { For } from "@ditto/react"
+
+<For each={[]} fallback={...} />
+```
+
+## Exemplos
+
+### Objeto
+
+Aqui está um exemplo de como usar o componente `For` para iterar sobre um objeto.
+
+```
+<ExampleTabs name="for-with-object" />
+```
+
+```tsx
+export const ForWithObject = () => {
+  return (
+    <Stack>
+      <For
+        each={[
+          { name: 'Naruto', powers: ['Shadow Clone', 'Rasengan'] },
+          { name: 'Sasuke', powers: ['Chidori', 'Sharingan'] },
+          { name: 'Sakura', powers: ['Healing', 'Super Strength'] },
+        ]}
+      >
+        {(item, index) => (
+          <Box borderWidth="1px" key={index} p="4">
+            <Text fontWeight="bold">{item.name}</Text>
+            <Text color="fg.muted">Powers: {item.powers.join(', ')}</Text>
+          </Box>
+        )}
+      </For>
+    </Stack>
+  );
+};
+```
+
+### Fallback
+
+Use a propriedade `fallback` para renderizar um componente de fallback quando o array está vazio ou indefinido.
+
+```
+<ExampleTabs name="for-with-fallback" />
+```
+
+```tsx
+export const ForWithFallback = () => {
+  return (
+    <Stack gap="4">
+      <For
+        each={[]}
+        fallback={
+          <VStack textAlign="center" fontWeight="medium">
+            <LuBox />
+            No items to show
+          </VStack>
+        }
+      >
+        {(item, index) => (
+          <DecorativeBox h="10" key={index}>
+            {item}
+          </DecorativeBox>
+        )}
+      </For>
+    </Stack>
+  );
+};
+```
+
+## Propriedades
+
+```
+<PropTable component="For" part="For" />
+```

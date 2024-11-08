@@ -1,71 +1,137 @@
 ---
 title: Box
 description:
-  The most abstract styling component in Chakra UI on top of which all other
-  Chakra UI components are built.
+  O componente de estilo mais abstrato no Ditto, sobre o qual todos os outros
+  componentes do Ditto são construídos.
 ---
 
-<ExampleTabs name="box-basic" />
-
-## Usage
-
-The `Box` component provides an easy way to write styles with ease. It provides
-access to design tokens and an unmatched DX when writing responsive styles.
-
-```jsx
-import { Box } from '@chakra-ui/react';
+```
+<ExampleMdx name="box-basic" />
 ```
 
-```jsx
-<Box />
+```tsx
+export const BoxBasic = () => {
+  return (
+    <Box background="tomato" width="100%" padding="4" color="white">
+      Box
+    </Box>
+  );
+};
 ```
 
-## Examples
+## Uso
+
+O componente `Box` fornece uma maneira fácil de escrever estilos com praticidade.
+Ele oferece acesso a tokens de design e uma experiência de desenvolvimento incomparável
+ao escrever estilos responsivos.
+
+```jsx
+import { Box } from '@ditto/react';
+
+<Box />;
+```
+
+## Exemplos
 
 ### Shorthand
 
-Use shorthand like `bg` instead of `backgroundColor`, `m` instead of `margin`,
-etc.
+Use shorthand como `bg` em vez de `backgroundColor`, `m` em vez de `margin`, etc.
 
-<ExampleTabs name="box-with-shorthand" />
+```
+<ExampleMdx name="box-with-shorthand" />
+```
 
-### Pseudo Props
+```tsx
+export const BoxWithShorthand = () => {
+  return (
+    <Box bg="tomato" w="100%" p="4" color="white">
+      Box
+    </Box>
+  );
+};
+```
 
-Use pseudo props like `_hover` to apply styles on hover, `_focus` to apply
-styles on focus, etc.
+### Props Pseudo
 
-<ExampleTabs name="box-with-pseudo-props" />
+Use props pseudo como `_hover` para aplicar estilos ao passar o mouse, `_focus` para aplicar estilos ao focar, etc.
 
-### Border
+```
+<ExampleMdx name="box-with-pseudo-props" />
+```
 
-Use the `borderWidth` and `borderColor` prop to apply border styles.
+```tsx
+export const BoxWithPseudoProps = () => {
+  return (
+    <Box bg="tomato" w="100%" p="4" color="white" _hover={{ bg: 'green' }}>
+      Box
+    </Box>
+  );
+};
+```
 
-> **Good to know:** Chakra applies `borderStyle: solid` globally so you don't
-> have to.
+### Borda
 
-<ExampleTabs name="box-with-border" />
+Use a propriedade `borderWidth` e `borderColor` para aplicar estilos de borda.
 
-### As Prop
+> Bom saber: O Ditto aplica `borderStyle: solid` globalmente, então você não precisa.
 
-Use the `as` prop to render a different component.
+```
+<ExampleMdx name="box-with-border" />
+```
 
-> Inspect the DOM to see the rendered component.
+```tsx
+export const BoxWithBorder = () => {
+  return (
+    <Box
+      p="4"
+      borderWidth="1px"
+      borderColor="border.disabled"
+      color="fg.disabled"
+    >
+      Box
+    </Box>
+  );
+};
+```
 
-<ExampleTabs name="box-with-as-prop" />
+### Propriedade `as`
 
-### Shadow
+Use a propriedade `as` para renderizar um componente diferente.
 
-Use the `boxShadow` or `shadow` prop to apply shadow styles.
+> Inspecione o DOM para ver o componente renderizado.
 
-<ExampleTabs name="box-with-shadow" />
+```
+<ExampleMdx name="box-with-as-prop" />
+```
 
-### Composition
+```tsx
+export const BoxWithAsProp = () => {
+  return (
+    <Box as="section" color="fg.muted">
+      Box
+    </Box>
+  );
+};
+```
 
-Here's an example of a property card built with layout primitives in Chakra.
+### Sombra
 
-<ExampleTabs name="box-property-card" />
+Use a propriedade `boxShadow` ou `shadow` para aplicar estilos de sombra.
 
-## Props
+```
+<ExampleMdx name="box-with-shadow" />
+```
 
-The `Box` component supports all CSS properties as props, making it easy to
-style elements.
+```tsx
+export const BoxWithShadow = () => {
+  return (
+    <Box bg="bg" shadow="md" borderRadius="md">
+      Box
+    </Box>
+  );
+};
+```
+
+### Propriedades
+
+O componente `Box` suporta todas as propriedades CSS como props, facilitando a estilização de elementos.

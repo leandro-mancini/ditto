@@ -1,3 +1,27 @@
+const conceptSidebar = [
+  {
+    type: 'category',
+    label: 'Conceitos',
+    items: [
+      {
+        type: 'doc',
+        id: 'overview',
+        label: 'Visão Geral',
+      },
+      {
+        type: 'doc',
+        id: 'concepts/composition',
+        label: 'Composição',
+      },
+      {
+        type: 'doc',
+        id: 'concepts/animation',
+        label: 'Animação',
+      },
+    ],
+  },
+];
+
 const componentsSidebar = [
   {
     type: 'category',
@@ -42,33 +66,42 @@ const componentsSidebar = [
   },
 ];
 
-const sidebarsComponents = {
-  conceptSidebar: [
-    {
-      type: 'category',
-      label: 'Conceitos',
-      items: [
-        {
-          type: 'doc',
-          id: 'overview',
-          label: 'Visão Geral',
-        },
-        {
-          type: 'doc',
-          id: 'concepts/composition',
-          label: 'Composição',
-        },
-        {
-          type: 'doc',
-          id: 'concepts/animation',
-          label: 'Animação',
-        },
-      ],
-    },
-    ...componentsSidebar,
-  ],
-};
+const utilitiesSidebar = [
+  {
+    type: 'category',
+    label: 'Utilitários',
+    items: [
+      {
+        type: 'doc',
+        id: 'utilities/for',
+        label: 'For',
+      },
+      {
+        type: 'doc',
+        id: 'utilities/format-number',
+        label: 'Format Number',
+      },
+      {
+        type: 'doc',
+        id: 'utilities/locale-provider',
+        label: 'Locale Provider',
+      },
+      {
+        type: 'doc',
+        id: 'utilities/portal',
+        label: 'Portal',
+      },
+      {
+        type: 'doc',
+        id: 'utilities/show',
+        label: 'Show',
+      },
+    ],
+  },
+];
 
-export { componentsSidebar };
+const sidebarsComponents = {
+  sidebar: [...conceptSidebar, ...componentsSidebar, ...utilitiesSidebar],
+};
 
 export default sidebarsComponents;

@@ -1,57 +1,137 @@
 ---
 title: Stack
-description: Used to layout its children in a vertical or horizontal stack.
+description: Usado para organizar seus filhos em uma pilha vertical ou horizontal.
 links:
   source: components/stack
 ---
 
+```
 <ExampleTabs name="stack-basic" />
-
-## Usage
-
-By default, Stack applies `flex-direction: column` and `gap: 8px` to its
-children.
-
-```jsx
-import { HStack, Stack, VStack } from '@chakra-ui/react';
 ```
 
+```tsx
+export const StackBasic = () => {
+  return (
+    <Stack>
+      <Box h="20" />
+      <Box h="20" />
+      <Box h="20" />
+    </Stack>
+  );
+};
+```
+
+## Uso
+
+Por padrão, `Stack` aplica `flex-direction: column` e `gap: 8px` aos seus filhos.
+
 ```jsx
+import { HStack, Stack, VStack } from '@ditto/react';
+
 <Stack>
   <div />
   <div />
-</Stack>
+</Stack>;
 ```
 
-## Examples
+## Exemplos
 
 ### Horizontal
 
-Use the `direction` prop to change the direction of the stack.
+Use a propriedade `direction` para alterar a direção da pilha.
 
+```
 <ExampleTabs name="stack-horizontal" />
+```
 
-### HStack
+```tsx
+export const StackHorizontal = () => {
+  return (
+    <Stack direction="row" h="20">
+      <Box />
+      <Box />
+      <Box />
+    </Stack>
+  );
+};
+```
 
-Alternatively, you can use the `HStack` to create a horizontal stack and align
-its children horizontally.
+## `HStack`
 
+Alternativamente, você pode usar o `HStack` para criar uma pilha horizontal e alinhar seus filhos horizontalmente.
+
+```
 <ExampleTabs name="stack-with-hstack" />
+```
 
-### VStack
+```tsx
+export const StackWithHstack = () => {
+  return (
+    <HStack>
+      <Box h="10" />
+      <Box h="5" />
+      <Box h="20" />
+    </HStack>
+  );
+};
+```
 
-Use the `VStack` to create a vertical stack and align its children vertically.
+## `VStack`
 
+Use o `VStack` para criar uma pilha vertical e alinhar seus filhos verticalmente.
+
+```
 <ExampleTabs name="stack-with-vstack" />
+```
 
-### Separator
+```tsx
+export const StackWithVstack = () => {
+  return (
+    <VStack>
+      <Box w="50%" h="20" />
+      <Box w="25%" h="20" />
+      <Box w="100%" h="20" />
+    </VStack>
+  );
+};
+```
 
-Use the `separator` prop to add a separator between the stack items.
+## Separador
 
+Use a propriedade `separator` para adicionar um separador entre os itens da pilha.
+
+```
 <ExampleTabs name="stack-with-separator" />
+```
 
-### Responsive Direction
+```tsx
+export const StackWithSeparator = () => {
+  return (
+    <Stack separator={<StackSeparator />}>
+      <Box h="20" />
+      <Box h="20" />
+      <Box h="20" />
+    </Stack>
+  );
+};
+```
 
-Use the `direction` prop to change the direction of the stack responsively.
+## Direção Responsiva
 
+Use a propriedade `direction` para alterar a direção da pilha de forma responsiva.
+
+```
 <ExampleTabs name="stack-with-responsive-direction" />
+```
+
+```tsx
+export const StackWithResponsiveDirection = () => {
+  return (
+    <Stack direction={{ base: 'column', md: 'row' }} gap="10">
+      <Box boxSize="20" />
+      <Box boxSize="20" />
+      <Box boxSize="20" />
+    </Stack>
+  );
+};
+```

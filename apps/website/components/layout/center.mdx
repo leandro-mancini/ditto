@@ -1,60 +1,144 @@
 ---
 title: Center
-description: Used to center its child within itself.
+description: Usado para centralizar seu filho dentro de si mesmo.
 links:
   source: components/center
   storybook: components-center--basic
 ---
 
+```
 <ExampleTabs name="center-basic" />
-
-## Usage
-
-```jsx
-import { AbsoluteCenter, Center, Circle, Square } from '@chakra-ui/react';
 ```
 
+```tsx
+export const CenterBasic = () => {
+  return (
+    <Center bg="bg.emphasized" h="100px" maxW="320px">
+      <Box>Center</Box>
+    </Center>
+  );
+};
+```
+
+## Uso
+
 ```jsx
+import { AbsoluteCenter, Center, Circle, Square } from '@ditto/react';
+
 <Center bg="tomato" h="100px" color="white">
-  This is the Center
-</Center>
+  Center
+</Center>;
 ```
 
-## Examples
+## Exemplos
 
-### Icon
+### Ícone
 
-Center can be used to create frames around icons or numbers.
+O componente `Center` pode ser usado para criar molduras ao redor de ícones ou números.
 
+```
 <ExampleTabs name="center-with-icons" />
+```
 
-### Center with Inline
+```tsx
+export const CenterWithIcons = () => {
+  return (
+    <HStack>
+      <Center w="40px" h="40px" bg="tomato" color="white">
+        <LuPhone />
+      </Center>
 
-Use the `inline` to change the display to `inline-flex`.
+      <Center w="40px" h="40px" bg="tomato" color="white">
+        <Box as="span" fontWeight="bold" fontSize="lg">
+          1
+        </Box>
+      </Center>
+    </HStack>
+  );
+};
+```
 
+### Center com Inline
+
+Use `inline` para mudar o display para `inline-flex`.
+
+```
 <ExampleTabs name="center-with-inline" />
+```
+
+```tsx
+export const CenterWithInline = () => {
+  return (
+    <Link href="#">
+      <Center inline gap="4">
+        <Box>Ditto Design System</Box>
+        <LuArrowRight />
+      </Center>
+    </Link>
+  );
+};
+```
 
 ### Square
 
-`Square` centers its child given the `size` (width and height).
+Centraliza seu filho com base na propriedade `size` (largura e altura).
 
+```
 <ExampleTabs name="center-with-square" />
+```
+
+```tsx
+export const CenterWithSquare = () => {
+  return (
+    <Square size="10" bg="purple.700" color="white">
+      <LuPhoneForwarded />
+    </Square>
+  );
+};
+```
 
 ### Circle
 
-`Circle` centers its child given the `size` and creates a circle around it.
+Centraliza seu filho com base na propriedade `size` e cria um círculo ao redor dele.
 
+```
 <ExampleTabs name="center-with-circle" />
+```
+
+```tsx
+export const CenterWithCircle = () => {
+  return (
+    <Circle size="10" bg="blue.700" color="white">
+      <LuPhoneForwarded />
+    </Circle>
+  );
+};
+```
 
 ### AbsoluteCenter
 
-`AbsoluteCenter` centers relative to its parent using the `position: absolute`
-strategy. Pass the `axis` prop to change the axis of alignment.
+`AbsoluteCenter` centraliza em relação ao seu pai usando a estratégia `position: absolute`. Passe a propriedade `axis` para mudar o eixo de alinhamento.
 
+```
 <ExampleTabs name="center-with-absolute" />
+```
 
-## Props
+```tsx
+export const CenterWithAbsolute = () => {
+  return (
+    <Box position="relative" h="100px">
+      <AbsoluteCenter bg="tomato" p="4" color="white" axis="both">
+        <LuPhone />
+      </AbsoluteCenter>
+    </Box>
+  );
+};
+```
+
+## Propriedades
 
 ### AbsoluteCenter
 
+```
 <PropTable component="Center" part="AbsoluteCenter" />
+```

@@ -27,7 +27,5 @@ export const allComponents = {
 export type ComponentAnatomyName = keyof typeof allComponents;
 
 export function getComponent(name: ComponentAnatomyName | (string & {})) {
-  console.log('name', name);
-
   return Reflect.get(allComponents, name);
 }

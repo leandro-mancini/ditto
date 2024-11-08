@@ -1,65 +1,195 @@
 ---
 title: Flex
-description: Used to manage flex layouts
+description: Usado para gerenciar layouts flexíveis
 links:
   source: components/flex
 ---
 
+```
 <ExampleTabs name="flex-basic" />
-
-## Usage
-
-```jsx
-import { Flex } from '@chakra-ui/react';
 ```
 
+```tsx
+export const FlexBasic = () => {
+  return (
+    <Flex gap="4">
+      <Box height="10" />
+      <Box height="10" />
+      <Box height="10" />
+    </Flex>
+  );
+};
+```
+
+## Uso
+
 ```jsx
+import { Flex } from '@ditto/react';
+
 <Flex>
   <div />
   <div />
-</Flex>
+</Flex>;
 ```
 
-## Examples
+## Exemplos
 
-### Direction
+### `direction`
 
-Use the `direction` or `flexDirection` prop to change the direction of the flex
+Use a propriedade `direction` ou `flexDirection` para alterar a direção do flex.
 
+```
 <ExampleTabs name="flex-with-direction" />
+```
 
-### Align
+```tsx
+export const FlexWithDirection = () => {
+  return (
+    <Flex gap="4" direction="column">
+      <Box height="10" />
+      <Box height="10" />
+      <Box height="10" />
+    </Flex>
+  );
+};
+```
 
-Use the `align` or `alignItems` prop to align the children along the cross axis.
+### `align`
 
+Use a propriedade `align` ou `alignItems` para alinhar os filhos ao longo do eixo transversal.
+
+```
 <ExampleTabs name="flex-with-align" />
+```
 
-### Justify
+```tsx
+export const FlexWithAlign = () => {
+  return (
+    <Flex gap="4" align="center">
+      <Box height="4" />
+      <Box height="8" />
+      <Box height="10" />
+    </Flex>
+  );
+};
+```
 
-Use the `justify` or `justifyContent` prop to align the children along the main
-axis.
+### `justify`
 
+Use a propriedade `justify` ou `justifyContent` para alinhar os filhos ao longo do eixo principal.
+
+```
 <ExampleTabs name="flex-with-justify" />
+```
 
-### Order
+```tsx
+export const FlexWithJustify = () => {
+  return (
+    <Flex direction="column" gap="8">
+      <Flex gap="4" justify="flex-start">
+        <Box height="10" width="120px" />
+        <Box height="10" width="120px">
+          flex-start
+        </Box>
+        <Box height="10" width="120px" />
+      </Flex>
 
-Use the `order` prop to change the order of the children.
+      <Flex gap="4" justify="center">
+        <Box height="10" width="120px" />
+        <Box height="10" width="120px">
+          center
+        </Box>
+        <Box height="10" width="120px" />
+      </Flex>
 
+      <Flex gap="4" justify="flex-end">
+        <Box height="10" width="120px" />
+        <Box height="10" width="120px">
+          flex-end
+        </Box>
+        <Box height="10" width="120px" />
+      </Flex>
+
+      <Flex gap="4" justify="space-between">
+        <Box height="10" width="120px" />
+        <Box height="10" width="120px">
+          space-between
+        </Box>
+        <Box height="10" width="120px" />
+      </Flex>
+    </Flex>
+  );
+};
+```
+
+### `order`
+
+Use a propriedade `order` para alterar a ordem dos filhos.
+
+```
 <ExampleTabs name="flex-with-order" />
+```
 
-### Auto Margin
+```tsx
+export const FlexWithOrder = () => {
+  return (
+    <Flex gap="4">
+      <Box height="10" order="1">
+        1
+      </Box>
+      <Box height="10" order="3">
+        2
+      </Box>
+      <Box height="10" order="2">
+        3
+      </Box>
+    </Flex>
+  );
+};
+```
 
-Apply margin to a flex item to push it away from its siblings.
+### Margem Automática
 
+Aplique margem a um item flex para afastá-lo de seus irmãos.
+
+```
 <ExampleTabs name="flex-with-auto-margin" />
+```
 
-### Wrap
+```tsx
+export const FlexWithAutoMargin = () => {
+  return (
+    <Flex gap="4" justify="space-between">
+      <Box height="10" width="40" />
+      <Box height="10" width="40" marginEnd="auto" />
+      <Box height="10" width="40" />
+    </Flex>
+  );
+};
+```
 
-Use the `wrap` or `flexWrap` prop to wrap the children when they overflow the
-parent.
+### `wrap`
 
+Use a propriedade `wrap` ou `flexWrap` para quebrar os filhos quando eles ultrapassarem o limite do elemento pai.
+
+```
 <ExampleTabs name="flex-with-wrap" />
+```
 
-## Props
+```tsx
+export const FlexWithWrap = () => {
+  return (
+    <Flex gap="4" wrap="wrap" maxW="500px">
+      <Box height="10" width="200px" />
+      <Box height="10" width="200px" />
+      <Box height="10" width="200px" />
+    </Flex>
+  );
+};
+```
 
+## Propriedades
+
+```
 <PropTable component="Flex" part="Flex" />
+```

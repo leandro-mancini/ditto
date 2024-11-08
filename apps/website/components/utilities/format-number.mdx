@@ -1,0 +1,151 @@
+---
+title: Formatar Número
+description: Usado para formatar números para uma localidade e opções específicas
+links:
+  source: components/format-number
+  storybook: components-format-number--basic
+  ark: https://ark-ui.com/react/docs/utilities/format-number
+---
+
+```
+<ExampleTabs name="format-number-basic" />
+```
+
+```tsx
+export const FormatNumberBasic = () => {
+  return (
+    <Text textStyle="lg">
+      <FormatNumber value={1450.45} />
+    </Text>
+  );
+};
+```
+
+## Uso
+
+A lógica de formatação de números é tratada pela API nativa `Intl.NumberFormat` e
+inteligentemente armazenada em cache para evitar problemas de desempenho ao usar a
+mesma localidade e opções.
+
+```jsx
+import { FormatNumber } from '@ditto/react';
+
+<FormatNumber value={1000} />;
+```
+
+## Exemplos
+
+### Porcentagem
+
+Use a propriedade `style=percentage` para alterar o formato do número para porcentagem.
+
+```
+<ExampleTabs name="format-number-with-percentage" />
+```
+
+```tsx
+export const FormatNumberWithPercentage = () => {
+  return (
+    <Text textStyle="lg">
+      <FormatNumber
+        value={0.145}
+        style="percent"
+        maximumFractionDigits={2}
+        minimumFractionDigits={2}
+      />
+    </Text>
+  );
+};
+```
+
+### Moeda
+
+Use a propriedade `style=currency` para alterar o formato do número para moeda.
+
+```
+<ExampleTabs name="format-number-with-currency" />
+```
+
+```tsx
+export const FormatNumberWithCurrency = () => {
+  return (
+    <Text textStyle="lg">
+      <FormatNumber value={1234.45} style="currency" currency="USD" />
+    </Text>
+  );
+};
+```
+
+### Localidade
+
+Envolva o componente `FormatNumber` dentro do `LocaleProvider` para alterar a localidade.
+
+```
+<ExampleTabs name="format-number-with-locale" />
+```
+
+```tsx
+export const FormatNumberWithLocale = () => {
+  return (
+    <Text textStyle="lg">
+      <HStack>
+        <Text fontWeight="medium">de-DE</Text>
+        <LocaleProvider locale="de-DE">
+          <FormatNumber value={1450.45} />
+        </LocaleProvider>
+      </HStack>
+
+      <HStack>
+        <Text fontWeight="medium">zh-CN</Text>
+        <LocaleProvider locale="zh-CN">
+          <FormatNumber value={1450.45} />
+        </LocaleProvider>
+      </HStack>
+    </Text>
+  );
+};
+```
+
+### Unidade
+
+Use a propriedade `style=unit` para alterar o formato do número para unidade.
+
+```
+<ExampleTabs name="format-number-with-unit" />
+```
+
+```tsx
+export const FormatNumberWithUnit = () => {
+  return (
+    <Text textStyle="lg">
+      <FormatNumber value={384.4} style="unit" unit="kilometer" />
+    </Text>
+  );
+};
+```
+
+### Notação Compacta
+
+Use a propriedade `notation=compact` para alterar o formato do número para notação compacta.
+
+```
+<ExampleTabs name="format-number-with-compact" />
+```
+
+```tsx
+export const FormatNumberWithCompact = () => {
+  return (
+    <Text textStyle="lg">
+      <FormatNumber value={1500000} notation="compact" compactDisplay="short" />
+    </Text>
+  );
+};
+```
+
+## Propriedades
+
+O componente `FormatNumber` oferece suporte a todas as opções de `Intl.NumberFormat`, além das seguintes propriedades:
+
+```
+<PropTable component="Format" part="Number" />
+```

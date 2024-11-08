@@ -70,8 +70,6 @@ export const SpacingSemanticTokenDoc = () => {
           {(spacings) => {
             const token = tokens.getByName(`spacing.${spacings}`);
 
-            console.log('token', token);
-
             return (
               <Flex key={token?.name} py="1" fontSize="sm">
                 <Box width="100px" fontWeight="medium">

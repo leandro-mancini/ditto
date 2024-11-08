@@ -2,22 +2,20 @@ import { Box, Center, SimpleGrid, Stack } from '@dittox/react';
 import React from 'react';
 import { kebabCase } from 'scule';
 
-import { componentsSidebar } from '../../../sidebars-components';
+import sidebarComponents from '../../../sidebars-components';
 import { getComponent } from '@site/src/components/illustrations';
 import { LuCode } from 'react-icons/lu';
 import Link from '@docusaurus/Link';
 
 export const ComponentGrid = () => {
-  console.log('componentsSidebar', componentsSidebar[0].items);
-  const components = componentsSidebar[0].items;
+  const { sidebar } = sidebarComponents;
+  const components = sidebar[1].items;
 
   return (
     <SimpleGrid minChildWidth="240px" gap="24px" mt="32px">
       {components.map((item) => {
         const key = kebabCase(item.id).replace('layout-', '');
         const Illustration = getComponent(key) ?? LuCode;
-
-        console.log('Illustration', Illustration);
 
         return (
           <Stack

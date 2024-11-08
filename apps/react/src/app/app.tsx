@@ -15,8 +15,6 @@ const { tokens } = defaultSystem;
 const colors = tokens.categoryMap.get('colors')!;
 const allColors = Array.from(colors.values());
 
-console.log('allColors', allColors);
-
 const keys = [
   'alternate',
   'aqua',

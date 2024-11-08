@@ -1,0 +1,44 @@
+---
+title: Provedor de Localidade
+description: Usado para definir a localidade globalmente
+---
+
+## Uso
+
+O componente `LocaleProvider` define a localidade para sua aplicação, formatando
+datas, números e outros dados específicos de localidade.
+
+> A maioria dos componentes do Ditto lê a localidade definida pelo `LocaleProvider`.
+
+```jsx
+import { LocaleProvider, useLocaleContext } from '@ditto/react';
+
+<LocaleProvider locale="...">{/* Sua Aplicação */}</LocaleProvider>;
+```
+
+## Exemplos
+
+### Definindo a Localidade
+
+Defina a propriedade `locale` para a localidade que você deseja usar.
+
+```tsx
+<LocaleProvider locale="ar-BH">
+  <Component />
+</LocaleProvider>
+```
+
+### Lendo a Localidade
+
+```tsx
+export const Usage = () => {
+  const { locale, dir } = useLocaleContext();
+  return <pre>{JSON.stringify({ locale, dir }, null, 2)}</pre>;
+};
+```
+
+## Propriedades
+
+```
+<PropTable component="Locale" part="LocaleProvider" />
+```
