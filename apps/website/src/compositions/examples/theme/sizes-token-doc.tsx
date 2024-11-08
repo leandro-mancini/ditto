@@ -41,7 +41,7 @@ export const SizesTokenDoc = () => {
         ]}
       >
         {(item) => (
-          <TokenDoc title={item.name}>
+          <TokenDoc title={item.name} key={item.name}>
             <Flex
               fontSize="sm"
               fontWeight="medium"

@@ -69,9 +69,6 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/leandro-mancini/ditto/',
         },
-        theme: {
-          customCss: './src/css/custom.css',
-        },
         sitemap: {
           changefreq: 'weekly',
           priority: 0.5,
