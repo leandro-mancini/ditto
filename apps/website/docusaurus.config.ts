@@ -44,6 +44,8 @@ const config: Config = {
         path: 'theming',
         routeBasePath: 'theming',
         sidebarPath: require.resolve('./sidebars-theming.ts'),
+        sidebarCollapsed: false,
+        sidebarCollapsible: false,
       },
     ],
     [
@@ -53,6 +55,8 @@ const config: Config = {
         path: 'components',
         routeBasePath: 'components',
         sidebarPath: require.resolve('./sidebars-components.ts'),
+        sidebarCollapsed: false,
+        sidebarCollapsible: false,
       },
     ],
   ],

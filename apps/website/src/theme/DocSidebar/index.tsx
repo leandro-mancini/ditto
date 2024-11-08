@@ -4,7 +4,7 @@ import { SideNav } from './sidenav';
 import Link from '@docusaurus/Link';
 
 export default function DocSidebar(props) {
-  const { sidebar } = props;
+  const { sidebar, onCollapse, ...restProps } = props;
 
   return (
     <Box
@@ -22,7 +22,7 @@ export default function DocSidebar(props) {
       width="16rem"
       hideBelow="md"
       fontSize="0.875rem"
-      {...props}
+      {...restProps}
     >
       <Stack gap="24px">
         {sidebar.map((item, index) => {
