@@ -30,7 +30,7 @@ const config: Config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'styling',
-        path: 'styling',
+        path: 'content/styling',
         routeBasePath: 'styling',
         sidebarPath: require.resolve('./sidebars-styling.ts'),
         sidebarCollapsed: false,
@@ -41,7 +41,7 @@ const config: Config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'theming',
-        path: 'theming',
+        path: 'content/theming',
         routeBasePath: 'theming',
         sidebarPath: require.resolve('./sidebars-theming.ts'),
         sidebarCollapsed: false,
@@ -52,7 +52,7 @@ const config: Config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'components',
-        path: 'components',
+        path: 'content/components',
         routeBasePath: 'components',
         sidebarPath: require.resolve('./sidebars-components.ts'),
         sidebarCollapsed: false,
@@ -88,7 +88,7 @@ const config: Config = {
       },
       items: [
         // {
-        //   to: '/docs/overview',
+        //   to: '/content/overview',
         //   activeBasePath: 'getting-started',
         //   label: 'Começando',
         //   position: 'left',
