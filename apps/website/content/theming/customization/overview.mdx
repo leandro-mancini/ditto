@@ -1,0 +1,76 @@
+---
+title: Customização
+description: Aprenda como personalizar o tema do Ditto
+---
+
+## Visão Geral
+
+O Ditto usa um sistema de configurações para definir o sistema de estilos padrão.
+
+- `defaultBaseConfig`: contém as condições e propriedades de estilo.
+- `defaultConfig`: tudo de `defaultBaseConfig` mais os tokens e receitas integrados.
+
+O `defaultSystem` exportado do Ditto usa `defaultConfig` por padrão.
+
+Ao personalizar o tema, é importante decidir se você quer mesclar sua
+configuração com `defaultConfig` ou começar do zero com `defaultBaseConfig`.
+
+## Customização
+
+Estas são as principais funções necessárias para personalizar o tema do Ditto.
+
+- `defineConfig`: usada para definir a configuração do sistema
+- `mergeConfigs`: usada para mesclar múltiplas configurações de sistema
+- `createSystem`: usada para criar um mecanismo de estilo a partir da configuração
+
+```tsx title="theme.ts"
+import { createSystem, defaultBaseConfig, defineConfig } from '@ditto/react';
+
+const customConfig = defineConfig({
+  theme: {
+    colors: {
+      brand: {
+        500: 'tomato',
+      },
+    },
+  },
+});
+
+export const system = createSystem(defaultBaseConfig, customConfig);
+```
+
+Em seguida, atualize o `DittoProvider` para usar o sistema personalizado.
+
+```tsx
+import { DittoProvider } from '@ditto/react';
+import { ThemeProvider } from 'next-themes';
+import { system } from './theme';
+
+export function Provider(props: { children: React.ReactNode }) {
+  return (
+    <DittoProvider value={system}>
+      <ThemeProvider attribute="class" disableTransitionOnChange>
+        {props.children}
+      </ThemeProvider>
+    </DittoProvider>
+  );
+}
+```
+
+## Customização Completa
+
+Na maioria dos casos, recomendamos começar com a configuração padrão e especificar apenas o que você deseja personalizar.
+
+No entanto, se preferir começar do zero, crie tokens e receitas padrão usando o CLI.
+
+```bash
+npx @ditto/cli@next eject --outdir ./theme
+```
+
+Isso gerará um arquivo que inclui todos os tokens e receitas do Ditto.
+
+Após personalizar a configuração padrão, talvez seja necessário atualizar os tipos.
+
+```bash
+npx @ditto/cli@next typegen ./theme.ts
+```

@@ -1,0 +1,137 @@
+---
+title: Box
+description:
+  O componente de estilo mais abstrato no Ditto, sobre o qual todos os outros
+  componentes do Ditto são construídos.
+---
+
+```
+<ExampleMdx name="box-basic" />
+```
+
+```tsx
+export const BoxBasic = () => {
+  return (
+    <Box background="tomato" width="100%" padding="4" color="white">
+      Box
+    </Box>
+  );
+};
+```
+
+## Uso
+
+O componente `Box` fornece uma maneira fácil de escrever estilos com praticidade.
+Ele oferece acesso a tokens de design e uma experiência de desenvolvimento incomparável
+ao escrever estilos responsivos.
+
+```jsx
+import { Box } from '@ditto/react';
+
+<Box />;
+```
+
+## Exemplos
+
+### Shorthand
+
+Use shorthand como `bg` em vez de `backgroundColor`, `m` em vez de `margin`, etc.
+
+```
+<ExampleMdx name="box-with-shorthand" />
+```
+
+```tsx
+export const BoxWithShorthand = () => {
+  return (
+    <Box bg="tomato" w="100%" p="4" color="white">
+      Box
+    </Box>
+  );
+};
+```
+
+### Props Pseudo
+
+Use props pseudo como `_hover` para aplicar estilos ao passar o mouse, `_focus` para aplicar estilos ao focar, etc.
+
+```
+<ExampleMdx name="box-with-pseudo-props" />
+```
+
+```tsx
+export const BoxWithPseudoProps = () => {
+  return (
+    <Box bg="tomato" w="100%" p="4" color="white" _hover={{ bg: 'green' }}>
+      Box
+    </Box>
+  );
+};
+```
+
+### Borda
+
+Use a propriedade `borderWidth` e `borderColor` para aplicar estilos de borda.
+
+> Bom saber: O Ditto aplica `borderStyle: solid` globalmente, então você não precisa.
+
+```
+<ExampleMdx name="box-with-border" />
+```
+
+```tsx
+export const BoxWithBorder = () => {
+  return (
+    <Box
+      p="4"
+      borderWidth="1px"
+      borderColor="border.disabled"
+      color="fg.disabled"
+    >
+      Box
+    </Box>
+  );
+};
+```
+
+### Propriedade `as`
+
+Use a propriedade `as` para renderizar um componente diferente.
+
+> Inspecione o DOM para ver o componente renderizado.
+
+```
+<ExampleMdx name="box-with-as-prop" />
+```
+
+```tsx
+export const BoxWithAsProp = () => {
+  return (
+    <Box as="section" color="fg.muted">
+      Box
+    </Box>
+  );
+};
+```
+
+### Sombra
+
+Use a propriedade `boxShadow` ou `shadow` para aplicar estilos de sombra.
+
+```
+<ExampleMdx name="box-with-shadow" />
+```
+
+```tsx
+export const BoxWithShadow = () => {
+  return (
+    <Box bg="bg" shadow="md" borderRadius="md">
+      Box
+    </Box>
+  );
+};
+```
+
+### Propriedades
+
+O componente `Box` suporta todas as propriedades CSS como props, facilitando a estilização de elementos.

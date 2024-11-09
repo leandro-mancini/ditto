@@ -1,0 +1,39 @@
+---
+title: Pontos de Interrupção
+description: Aprenda como personalizar os pontos de interrupção no Ditto
+---
+
+:::info
+
+Leia primeiro a [visão geral](/theming/customization/overview) para aprender
+como personalizar o mecanismo de estilo corretamente e obter segurança de tipos.
+
+:::
+
+## Exemplo
+
+Aqui está um exemplo de como personalizar os pontos de interrupção no Ditto.
+
+```tsx title="theme.ts"
+import { createSystem, defaultConfig, defineConfig } from '@ditto/react';
+
+const config = defineConfig({
+  theme: {
+    breakpoints: {
+      tablet: '992px',
+      desktop: '1200px',
+      wide: '1400px',
+    },
+  },
+});
+
+export default createSystem(defaultConfig, config);
+```
+
+## Uso
+
+Ao usar propriedades responsivas, faça referência aos novos pontos de interrupção.
+
+```tsx
+<Box fontSize={{ base: '16px', tablet: '18px', desktop: '20px' }}>Olá</Box>
+```

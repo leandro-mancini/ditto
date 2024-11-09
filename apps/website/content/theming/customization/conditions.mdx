@@ -1,0 +1,39 @@
+---
+title: Condições
+description: Aprenda como personalizar condições no Ditto
+---
+
+:::info
+
+Leia primeiro a [visão geral](/theming/customization/overview) para aprender
+como personalizar o mecanismo de estilo corretamente e obter segurança de tipos.
+
+:::
+
+## Exemplo
+
+Aqui está um exemplo de como personalizar condições no Ditto.
+
+```tsx title="theme.ts"
+import { createSystem, defaultConfig, defineConfig } from '@ditto/react';
+
+const customConfig = defineConfig({
+  conditions: {
+    off: '&:is([data-state=off])',
+    on: '&:is([data-state=on])',
+  },
+});
+
+export const system = createSystem(defaultConfig, customConfig);
+```
+
+## Uso
+
+Use as condições `_off` e `_on` para estilizar elementos com base no atributo `data-state`.
+
+```tsx
+import { Box } from "@ditto/react"
+
+<Box data-state="off" _off={{ bg: "red.500" }} />
+<Box data-state="on" _on={{ bg: "green.500" }} />
+```

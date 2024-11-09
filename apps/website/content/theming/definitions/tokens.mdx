@@ -1,0 +1,539 @@
+---
+title: Tokens
+description: Gerenciando decisões de design no seu aplicativo usando tokens.
+---
+
+## Visão Geral
+
+Tokens de design são uma maneira agnóstica de gerenciar decisões de design na
+sua aplicação ou website. É uma coleção de atributos que descrevem qualquer
+estilo visual fundamental/atômico. Cada atributo é um par chave-valor.
+
+> Os tokens de design no Ditto são amplamente influenciados pelo
+> [Formato de Token W3C](https://tr.designtokens.org/format/).
+
+Um token de design consiste nas seguintes propriedades:
+
+- `value`: O valor do token. Este pode ser qualquer valor CSS válido.
+- `description`: Uma descrição opcional do que o token pode ser usado.
+
+## Definindo Tokens
+
+Tokens são definidos sob a chave `theme` na sua configuração de sistema.
+
+```ts title="theme.ts"
+import { createSystem, defineConfig } from '@ditto/react';
+
+const config = defineConfig({
+  theme: {
+    tokens: {
+      colors: {
+        primary: { value: '#0FEE0F' },
+        secondary: { value: '#EE0F0F' },
+      },
+      fonts: {
+        body: { value: 'system-ui, sans-serif' },
+      },
+    },
+  },
+});
+
+export const system = createSystem(config);
+```
+
+> Os valores dos tokens precisam estar aninhados em um objeto com uma chave `value`. Isso é para permitir propriedades adicionais como `description` e mais no futuro.
+
+## Usando Tokens
+
+Depois de definir os tokens, recomendamos usar a CLI do Ditto para gerar os tipos do tema para seus tokens.
+
+```bash
+npx @ditto/cli@next typegen ./src/theme.ts
+```
+
+Isso fornecerá autocompletar para seus tokens no seu editor.
+
+```jsx
+<Box color="primary" fontFamily="body">
+  Hello World
+</Box>
+```
+
+## Aninhamento de Tokens
+
+Tokens podem ser aninhados para criar uma hierarquia de tokens. Isso é útil quando você quer agrupar tokens relacionados.
+
+Use a chave `DEFAULT` para definir o valor padrão de um token aninhado.
+
+```jsx
+import { defineConfig } from '@ditto/react';
+
+const config = defineConfig({
+  theme: {
+    tokens: {
+      colors: {
+        red: {
+          DEFAULT: { value: '#EE0F0F' },
+          100: { value: '#EE0F0F' },
+        },
+      },
+    },
+  },
+});
+
+export default createSystem(config);
+```
+
+```jsx
+<Box
+  // 👇🏻 Isso usará o valor `DEFAULT`
+  bg="red"
+  color="red.100"
+>
+  Hello World
+</Box>
+```
+
+## Tipos de Tokens
+
+### `colors`
+
+Cores têm significado e suportam o propósito do conteúdo, comunicando coisas como hierarquia de informação e estados. Elas são geralmente definidas como um valor de string ou referência a outros tokens.
+
+```jsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  colors: {
+    red: {
+      100: { value: '#fff1f0' },
+    },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+### `gradients`
+
+Tokens de gradiente representam uma transição suave entre duas ou mais cores. Seu valor pode ser definido como uma string ou um valor composto.
+
+```jsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  gradients: {
+    // valor de string
+    simple: { value: 'linear-gradient(to right, red, blue)' },
+
+    // valor composto
+    primary: {
+      value: { type: 'linear', placement: 'to right', stops: ['red', 'blue'] },
+    },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+### `sizes`
+
+Tokens de tamanho representam a largura e altura de um elemento. Seu valor é definido como uma string.
+
+```jsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  sizes: {
+    sm: { value: '12px' },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+> Tokens de tamanho são tipicamente usados nas propriedades `width`, `height`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight`.
+
+### `spacing`
+
+Tokens de espaçamento representam a margem e o padding de um elemento. Seu valor é definido como uma string.
+
+```jsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  spacing: {
+    gutter: { value: '12px' },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+> Tokens de espaçamento são tipicamente usados nas propriedades `margin`, `padding`, `gap` e `{top,right,bottom,left}`.
+
+### `fonts`
+
+Tokens de fonte representam a família tipográfica de um elemento de texto. Seu valor é definido como uma string ou um array de strings.
+
+```jsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  fonts: {
+    body: { value: 'Inter, sans-serif' },
+    heading: { value: ['Roboto Mono', 'sans-serif'] },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+> Tokens de fonte são tipicamente usados na propriedade `font-family`.
+
+### `fontSizes`
+
+Tokens de tamanho de fonte representam o tamanho de um elemento de texto. Seu valor é definido como uma string.
+
+```jsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  fontSizes: {
+    sm: { value: '12px' },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+> Tokens de tamanho de fonte são tipicamente usados na propriedade `font-size`.
+
+### `fontWeights`
+
+Tokens de peso de fonte representam o peso de um elemento de texto. Seu valor é definido como uma string.
+
+```jsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  fontWeights: {
+    bold: { value: '700' },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+> Tokens de peso de fonte são tipicamente usados na propriedade `font-weight`.
+
+### `letterSpacings`
+
+Tokens de espaçamento entre letras representam o espaçamento entre as letras em um elemento de texto. Seu valor é definido como uma string.
+
+```jsx
+const tokens = defineTokens({
+  letterSpacings: {
+    wide: { value: '0.1em' },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+> Tokens de espaçamento entre letras são tipicamente usados na propriedade `letter-spacing`.
+
+### `lineHeights`
+
+Tokens de altura de linha representam a altura de uma linha de texto. Seu valor é definido como uma string.
+
+```jsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  lineHeights: {
+    normal: { value: '1.5' },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+> Tokens de altura de linha são tipicamente usados na propriedade `line-height`.
+
+### `radii`
+
+Tokens de raio representam o raio de uma borda. Seu valor é definido como uma string.
+
+```jsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  radii: {
+    sm: { value: '4px' },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+> Tokens de raio são tipicamente usados na propriedade `border-radius`.
+
+### `borders`
+
+Uma borda é uma linha ao redor de um elemento da interface do usuário. Você pode defini-las como valores de string ou como um valor composto.
+
+```jsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  borders: {
+    // valor de string
+    subtle: { value: '1px solid red' },
+    // valor de string com referência ao token de cor
+    danger: { value: '1px solid {colors.red.400}' },
+    // valor composto
+    accent: { value: { width: '1px', color: 'red', style: 'solid' } },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+> Tokens de borda são tipicamente usados nas propriedades `border`, `border-top`, `border-right`, `border-bottom`, `border-left`, `outline`.
+
+### `borderWidths`
+
+Tokens de largura de borda representam a largura de uma borda. Seu valor é definido como uma string.
+
+```jsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  borderWidths: {
+    thin: { value: '1px' },
+    thick: { value: '2px' },
+    medium: { value: '1.5px' },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+### `shadows`
+
+Tokens de sombra representam a sombra de um elemento. Seu valor é definido como um único ou múltiplos valores contendo uma string ou um valor composto.
+
+```jsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  shadows: {
+    // valor de string
+    subtle: { value: '0 1px 2px 0 rgba(0, 0, 0, 0.05)' },
+    // valor composto
+    accent: {
+      value: {
+        offsetX: 0,
+        offsetY: 4,
+        blur: 4,
+        spread: 0,
+        color: 'rgba(0, 0, 0, 0.1)',
+      },
+    },
+    // múltiplos valores de string
+    realistic: {
+      value: [
+        '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        '0 1px 4px 0 rgba(0, 0, 0, 0.1)',
+      ],
+    },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+> Tokens de sombra são tipicamente usados na propriedade `box-shadow`.
+
+### `easings`
+
+Tokens de easing representam a função de easing de uma animação ou transição. Seu valor é definido como uma string ou um array de valores representando o cubic bezier.
+
+```jsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  easings: {
+    // valor de string
+    easeIn: { value: 'cubic-bezier(0.4, 0, 0.2, 1)' },
+    // valor de array
+    easeOut: { value: [0.4, 0, 0.2, 1] },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+> Tokens de easing são tipicamente usados na propriedade `transition-timing-function`.
+
+### `opacity`
+
+Tokens de opacidade ajudam você a definir a opacidade de um elemento.
+
+```jsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  opacity: {
+    50: { value: 0.5 },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+> Tokens de opacidade são tipicamente usados na propriedade `opacity`.
+
+### `zIndex`
+
+Esse tipo de token representa a profundidade da posição de um elemento no eixo z.
+
+```jsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  zIndex: {
+    modal: { value: 1000 },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+> Tokens de Z-index são tipicamente usados na propriedade `z-index`.
+
+### `assets`
+
+Tokens de asset representam uma url ou string svg. Seu valor é definido como uma string ou um valor composto.
+
+```ts
+type CompositeAsset = { type: 'url' | 'svg'; value: string };
+type Asset = string | CompositeAsset;
+```
+
+```tsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  tokens: {
+    assets: {
+      logo: {
+        value: { type: 'url', value: '/static/logo.png' },
+      },
+      checkmark: {
+        value: { type: 'svg', value: '<svg>...</svg>' },
+      },
+    },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+> Tokens de asset são tipicamente usados na propriedade `background-image`.
+
+### `durations`
+
+Tokens de duração representam o tempo, em milissegundos, que uma animação ou ciclo de animação leva para completar. Seu valor é definido como uma string.
+
+```tsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  durations: {
+    fast: { value: '100ms' },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+> Tokens de duração são tipicamente usados nas propriedades transition-duration e `animation-duration`.
+
+### `animations`
+
+Tokens de animação representam uma animação de keyframe. Seu valor é definido como uma string.
+
+```tsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  animations: {
+    spin: {
+      value: 'spin 1s linear infinite',
+    },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```
+
+> Tokens de animação são tipicamente usados na propriedade `animation`.
+
+### `aspectRatios`
+
+Tokens de aspect ratio representam a proporção de um elemento. Seu valor é definido como uma string.
+
+```tsx
+import { defineTokens } from '@ditto/react';
+
+const tokens = defineTokens({
+  aspectRatios: {
+    '1:1': { value: '1 / 1' },
+    '16:9': { value: '16 / 9' },
+  },
+});
+
+export default createSystem({
+  theme: { tokens },
+});
+```

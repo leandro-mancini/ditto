@@ -1,0 +1,95 @@
+---
+title: Container
+description:
+  Usado para limitar a largura do conteúdo ao ponto de interrupção atual,
+  mantendo-o fluido.
+links:
+  source: components/container
+  storybook: layout-container--basic
+  recipe: container
+---
+
+```
+<ExampleTabs name="container-basic" />
+```
+
+```tsx
+export const ContainerBasic = () => {
+  return (
+    <Container>
+      <DecorativeBox px="2">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+        consectetur, tortor in lacinia eleifend, dui nisl tristique nunc.
+      </DecorativeBox>
+    </Container>
+  );
+};
+```
+
+## Uso
+
+O `maxWidth` padrão é `8xl`, que corresponde a `90rem (1440px)`.
+
+```jsx
+import { Container } from '@ditto/react';
+
+<Container>
+  <div />
+</Container>;
+```
+
+## Exemplos
+
+### Tamanhos
+
+Use a propriedade `maxWidth` para alterar o tamanho do container.
+
+```
+<ExampleTabs name="container-with-sizes" />
+```
+
+```tsx
+export const ContainerWithSizes = () => {
+  return (
+    <Stack>
+      <For each={['sm', 'md', 'xl', '2xl']}>
+        {(size) => (
+          <Container key={size} maxW={size} px="2">
+            <DecorativeBox>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+              consectetur, tortor in lacinia eleifend, dui nisl tristique nunc.
+            </DecorativeBox>
+          </Container>
+        )}
+      </For>
+    </Stack>
+  );
+};
+```
+
+### Fluido
+
+Use a propriedade `fluid` para fazer o container se estender para preencher a largura de seu elemento pai.
+
+```
+<ExampleTabs name="container-with-fluid" />
+```
+
+```tsx
+export const ContainerWithFluid = () => {
+  return (
+    <Container fluid>
+      <DecorativeBox px="2">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+        consectetur, tortor in lacinia eleifend, dui nisl tristique nunc.
+      </DecorativeBox>
+    </Container>
+  );
+};
+```
+
+### Propriedades
+
+```
+<PropTable component="Container" part="Container" />
+```

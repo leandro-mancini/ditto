@@ -1,0 +1,59 @@
+---
+title: Effects
+description: Propriedades de estilo JSX para estilizar sombras, opacidade e mais
+---
+
+## Box Shadow
+
+Use a propriedade `shadow` ou `boxShadow` para aplicar uma sombra a um elemento.
+
+```jsx
+// valores fixos
+<Box shadow="12px 12px 2px 1px rgba(0, 0, 255, .2)" />
+
+// valores de tokens
+<Box shadow="lg" />
+```
+
+| Prop                   | CSS Property     | Token Category |
+| ---------------------- | ---------------- | -------------- |
+| `shadows`, `boxShadow` | `box-shadow`     | `shadows`      |
+| `shadowColor`          | `--shadow-color` | `colors`       |
+
+## Box Shadow Color
+
+Use a propriedade `shadowColor` para definir a cor da sombra de um elemento. Essa propriedade mapeia para a variável CSS `--shadow-color`.
+
+```jsx
+<Box shadow="60px -16px var(--shadow-color)" shadowColor="red" />
+```
+
+| Prop          | CSS Property     | Token Category |
+| ------------- | ---------------- | -------------- |
+| `shadowColor` | `--shadow-color` | `colors`       |
+
+## Opacity
+
+Use a propriedade `opacity` para definir a opacidade de um elemento.
+
+```jsx
+<Box opacity="0.5" />
+```
+
+| Prop      | CSS Property | Token Category |
+| --------- | ------------ | -------------- |
+| `opacity` | `opacity`    | `opacity`      |
+
+## Mix Blend Mode
+
+Use a propriedade `mixBlendMode` para controlar como o conteúdo de um elemento deve ser mesclado com o fundo.
+
+```jsx
+<Box bg="red.400">
+  <Image src="..." mixBlendMode="hard-light" />
+</Box>
+```
+
+| Prop           | CSS Property     | Token Category |
+| -------------- | ---------------- | -------------- |
+| `mixBlendMode` | `mix-blend-mode` | -              |

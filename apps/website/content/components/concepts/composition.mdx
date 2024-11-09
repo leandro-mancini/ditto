@@ -1,0 +1,51 @@
+---
+title: Composição
+description: Aprenda como compor componentes no Ditto.
+---
+
+## A Propriedade `as`
+
+Usada para alterar o elemento HTML subjacente que um componente React renderiza.
+Ela fornece uma maneira direta de mudar o elemento subjacente, mantendo a
+funcionalidade do componente.
+
+```jsx
+<Heading as="h3">Olá, mundo!</Heading>
+```
+
+A ressalva com a propriedade `as` é que os tipos do componente passado para `as` devem ser compatíveis com as props do componente original. Não inferimos as props do componente subjacente a partir da propriedade `as`.
+
+## A Propriedade `asChild`
+
+Usada para compor a funcionalidade de um componente no elemento filho. Essa abordagem, inspirada pelo [Radix UI](https://www.radix-ui.com/primitives/docs/utilities/slot), oferece flexibilidade máxima.
+
+```tsx
+<Popover.Root>
+  <Popover.Trigger asChild>
+    <Button>Abrir</Button>
+  </Popover.Trigger>
+</Popover.Root>
+```
+
+Neste exemplo, a propriedade `asChild` permite que o `Button` seja usado como o gatilho para o popover.
+
+## Melhores Práticas
+
+Para evitar armadilhas comuns ao usar as propriedades `as` e `asChild`, há algumas melhores práticas a serem consideradas:
+
+- **Encaminhamento de Refs**: Certifique-se de que o componente subjacente encaminhe corretamente a ref passada para ele.
+- **Props com Spread**: Certifique-se de que o componente subjacente faça o spread das props passadas para ele.
+
+```tsx
+const MyComponent = React.forwardRef((props, ref) => {
+  return <Box ref={ref} {...props} />
+})
+
+// com a propriedade `as`
+<MyComponent as="button" />
+
+// com a propriedade `asChild`
+<Button asChild>
+  <MyComponent> Clique em mim </MyComponent>
+</Button>
+```

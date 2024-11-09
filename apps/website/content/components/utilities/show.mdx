@@ -1,0 +1,87 @@
+---
+title: Show
+description: Usado para renderizar condicionalmente parte da visualização com base em uma condição.
+---
+
+```
+<ExampleTabs name="show-basic" />
+```
+
+```tsx
+export const ShowBasic = () => {
+  const [count, setCount] = useState(0);
+  return (
+    <Stack align="flex-start">
+      <Show when={count > 3}>
+        <div>My Content</div>
+      </Show>
+      <Button variant="outline" onClick={() => setCount(count + 1)}>
+        Value: {count}
+      </Button>
+    </Stack>
+  );
+};
+```
+
+## Uso
+
+O componente `Show` renderiza seus filhos quando o valor de `when` é verdadeiro,
+caso contrário, renderiza a propriedade `fallback`.
+
+```jsx
+import { Show } from "@ditto/react"
+
+<Show when={...} fallback={...}>
+  <div>Conteúdo</div>
+</Show>
+```
+
+## Exemplos
+
+### Fallback
+
+Use a propriedade `fallback` para renderizar um componente alternativo quando o array está vazio ou indefinido.
+
+```
+<ExampleTabs name="show-with-fallback" />
+```
+
+```tsx
+export const ShowWithFallback = () => {
+  const [count, setCount] = useState(0);
+  return (
+    <Stack align="flex-start">
+      <Show
+        when={count > 3}
+        fallback={<Text>Not there yet. Keep clicking...</Text>}
+      >
+        <div>Congrats! I'm here</div>
+      </Show>
+      <Button variant="outline" onClick={() => setCount(count + 1)}>
+        Value: {count}
+      </Button>
+    </Stack>
+  );
+};
+```
+
+### Render Prop
+
+Use o render prop `children` para restringir o tipo do valor de `when` e remover `undefined | null`.
+
+```
+<ExampleTabs name="show-with-render-prop" />
+```
+
+```tsx
+export const ShowWithRenderProp = () => {
+  const value: number | undefined = 10;
+  return <Show when={value}>{(value) => <div>Value: {value}</div>}</Show>;
+};
+```
+
+## Propriedades
+
+```
+<PropTable component="Show" part="Show" />
+```

@@ -1,0 +1,75 @@
+---
+title: Cores
+description: Aprenda como personalizar cores no Ditto
+---
+
+:::info
+
+Leia primeiro a [visão geral](/theming/customization/overview) para aprender
+como personalizar o mecanismo de estilo corretamente e obter segurança de tipos.
+
+:::
+
+## Tokens
+
+Aqui está um exemplo de como personalizar cores no Ditto.
+
+```tsx title="theme.ts"
+import { createSystem, defaultConfig, defineConfig } from '@ditto/react';
+
+const customConfig = defineConfig({
+  theme: {
+    tokens: {
+      colors: {
+        brand: {
+          100: { value: '#e6f2ff' },
+          200: { value: '#bfdeff' },
+          300: { value: '#99caff' },
+        },
+      },
+    },
+  },
+});
+
+export const system = createSystem(defaultConfig, customConfig);
+```
+
+## Uso
+
+Defina o valor de qualquer propriedade relacionada a cor, como `bg`, `borderColor`, `color`, etc., para o token `brand`.
+
+```tsx
+<Box bgColor="brand.100" />
+```
+
+## Tokens Semânticos
+
+Aqui está um exemplo de como personalizar tokens semânticos no Ditto.
+
+```tsx
+import { createSystem, defaultConfig, defineConfig } from '@ditto/react';
+
+const customConfig = defineConfig({
+  theme: {
+    semanticTokens: {
+      colors: {
+        'checkbox-control': {
+          value: { _light: 'brand.100', _dark: 'brand.200' },
+        },
+      },
+    },
+  },
+});
+
+export const system = createSystem(defaultConfig, customConfig);
+```
+
+### Uso
+
+Use o token `checkbox-control` para aplicar a cor do controle de checkbox.
+
+```tsx
+<Square size="4" borderColor="checkbox-control">
+  <LuCheck />
+</Square>
+```

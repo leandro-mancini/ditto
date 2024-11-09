@@ -1,0 +1,102 @@
+---
+title: Grid
+description: Usado para gerenciar layouts de grade
+links:
+  source: components/grid
+  storybook: components-grid--basic
+---
+
+```
+<ExampleTabs name="grid-basic" />
+```
+
+```tsx
+export const GridBasic = () => {
+  return (
+    <Grid templateColumns="repeat(3, 1fr)" gap="6">
+      <Box h="20" />
+      <Box h="20" />
+      <Box h="20" />
+    </Grid>
+  );
+};
+```
+
+## Uso
+
+```jsx
+import { Grid, GridItem } from '@ditto/react';
+
+<Grid>
+  <GridItem />
+  <GridItem />
+</Grid>;
+```
+
+## Exemplos
+
+### Col Span
+
+Passe a propriedade `colSpan` para `GridItem` para abranger várias colunas.
+
+```
+<ExampleTabs name="grid-with-col-span" />
+```
+
+```tsx
+export const GridWithColSpan = () => {
+  return (
+    <Grid templateColumns="repeat(4, 1fr)" gap="6">
+      <GridItem colSpan={2}>
+        <Box h="20" />
+      </GridItem>
+      <GridItem colSpan={1}>
+        <Box h="20" />
+      </GridItem>
+      <GridItem colSpan={1}>
+        <Box h="20" />
+      </GridItem>
+    </Grid>
+  );
+};
+```
+
+### Abrangendo Colunas
+
+Em alguns layouts, você pode precisar que certos itens de grade abranjam uma quantidade específica de colunas ou linhas, em vez de uma distribuição uniforme.
+
+```
+<ExampleTabs name="grid-spanning-columns" />
+```
+
+```tsx
+export const GridSpanningColumns = () => {
+  return (
+    <Grid
+      h="200px"
+      templateRows="repeat(2, 1fr)"
+      templateColumns="repeat(5, 1fr)"
+      gap={4}
+    >
+      <GridItem rowSpan={2} colSpan={1}>
+        <Box>rowSpan=2</Box>
+      </GridItem>
+      <GridItem colSpan={2}>
+        <Box>colSpan=2</Box>
+      </GridItem>
+      <GridItem colSpan={2}>
+        <Box>colSpan=2</Box>
+      </GridItem>
+      <GridItem colSpan={4}>
+        <Box>colSpan=4</Box>
+      </GridItem>
+    </Grid>
+  );
+};
+```
+
+### Propriedades
+
+```
+<PropTable component="Grid" part="Grid" />
+```

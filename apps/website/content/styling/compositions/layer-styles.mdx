@@ -1,0 +1,64 @@
+---
+title: Estilos de Camada
+description: Aprenda como usar estilos de camada para definir propriedades visuais.
+---
+
+## Visão Geral
+
+Os estilos de camada permitem definir propriedades visuais. As propriedades comuns são:
+
+- Cor ou cor do texto
+- Cor de fundo
+- Largura e cor da borda
+- Sombra da caixa (box shadow)
+- Opacidade
+
+## Definindo estilos de camada
+
+Os estilos de camada são definidos usando a função `defineLayerStyles`.
+
+```js title="layer-styles.ts"
+import { defineLayerStyles } from '@ditto/react';
+
+const layerStyles = defineLayerStyles({
+  container: {
+    description: 'estilos de container',
+    value: {
+      bg: 'gray.50',
+      border: '2px solid',
+      borderColor: 'gray.500',
+    },
+  },
+});
+```
+
+## Atualizando o tema
+
+Para usar os estilos de camada, atualize o objeto `theme` com a propriedade `layerStyles`.
+
+```jsx
+import { createSystem, defineConfig } from '@ditto/react';
+import { layerStyles } from './layer-styles';
+
+const config = defineConfig({
+  theme: {
+    layerStyles,
+  },
+});
+
+export default createSystem(defaultConfig, config);
+```
+
+Após atualizar o tema, execute este comando para gerar as tipagens.
+
+```jsx
+npx @ditto/cli@next typegen
+```
+
+## Usando estilos de camada
+
+Agora você pode usar a propriedade `layerStyle` em seus componentes.
+
+```jsx
+<Box layerStyle="container">Isso está dentro de um estilo de container</Box>
+```

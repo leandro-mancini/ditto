@@ -1,0 +1,33 @@
+---
+title: CSS Global
+description: Aprenda como personalizar o CSS global no Ditto
+---
+
+:::info
+
+Leia primeiro a [visão geral](/theming/customization/overview) para aprender
+como personalizar o mecanismo de estilo corretamente e obter segurança de tipos.
+
+:::
+
+## Exemplo
+
+Aqui está um exemplo de como personalizar o CSS global no Ditto.
+
+```tsx title="theme.ts"
+import { createSystem, defaultConfig, defineConfig } from '@ditto/react';
+
+const customConfig = defineConfig({
+  globalCss: {
+    '*::placeholder': {
+      opacity: 1,
+      color: 'fg.subtle',
+    },
+    '*::selection': {
+      bg: 'green.200',
+    },
+  },
+});
+
+export const system = createSystem(defaultConfig, customConfig);
+```

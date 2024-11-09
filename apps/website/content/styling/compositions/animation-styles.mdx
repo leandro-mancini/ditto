@@ -1,0 +1,70 @@
+---
+title: Estilos de Animação
+description: Aprenda como usar estilos de animação para definir propriedades de movimento reutilizáveis.
+---
+
+## Visão Geral
+
+Os estilos de animação permitem definir propriedades de animação reutilizáveis. O objetivo é reduzir a quantidade de código necessária para animar componentes.
+
+## Definindo estilos de animação
+
+Os estilos de animação são definidos usando a função `defineAnimationStyles`.
+
+Aqui está um exemplo de um estilo de animação:
+
+```js
+import { defineAnimationStyles } from '@ditto/react';
+
+const animationStyles = defineAnimationStyles({
+  bounceFadeIn: {
+    value: {
+      animationName: 'bounce, fade-in',
+      animationDuration: '1s',
+      animationTimingFunction: 'ease-in-out',
+      animationIterationCount: 'infinite',
+    },
+  },
+});
+```
+
+## Estilos de animação embutidos
+
+O Ditto fornece um conjunto de estilos de animação embutidos que você pode usar.
+
+<ExamplePreview name="tokens/animation-style" />
+
+## Atualizando o tema
+
+Para usar os estilos de animação, atualize o objeto `theme` com a propriedade `animationStyles`.
+
+```jsx
+import { createSystem, defineConfig } from '@ditto/react';
+import { animationStyles } from './animation-styles';
+
+const config = defineConfig({
+  theme: {
+    animationStyles,
+  },
+});
+
+export default createSystem(defaultConfig, config);
+```
+
+Após atualizar o tema, execute este comando para gerar as animações.
+
+```bash
+npx @ditto/cli@next typegen
+```
+
+Esses estilos de animação podem ser compostos com outros estilos como `_open` e `_closed`, que são mapeados para o atributo `data-state=open|closed`.
+
+```jsx
+<Box
+  data-state="open"
+  animationDuration="slow"
+  animationStyle={{ _open: 'slide-fade-in', _closed: 'slide-fade-out' }}
+>
+  > Este conteúdo aparecerá com fade-in
+</Box>
+```

@@ -1,0 +1,88 @@
+---
+title: Animação
+description: Usando animações CSS para animar componentes do Ditto
+---
+
+Recomendamos o uso de animações CSS para animar seus componentes do Ditto. Essa
+abordagem é performática, direta e oferece muita flexibilidade.
+
+Você pode animar as fases de montagem e desmontagem de seus componentes com
+maior controle.
+
+## Animação de entrada
+
+Quando um componente de divulgação (popover, dialog) é aberto, o atributo `data-state`
+é definido como `open`. Isso mapeia para `data-state=open` e pode ser estilizado
+com a pseudo-propriedade `_open`.
+
+```tsx
+<Box
+  data-state="open"
+  _open={{
+    animation: 'fade-in 300ms ease-out',
+  }}
+>
+  Isto está aberto
+</Box>
+```
+
+Aqui está um exemplo que usa `keyframes` para criar uma animação de `fade-in`:
+
+```css
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+```
+
+## Animação de saída
+
+Quando um componente de divulgação (popover, dialog) é fechado, o atributo `data-state` é definido como `closed`. Isso mapeia para `data-state=closed` e pode ser estilizado com a pseudo-propriedade `_closed`.
+
+```tsx
+<Box
+  data-state="closed"
+  _closed={{
+    animation: 'fadeOut 300ms ease-in',
+  }}
+>
+  Isto está fechado
+</Box>
+```
+
+Aqui está um exemplo que usa keyframes para criar uma animação de `fade-out`:
+
+```css
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+```
+
+## Compondo animações
+
+Use a propriedade `animationName` para compor várias animações juntas. Isso facilita a criação de animações complexas com múltiplos keyframes.
+
+```tsx
+<Box
+  data-state="open"
+  _open={{
+    animationName: 'fade-in, scale-in',
+    animationDuration: '300ms',
+  }}
+  _closed={{
+    animationName: 'fade-out, scale-out',
+    animationDuration: '120ms',
+  }}
+>
+  Esta é uma animação composta
+</Box>
+```

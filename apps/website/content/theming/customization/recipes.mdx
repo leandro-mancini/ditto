@@ -1,0 +1,251 @@
+---
+title: Receitas
+description: Aprenda como personalizar receitas e receitas de slots no Ditto
+---
+
+:::info
+
+Leia primeiro a [visão geral](/theming/customization/overview) para aprender
+como personalizar o mecanismo de estilo corretamente e obter segurança de tipos.
+
+:::
+
+## Receitas
+
+### Estendendo variantes
+
+Use a função `defineRecipe` para definir uma sobrecarga de receita.
+
+Aqui está um exemplo de como estender o `Button` para adicionar um novo tamanho `xl`.
+
+```tsx title="theme.ts"
+const buttonRecipe = defineRecipe({
+  variants: {
+    size: {
+      xl: {
+        fontSize: 'lg',
+        px: 6,
+        py: 3,
+      },
+    },
+  },
+});
+
+const customConfig = defineConfig({
+  theme: {
+    recipes: {
+      button: buttonRecipe,
+    },
+  },
+});
+
+export const system = createSystem(defaultConfig, customConfig);
+```
+
+Agora você pode usar a nova variante de tamanho em seus componentes.
+
+```tsx
+<Button size="xl">Click me</Button>
+```
+
+## Adicionando nova variante
+
+Use a função `defineRecipe` para definir uma nova variante de receita.
+
+Aqui está um exemplo de como definir uma variante booleana chamada `raised`.
+
+```tsx
+const buttonRecipe = defineRecipe({
+  variants: {
+    raised: {
+      true: {
+        boxShadow: 'md',
+      },
+    },
+  },
+});
+
+const customConfig = defineConfig({
+  theme: {
+    recipes: {
+      button: buttonRecipe,
+    },
+  },
+});
+
+export const system = createSystem(defaultConfig, customConfig);
+```
+
+Agora você pode usar a nova variante em seus componentes.
+
+```tsx
+<Button raised>Click me</Button>
+```
+
+### Receita personalizada
+
+Use a função `defineRecipe` para definir uma receita personalizada.
+
+Aqui está um exemplo de como definir uma receita personalizada chamada `Title`.
+
+```tsx
+const titleRecipe = defineRecipe({
+  baseStyle: {
+    fontWeight: 'bold',
+    letterSpacing: 'tight',
+  },
+  variants: {
+    size: {
+      md: { fontSize: 'xl' },
+      lg: { fontSize: '2xl' },
+    },
+  },
+});
+
+const customConfig = defineConfig({
+  theme: {
+    recipes: {
+      title: titleRecipe,
+    },
+  },
+});
+
+export const system = createSystem(defaultConfig, customConfig);
+```
+
+Em seguida, use a nova receita para criar um componente.
+
+```tsx
+const Title = (props) => {
+  const recipe = useRecipe({ key: 'title' });
+  const styles = recipe({ size: 'lg' });
+  return <Box as="h1" css={styles} {...props} />;
+};
+```
+
+## Receitas de Slot
+
+Para substituir uma receita de slot existente de maneira eficaz, recomendamos conectar-se à sua anatomia. As receitas de slot são adicionadas ao objeto `theme.slotRecipes`.
+
+### Estendendo variantes
+
+Aqui está um exemplo de como estender a receita de slot `Alert` para criar um tamanho `xl`.
+
+```tsx
+import { alertAnatomy } from '@ditto/react/anatomy';
+
+const alertSlotRecipe = defineRecipe({
+  slots: alertAnatomy.keys(),
+  variants: {
+    size: {
+      xl: {
+        root: {
+          fontSize: 'lg',
+          px: 6,
+          py: 3,
+        },
+      },
+    },
+  },
+});
+
+const customConfig = defineConfig({
+  theme: {
+    slotRecipes: {
+      alert: alertSlotRecipe,
+    },
+  },
+});
+
+export const system = createSystem(defaultConfig, customConfig);
+```
+
+Agora você pode usar a nova variante de tamanho em seus componentes.
+
+```tsx
+<Alert size="xl" title="..." />
+```
+
+### Adicionando nova variante
+
+Aqui está um exemplo de como estender a receita de slot `Alert` para adicionar uma nova variante chamada `shape`.
+
+```tsx
+import { alertAnatomy } from '@ditto/react/anatomy';
+
+const alertSlotRecipe = defineRecipe({
+  slots: alertAnatomy.keys(),
+  variants: {
+    shape: {
+      rounded: {
+        root: { borderRadius: 'full' },
+      },
+    },
+  },
+});
+
+const customConfig = defineConfig({
+  theme: {
+    slotRecipes: {
+      alert: alertSlotRecipe,
+    },
+  },
+});
+
+export const system = createSystem(defaultConfig, customConfig);
+```
+
+Agora você pode usar a nova variante em seus componentes.
+
+```tsx
+<Alert shape="rounded" title="..." />
+```
+
+### Receita personalizada
+
+Aqui está um exemplo de como definir uma receita de slot personalizada chamada `Navbar`.
+
+```tsx
+const navbarSlotRecipe = defineRecipe({
+  slots: ['root', 'badge', 'icon'],
+  base: {
+    root: {
+      bg: 'blue.500',
+      color: 'white',
+      px: 4,
+      py: 2,
+    },
+    badge: {
+      borderRadius: 'full',
+      px: 2,
+      py: 1,
+    },
+  },
+});
+
+const customConfig = defineConfig({
+  theme: {
+    slotRecipes: {
+      navbar: navbarSlotRecipe,
+    },
+  },
+});
+
+export const system = createSystem(defaultConfig, customConfig);
+```
+
+Agora você pode usar a nova receita para criar um componente.
+
+```tsx
+const Navbar = (props) => {
+  const recipe = useSlotRecipe({ key: 'navbar' });
+  const styles = recipe();
+  return (
+    <Box css={styles.root}>
+      {props.children}
+      <Box css={styles.badge} />
+      <Box css={styles.icon} />
+    </Box>
+  );
+};
+```

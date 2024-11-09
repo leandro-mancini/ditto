@@ -1,0 +1,58 @@
+---
+title: SimpleGrid
+description:
+  SimpleGrid fornece uma interface amigável para criar layouts de grade responsivos
+  com facilidade.
+---
+
+```
+<ExampleTabs name="simple-grid-basic" />
+```
+
+## Uso
+
+O componente `SimpleGrid` permite que você crie layouts de grade responsivos
+com facilidade.
+
+```jsx
+import { SimpleGrid } from '@ditto/react';
+
+<SimpleGrid>
+  <Box />
+  <Box />
+</SimpleGrid>;
+```
+
+## Exemplos
+
+### Colunas
+
+Especifique o número de colunas para o layout de grade usando a propriedade `columns`.
+
+```
+<ExampleTabs name="simple-grid-with-columns" />
+```
+
+### Auto-responsivo
+
+Torne a grade responsiva e ajustável automaticamente sem precisar passar colunas, usando a propriedade `minChildWidth`. Isso usa internamente o css grid `auto-fit` e `minmax()`.
+
+```
+<ExampleTabs name="simple-grid-with-autofit" />
+```
+
+### Abrangência de Coluna
+
+Especifique o tamanho da coluna usando a propriedade `colSpan`.
+
+```
+<ExampleTabs name="simple-grid-with-col-span" />
+```
+
+### Espaçamento de Linha e Coluna
+
+Passe as propriedades `rowGap` e `columnGap` para alterar o espaçamento entre as linhas e colunas dos itens da grade.
+
+```
+<ExampleTabs name="simple-grid-with-row-and-col-gap" />
+```

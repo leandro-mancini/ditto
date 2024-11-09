@@ -1,0 +1,61 @@
+---
+title: Portal
+description: Usado para renderizar um elemento fora da hierarquia do DOM.
+---
+
+## Uso
+
+O `Portal` usa a API `ReactDOM.createPortal` para renderizar um elemento no
+final de `document.body` ou em um contêiner específico.
+
+```jsx
+import { Portal } from '@ditto/react';
+
+<Portal>
+  <div>Conteúdo do Portal</div>
+</Portal>;
+```
+
+## Exemplos
+
+### Contêiner Personalizado
+
+Use a propriedade `containerRef` para renderizar o portal em um contêiner personalizado.
+
+```tsx
+import { Portal } from '@ditto/react';
+
+const Demo = () => {
+  const containerRef = React.useRef();
+  return (
+    <>
+      <Portal containerRef={containerRef}>
+        <div>Conteúdo do Portal</div>
+      </Portal>
+      <div ref={containerRef} />
+    </>
+  );
+};
+```
+
+### Desativado
+
+Use a propriedade `disabled` para desativar o portal. Isso renderizará os filhos na mesma hierarquia do DOM.
+
+```tsx
+import { Portal } from '@ditto/react';
+
+const Demo = () => {
+  return (
+    <Portal disabled>
+      <div>Conteúdo será renderizado no local</div>
+    </Portal>
+  );
+};
+```
+
+## Propriedades
+
+```
+<PropTable component="Portal" part="Portal" />
+```

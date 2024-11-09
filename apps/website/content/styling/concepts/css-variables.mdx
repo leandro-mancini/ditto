@@ -1,0 +1,72 @@
+---
+title: Variáveis CSS
+description: Usando variáveis CSS sensíveis a tokens no Ditto
+---
+
+## Visão Geral
+
+As variáveis CSS se tornaram o padrão para criar valores compartilhados na web.
+Elas são muito úteis para evitar interpolações de props, regeneração de classes
+e reduzir a avaliação em tempo de execução dos valores de tokens.
+
+## Exemplos
+
+### Básico
+
+Use a prop `css` para criar variáveis CSS
+
+```jsx
+<Box css={{ '--font-size': '18px' }}>
+  <h3 style={{ fontSize: 'calc(var(--font-size) * 2)' }}>Olá</h3>
+  <p style={{ fontSize: 'var(--font-size)' }}>Olá</p>
+</Box>
+```
+
+## Acessar tokens
+
+Use o caminho completo do token para acessar os tokens
+
+```jsx
+<Box css={{ '--color': 'colors.red.500' }}>
+  <p style={{ color: 'var(--color)' }}>Olá</p>
+</Box>
+```
+
+Aqui está um exemplo de como acessar tokens de tamanho
+
+```jsx
+<Box css={{ '--size': 'sizes.10' }}>
+  <p style={{ width: 'var(--size)', height: 'var(--size)' }}>Olá</p>
+</Box>
+```
+
+## Estilos Responsivos
+
+Use a sintaxe responsiva para tornar as variáveis CSS responsivas
+
+```jsx
+<Box css={{ '--font-size': { base: '18px', lg: '24px' } }}>
+  <h3 style={{ fontSize: 'calc(var(--font-size) * 2)' }}>Olá</h3>
+  <p style={{ fontSize: 'var(--font-size)' }}>Olá</p>
+</Box>
+```
+
+## Modificador de Opacidade de Cor
+
+Ao acessar tokens de cor, você pode usar o modificador de opacidade para acessar a cor com uma opacidade. O requisito é usar a sintaxe `{}`.
+
+```jsx
+<Box css={{ '--color': '{colors.red.500/40}' }}>
+  <p style={{ color: 'var(--color)' }}>Olá</p>
+</Box>
+```
+
+## Cor Virtual
+
+As variáveis podem apontar para uma cor virtual via o valor `colors.colorPalette.*`. Isso é útil para criar componentes temáticos.
+
+```jsx
+<Box colorPalette="blue" css={{ '--color': 'colors.colorPalette.400' }}>
+  <p style={{ color: 'var(--color)' }}>Olá</p>
+</Box>
+```

@@ -1,0 +1,40 @@
+---
+title: Espaçamento
+description: Aprenda como personalizar o espaçamento no Ditto
+---
+
+:::info
+
+Leia primeiro a [visão geral](/theming/customization/overview) para aprender
+como personalizar o mecanismo de estilo corretamente e obter segurança de tipos.
+
+:::
+
+## Exemplo
+
+Aqui está um exemplo de como personalizar o espaçamento no Ditto.
+
+```tsx title="theme.ts"
+import { createSystem, defaultConfig, defineConfig } from '@ditto/react';
+
+const customConfig = defineConfig({
+  theme: {
+    tokens: {
+      spacing: {
+        '128': { value: '32rem' },
+        '144': { value: '36rem' },
+      },
+    },
+  },
+});
+
+export const system = createSystem(defaultConfig, customConfig);
+```
+
+## Uso
+
+Aqui está como usar o espaçamento personalizado no Ditto.
+
+```tsx
+<Box margin="128" />
+```

@@ -1,0 +1,137 @@
+---
+title: Background
+description: Propriedades de estilo JSX para estilizar cores de fundo, gradientes e imagens.
+---
+
+## Background Attachment
+
+Use `bgAttachment` para controlar o anexo de uma imagem de fundo.
+
+```jsx
+<Box bgAttachment="fixed" bgImage="url(...)" />
+```
+
+| Propriedade                            | Propriedade CSS         | Categoria de Token |
+| -------------------------------------- | ----------------------- | ------------------ |
+| `bgAttachment`, `backgroundAttachment` | `background-attachment` | -                  |
+
+## Background Blend Mode
+
+Use a propriedade `bgBlendMode` para controlar como a imagem de fundo de um elemento deve se misturar com sua cor de fundo.
+
+```jsx
+<Box bgBlendMode="multiply" bgColor="red.200" bgImage="url(...)" />
+```
+
+## Background Clip
+
+Use `bgClip` para controlar o recorte de uma imagem de fundo.
+
+```jsx
+<Box bgClip="border-box" bgImage="url(...)" />
+```
+
+| Propriedade                | Propriedade CSS   | Categoria de Token |
+| -------------------------- | ----------------- | ------------------ |
+| `bgClip`, `backgroundClip` | `background-clip` | -                  |
+
+## Background Color
+
+Use as propriedades `bg`, `bgColor` ou `backgroundColor` para definir a cor de fundo de um elemento.
+
+```jsx
+<Box bg="red.200" />
+<Box bgColor="red.200" />
+
+// com modificador de opacidade
+<Box bg="blue.200/30" />
+<Box bgColor="blue.200/30" />
+```
+
+| Prop                         | Propriedade CSS    | Categoria de Token |
+| ---------------------------- | ------------------ | ------------------ |
+| `bg`, `background`           | `background`       | `colors`           |
+| `bgColor`, `backgroundColor` | `background-color` | `colors`           |
+
+## Background Origin
+
+Use `bgOrigin` ou `backgroundOrigin` para controlar a origem de uma imagem de fundo.
+
+```jsx
+<Box bgOrigin="border-box" bgImage="url(...)" />
+```
+
+| Propriedade                    | Propriedade CSS     | Categoria de Token |
+| ------------------------------ | ------------------- | ------------------ |
+| `bgOrigin`, `backgroundOrigin` | `background-origin` | -                  |
+
+## Background Position
+
+Propriedades para controlar a fonte e a posição de uma imagem de fundo.
+
+```jsx
+<Box bgImage="url(...)" bgPosition="center" />
+```
+
+| Propriedade                          | Propriedade CSS    | Categoria de Token |
+| ------------------------------------ | ------------------ | ------------------ |
+| `bgPosition`, `backgroundPosition`   | `background-image` | -                  |
+| `bgPositionX`, `backgroundPositionX` | `background-image` | -                  |
+| `bgPositionY`, `backgroundPositionY` | `background-image` | -                  |
+
+## Background Repeat
+
+Use `bgRepeat` ou `backgroundRepeat` para controlar a repetição de uma imagem de fundo.
+
+```jsx
+<Box bgRepeat="no-repeat" bgImage="url(...)" />
+```
+
+| Propriedade                    | Propriedade CSS     | Categoria de Token |
+| ------------------------------ | ------------------- | ------------------ |
+| `bgRepeat`, `backgroundRepeat` | `background-repeat` | -                  |
+
+## Background Size
+
+Use `bgSize` ou `backgroundSize` para controlar o tamanho de uma imagem de fundo.
+
+```jsx
+<Box bgSize="cover" bgImage="url(...)" />
+```
+
+| Propriedade                | Propriedade CSS   | Categoria de Token |
+| -------------------------- | ----------------- | ------------------ |
+| `bgSize`, `backgroundSize` | `background-size` | -                  |
+
+## Background Image
+
+Use `bgImage` ou `backgroundImage` para definir a imagem de fundo de um elemento.
+
+```jsx
+<Box bgImage="url(...)" />
+<Box bgImage="radial-gradient(circle, #0000 45%, #000f 48%)" />
+<Box bgImage="linear-gradient(black, white)" />
+
+// com referência de token
+<Box bgImage="linear-gradient({colors.red.200}, {colors.blue.200})" />
+```
+
+| Propriedade                  | Propriedade CSS    | Categoria de Token |
+| ---------------------------- | ------------------ | ------------------ |
+| `bgImage`, `backgroundImage` | `background-image` | assets             |
+
+## Background Gradient
+
+Propriedades para criar um gradiente de fundo com base em pontos de cor.
+
+```jsx
+<Box bgGradient="to-r" gradientFrom="red.200" gradientTo="blue.200" />
+```
+
+| Propriedade    | Propriedade CSS    | Categoria de Token |
+| -------------- | ------------------ | ------------------ |
+| `bgGradient`   | `background-image` | `gradients`        |
+| `textGradient` | `background-image` | `gradients`        |
+| `gradientFrom` | `--gradient-from`  | `colors`           |
+| `gradientTo`   | `--gradient-to`    | `colors`           |
+| `gradientVia`  | `--gradient-via`   | `colors`           |
