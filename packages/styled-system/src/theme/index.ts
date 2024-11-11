@@ -18,6 +18,7 @@ import { easings } from './tokens/easings';
 import { fontSizes } from './tokens/font-sizes';
 import { fontWeights } from './tokens/font-weights';
 import { fonts } from './tokens/fonts';
+import { gradients } from './tokens/gradients';
 import { letterSpacings } from './tokens/letter-spacing';
 import { lineHeights } from './tokens/line-heights';
 import { opacity } from './tokens/opacity';
@@ -45,6 +46,7 @@ export const defaultThemeConfig = defineConfig({
       fonts,
       fontSizes,
       fontWeights,
+      gradients,
       letterSpacings,
       lineHeights,
       opacity,

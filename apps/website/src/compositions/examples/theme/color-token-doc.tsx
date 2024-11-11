@@ -2,6 +2,7 @@ import {
   Box,
   Center,
   defaultSystem,
+  For,
   SimpleGrid,
   SimpleGridProps,
   Stack,
@@ -11,38 +12,33 @@ import React from 'react';
 import { TokenDoc } from './token-doc';
 import { TokenInterface } from '@dittox/styled-system';
 
-const { tokens } = defaultSystem;
+const { tokens, _config } = defaultSystem;
+const keys = Object.keys(_config.theme?.tokens?.colors ?? {});
+const keysSemantic = Object.keys(_config.theme?.semanticTokens?.colors ?? {});
+
+console.log('keysSemantic', keysSemantic);
 
 const colors = tokens.categoryMap.get('colors')!;
 const allColors = Array.from(colors.values());
 
-const keys = [
-  'alternate',
-  'aqua',
-  'gray',
-  'green',
-  'neutral',
-  'orange',
-  'overlay',
-  'red',
-];
-
-const keysSemantic = ['accent', 'border', 'content', 'overlay', 'support'];
-
 export const ColorTokenDoc = () => {
   return (
     <Stack gap="2rem" my="2rem">
-      {keys.map((key) => (
-        <TokenDoc key={key} title={key}>
-          <ColorGrid
-            tokens={allColors.filter(
-              (token) =>
-                token.name.startsWith(`colors.${key}`) &&
-                !token.extensions.conditions
-            )}
-          />
-        </TokenDoc>
-      ))}
+      <For each={keys}>
+        {(color) => {
+          const tokens = allColors.filter(
+            (token) =>
+              token.name.startsWith(`colors.${color}`) &&
+              !token.extensions.conditions
+          );
+
+          return (
+            <TokenDoc key={color} title={color}>
+              <ColorGrid tokens={tokens} />
+            </TokenDoc>
+          );
+        }}
+      </For>
     </Stack>
   );
 };
@@ -50,15 +46,19 @@ export const ColorTokenDoc = () => {
 export const ColorSemanticTokenDoc = () => {
   return (
     <Stack gap="2rem" my="2rem">
-      {keysSemantic.map((key) => (
-        <TokenDoc key={key} title={key}>
-          <ColorGrid
-            tokens={allColors.filter((token) =>
-              token.name.startsWith(`colors.theme1.${key}`)
-            )}
-          />
-        </TokenDoc>
-      ))}
+      <For each={keysSemantic}>
+        {(color) => {
+          const tokens = allColors.filter((token) =>
+            token.name.startsWith(`colors.${color}`)
+          );
+
+          return (
+            <TokenDoc key={color} title={color}>
+              <ColorGrid tokens={tokens} />
+            </TokenDoc>
+          );
+        }}
+      </For>
     </Stack>
   );
 };
