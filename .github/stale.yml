@@ -1,0 +1,19 @@
+# Número de dias de inatividade antes que uma issue se torne obsoleta
+daysUntilStale: 30
+# Número de dias de inatividade antes que uma issue obsoleta seja fechada
+daysUntilClose: 5
+# Issues com esses rótulos nunca serão consideradas obsoletas
+exemptLabels: []
+# Rótulo a ser usado ao marcar uma issue como obsoleta
+staleLabel: obsoleto
+# Comentário a ser postado ao marcar uma issue como obsoleta. Defina como `false` para desativar
+markComment: >
+  Olá!
+
+  Esta issue foi marcada automaticamente como obsoleta devido à falta de atividade
+  recente. Ela será fechada se não houver novas atividades nos próximos 5 dias.
+  Obrigado pelas suas contribuições.
+# Comentário a ser postado ao fechar uma issue obsoleta. Defina como `false` para desativar
+closeComment: false
+unmarkComment: false
+only: issues
