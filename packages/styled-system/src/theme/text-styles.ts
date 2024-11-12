@@ -1,122 +1,210 @@
 import { defineTextStyles } from '../core';
 
 export const textStyles = defineTextStyles({
-  tinyMedium: {
+  display: {
     value: {
-      fontFamily: 'body',
+      fontSize: '7xl',
       fontWeight: 'medium',
-      fontSize: 'xs',
-      lineHeight: 'xs',
-      letterSpacing: 'tight',
-      textTransform: 'uppercase',
+      lineHeight: '9xl',
+      letterSpacing: 'tighter-3',
     },
   },
-  contentRegular: {
-    value: {
-      fontFamily: 'body',
-      fontWeight: 'regular',
-      fontSize: 'md',
-      lineHeight: 'sm',
-      letterSpacing: 'regular',
+  heading: {
+    sm: {
+      value: {
+        fontSize: '2xl',
+        fontWeight: 'medium',
+        lineHeight: '4xl',
+        letterSpacing: 'base',
+      },
+    },
+    md: {
+      value: {
+        fontSize: '3xl',
+        fontWeight: 'medium',
+        lineHeight: '5xl',
+        letterSpacing: 'tighter',
+      },
+    },
+    lg: {
+      value: {
+        fontSize: '4xl',
+        fontWeight: 'medium',
+        lineHeight: '6xl',
+        letterSpacing: 'tightest',
+      },
+    },
+    '2xl': {
+      value: {
+        fontSize: '5xl',
+        fontWeight: 'medium',
+        lineHeight: '7xl',
+        letterSpacing: 'tighter-1',
+      },
+    },
+    '3xl': {
+      value: {
+        fontSize: '6xl',
+        fontWeight: 'medium',
+        lineHeight: '8xl',
+        letterSpacing: 'tighter-2',
+      },
     },
   },
-  contentMedium: {
-    value: {
-      fontFamily: 'body',
-      fontWeight: 'medium',
-      fontSize: 'md',
-      lineHeight: 'sm',
-      letterSpacing: 'regular',
+  body: {
+    xs: {
+      value: {
+        fontSize: 'xs',
+        fontWeight: 'normal',
+        lineHeight: 'sm',
+        letterSpacing: 'loose',
+      },
+    },
+    sm: {
+      value: {
+        fontSize: 'sm',
+        fontWeight: 'normal',
+        lineHeight: 'lg',
+        letterSpacing: 'loose',
+      },
+    },
+    md: {
+      value: {
+        fontSize: 'md',
+        fontWeight: 'normal',
+        lineHeight: 'xl',
+        letterSpacing: 'normal',
+      },
+    },
+    lg: {
+      value: {
+        fontSize: 'lg',
+        fontWeight: 'normal',
+        lineHeight: 'xl',
+        letterSpacing: 'base',
+      },
+    },
+    xl: {
+      value: {
+        fontSize: 'xl',
+        fontWeight: 'normal',
+        lineHeight: '2xl',
+        letterSpacing: 'normal',
+      },
     },
   },
-  contentValue: {
-    value: {
-      fontFamily: 'body',
-      fontWeight: 'bold',
-      fontSize: 'md',
-      lineHeight: 'sm',
-      letterSpacing: 'regular',
+  label: {
+    '2xs': {
+      value: {
+        fontSize: '2xs',
+        fontWeight: 'normal',
+        lineHeight: '2xs',
+        letterSpacing: 'loose',
+      },
+    },
+    xs: {
+      value: {
+        fontSize: 'xs',
+        fontWeight: 'normal',
+        lineHeight: 'xs',
+        letterSpacing: 'loose',
+      },
+    },
+    sm: {
+      value: {
+        fontSize: 'sm',
+        fontWeight: 'normal',
+        lineHeight: 'md',
+        letterSpacing: 'loose',
+      },
+    },
+    md: {
+      value: {
+        fontSize: 'md',
+        fontWeight: 'normal',
+        lineHeight: 'xl',
+        letterSpacing: 'normal',
+      },
+    },
+    lg: {
+      value: {
+        fontSize: 'lg',
+        fontWeight: 'normal',
+        lineHeight: 'xl',
+        letterSpacing: 'base',
+      },
+    },
+    xl: {
+      value: {
+        fontSize: 'xl',
+        fontWeight: 'normal',
+        lineHeight: '2xl',
+        letterSpacing: 'base',
+      },
+    },
+    '2xl': {
+      value: {
+        fontSize: '2xl',
+        fontWeight: 'normal',
+        lineHeight: '3xl',
+        letterSpacing: 'base',
+      },
     },
   },
-  smallRegular: {
-    value: {
-      fontFamily: 'body',
-      fontWeight: 'regular',
-      fontSize: 'sm',
-      lineHeight: 'sm',
-      letterSpacing: 'regular',
+  underline: {
+    xs: {
+      value: {
+        fontSize: 'xs',
+        fontWeight: 'normal',
+        lineHeight: 'xs',
+        letterSpacing: 'loose',
+        textDecoration: 'underline',
+      },
     },
-  },
-  smallMedium: {
-    value: {
-      fontFamily: 'body',
-      fontWeight: 'medium',
-      fontSize: 'sm',
-      lineHeight: 'sm',
-      letterSpacing: 'regular',
+    sm: {
+      value: {
+        fontSize: 'sm',
+        fontWeight: 'normal',
+        lineHeight: 'md',
+        letterSpacing: 'loose',
+        textDecoration: 'underline',
+      },
     },
-  },
-  smallValue: {
-    value: {
-      fontFamily: 'body',
-      fontWeight: 'bold',
-      fontSize: 'sm',
-      lineHeight: 'sm',
-      letterSpacing: 'regular',
+    md: {
+      value: {
+        fontSize: 'md',
+        fontWeight: 'normal',
+        lineHeight: 'xl',
+        letterSpacing: 'normal',
+        textDecoration: 'underline',
+      },
     },
-  },
-  mediumRegular: {
-    value: {
-      fontFamily: 'body',
-      fontWeight: 'regular',
-      fontSize: 'lg',
-      lineHeight: 'md',
-      letterSpacing: 'wide',
+    lg: {
+      value: {
+        fontSize: 'lg',
+        fontWeight: 'normal',
+        lineHeight: 'xl',
+        letterSpacing: 'base',
+        textDecoration: 'underline',
+      },
     },
-  },
-  mediumMedium: {
-    value: {
-      fontFamily: 'body',
-      fontWeight: 'medium',
-      fontSize: 'lg',
-      lineHeight: 'md',
-      letterSpacing: 'wide',
+    xl: {
+      value: {
+        fontSize: 'xl',
+        fontWeight: 'normal',
+        lineHeight: '2xl',
+        letterSpacing: 'base',
+        textDecoration: 'underline',
+      },
     },
-  },
-  mediumValue: {
-    value: {
-      fontFamily: 'body',
-      fontWeight: 'bold',
-      fontSize: 'lg',
-      lineHeight: 'md',
-      letterSpacing: 'wide',
-    },
-  },
-  largeRegular: {
-    value: {
-      fontFamily: 'body',
-      fontWeight: 'regular',
-      fontSize: 'xl',
-      lineHeight: 'lg',
-      letterSpacing: 'tighter',
-    },
-  },
-  largeMedium: {
-    value: {
-      fontFamily: 'body',
-      fontWeight: 'medium',
-      fontSize: 'xl',
-      lineHeight: 'lg',
-      letterSpacing: 'tighter',
-    },
-  },
-  largeValue: {
-    value: {
-      fontFamily: 'body',
-      fontWeight: 'bold',
-      fontSize: 'xl',
-      lineHeight: 'lg',
-      letterSpacing: 'tighter',
+    '2xl': {
+      value: {
+        fontSize: '2xl',
+        fontWeight: 'normal',
+        lineHeight: '3xl',
+        letterSpacing: 'tight',
+        textDecoration: 'underline',
+      },
     },
   },
 });
