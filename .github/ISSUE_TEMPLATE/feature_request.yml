@@ -1,0 +1,50 @@
+name: 'Solicitação de Funcionalidade'
+description: 'Solicitar uma funcionalidade ou melhoria'
+labels: ['needs triage']
+body:
+  - type: 'markdown'
+    attributes:
+      value: |
+        Obrigado por abrir uma issue 😄!
+
+        Por favor, pesquise entre as issues abertas/fechadas antes de enviar. Alguém
+        pode ter perguntado a mesma coisa antes 😉!
+  - type: 'textarea'
+    id: 'description'
+    attributes:
+      label: 'Descrição'
+      description: 'Por favor, descreva sua solicitação em uma ou duas frases.'
+    validations:
+      required: true
+  - type: 'textarea'
+    id: 'justification'
+    attributes:
+      label: 'Declaração do Problema/Justificativa'
+      description: |
+        Por favor, forneça razões válidas para que isso seja adicionado ao Ditto.
+
+        Se essa funcionalidade estiver relacionada a um problema que você notou, mencione
+        também.
+    validations:
+      required: true
+  - type: 'textarea'
+    id: 'proposed-solution'
+    attributes:
+      label: 'Solução Proposta ou API'
+      description: |
+        Por favor, forneça trechos de código, gists ou links para o design ou API ideal.
+    validations:
+      required: true
+  - type: 'textarea'
+    id: 'alternatives'
+    attributes:
+      label: 'Alternativas'
+      description: |
+        Quais soluções alternativas você considerou antes de fazer essa solicitação?
+  - type: 'textarea'
+    id: 'additional-information'
+    attributes:
+      label: 'Informações Adicionais'
+      description: |
+        Quais recursos (links, capturas de tela, etc.) você possui para ajudar nesse
+        esforço?
