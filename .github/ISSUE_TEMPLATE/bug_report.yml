@@ -1,0 +1,74 @@
+name: 'Relatório de Bug'
+description: 'Registrar um relatório de bug'
+body:
+  - type: 'markdown'
+    attributes:
+      value: |
+        Obrigado por criar uma issue 😄!
+
+        Por favor, pesquise entre as issues abertas/fechadas antes de enviar. Alguém
+        pode ter perguntado a mesma coisa antes 😉!
+
+        Todos somos voluntários aqui, então nos ajude a te ajudar preenchendo
+        corretamente este modelo. ❤️
+  - type: 'textarea'
+    id: 'description'
+    attributes:
+      label: 'Descrição'
+      description: 'Uma breve descrição do problema.'
+      placeholder: |
+        Quando eu ____, esperava que ____ acontecesse, mas ____ aconteceu em vez disso.
+    validations:
+      required: true
+  - type: 'input'
+    id: 'reproduction'
+    attributes:
+      label: 'Link para Reprodução'
+      description: |
+        Um link para uma reprodução no Stackblitz que demonstre o bug (veja
+        https://stackblitz.com/edit/dittox?file=src%2FApp.tsx para
+        templates)
+      placeholder: 'https://stackblitz.com/edit/dittox?file=src%2FApp.tsx'
+    validations:
+      required: true
+  - type: 'textarea'
+    id: 'steps'
+    attributes:
+      label: 'Passos para reproduzir'
+      description: |
+        Explique como reproduzir o problema na reprodução fornecida.
+      value: |
+        1. Vá para '...'
+        2. Clique em '...'
+        3. Role até '...'
+        4. Veja o erro
+  - type: 'input'
+    id: 'ditto-version'
+    attributes:
+      label: 'Versão do Ditto'
+      description: 'A versão do Ditto que você está usando.'
+      placeholder: '1.x.x'
+    validations:
+      required: true
+  - type: 'input'
+    id: 'browser'
+    attributes:
+      label: 'Navegador'
+      description: 'O(s) navegador(es) onde ocorreu o problema.'
+      placeholder: 'Google Chrome 93'
+  - type: 'checkboxes'
+    id: 'operating-system'
+    attributes:
+      label: 'Sistema Operacional'
+      description: 'O(s) sistema(s) operacional(is) onde ocorreu o problema.'
+      options:
+        - label: 'macOS'
+        - label: 'Windows'
+        - label: 'Linux'
+  - type: 'textarea'
+    id: 'additional-information'
+    attributes:
+      label: 'Informações Adicionais'
+      description: |
+        Use esta seção para fornecer qualquer informação adicional que você
+        possa ter, como capturas de tela, anotações ou links para ideias.
