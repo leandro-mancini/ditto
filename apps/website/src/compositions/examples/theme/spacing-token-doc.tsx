@@ -6,8 +6,6 @@ const { tokens, _config } = defaultSystem;
 const keys = Object.keys(_config.theme?.tokens?.spacing ?? {});
 const keysSemantic = Object.keys(_config.theme?.semanticTokens?.spacing ?? {});
 
-console.log('keys', keys);
-
 export const SpacingTokenDoc = () => {
   return (
     <TokenDoc title="theme.tokens.spacing" mt="1rem">

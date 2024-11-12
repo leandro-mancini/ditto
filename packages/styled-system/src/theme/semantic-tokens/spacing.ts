@@ -1,6 +1,6 @@
-import { defineTokens } from '../../core';
+import { defineSemanticTokens } from '../../core';
 
-export const spacing = defineTokens.spacing({
+export const semanticSpacing = defineSemanticTokens.spacing({
   zero: { value: '{sizes.0}' },
   '5xs': { value: '{sizes.025}' },
   '4xs': { value: '{sizes.050}' },
