@@ -80,6 +80,9 @@ importers:
       '@nx/next':
         specifier: ^19.8.3
         version: 19.8.3(@babel/core@7.25.2)(@swc-node/register@1.9.2)(@swc/core@1.5.29)(@types/node@18.16.9)(eslint@8.57.1)(next@14.2.3)(nx@19.7.3)(typescript@5.5.4)(verdaccio@5.32.2)(webpack@5.95.0)
+      '@nx/node':
+        specifier: 19.7.3
+        version: 19.7.3(@swc-node/register@1.9.2)(@swc/core@1.5.29)(@types/node@18.16.9)(eslint@8.57.1)(nx@19.7.3)(ts-node@10.9.1)(typescript@5.5.4)(verdaccio@5.32.2)
       '@nx/react':
         specifier: 19.7.3
         version: 19.7.3(@swc-node/register@1.9.2)(@swc/core@1.5.29)(@types/node@18.16.9)(eslint@8.57.1)(nx@19.7.3)(typescript@5.5.4)(verdaccio@5.32.2)(webpack@5.95.0)
@@ -194,6 +197,9 @@ importers:
       jest-environment-jsdom:
         specifier: ^29.7.0
         version: 29.7.0
+      jest-environment-node:
+        specifier: ^29.7.0
+        version: 29.7.0
       jest-react-native:
         specifier: 18.0.0
         version: 18.0.0(react-native@0.74.1)
@@ -265,6 +271,8 @@ importers:
       shiki:
         specifier: ^1.22.0
         version: 1.22.0
+
+  packages/cli: {}
 
   packages/preact:
     dependencies:
@@ -5621,6 +5629,31 @@ packages:
       - webpack-cli
     dev: true
 
+  /@nrwl/node@19.7.3(@swc-node/register@1.9.2)(@swc/core@1.5.29)(@types/node@18.16.9)(eslint@8.57.1)(nx@19.7.3)(ts-node@10.9.1)(typescript@5.5.4)(verdaccio@5.32.2):
+    resolution:
+      {
+        integrity: sha512-pGUhltvgTMjqhj6zhsVWRV3Debuw6rWvS0dAeWiuXr7EYI987d1po+PB39h01Y+KvR6f/1sA647hNaagf6Pc1g==,
+      }
+    dependencies:
+      '@nx/node': 19.7.3(@swc-node/register@1.9.2)(@swc/core@1.5.29)(@types/node@18.16.9)(eslint@8.57.1)(nx@19.7.3)(ts-node@10.9.1)(typescript@5.5.4)(verdaccio@5.32.2)
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - '@zkochan/js-yaml'
+      - babel-plugin-macros
+      - debug
+      - eslint
+      - node-notifier
+      - nx
+      - supports-color
+      - ts-node
+      - typescript
+      - verdaccio
+    dev: true
+
   /@nrwl/react-native@19.7.3(@swc-node/register@1.9.2)(@swc/core@1.5.29)(@types/node@18.16.9)(eslint@8.57.1)(nx@19.7.3)(ts-node@10.9.1)(typescript@5.5.4)(verdaccio@5.32.2)(webpack@5.95.0):
     resolution:
       {
@@ -6428,6 +6461,36 @@ packages:
       - vue-tsc
       - webpack
       - webpack-cli
+    dev: true
+
+  /@nx/node@19.7.3(@swc-node/register@1.9.2)(@swc/core@1.5.29)(@types/node@18.16.9)(eslint@8.57.1)(nx@19.7.3)(ts-node@10.9.1)(typescript@5.5.4)(verdaccio@5.32.2):
+    resolution:
+      {
+        integrity: sha512-tg9MacuaFFEvWPmmipMkJvygDQdtFSd33NqKnFyPbg4JKe4y142nmiYCxW3q5mVP/0f2XEhRNd5EYP71fkR8UA==,
+      }
+    dependencies:
+      '@nrwl/node': 19.7.3(@swc-node/register@1.9.2)(@swc/core@1.5.29)(@types/node@18.16.9)(eslint@8.57.1)(nx@19.7.3)(ts-node@10.9.1)(typescript@5.5.4)(verdaccio@5.32.2)
+      '@nx/devkit': 19.7.3(nx@19.7.3)
+      '@nx/eslint': 19.7.3(@swc-node/register@1.9.2)(@swc/core@1.5.29)(@types/node@18.16.9)(eslint@8.57.1)(nx@19.7.3)(verdaccio@5.32.2)
+      '@nx/jest': 19.7.3(@swc-node/register@1.9.2)(@swc/core@1.5.29)(@types/node@18.16.9)(nx@19.7.3)(ts-node@10.9.1)(typescript@5.5.4)(verdaccio@5.32.2)
+      '@nx/js': 19.7.3(@swc-node/register@1.9.2)(@swc/core@1.5.29)(@types/node@18.16.9)(nx@19.7.3)(typescript@5.5.4)(verdaccio@5.32.2)
+      tslib: 2.7.0
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - '@zkochan/js-yaml'
+      - babel-plugin-macros
+      - debug
+      - eslint
+      - node-notifier
+      - nx
+      - supports-color
+      - ts-node
+      - typescript
+      - verdaccio
     dev: true
 
   /@nx/nx-darwin-arm64@19.7.3:
