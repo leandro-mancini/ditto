@@ -7,6 +7,9 @@ settings:
 importers:
   .:
     dependencies:
+      '@dittox/cli':
+        specifier: file:./dist/packages/cli
+        version: file:dist/packages/cli
       '@docusaurus/core':
         specifier: 3.4.0
         version: 3.4.0(@docusaurus/types@3.4.0)(@swc/core@1.5.29)(eslint@8.57.1)(react-dom@18.3.1)(react@18.3.1)(typescript@5.5.4)
@@ -272,7 +275,14 @@ importers:
         specifier: ^1.22.0
         version: 1.22.0
 
-  packages/cli: {}
+  packages/cli:
+    dependencies:
+      commander:
+        specifier: ^12.1.0
+        version: 12.1.0
+      debug:
+        specifier: ^4.3.7
+        version: 4.3.7
 
   packages/preact:
     dependencies:
@@ -12296,6 +12306,14 @@ packages:
         integrity: sha512-y4Mg2tXshplEbSGzx7amzPwKKOCGuoSRP/CjEdwwk0FOGlUbq6lKuoyDZTNZkmxHdJtp54hdfY/JUrdL7Xfdug==,
       }
     engines: { node: '>=14' }
+    dev: false
+
+  /commander@12.1.0:
+    resolution:
+      {
+        integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==,
+      }
+    engines: { node: '>=18' }
     dev: false
 
   /commander@2.20.3:
@@ -29190,3 +29208,13 @@ packages:
       {
         integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==,
       }
+
+  file:dist/packages/cli:
+    resolution: { directory: dist/packages/cli, type: directory }
+    name: '@ditto/cli'
+    dependencies:
+      commander: 12.1.0
+      debug: 4.3.7
+    transitivePeerDependencies:
+      - supports-color
+    dev: false

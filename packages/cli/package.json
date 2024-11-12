@@ -1,4 +1,37 @@
 {
-  "name": "cli",
-  "version": "0.0.1"
+  "name": "@ditto/cli",
+  "version": "0.0.1-beta.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Leandro Mancini",
+    "email": "mancinidevworks@gmail.com",
+    "url": "https://blog.mancinidev.me/"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/leandro-mancini/ditto",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leandro-mancini/ditto",
+    "directory": "packages/styled-system"
+  },
+  "keywords": [
+    "react",
+    "ui",
+    "design-system",
+    "react-components",
+    "uikit",
+    "components",
+    "emotion",
+    "library",
+    "design-system"
+  ],
+  "dependencies": {
+    "commander": "^12.1.0",
+    "debug": "^4.3.7"
+  },
+  "bin": {
+    "dittox": "src/index.js"
+  }
 }
