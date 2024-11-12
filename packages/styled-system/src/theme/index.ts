@@ -7,7 +7,6 @@ import { semanticBorderWidths } from './semantic-tokens/border-widths';
 import { semanticColors } from './semantic-tokens/colors';
 import { semanticOpacity } from './semantic-tokens/opacity';
 import { semanticRadii } from './semantic-tokens/radii';
-import { semanticSpacing } from './semantic-tokens/spacing';
 import { textStyles } from './text-styles';
 import { animations } from './tokens/animations';
 import { aspectRatios } from './tokens/aspect-ratios';
@@ -61,7 +60,6 @@ export const defaultThemeConfig = defineConfig({
       borderWidths: semanticBorderWidths,
       opacity: semanticOpacity,
       radii: semanticRadii,
-      spacing: semanticSpacing,
     },
     animationStyles: animationStyles,
     textStyles: textStyles,
