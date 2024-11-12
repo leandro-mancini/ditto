@@ -1,5 +1,4 @@
 import { defineTokens } from '../../core';
-import { spacing } from './spacing';
 
 const namedSizes = defineTokens.sizes({
   max: { value: 'max-content' },
@@ -45,8 +44,57 @@ const fractionalSizes = defineTokens.sizes({
   '11/12': { value: '91.666667%' },
 });
 
+const tokenSizes = defineTokens.sizes({
+  0: { value: '0px' },
+  '025': { value: '2px' },
+  '050': { value: '4px' },
+  '075': { value: '6px' },
+  100: { value: '8px' },
+  125: { value: '10px' },
+  150: { value: '12px' },
+  175: { value: '14px' },
+  200: { value: '16px' },
+  225: { value: '18px' },
+  250: { value: '20px' },
+  300: { value: '24px' },
+  350: { value: '28px' },
+  400: { value: '32px' },
+  450: { value: '36px' },
+  500: { value: '40px' },
+  550: { value: '44px' },
+  600: { value: '48px' },
+  700: { value: '56px' },
+  800: { value: '64px' },
+  900: { value: '72px' },
+  1000: { value: '80px' },
+  1200: { value: '96px' },
+  1400: { value: '112px' },
+  1600: { value: '128px' },
+  1800: { value: '144px' },
+  2000: { value: '160px' },
+  2200: { value: '176px' },
+  2400: { value: '192px' },
+  2600: { value: '208px' },
+  2800: { value: '224px' },
+  3000: { value: '240px' },
+  3200: { value: '256px' },
+  3600: { value: '288px' },
+  4000: { value: '320px' },
+  4800: { value: '384px' },
+  6000: { value: '480px' },
+  7000: { value: '560px' },
+  8000: { value: '640px' },
+  9000: { value: '720px' },
+  9600: { value: '768px' },
+  12800: { value: '1024px' },
+  16000: { value: '1280px' },
+  18000: { value: '1440px' },
+  20000: { value: '1600px' },
+  24000: { value: '1920px' },
+});
+
 export const sizes = defineTokens.sizes({
-  ...spacing,
+  ...tokenSizes,
   ...fractionalSizes,
   ...namedSizes,
 });
