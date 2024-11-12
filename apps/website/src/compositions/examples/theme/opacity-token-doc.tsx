@@ -22,7 +22,11 @@ export const OpacityTokenDoc = () => {
             const token = tokens.getByName(`opacity.${opacity}`);
             return (
               <Stack key={opacity} flex="1">
-                <Square size="120px" bgColor={'aqua.10'} opacity={opacity} />
+                <Square
+                  size="120px"
+                  bgColor={'primary.500'}
+                  opacity={opacity}
+                />
                 <Box lineHeight="1">{opacity}</Box>
                 <Box color="fg.subtle" fontSize="xs">
                   {token?.originalValue}
@@ -45,7 +49,11 @@ export const OpacitySemanticTokenDoc = () => {
             const token = tokens.getByName(`opacity.${opacity}`);
             return (
               <Stack key={opacity} flex="1">
-                <Square size="120px" bgColor={'aqua.10'} opacity={opacity} />
+                <Square
+                  size="120px"
+                  bgColor={'primary.500'}
+                  opacity={opacity}
+                />
                 <Box lineHeight="1">{opacity}</Box>
                 <Box color="fg.subtle" fontSize="xs">
                   {token?.originalValue}
