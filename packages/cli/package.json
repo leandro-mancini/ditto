@@ -28,8 +28,14 @@
     "design-system"
   ],
   "dependencies": {
+    "@clack/prompts": "^0.7.0",
+    "@dittox/styled-system": "0.0.1-beta.30",
+    "@pandacss/is-valid-prop": "^0.47.1",
+    "bundle-n-require": "^1.1.1",
+    "chokidar": "^4.0.1",
     "commander": "^12.1.0",
-    "debug": "^4.3.7"
+    "debug": "^4.3.7",
+    "prettier": "^2.6.2"
   },
   "bin": {
     "dittox": "src/index.js"
