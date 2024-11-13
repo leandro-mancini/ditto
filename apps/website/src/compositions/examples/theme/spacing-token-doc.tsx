@@ -32,11 +32,11 @@ export const SpacingTokenDoc = () => {
                   {token?.extensions.prop}
                 </Box>
                 <Box width="100px" color="fg.muted">
-                  {token?.value}
+                  {token?.originalValue}
                 </Box>
                 <Box flex="1">
                   <Box
-                    bg="aqua.10"
+                    bg="primary.500"
                     height="16px"
                     width={token?.extensions.cssVar!.ref}
                   />
@@ -80,7 +80,7 @@ export const SpacingSemanticTokenDoc = () => {
                 </Box>
                 <Box flex="1">
                   <Box
-                    bg="aqua.10"
+                    bg="primary.500"
                     height="16px"
                     width={token?.extensions.cssVar!.ref}
                   />

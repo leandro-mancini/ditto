@@ -1,9 +1,9 @@
 import { defineTokens } from '../../core';
 
 export const borderWidths = defineTokens.borderWidths({
-  0: { value: '0' },
-  '1x': { value: '1px' },
-  '2x': { value: '2px' },
-  '4x': { value: '4px' },
-  '8x': { value: '8px' },
+  xs: { value: '0.5px' },
+  sm: { value: '1px' },
+  md: { value: '2px' },
+  lg: { value: '4px' },
+  xl: { value: '8px' },
 });

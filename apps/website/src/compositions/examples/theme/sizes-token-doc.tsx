@@ -65,7 +65,7 @@ export const SizesTokenDoc = () => {
                   </Box>
                   <Flex flex={1} px="8px" align="center" pl="0">
                     <Box
-                      bg="aqua.10"
+                      bg="primary.500"
                       height="16px"
                       width={`min(${token.originalValue}, 100%)`}
                     />

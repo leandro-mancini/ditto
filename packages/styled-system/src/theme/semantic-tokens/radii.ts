@@ -1,11 +1,14 @@
 import { defineSemanticTokens } from '../../core';
 
 export const semanticRadii = defineSemanticTokens.radii({
-  none: { value: '{radii.0}' },
-  minimal: { value: '{radii.1x}' },
-  tiny: { value: '{radii.2x}' },
-  small: { value: '{radii.3x}' },
-  medium: { value: '{radii.4x}' },
-  large: { value: '{radii.8x}' },
-  full: { value: '{radii.max}' },
+  zero: { value: '{sizes.0}' },
+  xsm: { value: '{sizes.050}' },
+  sm: { value: '{sizes.075}' },
+  md: { value: '{sizes.100}' },
+  lg: { value: '{sizes.125}' },
+  xl: { value: '{sizes.150}' },
+  '2xl': { value: '{sizes.200}' },
+  '3xl': { value: '{sizes.250}' },
+  '4xl': { value: '{sizes.300}' },
+  full: { value: '9999999px' },
 });
