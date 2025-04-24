@@ -1,0 +1,18 @@
+{
+  "name": "sandbox-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "dittox typegen ./src/app/ditto.config.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@dittox/cli": "0.0.1-beta.1",
+    "@dittox/react": "0.0.1-beta.30",
+    "@dittox/styled-system": "0.0.1-beta.30"
+  }
+}

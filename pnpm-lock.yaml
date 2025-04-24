@@ -7,9 +7,6 @@ settings:
 importers:
   .:
     dependencies:
-      '@dittox/cli':
-        specifier: file:./dist/packages/cli
-        version: file:dist/packages/cli
       '@docusaurus/core':
         specifier: 3.4.0
         version: 3.4.0(@docusaurus/types@3.4.0)(@swc/core@1.5.29)(eslint@8.57.1)(react-dom@18.3.1)(react@18.3.1)(typescript@5.5.4)
@@ -249,7 +246,17 @@ importers:
         specifier: ^1.3.1
         version: 1.6.0(@types/node@18.16.9)(@vitest/ui@1.6.0)(jsdom@22.1.0)(less@4.1.3)(stylus@0.59.0)
 
-  apps/react: {}
+  apps/sandbox-react:
+    dependencies:
+      '@dittox/cli':
+        specifier: 0.0.1-beta.1
+        version: 0.0.1-beta.1
+      '@dittox/react':
+        specifier: 0.0.1-beta.30
+        version: 0.0.1-beta.30(@types/react@18.3.1)(react@18.3.1)
+      '@dittox/styled-system':
+        specifier: 0.0.1-beta.30
+        version: 0.0.1-beta.30
 
   apps/website:
     dependencies:
@@ -2873,6 +2880,25 @@ packages:
     engines: { node: '>=10.0.0' }
     dev: false
 
+  /@dittox/cli@0.0.1-beta.1:
+    resolution:
+      {
+        integrity: sha512-TatjaIEZn+oRKz2TMecD6+fVZQWsHY8IkluUCVJ678X4JbWDvAej4ckesi2T+57XSvwTM2f54GCQviHQBRJHVg==,
+      }
+    hasBin: true
+    dependencies:
+      '@clack/prompts': 0.7.0
+      '@dittox/styled-system': 0.0.1-beta.30
+      '@pandacss/is-valid-prop': 0.47.1
+      bundle-n-require: 1.1.1
+      chokidar: 4.0.1
+      commander: 12.1.0
+      debug: 4.3.7
+      prettier: 2.8.8
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /@dittox/react@0.0.1-beta.30(@types/react@18.3.1)(react@18.3.1):
     resolution:
       {
@@ -3597,7 +3623,7 @@ packages:
         integrity: sha512-YMMxTUQV/QFSnbgrP3tjDzLHRg7vsbMn8e9HAa8o/1iXoiomo48b7sk/kkmWEuWNDPJVlKSJRB6Y2fHqdJk+SQ==,
       }
     peerDependencies:
-      react: '*'
+      react: 18.3.1
     dependencies:
       '@types/react': 18.3.1
       react: 18.3.1
@@ -29583,19 +29609,3 @@ packages:
       {
         integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==,
       }
-
-  file:dist/packages/cli:
-    resolution: { directory: dist/packages/cli, type: directory }
-    name: '@ditto/cli'
-    dependencies:
-      '@clack/prompts': 0.7.0
-      '@dittox/styled-system': 0.0.1-beta.30
-      '@pandacss/is-valid-prop': 0.47.1
-      bundle-n-require: 1.1.1
-      chokidar: 4.0.1
-      commander: 12.1.0
-      debug: 4.3.7
-      prettier: 2.8.8
-    transitivePeerDependencies:
-      - supports-color
-    dev: false

@@ -4,7 +4,6 @@ export const textStyles = defineTextStyles({
   display: {
     value: {
       fontSize: '7xl',
-      fontWeight: 'medium',
       lineHeight: '9xl',
       letterSpacing: 'tighter-3',
     },
@@ -13,7 +12,6 @@ export const textStyles = defineTextStyles({
     sm: {
       value: {
         fontSize: '2xl',
-        fontWeight: 'medium',
         lineHeight: '4xl',
         letterSpacing: 'base',
       },
@@ -21,7 +19,6 @@ export const textStyles = defineTextStyles({
     md: {
       value: {
         fontSize: '3xl',
-        fontWeight: 'medium',
         lineHeight: '5xl',
         letterSpacing: 'tighter',
       },
@@ -29,7 +26,6 @@ export const textStyles = defineTextStyles({
     lg: {
       value: {
         fontSize: '4xl',
-        fontWeight: 'medium',
         lineHeight: '6xl',
         letterSpacing: 'tightest',
       },
@@ -37,7 +33,6 @@ export const textStyles = defineTextStyles({
     '2xl': {
       value: {
         fontSize: '5xl',
-        fontWeight: 'medium',
         lineHeight: '7xl',
         letterSpacing: 'tighter-1',
       },
@@ -45,7 +40,6 @@ export const textStyles = defineTextStyles({
     '3xl': {
       value: {
         fontSize: '6xl',
-        fontWeight: 'medium',
         lineHeight: '8xl',
         letterSpacing: 'tighter-2',
       },
@@ -55,7 +49,6 @@ export const textStyles = defineTextStyles({
     xs: {
       value: {
         fontSize: 'xs',
-        fontWeight: 'normal',
         lineHeight: 'sm',
         letterSpacing: 'loose',
       },
@@ -63,7 +56,6 @@ export const textStyles = defineTextStyles({
     sm: {
       value: {
         fontSize: 'sm',
-        fontWeight: 'normal',
         lineHeight: 'lg',
         letterSpacing: 'loose',
       },
@@ -71,7 +63,6 @@ export const textStyles = defineTextStyles({
     md: {
       value: {
         fontSize: 'md',
-        fontWeight: 'normal',
         lineHeight: 'xl',
         letterSpacing: 'normal',
       },
@@ -79,7 +70,6 @@ export const textStyles = defineTextStyles({
     lg: {
       value: {
         fontSize: 'lg',
-        fontWeight: 'normal',
         lineHeight: 'xl',
         letterSpacing: 'base',
       },
@@ -87,7 +77,6 @@ export const textStyles = defineTextStyles({
     xl: {
       value: {
         fontSize: 'xl',
-        fontWeight: 'normal',
         lineHeight: '2xl',
         letterSpacing: 'normal',
       },
@@ -97,7 +86,6 @@ export const textStyles = defineTextStyles({
     '2xs': {
       value: {
         fontSize: '2xs',
-        fontWeight: 'normal',
         lineHeight: '2xs',
         letterSpacing: 'loose',
       },
@@ -105,7 +93,6 @@ export const textStyles = defineTextStyles({
     xs: {
       value: {
         fontSize: 'xs',
-        fontWeight: 'normal',
         lineHeight: 'xs',
         letterSpacing: 'loose',
       },
@@ -113,7 +100,6 @@ export const textStyles = defineTextStyles({
     sm: {
       value: {
         fontSize: 'sm',
-        fontWeight: 'normal',
         lineHeight: 'md',
         letterSpacing: 'loose',
       },
@@ -121,7 +107,6 @@ export const textStyles = defineTextStyles({
     md: {
       value: {
         fontSize: 'md',
-        fontWeight: 'normal',
         lineHeight: 'xl',
         letterSpacing: 'normal',
       },
@@ -129,7 +114,6 @@ export const textStyles = defineTextStyles({
     lg: {
       value: {
         fontSize: 'lg',
-        fontWeight: 'normal',
         lineHeight: 'xl',
         letterSpacing: 'base',
       },
@@ -137,7 +121,6 @@ export const textStyles = defineTextStyles({
     xl: {
       value: {
         fontSize: 'xl',
-        fontWeight: 'normal',
         lineHeight: '2xl',
         letterSpacing: 'base',
       },
@@ -145,7 +128,6 @@ export const textStyles = defineTextStyles({
     '2xl': {
       value: {
         fontSize: '2xl',
-        fontWeight: 'normal',
         lineHeight: '3xl',
         letterSpacing: 'base',
       },
@@ -155,7 +137,6 @@ export const textStyles = defineTextStyles({
     xs: {
       value: {
         fontSize: 'xs',
-        fontWeight: 'normal',
         lineHeight: 'xs',
         letterSpacing: 'loose',
         textDecoration: 'underline',
@@ -164,7 +145,6 @@ export const textStyles = defineTextStyles({
     sm: {
       value: {
         fontSize: 'sm',
-        fontWeight: 'normal',
         lineHeight: 'md',
         letterSpacing: 'loose',
         textDecoration: 'underline',
@@ -173,7 +153,6 @@ export const textStyles = defineTextStyles({
     md: {
       value: {
         fontSize: 'md',
-        fontWeight: 'normal',
         lineHeight: 'xl',
         letterSpacing: 'normal',
         textDecoration: 'underline',
@@ -182,7 +161,6 @@ export const textStyles = defineTextStyles({
     lg: {
       value: {
         fontSize: 'lg',
-        fontWeight: 'normal',
         lineHeight: 'xl',
         letterSpacing: 'base',
         textDecoration: 'underline',
@@ -191,7 +169,6 @@ export const textStyles = defineTextStyles({
     xl: {
       value: {
         fontSize: 'xl',
-        fontWeight: 'normal',
         lineHeight: '2xl',
         letterSpacing: 'base',
         textDecoration: 'underline',
@@ -200,7 +177,6 @@ export const textStyles = defineTextStyles({
     '2xl': {
       value: {
         fontSize: '2xl',
-        fontWeight: 'normal',
         lineHeight: '3xl',
         letterSpacing: 'tight',
         textDecoration: 'underline',
