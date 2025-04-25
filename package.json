@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky",
+    "dep-graph": "pnpm exec nx dep-graph",
     "publish-all": "pnpm exec nx run-many --target=nx-release-publish --projects=cli,preact,react,react-native,styled-system"
   },
   "private": true,
