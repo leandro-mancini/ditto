@@ -33,22 +33,24 @@ jobs:
       - name: Detect affected libs
         id: affected
         run: |
-          AFFECTED_LIBS=$(npx nx show projects --affected --base=origin/main --head=HEAD --type=lib | jq -r '.projects[]')
-          echo "AFFECTED_LIBS=${AFFECTED_LIBS}" >> $GITHUB_ENV
+          AFFECTED_LIBS=$(npx nx show projects --affected --base=origin/main --head=HEAD --type=lib)
+          echo "AFFECTED_LIBS<<EOF" >> $GITHUB_ENV
+          echo "$AFFECTED_LIBS" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
           echo "Affected libs:"
-          echo "${AFFECTED_LIBS}"
+          echo "$AFFECTED_LIBS"
 
-      # - name: Generate changeset for affected libs
-      #   if: env.AFFECTED_LIBS != ''
-      #   run: |
-      #     for lib in $AFFECTED_LIBS; do
-      #       npx changeset --empty "$lib: auto-version bump"
-      #     done
+      - name: Generate changeset for affected libs
+        if: env.AFFECTED_LIBS != ''
+        run: |
+          for lib in $AFFECTED_LIBS; do
+            npx changeset --empty "$lib: auto-version bump"
+          done
 
-      # - name: Create version and changelog
-      #   if: env.AFFECTED_LIBS != ''
-      #   run: |
-      #     pnpm exec changeset version
+      - name: Create version and changelog
+        if: env.AFFECTED_LIBS != ''
+        run: |
+          pnpm exec changeset version
 
       # - name: Publish to npm
       #   if: env.AFFECTED_LIBS != ''
