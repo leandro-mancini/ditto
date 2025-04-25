@@ -1,4 +1,4 @@
-import { defineConfig, createColorMixTransform } from '@dittox/styled-system';
+import { defineConfig, createColorMixTransform } from '@ditto/styled-system';
 
 export const defaultBaseConfig = defineConfig({
   utilities: {

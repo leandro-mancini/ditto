@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "@clack/prompts": "^0.7.0",
-    "@dittox/styled-system": "0.0.1-beta.30",
+    "@ditto/styled-system": "0.0.1-beta.1",
     "@pandacss/is-valid-prop": "^0.47.1",
     "bundle-n-require": "^1.1.1",
     "chokidar": "^4.0.1",

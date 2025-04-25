@@ -1,4 +1,4 @@
-import { Box, HStack } from '@dittox/react';
+import { Box, HStack } from '@ditto/react';
 import React from 'react';
 import { CodeLang, CodeLangIcon } from './code-lang-icon';
 

@@ -9,7 +9,7 @@ import {
   RecipeVariantRecord,
   SystemProperties,
   SystemStyleObject,
-} from '@dittox/styled-system';
+} from '@ditto/styled-system';
 import {
   ComponentProps,
   ComponentPropsWithoutRef,

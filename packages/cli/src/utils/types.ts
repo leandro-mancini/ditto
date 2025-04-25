@@ -1,4 +1,4 @@
-import { SystemContext } from '@dittox/styled-system';
+import { SystemContext } from '@ditto/styled-system';
 
 export interface ReadResult {
   mod: SystemContext;

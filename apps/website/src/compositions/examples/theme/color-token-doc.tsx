@@ -7,10 +7,10 @@ import {
   SimpleGridProps,
   Stack,
   VStack,
-} from '@dittox/react';
+} from '@ditto/react';
 import React from 'react';
 import { TokenDoc } from './token-doc';
-import { TokenInterface } from '@dittox/styled-system';
+import { TokenInterface } from '@ditto/styled-system';
 
 const { tokens, _config } = defaultSystem;
 const keys = Object.keys(_config.theme?.tokens?.colors ?? {});

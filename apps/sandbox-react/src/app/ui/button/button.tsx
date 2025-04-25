@@ -1,5 +1,5 @@
-import { createRecipeContext, HTMLDittoProps } from '@dittox/react';
-import { RecipeProps } from '@dittox/styled-system';
+import { createRecipeContext, HTMLDittoProps } from '@ditto/react';
+import { RecipeProps } from '@ditto/styled-system';
 
 const { withContext, PropsProvider } = createRecipeContext({
   key: 'button',

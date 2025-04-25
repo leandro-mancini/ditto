@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Container, ditto, HStack, Spacer } from '@dittox/react';
+import { Box, Container, ditto, HStack, Spacer } from '@ditto/react';
 import React, { useEffect, useRef } from 'react';
 import Link from '@docusaurus/Link';
 import { BsGithub } from 'react-icons/bs';

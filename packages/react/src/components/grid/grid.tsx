@@ -1,6 +1,6 @@
 'use client';
 
-import { SystemStyleObject } from '@dittox/styled-system';
+import { SystemStyleObject } from '@ditto/styled-system';
 import { forwardRef } from 'react';
 import { ditto, HTMLDittoProps } from '../../core';
 

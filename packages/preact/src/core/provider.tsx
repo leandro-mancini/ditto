@@ -1,7 +1,7 @@
 'use client';
 
 import { h } from 'preact';
-import { SystemContext } from '@dittox/styled-system';
+import { SystemContext } from '@ditto/styled-system';
 import register from 'preact-custom-element';
 import { createContext } from '../create-context';
 import React from 'react';

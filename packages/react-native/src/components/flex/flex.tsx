@@ -1,6 +1,6 @@
 'use client';
 
-import { SystemStyleObject } from '@dittox/styled-system';
+import { SystemStyleObject } from '@ditto/styled-system';
 import { ComponentType, forwardRef } from 'react';
 import { ditto, NativeDittoProps } from '../../core';
 import { View, ViewProps } from 'react-native';

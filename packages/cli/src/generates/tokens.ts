@@ -1,4 +1,4 @@
-import { SystemContext } from '@dittox/styled-system';
+import { SystemContext } from '@ditto/styled-system';
 
 import { capitalize, unionType } from '../utils/shared';
 import { pretty } from '../utils/pretty';

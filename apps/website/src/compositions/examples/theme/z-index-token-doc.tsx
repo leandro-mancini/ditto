@@ -1,4 +1,4 @@
-import { Box, defaultSystem, Flex, Stack } from '@dittox/react';
+import { Box, defaultSystem, Flex, Stack } from '@ditto/react';
 import { TokenDoc } from './token-doc';
 import React from 'react';
 

@@ -1,6 +1,6 @@
 {
-  "name": "@dittox/preact",
-  "version": "0.0.1-beta.7",
+  "name": "@ditto/preact",
+  "version": "0.0.1-beta.1",
   "main": "./index.js",
   "module": "./index.mjs",
   "typings": "./index.d.ts",
@@ -32,7 +32,7 @@
     "design-system"
   ],
   "dependencies": {
-    "@dittox/styled-system": "0.0.1-beta.6",
+    "@ditto/styled-system": "0.0.1-beta.1",
     "@emotion/css": "11.13.0",
     "@emotion/is-prop-valid": "1.3.0",
     "@emotion/react": "11.13.3",

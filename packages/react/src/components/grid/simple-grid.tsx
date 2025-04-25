@@ -6,7 +6,7 @@ import {
   ConditionalValue,
   mapObject,
   SystemContext,
-} from '@dittox/styled-system';
+} from '@ditto/styled-system';
 import { useDittoContext } from '../../core';
 
 interface SimpleGridOptions {

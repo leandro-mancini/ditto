@@ -1,4 +1,4 @@
-import { ditto } from '@dittox/react';
+import { ditto } from '@ditto/react';
 import React from 'react';
 
 export const Logo = () => {

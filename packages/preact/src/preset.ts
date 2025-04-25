@@ -2,7 +2,7 @@ import {
   createSystem,
   defaultThemeConfig,
   mergeConfigs,
-} from '@dittox/styled-system';
+} from '@ditto/styled-system';
 import { defaultBaseConfig } from './preset-base';
 
 export const defaultConfig = mergeConfigs(

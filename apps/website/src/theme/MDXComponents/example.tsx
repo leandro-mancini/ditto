@@ -1,4 +1,4 @@
-import { Box, BoxProps, Stack } from '@dittox/react';
+import { Box, BoxProps, Stack } from '@ditto/react';
 import React, { Suspense, lazy } from 'react';
 
 interface Props {

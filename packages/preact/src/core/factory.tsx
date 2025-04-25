@@ -3,7 +3,7 @@
 import { useMemo } from 'preact/hooks';
 import isPropValid from '@emotion/is-prop-valid';
 import { serializeStyles } from '@emotion/serialize';
-import { compact, cx } from '@dittox/styled-system';
+import { compact, cx } from '@ditto/styled-system';
 import { useDittoContext } from './provider';
 import { useResolvedProps } from './use-resolved-props';
 import { StyledFactoryFn, JsxFactory } from './factory.types';

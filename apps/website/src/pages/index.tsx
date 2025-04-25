@@ -1,4 +1,4 @@
-import { Box, Center, Container } from '@dittox/react';
+import { Box, Center, Container } from '@ditto/react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 

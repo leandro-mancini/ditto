@@ -1,4 +1,4 @@
-import { Box, Center, SimpleGrid, Stack } from '@dittox/react';
+import { Box, Center, SimpleGrid, Stack } from '@ditto/react';
 import React from 'react';
 import { kebabCase } from 'scule';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import isPropValid from '@emotion/is-prop-valid';
 import { ThemeContext, withEmotionCache } from '@emotion/react';
-import { compact, mergeProps, mergeRefs } from '@dittox/styled-system';
+import { compact, mergeProps, mergeRefs } from '@ditto/styled-system';
 import { StyleSheet } from 'react-native';
 import { useDittoContext } from './provider';
 import { useResolvedProps } from './use-resolved-props';

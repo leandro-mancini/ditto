@@ -1,4 +1,4 @@
-import { Box, BoxProps, ditto, Stack } from '@dittox/react';
+import { Box, BoxProps, ditto, Stack } from '@ditto/react';
 import React from 'react';
 import { SideNav } from './sidenav';
 import Link from '@docusaurus/Link';

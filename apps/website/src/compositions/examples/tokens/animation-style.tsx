@@ -1,4 +1,4 @@
-import { Box, Center, For, HStack, Stack } from '@dittox/react';
+import { Box, Center, For, HStack, Stack } from '@ditto/react';
 import React from 'react';
 import { useState } from 'react';
 

@@ -1,4 +1,4 @@
-import { Dict } from '@dittox/styled-system';
+import { Dict } from '@ditto/styled-system';
 
 export interface ForProps<T> {
   /**

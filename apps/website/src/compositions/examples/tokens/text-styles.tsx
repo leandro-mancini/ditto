@@ -1,4 +1,4 @@
-import { Box, defaultSystem, For, Stack } from '@dittox/react';
+import { Box, defaultSystem, For, Stack } from '@ditto/react';
 import React from 'react';
 
 const { tokens, _config } = defaultSystem;
