@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "dittox typegen ./src/app/ditto.config.ts"
+    "prepare": "ditto typegen ./src/app/ditto.config.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ditto/cli": "0.0.1-beta.1",
-    "@ditto/react": "0.0.1-beta.1",
-    "@ditto/styled-system": "0.0.1-beta.1"
+    "@ditto/cli": "workspace:*",
+    "@ditto/react": "workspace:*",
+    "@ditto/styled-system": "workspace:*"
   }
 }

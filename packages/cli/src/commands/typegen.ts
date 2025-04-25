@@ -12,7 +12,7 @@ interface CodegenFlags {
   clean?: boolean;
 }
 
-const debug = createDebug('dittox:typegen');
+const debug = createDebug('ditto:typegen');
 
 export const TypegenCommand = new Command('typegen')
   .argument('<source>', 'caminho para o arquivo de tema')
