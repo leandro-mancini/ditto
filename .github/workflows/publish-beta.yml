@@ -44,7 +44,7 @@ jobs:
         if: env.AFFECTED_LIBS != ''
         run: |
           for lib in $AFFECTED_LIBS; do
-            npx changeset --empty "$lib: auto-version bump"
+            pnpm exec changeset --empty "$lib: auto-version bump"
           done
 
       - name: Create version and changelog
