@@ -29,16 +29,13 @@
   ],
   "dependencies": {
     "@clack/prompts": "^0.7.0",
-    "@ditto/styled-system": ">=0.0.1-beta.1",
+    "@ditto/styled-system": "workspace:*",
     "@pandacss/is-valid-prop": "^0.47.1",
     "bundle-n-require": "^1.1.1",
     "chokidar": "^4.0.1",
     "commander": "^12.1.0",
     "debug": "^4.3.7",
     "prettier": "^2.6.2"
-  },
-  "devDependencies": {
-    "@ditto/styled-system": "workspace:*"
   },
   "bin": {
     "ditto": "src/index.js"
