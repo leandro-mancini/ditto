@@ -40,17 +40,37 @@ jobs:
           echo "Affected libs:"
           echo "$AFFECTED_LIBS"
 
-      - name: Generate changeset for affected libs
+      - name: Create a single changeset for affected libs
         if: env.AFFECTED_LIBS != ''
         run: |
-          for lib in $AFFECTED_LIBS; do
-            pnpm exec changeset --empty "$lib: auto-version bump"
-          done
+          echo "📝 Criando um changeset para os pacotes afetados:"
+          echo "$AFFECTED_LIBS"
 
-      - name: Create version and changelog
-        if: env.AFFECTED_LIBS != ''
-        run: |
-          pnpm exec changeset version
+          mkdir -p .changeset
+
+          CHG_FILE=".changeset/$(uuidgen).md"
+
+          echo "---" > $CHG_FILE
+          echo "packages:" >> $CHG_FILE
+          for lib in $AFFECTED_LIBS; do
+            echo "- $lib" >> $CHG_FILE
+          done
+          echo "type: patch" >> $CHG_FILE
+          echo "---" >> $CHG_FILE
+          echo "" >> $CHG_FILE
+          echo "Auto-generated changeset for affected packages" >> $CHG_FILE
+
+      # - name: Generate changeset for affected libs
+      #   if: env.AFFECTED_LIBS != ''
+      #   run: |
+      #     for lib in $AFFECTED_LIBS; do
+      #       pnpm exec changeset --empty "$lib: auto-version bump"
+      #     done
+
+      # - name: Create version and changelog
+      #   if: env.AFFECTED_LIBS != ''
+      #   run: |
+      #     pnpm exec changeset version
 
       # - name: Publish to npm
       #   if: env.AFFECTED_LIBS != ''
