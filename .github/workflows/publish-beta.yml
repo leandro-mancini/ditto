@@ -25,7 +25,7 @@ jobs:
         run: npm install -g pnpm
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile=false
+        run: pnpm install --ignore-workspace-root-check --frozen-lockfile=false
 
       - name: Detect affected libs
         id: affected
