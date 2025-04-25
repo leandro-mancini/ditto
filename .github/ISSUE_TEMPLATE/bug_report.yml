@@ -26,9 +26,9 @@ body:
       label: 'Link para Reprodução'
       description: |
         Um link para uma reprodução no Stackblitz que demonstre o bug (veja
-        https://stackblitz.com/edit/dittox?file=src%2FApp.tsx para
+        https://stackblitz.com/edit/ditto?file=src%2FApp.tsx para
         templates)
-      placeholder: 'https://stackblitz.com/edit/dittox?file=src%2FApp.tsx'
+      placeholder: 'https://stackblitz.com/edit/ditto?file=src%2FApp.tsx'
     validations:
       required: true
   - type: 'textarea'
