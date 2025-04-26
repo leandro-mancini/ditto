@@ -21,11 +21,25 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Cache (node_modules)
-        id: cache
-        uses: ./.github/custom-actions/cache-node-modules
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          cache-version: ${{ env.CACHE_VERSION }}
+          node-version: '20'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Cache (pnpm store and node_modules)
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pnpm-store
+            node_modules
+            **/node_modules
+          key: ${{ runner.os }}-pnpm-${{ env.CACHE_VERSION }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-${{ env.CACHE_VERSION }}-
 
   affected-packages:
     name: Get Affected Packages
@@ -41,11 +55,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Cache (node_modules)
+      - name: Cache (pnpm store and node_modules)
         id: cache
-        uses: ./.github/custom-actions/cache-node-modules
+        uses: actions/cache@v4
         with:
-          cache-version: ${{ env.CACHE_VERSION }}
+          path: |
+            ~/.pnpm-store
+            node_modules
+            **/node_modules
+          key: ${{ runner.os }}-pnpm-${{ env.CACHE_VERSION }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-${{ env.CACHE_VERSION }}-
 
       - name: Install dependencies
         run: pnpm install --prefer-offline
