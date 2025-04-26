@@ -13,6 +13,6 @@
   "dependencies": {
     "@dittox/cli": "workspace:*",
     "@dittox/react": "workspace:*",
-    "@dittox/styled-system": "workspace:*"
+    "@dittox/styled-system": "1.0.0"
   }
 }
