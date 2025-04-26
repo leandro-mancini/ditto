@@ -1,4 +1,4 @@
-import { Box } from '@ditto/react';
+import { Box } from '@dittox/react';
 import Link, { NavLinkProps } from '@docusaurus/Link';
 import React from 'react';
 

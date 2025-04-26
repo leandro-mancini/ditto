@@ -1,4 +1,4 @@
-import { SystemContext } from '@ditto/styled-system';
+import { SystemContext } from '@dittox/styled-system';
 
 import * as io from '../utils/io';
 import { tasks } from '../utils/tasks';

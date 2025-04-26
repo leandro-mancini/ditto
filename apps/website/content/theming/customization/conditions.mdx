@@ -15,7 +15,7 @@ como personalizar o mecanismo de estilo corretamente e obter segurança de tipos
 Aqui está um exemplo de como personalizar condições no Ditto.
 
 ```tsx title="theme.ts"
-import { createSystem, defaultConfig, defineConfig } from '@ditto/react';
+import { createSystem, defaultConfig, defineConfig } from '@dittox/react';
 
 const customConfig = defineConfig({
   conditions: {
@@ -32,7 +32,7 @@ export const system = createSystem(defaultConfig, customConfig);
 Use as condições `_off` e `_on` para estilizar elementos com base no atributo `data-state`.
 
 ```tsx
-import { Box } from "@ditto/react"
+import { Box } from "@dittox/react"
 
 <Box data-state="off" _off={{ bg: "red.500" }} />
 <Box data-state="on" _on={{ bg: "green.500" }} />

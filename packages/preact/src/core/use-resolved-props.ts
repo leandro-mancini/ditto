@@ -1,5 +1,5 @@
 import { useMemo } from 'preact/hooks';
-import { splitProps } from '@ditto/styled-system';
+import { splitProps } from '@dittox/styled-system';
 import { useDittoContext } from './provider';
 
 export function useResolvedProps(

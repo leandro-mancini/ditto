@@ -14,7 +14,7 @@ Os estilos de animação são definidos usando a função `defineAnimationStyles
 Aqui está um exemplo de um estilo de animação:
 
 ```js
-import { defineAnimationStyles } from '@ditto/react';
+import { defineAnimationStyles } from '@dittox/react';
 
 const animationStyles = defineAnimationStyles({
   bounceFadeIn: {
@@ -39,7 +39,7 @@ O Ditto fornece um conjunto de estilos de animação embutidos que você pode us
 Para usar os estilos de animação, atualize o objeto `theme` com a propriedade `animationStyles`.
 
 ```jsx
-import { createSystem, defineConfig } from '@ditto/react';
+import { createSystem, defineConfig } from '@dittox/react';
 import { animationStyles } from './animation-styles';
 
 const config = defineConfig({
@@ -54,7 +54,7 @@ export default createSystem(defaultConfig, config);
 Após atualizar o tema, execute este comando para gerar as animações.
 
 ```bash
-npx @ditto/cli@next typegen
+npx @dittox/cli@next typegen
 ```
 
 Esses estilos de animação podem ser compostos com outros estilos como `_open` e `_closed`, que são mapeados para o atributo `data-state=open|closed`.

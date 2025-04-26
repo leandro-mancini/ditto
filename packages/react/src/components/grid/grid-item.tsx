@@ -7,7 +7,7 @@ import {
   ConditionalValue,
   mapObject,
   SystemStyleObject,
-} from '@ditto/styled-system';
+} from '@dittox/styled-system';
 import { ditto } from '../../core';
 
 export interface GridItemProps extends BoxProps {

@@ -17,7 +17,7 @@ Na maioria dos casos, o valor de um token semântico faz referência a um token 
 > Para referenciar um valor em um token semântico, use a sintaxe de referência de token `{}`.
 
 ```js title="theme.ts"
-import { createSystem, defineConfig } from '@ditto/react';
+import { createSystem, defineConfig } from '@dittox/react';
 
 const config = defineConfig({
   theme: {
@@ -42,7 +42,7 @@ export default createSystem(config);
 Depois de definir tokens semânticos, recomendamos usar a CLI do Ditto para gerar os tipos do tema para seus tokens.
 
 ```bash
-npx @ditto/cli@next typegen ./src/theme.ts
+npx @dittox/cli@next typegen ./src/theme.ts
 ```
 
 Isso fornecerá um autocomplete para seus tokens no seu editor.
@@ -58,7 +58,7 @@ Tokens semânticos também podem ser alterados com base em condições, como mod
 Por exemplo, se você quiser que uma cor mude automaticamente com base no modo claro ou escuro.
 
 ```tsx
-import { createSystem, defineConfig } from '@ditto/react';
+import { createSystem, defineConfig } from '@dittox/react';
 
 const config = defineConfig({
   theme: {
@@ -95,7 +95,7 @@ Use a chave `DEFAULT` para definir o valor padrão de um token aninhado.
 :::
 
 ```tsx
-import { createSystem, defineConfig } from '@ditto/react';
+import { createSystem, defineConfig } from '@dittox/react';
 
 const config = defineConfig({
   theme: {

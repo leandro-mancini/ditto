@@ -5,7 +5,7 @@ import {
   SimpleGrid,
   Square,
   Stack,
-} from '@ditto/react';
+} from '@dittox/react';
 import { TokenDoc } from './token-doc';
 import React from 'react';
 

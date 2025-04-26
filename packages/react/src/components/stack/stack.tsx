@@ -10,7 +10,7 @@ import {
 } from 'react';
 import type { StackDirection } from './get-separator-style';
 import { getSeparatorStyles } from './get-separator-style';
-import { cx, SystemStyleObject } from '@ditto/styled-system';
+import { cx, SystemStyleObject } from '@dittox/styled-system';
 import { ditto, HTMLDittoProps } from '../../core';
 
 function getValidChildren(children: React.ReactNode) {

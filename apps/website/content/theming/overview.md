@@ -12,7 +12,7 @@ Aqui está uma visão geral rápida de como o sistema é estruturado para fornec
 - Passe o motor de estilização para o componente `DittoProvider`
 
 ```tsx
-import { DittoProvider, createSystem } from '@ditto/react';
+import { DittoProvider, createSystem } from '@dittox/react';
 
 const config = defineConfig({
   theme: {
@@ -171,10 +171,10 @@ export default createSystem(config);
 Quando você configura as propriedades do sistema (como `colors`, `space`, `fonts`, etc.), a CLI pode ser usada para gerar definições de tipos para elas.
 
 ```bash
-npx @ditto/cli@next typegen ./theme.ts
+npx @dittox/cli@next typegen ./theme.ts
 ```
 
-Isso atualizará os tipos internos no pacote `@ditto/react`, garantindo que estejam sincronizados com o tema. Fornecendo uma API segura por tipo e uma experiência agradável para desenvolvedores.
+Isso atualizará os tipos internos no pacote `@dittox/react`, garantindo que estejam sincronizados com o tema. Fornecendo uma API segura por tipo e uma experiência agradável para desenvolvedores.
 
 ## Sistema
 

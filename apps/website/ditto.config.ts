@@ -1,4 +1,4 @@
-import { createSystem, defineConfig } from '@ditto/styled-system';
+import { createSystem, defineConfig } from '@dittox/styled-system';
 
 const config = defineConfig({
   conditions: {

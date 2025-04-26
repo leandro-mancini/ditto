@@ -5,7 +5,7 @@ import type {
   ConfigRecipes,
   RecipeDefinition,
   SystemRecipeFn,
-} from '@ditto/styled-system';
+} from '@dittox/styled-system';
 import { useDittoContext } from './provider';
 
 export type RecipeKey = keyof ConfigRecipes | (string & {});

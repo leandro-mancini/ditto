@@ -9,7 +9,7 @@ import {
   RecipeVariantRecord,
   SystemProperties,
   SystemStyleObject,
-} from '@ditto/styled-system';
+} from '@dittox/styled-system';
 import { JSX, FunctionComponent } from 'preact'; // Usar preact no lugar de react
 
 export interface UnstyledProp {

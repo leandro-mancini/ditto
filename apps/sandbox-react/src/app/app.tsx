@@ -1,4 +1,4 @@
-import { Box, DittoProvider, Flex, HStack, Stack } from '@ditto/react';
+import { Box, DittoProvider, Flex, HStack, Stack } from '@dittox/react';
 
 import { system } from './ditto.config';
 import { Button } from './ui/button/button';

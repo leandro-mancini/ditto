@@ -248,22 +248,22 @@ importers:
 
   apps/sandbox-react:
     dependencies:
-      '@ditto/cli':
+      '@dittox/cli':
         specifier: workspace:*
         version: link:../../packages/cli
-      '@ditto/react':
+      '@dittox/react':
         specifier: workspace:*
         version: link:../../packages/react
-      '@ditto/styled-system':
+      '@dittox/styled-system':
         specifier: workspace:*
         version: link:../../packages/styled-system
 
   apps/website:
     dependencies:
-      '@ditto/react':
+      '@dittox/react':
         specifier: workspace:*
         version: link:../../packages/react
-      '@ditto/styled-system':
+      '@dittox/styled-system':
         specifier: workspace:*
         version: link:../../packages/styled-system
       '@docusaurus/theme-common':
@@ -287,7 +287,7 @@ importers:
       '@clack/prompts':
         specifier: ^0.7.0
         version: 0.7.0
-      '@ditto/styled-system':
+      '@dittox/styled-system':
         specifier: workspace:*
         version: link:../styled-system
       '@pandacss/is-valid-prop':
@@ -311,7 +311,7 @@ importers:
 
   packages/preact:
     dependencies:
-      '@ditto/styled-system':
+      '@dittox/styled-system':
         specifier: workspace:*
         version: link:../styled-system
       '@emotion/css':
@@ -348,7 +348,7 @@ importers:
 
   packages/react:
     dependencies:
-      '@ditto/styled-system':
+      '@dittox/styled-system':
         specifier: workspace:*
         version: link:../styled-system
       '@emotion/is-prop-valid':
@@ -369,7 +369,7 @@ importers:
 
   packages/react-native:
     dependencies:
-      '@ditto/styled-system':
+      '@dittox/styled-system':
         specifier: workspace:*
         version: link:../styled-system
       '@emotion/is-prop-valid':

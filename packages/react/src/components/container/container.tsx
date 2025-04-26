@@ -1,6 +1,6 @@
 'use client';
 
-import { RecipeProps } from '@ditto/styled-system';
+import { RecipeProps } from '@dittox/styled-system';
 import { createRecipeContext, HTMLDittoProps } from '../../core';
 
 const { withContext, PropsProvider } = createRecipeContext({

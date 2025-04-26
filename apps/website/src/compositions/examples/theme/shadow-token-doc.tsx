@@ -9,8 +9,8 @@ import {
   SimpleGridProps,
   Stack,
   VStack,
-} from '@ditto/react';
-import { TokenInterface } from '@ditto/styled-system';
+} from '@dittox/react';
+import { TokenInterface } from '@dittox/styled-system';
 
 const { tokens, _config } = defaultSystem;
 const keys = Object.keys(_config.theme?.tokens?.shadows ?? {});

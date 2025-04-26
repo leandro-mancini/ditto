@@ -2,7 +2,7 @@ import {
   defineConfig,
   defineConditions,
   createColorMixTransform,
-} from '@ditto/styled-system';
+} from '@dittox/styled-system';
 
 const isCssVar = (v: string) => /^var\(--.+\)$/.test(v);
 

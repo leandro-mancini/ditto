@@ -1,4 +1,4 @@
-import { ditto } from '@ditto/react';
+import { ditto } from '@dittox/react';
 import { IconButton } from '@site/src/ui/icon-button';
 import React from 'react';
 import { useState } from 'react';

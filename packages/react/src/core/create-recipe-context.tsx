@@ -1,4 +1,4 @@
-import { cx, mergeProps } from '@ditto/styled-system';
+import { cx, mergeProps } from '@dittox/styled-system';
 import React, { forwardRef } from 'react';
 import { ditto } from './factory';
 import { createContext } from '../create-context';

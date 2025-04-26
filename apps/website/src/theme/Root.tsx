@@ -1,5 +1,5 @@
-import { Box, defaultConfig, DittoProvider } from '@ditto/react';
-import { createSystem } from '@ditto/styled-system';
+import { Box, defaultConfig, DittoProvider } from '@dittox/react';
+import { createSystem } from '@dittox/styled-system';
 import React from 'react';
 
 export const system = createSystem(defaultConfig, {

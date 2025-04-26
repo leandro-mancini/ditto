@@ -11,8 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ditto/cli": "workspace:*",
-    "@ditto/react": "workspace:*",
-    "@ditto/styled-system": "workspace:*"
+    "@dittox/cli": "workspace:*",
+    "@dittox/react": "workspace:*",
+    "@dittox/styled-system": "workspace:*"
   }
 }

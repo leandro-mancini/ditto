@@ -1,4 +1,4 @@
-import { Box, Container, ditto, HStack, Spacer, VStack } from '@ditto/react';
+import { Box, Container, ditto, HStack, Spacer, VStack } from '@dittox/react';
 import Link from '@docusaurus/Link';
 import { IconButton } from '@site/src/ui/icon-button';
 import React from 'react';

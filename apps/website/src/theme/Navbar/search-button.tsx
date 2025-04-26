@@ -1,4 +1,4 @@
-import { Box } from '@ditto/react';
+import { Box } from '@dittox/react';
 import { Button } from '@site/src/ui';
 import React from 'react';
 import { forwardRef } from 'react';

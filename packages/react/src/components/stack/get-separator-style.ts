@@ -2,7 +2,7 @@ import {
   ConditionalValue,
   mapObject,
   SystemStyleObject,
-} from '@ditto/styled-system';
+} from '@dittox/styled-system';
 
 export type StackDirection = ConditionalValue<
   'row' | 'column' | 'row-reverse' | 'column-reverse'

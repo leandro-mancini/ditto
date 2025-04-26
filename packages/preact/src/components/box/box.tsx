@@ -3,7 +3,7 @@
 import { h } from 'preact';
 import register from 'preact-custom-element';
 import { ditto, DittoProvider, HTMLDittoProps } from '../../core';
-import { createSystem } from '@ditto/styled-system';
+import { createSystem } from '@dittox/styled-system';
 import { defaultConfig } from '../../preset';
 
 export interface BoxProps extends HTMLDittoProps<'div'> {}

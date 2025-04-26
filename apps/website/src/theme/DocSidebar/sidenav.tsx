@@ -1,4 +1,4 @@
-import { Box, ditto, HStack, Stack } from '@ditto/react';
+import { Box, ditto, HStack, Stack } from '@dittox/react';
 import Link, { NavLinkProps } from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import React from 'react';

@@ -1,5 +1,5 @@
 {
-  "name": "@ditto/cli",
+  "name": "@dittox/cli",
   "version": "0.0.0",
   "publishConfig": {
     "access": "public"
@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "@clack/prompts": "^0.7.0",
-    "@ditto/styled-system": "workspace:*",
+    "@dittox/styled-system": "workspace:*",
     "@pandacss/is-valid-prop": "^0.47.1",
     "bundle-n-require": "^1.1.1",
     "chokidar": "^3.6.0",

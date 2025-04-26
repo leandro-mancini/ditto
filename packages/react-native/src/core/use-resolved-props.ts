@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useDittoContext } from './provider';
-import { splitProps } from '@ditto/styled-system';
+import { splitProps } from '@dittox/styled-system';
 
 export function useResolvedProps(
   inProps: any,

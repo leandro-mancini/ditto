@@ -1,4 +1,4 @@
-import { Box, BoxProps } from '@ditto/react';
+import { Box, BoxProps } from '@dittox/react';
 import React, { useEffect, useState } from 'react';
 import { highlightCode } from './highlight-code';
 import { CopyButton } from './copy-button';

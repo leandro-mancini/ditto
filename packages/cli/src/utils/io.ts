@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, rm } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { isValidSystem } from '@ditto/styled-system';
+import { isValidSystem } from '@dittox/styled-system';
 import { bundleNRequire } from 'bundle-n-require';
 import * as chokidar from 'chokidar';
 import { log } from '@clack/prompts';
@@ -11,7 +11,7 @@ import { writeFile } from 'node:fs/promises';
 
 const getBasePath = async () => {
   if (!process.env.LOCAL) {
-    const rootPath = require.resolve('@ditto/styled-system');
+    const rootPath = require.resolve('@dittox/styled-system');
     const rootUrl = pathToFileURL(rootPath).href;
 
     return resolve(

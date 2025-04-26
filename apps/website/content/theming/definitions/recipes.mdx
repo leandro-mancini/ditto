@@ -20,7 +20,7 @@ Uma receita consiste nas seguintes propriedades:
 Use a função `defineRecipe` para criar uma receita.
 
 ```tsx title="button.recipe.ts"
-import { defineRecipe } from '@ditto/react';
+import { defineRecipe } from '@dittox/react';
 
 export const buttonRecipe = defineRecipe({
   base: {
@@ -59,7 +59,7 @@ Use o hook `useRecipe` para obter a receita para um componente. Em seguida, cham
 ```tsx
 'use client';
 
-import { ditto, useRecipe } from '@ditto/react';
+import { ditto, useRecipe } from '@dittox/react';
 import { buttonRecipe } from './button.recipe';
 
 export const Button = (props) => {
@@ -81,7 +81,7 @@ Para fazer isso, use a função `recipe.splitVariantProps` para separar as props
 ```tsx
 'use client';
 
-import { ditto, useRecipe } from '@ditto/react';
+import { ditto, useRecipe } from '@dittox/react';
 import { buttonRecipe } from './button.recipe';
 
 export const Button = (props) => {
@@ -96,7 +96,7 @@ export const Button = (props) => {
 Para inferir os tipos das props de variantes da receita, use o helper `RecipeVariantProps`.
 
 ```tsx
-import type { RecipeVariantProps } from '@ditto/react';
+import type { RecipeVariantProps } from '@dittox/react';
 import { buttonRecipe } from './button.recipe';
 
 type ButtonVariantProps = RecipeVariantProps<typeof buttonRecipe>;
@@ -114,7 +114,7 @@ Use a função `ditto` para criar um componente a partir de uma receita.
 ```tsx
 'use client';
 
-import { ditto } from '@ditto/react';
+import { ditto } from '@dittox/react';
 import { buttonRecipe } from './button.recipe';
 
 export const Button = ditto('button', buttonRecipe);
@@ -141,7 +141,7 @@ A propriedade `defaultVariants` é usada para definir os valores padrão das var
 ```tsx
 'use client';
 
-import { ditto } from '@ditto/react';
+import { ditto } from '@dittox/react';
 
 const Button = ditto('button', {
   base: {
@@ -171,7 +171,7 @@ Use a propriedade `compoundVariants` para definir um conjunto de variantes que s
 ```tsx
 'use client';
 
-import { ditto } from '@ditto/react';
+import { ditto } from '@dittox/react';
 
 const Button = ditto('button', {
   base: {
@@ -214,7 +214,7 @@ Para usar a receita de maneira reutilizável, mova-a para o tema do sistema e ad
 > Não é necessário adicionar a diretiva `"use client"` ao usar a receita no tema.
 
 ```tsx
-import { createSystem, defineConfig } from '@ditto/react';
+import { createSystem, defineConfig } from '@dittox/react';
 import { buttonRecipe } from './button.recipe';
 
 const config = defineConfig({
@@ -231,13 +231,13 @@ export default createSystem(config);
 Use a CLI para gerar os tipos para a receita.
 
 ```bash
-npx @ditto/cli@next typegen ./theme.ts
+npx @dittox/cli@next typegen ./theme.ts
 ```
 
 Em seguida, importe os tipos gerados no seu componente.
 
 ```tsx
-import type { RecipeVariantProps } from '@ditto/react';
+import type { RecipeVariantProps } from '@dittox/react';
 import { buttonRecipe } from './button.recipe';
 
 type ButtonVariantProps = RecipeVariantProps<typeof buttonRecipe>;

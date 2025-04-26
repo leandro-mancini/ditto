@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ditto/react": "workspace:*",
-    "@ditto/styled-system": "workspace:*",
+    "@dittox/react": "workspace:*",
+    "@dittox/styled-system": "workspace:*",
     "@docusaurus/theme-common": "^3.5.2",
     "color2k": "^2.0.3",
     "react-icons": "^5.3.0",

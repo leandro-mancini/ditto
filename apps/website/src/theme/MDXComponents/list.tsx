@@ -1,4 +1,4 @@
-import { Box, BoxProps } from '@ditto/react';
+import { Box, BoxProps } from '@dittox/react';
 import React from 'react';
 
 export const Ol = (props: BoxProps) => {

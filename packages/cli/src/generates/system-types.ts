@@ -1,4 +1,4 @@
-import { SystemContext } from '@ditto/styled-system';
+import { SystemContext } from '@dittox/styled-system';
 import { allCssProperties } from '@pandacss/is-valid-prop';
 
 import { pretty } from '../utils/pretty';

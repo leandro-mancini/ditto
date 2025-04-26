@@ -1,4 +1,4 @@
-import { Box, BoxProps } from '@ditto/react';
+import { Box, BoxProps } from '@dittox/react';
 import React from 'react';
 
 interface TokenDocProps extends BoxProps {

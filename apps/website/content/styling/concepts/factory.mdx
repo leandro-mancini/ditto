@@ -8,7 +8,7 @@ description: Use a fábrica do Ditto para criar componentes superpotentes
 A fábrica de estilos do Ditto serve como uma maneira de criar componentes JSX superpotentes a partir de qualquer elemento HTML, permitindo que eles recebam propriedades de estilo JSX.
 
 ```js
-import { ditto } from '@ditto/react';
+import { ditto } from '@dittox/react';
 ```
 
 O Ditto pode ser usado de duas maneiras: como um [elemento JSX](#elemento-jsx) ou como uma [função](#função).
@@ -18,7 +18,7 @@ O Ditto pode ser usado de duas maneiras: como um [elemento JSX](#elemento-jsx) o
 Propriedades de estilo são propriedades CSS que você pode passar como props para seus componentes. Com o JSX, você pode usar a sintaxe `ditto.<element>` para criar elementos JSX que suportam propriedades de estilo.
 
 ```jsx
-import { ditto } from '@ditto/react';
+import { ditto } from '@dittox/react';
 
 const Button = ({ children }) => (
   <ditto.button bg="blue.500" color="white" py="2" px="4" rounded="md">
@@ -115,7 +115,7 @@ const Component = ditto('div', {
 Para criar uma lógica personalizada de repasse de props, combine o pacote [@emotion/is-prop-valid](https://github.com/emotion-js/emotion/tree/master/packages/is-prop-valid) e a função `isValidProperty` do Ditto.
 
 ```tsx
-import { ditto, defaultSystem } from '@ditto/react';
+import { ditto, defaultSystem } from '@dittox/react';
 import shouldForwardProp from '@emotion/is-prop-valid';
 
 const { isValidProperty } = defaultSystem;

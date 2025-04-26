@@ -1,4 +1,4 @@
-import { Box } from '@ditto/react';
+import { Box } from '@dittox/react';
 import React from 'react';
 
 export type CodeLang = 'tsx' | 'ts' | 'js' | 'jsx' | 'css' | 'json';

@@ -2,8 +2,8 @@ import {
   createSystem,
   defineConfig,
   defineRecipe,
-} from '@ditto/styled-system';
-import { defaultConfig } from '@ditto/react';
+} from '@dittox/styled-system';
+import { defaultConfig } from '@dittox/react';
 
 export const buttonRecipe = defineRecipe({
   className: 'ditto-button',
