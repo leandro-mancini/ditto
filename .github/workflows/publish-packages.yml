@@ -44,7 +44,7 @@ jobs:
             ${{ runner.os }}-pnpm-${{ env.CACHE_VERSION }}-
 
   affected-packages:
-    name: Get Affected Packages
+    name: Get Affected
     runs-on: ubuntu-latest
     needs: install-deps
 
@@ -90,7 +90,7 @@ jobs:
           echo "affected=$AFFECTED" >> $GITHUB_OUTPUT
 
   build:
-    name: Build Affected Packages
+    name: Build Affected
     runs-on: ubuntu-latest
     needs: affected-packages
 
@@ -136,6 +136,7 @@ jobs:
           fi
 
   publish:
+    name: Publish Affected
     needs: build
     runs-on: ubuntu-latest
 
