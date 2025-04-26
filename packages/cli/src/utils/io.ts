@@ -3,7 +3,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { isValidSystem } from '@ditto/styled-system';
 import { bundleNRequire } from 'bundle-n-require';
-import chokidar from 'chokidar';
+import * as chokidar from 'chokidar';
 import { log } from '@clack/prompts';
 
 import { ReadResult } from './types';
