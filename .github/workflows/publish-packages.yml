@@ -85,7 +85,7 @@ jobs:
       - name: Get Affected Libraries
         id: set-affected
         run: |
-          AFFECTED=$(npx nx show projects --affected --base=origin/main --head=HEAD --type=lib --exclude=ditto-workspace,preact | tr '\n' ' ')
+          AFFECTED=$(npx nx show projects --affected --base=origin/main --head=HEAD --type=lib --exclude=ditto-workspace,preact,react-native | tr '\n' ' ')
           echo "Found affected libraries: $AFFECTED"
           echo "affected=$AFFECTED" >> $GITHUB_OUTPUT
 
