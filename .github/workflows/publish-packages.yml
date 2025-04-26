@@ -129,7 +129,7 @@ jobs:
         run: |
           if [ -n "${{ needs.affected-packages.outputs.affected }}" ]; then
             echo "Building affected libraries: ${{ needs.affected-packages.outputs.affected }}"
-            npx nx run-many --target=build --projects=${{ needs.affected-packages.outputs.affected }} --parallel
+            pnpm exec nx run-many --target=build --projects=cli,preact,react,react-native,styled-system --parallel
           else
             echo "No affected libraries to build."
           fi
