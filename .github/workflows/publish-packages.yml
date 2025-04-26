@@ -48,7 +48,7 @@ jobs:
           cache-version: ${{ env.CACHE_VERSION }}
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --prefer-offline
 
       - name: Get Affected Libraries
         id: set-affected
@@ -75,7 +75,7 @@ jobs:
           cache-version: ${{ env.CACHE_VERSION }}
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --prefer-offline
 
       - name: Build Affected Libraries
         run: |

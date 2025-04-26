@@ -16,16 +16,17 @@ runs:
       with:
         node-version: '20'
 
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v4
-      with:
-        version: 8
+    - name: Install pnpm
+      run: npm install -g pnpm
 
-    - name: Cache (node_modules)
+    - name: Cache (pnpm store and node_modules)
       id: cache
       uses: actions/cache@v4
       with:
         path: |
+          ~/.pnpm-store
           node_modules
           **/node_modules
-        key: ${{ runner.os }}-node-${{ inputs.cache-version }}-${{ hashFiles('**/package-lock.json', '**/pnpm-lock.yaml', '**/yarn.lock') }}
+        key: ${{ runner.os }}-pnpm-${{ inputs.cache-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-${{ inputs.cache-version }}-
