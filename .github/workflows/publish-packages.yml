@@ -127,7 +127,9 @@ jobs:
 
       - name: Build Affected Libraries
         run: |
-          for package in ${{ needs.affected-packages.outputs.affected }}; do
-            echo "Building $package..."
-            npx nx run $package:build
-          done
+          if [ -n "${{ needs.affected-packages.outputs.affected }}" ]; then
+            echo "Building affected libraries: ${{ needs.affected-packages.outputs.affected }}"
+            npx nx run-many --target=build --projects=${{ needs.affected-packages.outputs.affected }} --parallel
+          else
+            echo "No affected libraries to build."
+          fi
