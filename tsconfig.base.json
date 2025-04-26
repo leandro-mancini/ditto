@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "cli": ["packages/cli/src/index.ts"],
+      "@ditto/styled-system": ["packages/styled-system/src/index.ts"],
       "packages/*": ["packages/*"]
     }
   },
