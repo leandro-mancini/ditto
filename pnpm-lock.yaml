@@ -297,8 +297,8 @@ importers:
         specifier: ^1.1.1
         version: 1.1.2
       chokidar:
-        specifier: ^4.0.1
-        version: 4.0.3
+        specifier: ^3.6.0
+        version: 3.6.0
       commander:
         specifier: ^12.1.0
         version: 12.1.0
@@ -14080,6 +14080,7 @@ packages:
     engines: { node: '>= 14.16.0' }
     dependencies:
       readdirp: 4.1.2
+    dev: true
 
   /chrome-launcher@0.15.2:
     resolution:
@@ -27535,6 +27536,7 @@ packages:
         integrity: sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==,
       }
     engines: { node: '>= 14.18.0' }
+    dev: true
 
   /reading-time@1.5.0:
     resolution:
