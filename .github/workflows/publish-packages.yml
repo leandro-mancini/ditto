@@ -178,5 +178,4 @@ jobs:
         env:
           AFFECTED: ${{ needs.affected-packages.outputs.affected }}
         run: |
-          AFFECTED=$(echo "${{ needs.affected-packages.outputs.affected }}" | tr ' ' ',')
           node scripts/publish-affected.js

@@ -14,6 +14,9 @@ interface CodegenFlags {
 
 const debug = createDebug('ditto:typegen');
 
+/**
+ * Comentário aqui
+ */
 export const TypegenCommand = new Command('typegen')
   .argument('<source>', 'caminho para o arquivo de tema')
   .description('Gerar tipagens de tema')
