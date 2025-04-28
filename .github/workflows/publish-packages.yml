@@ -178,43 +178,4 @@ jobs:
         env:
           AFFECTED: ${{ needs.affected-packages.outputs.affected }}
         run: |
-          if [ -n "$AFFECTED" ]; then
-            IFS=' ' read -r -a packages <<< "$AFFECTED"
-
-            for package in "${packages[@]}"; do
-              echo "📦 Processing package: $package"
-
-              DIST_PATH="dist/libs/$package"
-
-              PACKAGE_NAME=$(jq -r '.name' "$DIST_PATH/package.json")
-
-              echo "Fetching current version for $PACKAGE_NAME from NPM..."
-              CURRENT_VERSION=$(npm view $PACKAGE_NAME version || echo "0.0.0")
-
-              echo "Current version: $CURRENT_VERSION"
-
-              # Detect bump type based on commits (conventional commits)
-              echo "Detecting recommended bump..."
-              BUMP=$(pnpm dlx conventional-recommended-bump -p angular --tag-prefix="$PACKAGE_NAME@" || echo "patch")
-              echo "Recommended bump: $BUMP"
-
-              # Calculate next version
-              echo "Calculating next version..."
-              NEXT_VERSION=$(pnpm dlx semver $CURRENT_VERSION --increment $BUMP)
-              echo "Next version: $NEXT_VERSION"
-
-              # Update package.json with next version
-              echo "Updating $DIST_PATH/package.json to version $NEXT_VERSION"
-              jq ".version = \"$NEXT_VERSION\"" "$DIST_PATH/package.json" > "$DIST_PATH/package.tmp.json"
-              mv "$DIST_PATH/package.tmp.json" "$DIST_PATH/package.json"
-
-              # Publish with beta tag
-              echo "Publishing $PACKAGE_NAME@$NEXT_VERSION with beta tag"
-              cd $DIST_PATH
-              pnpm publish --tag beta --access public
-              cd -
-            done
-
-          else
-            echo "No affected packages to publish."
-          fi
+          node scripts/publish-affected.js
