@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
@@ -5,6 +7,27 @@ const path = require('path');
 // Função utilitária para executar comandos no shell
 function exec(cmd, options = {}) {
   return execSync(cmd, { encoding: 'utf-8', stdio: 'pipe', ...options }).trim();
+}
+
+function getPublishedVersions(packageName) {
+  try {
+    const output = exec(`npm view ${packageName} versions --json`);
+    return JSON.parse(output);
+  } catch (e) {
+    return [];
+  }
+}
+
+function calculateNextBetaVersion(currentVersion, publishedVersions) {
+  const baseVersion = currentVersion.replace(/-beta\.\d+$/, '');
+  const betas = publishedVersions
+    .filter((v) => v.startsWith(baseVersion) && v.includes('-beta.'))
+    .map((v) => parseInt(v.split('-beta.')[1], 10))
+    .filter((n) => !isNaN(n));
+
+  const nextBetaNumber = betas.length ? Math.max(...betas) + 1 : 0;
+
+  return `${baseVersion}-beta.${nextBetaNumber}`;
 }
 
 async function main() {
@@ -20,7 +43,7 @@ async function main() {
   for (const pkg of packages) {
     console.log(`\n📦 Processing package: ${pkg}`);
 
-    const distPath = path.resolve(__dirname, `../dist/libs/${pkg}`);
+    const distPath = path.resolve(__dirname, `../dist/packages/${pkg}`);
     const packageJsonPath = path.join(distPath, 'package.json');
 
     if (!fs.existsSync(packageJsonPath)) {
@@ -43,12 +66,9 @@ async function main() {
       );
     }
 
-    // Detect bump type based on conventional commits
     let bump = 'patch';
     try {
-      bump = exec(
-        `pnpm dlx conventional-recommended-bump -p angular --tag-prefix=${packageName}@`
-      );
+      bump = exec(`pnpm dlx conventional-recommended-bump -p angular`);
       console.log(`🔎 Recommended bump type: ${bump}`);
     } catch (e) {
       console.error(
@@ -56,11 +76,19 @@ async function main() {
       );
     }
 
-    // Calculate next version
-    const nextVersion = exec(
-      `pnpm dlx semver ${currentVersion} --increment ${bump}`
-    );
-    console.log(`🚀 Next version: ${nextVersion}`);
+    const publishedVersions = getPublishedVersions(packageName);
+    let nextVersion = '';
+
+    if (currentVersion.includes('-beta.')) {
+      nextVersion = calculateNextBetaVersion(currentVersion, publishedVersions);
+    } else {
+      const bumpedVersion = exec(
+        `pnpm dlx semver ${currentVersion} --increment ${bump}`
+      );
+      nextVersion = calculateNextBetaVersion(bumpedVersion, publishedVersions);
+    }
+
+    console.log(`🚀 Next beta version: ${nextVersion}`);
 
     // Update version in package.json
     packageJson.version = nextVersion;
@@ -70,7 +98,7 @@ async function main() {
     // Publish
     console.log(`🚀 Publishing ${packageName}@${nextVersion} with tag beta...`);
     try {
-      //   exec(`pnpm publish --access public --tag beta`, { cwd: distPath });
+      exec(`npm publish --access public --tag beta`, { cwd: distPath });
       console.log(`🎉 Successfully published ${packageName}@${nextVersion}`);
     } catch (e) {
       console.error(`❌ Failed to publish ${packageName}. Error: ${e.message}`);
