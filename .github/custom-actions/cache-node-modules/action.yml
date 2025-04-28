@@ -1,0 +1,32 @@
+name: 'Cache node_modules'
+description: 'Setup node, cache from node_modules'
+
+inputs:
+  cache-version:
+    required: true
+outputs:
+  cache-hit:
+    value: ${{ steps.cache.outputs.cache-hit }}
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install pnpm
+      run: npm install -g pnpm
+
+    - name: Cache (pnpm store and node_modules)
+      id: cache
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.pnpm-store
+          node_modules
+          **/node_modules
+        key: ${{ runner.os }}-pnpm-${{ inputs.cache-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-${{ inputs.cache-version }}-

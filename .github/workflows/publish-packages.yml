@@ -1,0 +1,181 @@
+name: Publish NPM Packages
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+env:
+  CACHE_VERSION: 20
+
+jobs:
+  install-deps:
+    name: Install Dependencies
+    runs-on: ubuntu-latest
+
+    outputs:
+      cache-hit: ${{ steps.cache.outputs.cache-hit }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Cache (pnpm store and node_modules)
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pnpm-store
+            node_modules
+            **/node_modules
+          key: ${{ runner.os }}-pnpm-${{ env.CACHE_VERSION }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-${{ env.CACHE_VERSION }}-
+
+  affected-packages:
+    name: Get Affected
+    runs-on: ubuntu-latest
+    needs: install-deps
+
+    outputs:
+      affected: ${{ steps.set-affected.outputs.affected }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Cache (pnpm store and node_modules)
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pnpm-store
+            node_modules
+            **/node_modules
+          key: ${{ runner.os }}-pnpm-${{ env.CACHE_VERSION }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-${{ env.CACHE_VERSION }}-
+
+      - name: Install dependencies
+        run: pnpm install --prefer-offline
+
+      - name: Get Affected Libraries
+        id: set-affected
+        run: |
+          AFFECTED=$(npx nx show projects --affected --base=origin/main --head=HEAD --type=lib --exclude=ditto-workspace,preact,react-native | tr '\n' ' ')
+          echo "Found affected libraries: $AFFECTED"
+          echo "affected=$AFFECTED" >> $GITHUB_OUTPUT
+
+  build:
+    name: Build Affected
+    runs-on: ubuntu-latest
+    needs: affected-packages
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Cache (pnpm store and node_modules)
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pnpm-store
+            node_modules
+            **/node_modules
+          key: ${{ runner.os }}-pnpm-${{ env.CACHE_VERSION }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-${{ env.CACHE_VERSION }}-
+
+      - name: Install dependencies
+        run: pnpm install --prefer-offline
+
+      - name: Build Affected Libraries
+        run: |
+          if [ -n "${{ needs.affected-packages.outputs.affected }}" ]; then
+            PROJECTS=$(echo "${{ needs.affected-packages.outputs.affected }}" | tr ' ' ',')
+            echo "Building affected libraries: $PROJECTS"
+            pnpm exec nx run-many --target=build --projects=$PROJECTS --parallel
+          else
+            echo "No affected libraries to build."
+          fi
+
+  publish:
+    name: Publish Affected
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Cache (pnpm store and node_modules)
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pnpm-store
+            node_modules
+            **/node_modules
+          key: ${{ runner.os }}-pnpm-${{ env.CACHE_VERSION }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-${{ env.CACHE_VERSION }}-
+
+      - name: Set up NPM auth
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
+      - name: Install dependencies
+        run: pnpm install --prefer-offline
+
+      - name: Publish updated packages
+        env:
+          AFFECTED: ${{ needs.affected-packages.outputs.affected }}
+        run: |
+          node scripts/publish-affected.js

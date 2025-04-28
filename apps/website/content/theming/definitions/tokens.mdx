@@ -22,7 +22,7 @@ Um token de design consiste nas seguintes propriedades:
 Tokens são definidos sob a chave `theme` na sua configuração de sistema.
 
 ```ts title="theme.ts"
-import { createSystem, defineConfig } from '@ditto/react';
+import { createSystem, defineConfig } from '@dittox/react';
 
 const config = defineConfig({
   theme: {
@@ -48,7 +48,7 @@ export const system = createSystem(config);
 Depois de definir os tokens, recomendamos usar a CLI do Ditto para gerar os tipos do tema para seus tokens.
 
 ```bash
-npx @ditto/cli@next typegen ./src/theme.ts
+npx @dittox/cli@next typegen ./src/theme.ts
 ```
 
 Isso fornecerá autocompletar para seus tokens no seu editor.
@@ -66,7 +66,7 @@ Tokens podem ser aninhados para criar uma hierarquia de tokens. Isso é útil qu
 Use a chave `DEFAULT` para definir o valor padrão de um token aninhado.
 
 ```jsx
-import { defineConfig } from '@ditto/react';
+import { defineConfig } from '@dittox/react';
 
 const config = defineConfig({
   theme: {
@@ -101,7 +101,7 @@ export default createSystem(config);
 Cores têm significado e suportam o propósito do conteúdo, comunicando coisas como hierarquia de informação e estados. Elas são geralmente definidas como um valor de string ou referência a outros tokens.
 
 ```jsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   colors: {
@@ -121,7 +121,7 @@ export default createSystem({
 Tokens de gradiente representam uma transição suave entre duas ou mais cores. Seu valor pode ser definido como uma string ou um valor composto.
 
 ```jsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   gradients: {
@@ -145,7 +145,7 @@ export default createSystem({
 Tokens de tamanho representam a largura e altura de um elemento. Seu valor é definido como uma string.
 
 ```jsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   sizes: {
@@ -165,7 +165,7 @@ export default createSystem({
 Tokens de espaçamento representam a margem e o padding de um elemento. Seu valor é definido como uma string.
 
 ```jsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   spacing: {
@@ -185,7 +185,7 @@ export default createSystem({
 Tokens de fonte representam a família tipográfica de um elemento de texto. Seu valor é definido como uma string ou um array de strings.
 
 ```jsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   fonts: {
@@ -206,7 +206,7 @@ export default createSystem({
 Tokens de tamanho de fonte representam o tamanho de um elemento de texto. Seu valor é definido como uma string.
 
 ```jsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   fontSizes: {
@@ -226,7 +226,7 @@ export default createSystem({
 Tokens de peso de fonte representam o peso de um elemento de texto. Seu valor é definido como uma string.
 
 ```jsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   fontWeights: {
@@ -264,7 +264,7 @@ export default createSystem({
 Tokens de altura de linha representam a altura de uma linha de texto. Seu valor é definido como uma string.
 
 ```jsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   lineHeights: {
@@ -284,7 +284,7 @@ export default createSystem({
 Tokens de raio representam o raio de uma borda. Seu valor é definido como uma string.
 
 ```jsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   radii: {
@@ -304,7 +304,7 @@ export default createSystem({
 Uma borda é uma linha ao redor de um elemento da interface do usuário. Você pode defini-las como valores de string ou como um valor composto.
 
 ```jsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   borders: {
@@ -329,7 +329,7 @@ export default createSystem({
 Tokens de largura de borda representam a largura de uma borda. Seu valor é definido como uma string.
 
 ```jsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   borderWidths: {
@@ -349,7 +349,7 @@ export default createSystem({
 Tokens de sombra representam a sombra de um elemento. Seu valor é definido como um único ou múltiplos valores contendo uma string ou um valor composto.
 
 ```jsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   shadows: {
@@ -387,7 +387,7 @@ export default createSystem({
 Tokens de easing representam a função de easing de uma animação ou transição. Seu valor é definido como uma string ou um array de valores representando o cubic bezier.
 
 ```jsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   easings: {
@@ -410,7 +410,7 @@ export default createSystem({
 Tokens de opacidade ajudam você a definir a opacidade de um elemento.
 
 ```jsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   opacity: {
@@ -430,7 +430,7 @@ export default createSystem({
 Esse tipo de token representa a profundidade da posição de um elemento no eixo z.
 
 ```jsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   zIndex: {
@@ -455,7 +455,7 @@ type Asset = string | CompositeAsset;
 ```
 
 ```tsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   tokens: {
@@ -482,7 +482,7 @@ export default createSystem({
 Tokens de duração representam o tempo, em milissegundos, que uma animação ou ciclo de animação leva para completar. Seu valor é definido como uma string.
 
 ```tsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   durations: {
@@ -502,7 +502,7 @@ export default createSystem({
 Tokens de animação representam uma animação de keyframe. Seu valor é definido como uma string.
 
 ```tsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   animations: {
@@ -524,7 +524,7 @@ export default createSystem({
 Tokens de aspect ratio representam a proporção de um elemento. Seu valor é definido como uma string.
 
 ```tsx
-import { defineTokens } from '@ditto/react';
+import { defineTokens } from '@dittox/react';
 
 const tokens = defineTokens({
   aspectRatios: {

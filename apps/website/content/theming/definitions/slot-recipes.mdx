@@ -21,7 +21,7 @@ Uma receita de slot consiste nas seguintes propriedades:
 Use a função `defineSlotRecipe` para criar uma receita de slot.
 
 ```tsx title="checkbox.recipe.ts"
-import { defineSlotRecipe } from '@ditto/react';
+import { defineSlotRecipe } from '@dittox/react';
 
 export const checkboxSlotRecipe = defineSlotRecipe({
   slots: ['root', 'control', 'label'],
@@ -61,7 +61,7 @@ Use o hook `useSlotRecipe` para obter a receita para um componente. Em seguida, 
 ```tsx
 'use client';
 
-import { ditto, useSlotRecipe } from '@ditto/react';
+import { ditto, useSlotRecipe } from '@dittox/react';
 import { checkboxSlotRecipe } from './checkbox.recipe';
 
 export const Checkbox = (props) => {
@@ -88,7 +88,7 @@ Para fazer isso, use a função `recipe.splitVariantProps` para separar as props
 ```tsx
 'use client';
 
-import { ditto, useSlotRecipe } from '@ditto/react';
+import { ditto, useSlotRecipe } from '@dittox/react';
 import { checkboxSlotRecipe } from './checkbox.recipe';
 
 export const Checkbox = (props) => {
@@ -103,7 +103,7 @@ export const Checkbox = (props) => {
 Para inferir os tipos das props de variantes da receita, use o helper `RecipeVariantProps`.
 
 ```tsx
-import type { RecipeVariantProps } from '@ditto/react';
+import type { RecipeVariantProps } from '@dittox/react';
 import { checkboxSlotRecipe } from './checkbox.recipe';
 
 type CheckboxVariantProps = RecipeVariantProps<typeof checkboxSlotRecipe>;
@@ -121,7 +121,7 @@ Em seguida, use as funções `withProvider` e `withContext` para criar os compon
 ```tsx
 'use client';
 
-import { createSlotRecipeContext } from '@ditto/react';
+import { createSlotRecipeContext } from '@dittox/react';
 import { checkboxSlotRecipe } from './checkbox.recipe';
 
 const { withProvider, withContext } = createSlotRecipeContext({
@@ -151,7 +151,7 @@ const App = () => {
 Para inferir os tipos das props de variantes da receita, use o helper `RecipeVariantProps`.
 
 ```tsx
-import type { RecipeVariantProps } from '@ditto/react';
+import type { RecipeVariantProps } from '@dittox/react';
 import { checkboxSlotRecipe } from './checkbox.recipe';
 
 type CheckboxVariantProps = RecipeVariantProps<typeof checkboxSlotRecipe>;
@@ -165,7 +165,7 @@ export interface CheckboxProps
 Use a propriedade `compoundVariants` para definir um conjunto de variantes que são aplicadas com base em uma combinação de outras variantes.
 
 ```tsx
-import { defineSlotRecipe } from '@ditto/react';
+import { defineSlotRecipe } from '@dittox/react';
 
 export const checkboxRecipe = defineSlotRecipe({
   slots: ['root', 'control', 'label'],
@@ -201,7 +201,7 @@ Em alguns casos, pode ser necessário aplicar estilo a um slot via className.
 - A convenção de nomenclatura é `${className}__${slot}`
 
 ```tsx
-import { defineSlotRecipe } from '@ditto/react';
+import { defineSlotRecipe } from '@dittox/react';
 
 export const checkboxRecipe = defineSlotRecipe({
   className: 'checkbox',
@@ -224,7 +224,7 @@ Para usar a receita de maneira reutilizável, mova-a para o tema do sistema e ad
 > Não é necessário adicionar a diretiva `"use client"` ao usar a receita no tema.
 
 ```tsx
-import { createSystem, defineConfig } from '@ditto/react';
+import { createSystem, defineConfig } from '@dittox/react';
 import { checkboxSlotRecipe } from './checkbox.recipe';
 
 const config = defineConfig({
@@ -241,13 +241,13 @@ export default createSystem(config);
 Use a CLI para gerar os tipos para a receita.
 
 ```bash
-npx @ditto/cli@next typegen ./theme.ts
+npx @dittox/cli@next typegen ./theme.ts
 ```
 
 Em seguida, importe os tipos gerados no seu componente.
 
 ```tsx
-import type { SlotRecipeProps } from '@ditto/react';
+import type { SlotRecipeProps } from '@dittox/react';
 
 export interface CheckboxProps extends SlotRecipeProps<'checkbox'> {}
 ```

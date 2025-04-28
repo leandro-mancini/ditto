@@ -18,7 +18,7 @@ Os estilos de camada permitem definir propriedades visuais. As propriedades comu
 Os estilos de camada são definidos usando a função `defineLayerStyles`.
 
 ```js title="layer-styles.ts"
-import { defineLayerStyles } from '@ditto/react';
+import { defineLayerStyles } from '@dittox/react';
 
 const layerStyles = defineLayerStyles({
   container: {
@@ -37,7 +37,7 @@ const layerStyles = defineLayerStyles({
 Para usar os estilos de camada, atualize o objeto `theme` com a propriedade `layerStyles`.
 
 ```jsx
-import { createSystem, defineConfig } from '@ditto/react';
+import { createSystem, defineConfig } from '@dittox/react';
 import { layerStyles } from './layer-styles';
 
 const config = defineConfig({
@@ -52,7 +52,7 @@ export default createSystem(defaultConfig, config);
 Após atualizar o tema, execute este comando para gerar as tipagens.
 
 ```jsx
-npx @ditto/cli@next typegen
+npx @dittox/cli@next typegen
 ```
 
 ## Usando estilos de camada

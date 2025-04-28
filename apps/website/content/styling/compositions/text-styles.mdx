@@ -18,7 +18,7 @@ Os estilos de texto permitem definir propriedades CSS textuais. As propriedades 
 Os estilos de texto são definidos usando a função `defineTextStyles`.
 
 ```js filename="text-styles.ts"
-import { defineTextStyles } from '@ditto/react';
+import { defineTextStyles } from '@dittox/react';
 
 export const textStyles = defineTextStyles({
   body: {
@@ -41,7 +41,7 @@ export const textStyles = defineTextStyles({
 Para usar os estilos de texto, atualize o objeto `theme` com a propriedade `textStyles`.
 
 ```ts
-import { createSystem, defineConfig } from '@ditto/react';
+import { createSystem, defineConfig } from '@dittox/react';
 import { textStyles } from './text-styles';
 
 const config = defineConfig({
@@ -56,7 +56,7 @@ export default createSystem(defaultConfig, config);
 Após atualizar o tema, execute este comando para gerar as tipagens.
 
 ```bash
-npx @ditto/cli@next typegen
+npx @dittox/cli@next typegen
 ```
 
 ## Usando estilos de texto

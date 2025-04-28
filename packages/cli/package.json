@@ -1,6 +1,6 @@
 {
-  "name": "@ditto/cli",
-  "version": "0.0.1-beta.1",
+  "name": "@dittox/cli",
+  "version": "0.0.0",
   "publishConfig": {
     "access": "public"
   },
@@ -29,15 +29,15 @@
   ],
   "dependencies": {
     "@clack/prompts": "^0.7.0",
-    "@dittox/styled-system": "0.0.1-beta.30",
+    "@dittox/styled-system": "1.0.0",
     "@pandacss/is-valid-prop": "^0.47.1",
     "bundle-n-require": "^1.1.1",
-    "chokidar": "^4.0.1",
+    "chokidar": "^3.6.0",
     "commander": "^12.1.0",
     "debug": "^4.3.7",
     "prettier": "^2.6.2"
   },
   "bin": {
-    "dittox": "src/index.js"
+    "ditto": "src/index.js"
   }
 }

@@ -16,7 +16,7 @@ Aqui está um exemplo de como personalizar o seletor ao qual as variáveis CSS d
 são aplicadas.
 
 ```tsx title="theme.ts"
-import { createSystem, defaultConfig, defineConfig } from '@ditto/react';
+import { createSystem, defaultConfig, defineConfig } from '@dittox/react';
 
 const customConfig = defineConfig({
   cssVarsRoot: ':where(:root, :host)',
@@ -40,7 +40,7 @@ As variáveis CSS emitidas agora serão aplicadas ao elemento `root` e `host`.
 Aqui está um exemplo de como personalizar o prefixo das variáveis CSS emitidas.
 
 ```tsx
-import { createSystem, defaultConfig, defineConfig } from '@ditto/react';
+import { createSystem, defaultConfig, defineConfig } from '@dittox/react';
 
 const customConfig = defineConfig({
   cssVarsPrefix: 'mancini',

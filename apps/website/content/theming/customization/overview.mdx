@@ -24,7 +24,7 @@ Estas são as principais funções necessárias para personalizar o tema do Ditt
 - `createSystem`: usada para criar um mecanismo de estilo a partir da configuração
 
 ```tsx title="theme.ts"
-import { createSystem, defaultBaseConfig, defineConfig } from '@ditto/react';
+import { createSystem, defaultBaseConfig, defineConfig } from '@dittox/react';
 
 const customConfig = defineConfig({
   theme: {
@@ -42,7 +42,7 @@ export const system = createSystem(defaultBaseConfig, customConfig);
 Em seguida, atualize o `DittoProvider` para usar o sistema personalizado.
 
 ```tsx
-import { DittoProvider } from '@ditto/react';
+import { DittoProvider } from '@dittox/react';
 import { ThemeProvider } from 'next-themes';
 import { system } from './theme';
 
@@ -64,7 +64,7 @@ Na maioria dos casos, recomendamos começar com a configuração padrão e espec
 No entanto, se preferir começar do zero, crie tokens e receitas padrão usando o CLI.
 
 ```bash
-npx @ditto/cli@next eject --outdir ./theme
+npx @dittox/cli@next eject --outdir ./theme
 ```
 
 Isso gerará um arquivo que inclui todos os tokens e receitas do Ditto.
@@ -72,5 +72,5 @@ Isso gerará um arquivo que inclui todos os tokens e receitas do Ditto.
 Após personalizar a configuração padrão, talvez seja necessário atualizar os tipos.
 
 ```bash
-npx @ditto/cli@next typegen ./theme.ts
+npx @dittox/cli@next typegen ./theme.ts
 ```
